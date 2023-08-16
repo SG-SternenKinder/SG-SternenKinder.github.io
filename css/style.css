@@ -1,12 +1,3 @@
-@import url(../fonts/fontawesome/webfonts/fa-solid-900.ttf);
-
-html {
-    line-height: 1.15;
-    /* 1 */
-    -webkit-text-size-adjust: 100%;
-    /* 2 */
-}
-
 * {
     padding: 0;
     margin: 0;
