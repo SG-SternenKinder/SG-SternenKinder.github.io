@@ -204,3 +204,7 @@ section {
         width: 73%;
     }
 }
+
+.no-click {
+    pointer-events: none;
+}
