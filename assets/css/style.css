@@ -107,7 +107,7 @@ section {
     position: right;
     height: 100vh;
     width: 100%;
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(..img/background.jpg);
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(.assets/img/background.jpg);
     background-size: cover;
     background-position: bottom center;
     display: flex;
@@ -119,7 +119,7 @@ section {
     position: right;
     height: 100vh;
     width: 100%;
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(..img/background.jpg);
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(.assets/img/background.jpg);
     background-size: cover;
     background-position: bottom center;
     display: flex;
@@ -131,7 +131,7 @@ section {
     position: right;
     height: 100vh;
     width: 100%;
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(..img/background.jpg);
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(.assets/img/background.jpg);
     background-size: cover;
     background-position: bottom center;
     display: flex;
@@ -143,7 +143,7 @@ section {
     position: right;
     height: 100vh;
     width: 100%;
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(..img/background.jpg);
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(.assets/img/background.jpg);
     background-size: cover;
     background-position: bottom center;
     display: flex;
@@ -155,7 +155,7 @@ section {
     position: right;
     height: 100vh;
     width: 100%;
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(..img/background.jpg);
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(.assets/img/background.jpg);
     background-size: cover;
     background-position: bottom center;
     display: flex;
