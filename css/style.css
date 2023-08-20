@@ -40,7 +40,7 @@ header {
     padding: 20px 100px;
     background: rgba(225, 225, 225, .1);
     display: flex;
-    justify-content: normal; /*space-between*/
+    justify-content: space-between; /*space-between*/
     align-items: center;
     backdrop-filter: blur(10px);
 }
