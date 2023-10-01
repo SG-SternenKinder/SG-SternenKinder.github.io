@@ -23,9 +23,6 @@
 }
 
 body {
-    /* TEST */
-    overflow: hidden;
-    /**/
     color: var(--text-color);
     background: var(--bg-color);
     background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../img/background.png);
@@ -238,4 +235,11 @@ section {
 
 .ger {
     color: white;
+}
+
+.page-language-mode #contentEng{
+    content: 'contentEng';
+}
+.page-language-mode #contentGer{
+    content: 'contentGer';
 }

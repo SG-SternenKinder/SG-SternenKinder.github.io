@@ -57,7 +57,7 @@
             <a href="https://osborntv.github.io" draggable="false" title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
         </div>
 
-        <div class="languageSwitch">
+        <div id="change-language" class="languageSwitch">
             <span class="ger contentGer">German</span>
             <input type="checkbox" class="check">
             <span class="en contentEng">English</span>
@@ -69,13 +69,13 @@
         <div class="containerlang contentEng">
             <section class="home">
                 <div class="home-text">
-            <h5>i forgot</h5>
-            <h1>TEST <br> TEXT</h1>
-            <p>THIS IS A TEST TEXT</p>
-            <a class="btn">No idea what's supposed to be there</a>
-        </section>
+                    <h5>i forgot</h5>
+                    <h1>TEST <br> TEXT</h1>
+                    <p>THIS IS A TEST TEXT</p>
+                    <a class="btn">No idea what's supposed to be there</a>
+            </section>
         </div>
-    
+
         <div class="containerlang contentGer">
             <section class="home">
                 <div class="home-text">
@@ -87,6 +87,17 @@
             </section>
         </div>
     </div>
+
+    <script>$(function () {
+            $('#change-language').on('click', function () {
+                $("body").toggleClass("page-language-mode");
+                localStorage.setItem('osy-language-mode', $("body").hasClass("page-language-mode"));
+            });
+            if (localStorage.getItem('osy-language-mode') === 'true') {
+                $('#change-language').trigger('click');
+            }
+        });
+    </script>
 
 </body>
 
