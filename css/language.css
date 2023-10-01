@@ -4,16 +4,6 @@
 
 @import url('..\lib\font-awesome\css\font-awesome.css');
 
-body {
-    font-family: 'Didact Gothic', sans-serif;
-    color:#333;
-        box-sizing: border-box;
-}
-
-* {
-    box-sizing: border-box;
-}
-
 a {
     text-decoration: none;
 }
@@ -25,12 +15,14 @@ a {
     margin-top: 25px;
     position: relative;
 }
+
 .lang-menu .selected-lang {
-    display: flex;   
+    display: flex;
     justify-content: space-between;
     line-height: 2;
     cursor: pointer;
 }
+
 .lang-menu .selected-lang:before {
     content: '';
     display: inline-block;
@@ -45,16 +37,15 @@ a {
     margin: 0;
     padding: 0;
     display: none;
-    background-color: #fff;
+    background-color: rgba(225, 225, 225, .1);
     border: 1px solid #f8f8f8;
     position: absolute;
     top: 45px;
     right: 0px;
     width: 125px;
     border-radius: 5px;
-    box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+    box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.2);
 }
-
 
 .lang-menu ul li {
     list-style: none;
@@ -92,10 +83,10 @@ a {
 .en:before {
     background-image: url(..\img\language\uk-32.png);
 }
+
 .j:before {
     background-image: url(..\img\language\japan-32.png);
 }
-
 
 .lang-menu:hover ul {
     display: block;
