@@ -24,9 +24,6 @@
 
 body {
     /* TEST */
-    display: flex;
-    align-items: center;
-    min-height: 100vh;
     overflow: hidden;
     /**/
     color: var(--text-color);
@@ -202,7 +199,7 @@ section {
     position: absolute;
     width: 60px;
     height: 25px;
-    background: white;
+    background: black;
     border-radius: 25px;
 }
 
