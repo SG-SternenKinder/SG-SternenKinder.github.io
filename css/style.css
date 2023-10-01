@@ -23,6 +23,13 @@
 }
 
 body {
+    /* TEST */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    /**/
     color: var(--text-color);
     background: var(--bg-color);
     background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../img/background.png);
@@ -165,16 +172,24 @@ section {
 
 /* Language */
 
-.container .content {
+.containerlang{
+    position: relative;
+    max-width: 600px;
+    height: 500px;
+    padding: 50px;
+    color: #555;
+}
+
+.containerlang .content {
     display: none;
     margin-top: 20px;
 }
 
-.container .content.contentEng {
+.containerlang .content.contentEng {
     display: block;
 }
 
-.container .content.contentGer {
+.containerlang .content.contentGer {
     display: block;
 }
 
