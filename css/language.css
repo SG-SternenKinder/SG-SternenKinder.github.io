@@ -2,7 +2,7 @@
 ^ Styling the drop-down menu for language switcher
 */
 
-@import url('.\lib\font-awesome\css\font-awesome.css');
+@import url('..\lib\font-awesome\css\font-awesome.css');
 
 body {
     font-family: 'Didact Gothic', sans-serif;
@@ -36,7 +36,7 @@ a {
     display: inline-block;
     width: 32px;
     height: 32px;
-    background-image: url(.\img\language\de-32.png);
+    background-image: url(..\img\language\de-32.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -86,14 +86,14 @@ a {
 }
 
 .de:before {
-    background-image: url(.\img\language\de-32.png);
+    background-image: url(..\img\language\de-32.png);
 }
 
 .en:before {
-    background-image: url(.\img\language\uk-32.png);
+    background-image: url(..\img\language\uk-32.png);
 }
 .j:before {
-    background-image: url(.\img\language\japan-32.png);
+    background-image: url(..\img\language\japan-32.png);
 }
 
 
