@@ -25,7 +25,6 @@
 body {
     /* TEST */
     display: flex;
-    justify-content: center;
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
@@ -177,7 +176,7 @@ section {
     max-width: 600px;
     height: 500px;
     padding: 50px;
-    color: #555;
+    color: white;
 }
 
 .containerlang .content {
@@ -203,7 +202,7 @@ section {
     position: absolute;
     width: 60px;
     height: 25px;
-    background: #333;
+    background: white;
     border-radius: 25px;
 }
 
@@ -217,10 +216,10 @@ section {
     left: 0px;
     width: 60px;
     height: 25px;
-    background: #333;
+    background: white;
     border-radius: 25px;
     transition: .25s;
-    border: 2px solid #333;
+    border: 2px solid white;
     box-sizing: border-box;
 }
 
@@ -237,17 +236,9 @@ section {
 }
 
 .en {
-    color: #333;
+    color: white;
 }
 
 .ger {
-    color: #412;
-}
-
-.de:before {
-    background-image: url(..\img\language\de-32.png);
-}
-
-.eni:before {
-    background-image: url(..\img\language\uk-32.png);
+    color: white;
 }
