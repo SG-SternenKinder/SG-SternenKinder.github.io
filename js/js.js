@@ -26,29 +26,50 @@ document.addEventListener('DOMContentLoaded', function () {
     xhr.send();
 });
 
+
+// LANGUAGE SWITCHER !
 // Diese Variable speichert die aktuelle Sprache
 let currentLanguage = 'de';
 
-// Diese Funktion ändert die Sprache
+function updateText() {
+    const titleElement = document.getElementById('main-title');
+    const textElement = document.getElementById('main-text');
+
+    if (currentLanguage === 'de') {
+        titleElement.textContent = 'TEST TEXT';
+        textElement.textContent = 'DIES IST EIN TEST TEXT';
+    } else if (currentLanguage === 'en') {
+        titleElement.textContent = 'TEST TEXT';
+        textElement.textContent = 'THIS IS A TEST TEXT';
+    }
+}
+
+// Funktion zum Ändern der Sprache
 function changeLanguage(language) {
     currentLanguage = language;
     updateText();
 }
 
-// Diese Funktion aktualisiert den Text basierend auf der ausgewählten Sprache
-function updateText() {
-    if (currentLanguage === 'de') {
-        // Texte für die Deutsche Sprache
-        document.getElementById('main-title').textContent = 'TEST TEXT';
-        document.getElementById('main-text').textContent = 'DIES IST EIN TEST TEXT';
-        // Hier weitere Texte in Deutsch aktualisieren
-    } else if (currentLanguage === 'en') {
-        // Texte für die Englische Sprache
-        document.getElementById('main-title').textContent = 'TEST TEXT';
-        document.getElementById('main-text').textContent = 'THIS IS A TEST TEXT';
-        // Hier weitere Texte in Englisch aktualisieren
-    }
-}
-
 // Aktualisiere den Text beim Laden der Seite
 updateText();
+
+// Event-Listener für die Schaltflächen zum Ändern der Sprache
+const languageButtons = document.querySelectorAll('.language-button');
+
+languageButtons.forEach(button => {
+    button.addEventListener('click', function () {
+        const selectedLanguage = this.getAttribute('data-lang');
+        changeLanguage(selectedLanguage);
+    });
+});
+
+// Event-Listener für den Slider des Language Switchers
+const languageSlider = document.getElementById('language-slider');
+
+languageSlider.addEventListener('change', function () {
+    if (this.checked) {
+        changeLanguage('en'); // Wenn der Slider nach rechts verschoben wird, ändere die Sprache auf Englisch
+    } else {
+        changeLanguage('de'); // Wenn der Slider nach links verschoben wird, ändere die Sprache auf Deutsch
+    }
+});
