@@ -29,45 +29,26 @@ document.addEventListener('DOMContentLoaded', function () {
 // Diese Variable speichert die aktuelle Sprache
 let currentLanguage = 'de';
 
-// Diese Funktion ändert die Sprache und aktualisiert den Schieberegler
+// Diese Funktion ändert die Sprache
 function changeLanguage(language) {
     currentLanguage = language;
     updateText();
-    updateSlider();
 }
 
 // Diese Funktion aktualisiert den Text basierend auf der ausgewählten Sprache
 function updateText() {
     if (currentLanguage === 'de') {
-        document.getElementById('main-title').textContent = 'TEST TEXT';
+        // Texte für die Deutsche Sprache
+        document.getElementById('main-title').textContent = 'TEST <br> TEXT';
         document.getElementById('main-text').textContent = 'DIES IST EIN TEST TEXT';
         // Hier weitere Texte in Deutsch aktualisieren
     } else if (currentLanguage === 'en') {
-        document.getElementById('main-title').textContent = 'TEST TEXT';
+        // Texte für die Englische Sprache
+        document.getElementById('main-title').textContent = 'TEST <br> TEXT';
         document.getElementById('main-text').textContent = 'THIS IS A TEST TEXT';
         // Hier weitere Texte in Englisch aktualisieren
     }
 }
 
-// Diese Funktion aktualisiert den Schieberegler
-function updateSlider() {
-    const slider = document.querySelector('.slider');
-    const germanButton = document.getElementById('german-button');
-    const englishButton = document.getElementById('english-button');
-
-    if (currentLanguage === 'de') {
-        // Schieberegler nach links für Deutsch
-        slider.style.left = '0';
-        germanButton.style.textDecoration = 'underline';
-        englishButton.style.textDecoration = 'none';
-    } else if (currentLanguage === 'en') {
-        // Schieberegler nach rechts für Englisch
-        slider.style.left = '100%';
-        germanButton.style.textDecoration = 'none';
-        englishButton.style.textDecoration = 'underline';
-    }
-}
-
-// Aktualisiere den Text und den Schieberegler beim Laden der Seite
+// Aktualisiere den Text beim Laden der Seite
 updateText();
-updateSlider();
