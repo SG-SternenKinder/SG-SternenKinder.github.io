@@ -62,12 +62,14 @@ span {
     font-size: var(--p-font);
     font-weight: 500;
     margin: 15px 25px;
+    padding: 10px; /* Hinzugefügt, um den Textabstand zu erhöhen */
     transition: all .5s ease;
 }
 
 .navbar a:hover {
-    display: var(--main-color);
-    padding: 10px;
+    color: var(--main-color);
+    font-size: var(--p-font); /* Beibehalten der Textgröße */
+    padding: 10px; /* Beibehalten des erhöhten Textabstands */
 }
 
 .follow-me {
