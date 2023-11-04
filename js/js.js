@@ -38,11 +38,11 @@ function changeLanguage(language) {
 // Diese Funktion aktualisiert den Text basierend auf der ausgewählten Sprache
 function updateText() {
     if (currentLanguage === 'de') {
-        document.getElementById('main-title').textContent = 'TEST <br> TEXT';
+        document.getElementById('main-title').textContent = 'TEST TEXT';
         document.getElementById('main-text').textContent = 'DIES IST EIN TEST TEXT';
         // Hier weitere Texte in Deutsch aktualisieren
     } else if (currentLanguage === 'en') {
-        document.getElementById('main-title').textContent = 'TEST <br> TEXT';
+        document.getElementById('main-title').textContent = 'TEST TEXT';
         document.getElementById('main-text').textContent = 'THIS IS A TEST TEXT';
         // Hier weitere Texte in Englisch aktualisieren
     }

@@ -205,3 +205,27 @@ footer {
     padding: 10px 0;
     font-size: 14px;
 }
+
+/* Stile für den Language Switcher */
+#language-switcher {
+    position: absolute;
+    top: 20px; /* Anpassen, um die vertikale Position zu ändern */
+    right: 20px; /* Anpassen, um die horizontale Position zu ändern */
+    display: flex;
+    align-items: center;
+}
+
+/* Stile für die Sprachauswahl-Buttons */
+.language-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 5px; /* Abstand zwischen den Buttons */
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.language-button:hover {
+    text-decoration: underline; /* Unterstrich bei Hover hinzufügen */
+}
