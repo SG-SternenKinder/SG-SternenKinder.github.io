@@ -40,6 +40,14 @@
 </head>
 
 <body>
+
+    <!-- Bereich für Benutzer ohne aktiviertes JavaScript (noscript) -->
+    <noscript>
+        <div id="loading-screen">
+            <p>Bitte aktiviere JavaScript, um diese Seite zu nutzen.</p>
+        </div>
+    </noscript>
+
     <header>
         <a href="" class="logo no-click">Sternkinder <span>e.V.</span></a>
         <ul class="navbar">
@@ -52,10 +60,15 @@
 
         <div class="follow-me">
             <a href="" class="no-click" draggable="false" rel="noopener">Follow us</a>
-            <a href="/" draggable="false" title="TikTok" rel="noopener" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="/" draggable="false" title="Instagram" rel="noopener" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://discord.gg/7BkTCYNkZt" draggable="false" title="Discord" rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
-            <a href="https://osborntv.github.io" draggable="false" title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
+            <a href="/" draggable="false" title="TikTok" rel="noopener" target="_blank"><i
+                    class="fa-brands fa-tiktok"></i></a>
+            <a href="/" draggable="false" title="Instagram" rel="noopener" target="_blank"><i
+                    class="fa-brands fa-instagram"></i></a>
+            <a href="https://discord.gg/7BkTCYNkZt" draggable="false" title="Discord" rel="noopener" target="_blank"><i
+                    class="fa-brands fa-discord"></i></a>
+            <a href="https://osborntv.github.io" draggable="false"
+                title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i
+                    class="fa-solid fa-globe"></i></a>
         </div>
 
     </header>
@@ -68,6 +81,55 @@
             <a class="btn">No idea what's supposed to be there</a>
         </div>
     </section>
+
+        <!-- Hier fügst du den Footer ein -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h2>Über uns</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque justo ac tortor congue, in fermentum ex mattis.
+                    </p>
+                </div>
+    
+                <div class="footer-section">
+                    <h2>Kontakt</h2>
+                    <p>
+                        Email: info@deinewebsite.com<br>
+                        Telefon: +123 456 789
+                    </p>
+                </div>
+    
+                <div class="footer-section">
+                    <h2>Nützliche Links</h2>
+                    <ul>
+                        <li><a href="/">Startseite</a></li>
+                        <li><a href="/about">Über uns</a></li>
+                        <li><a href="/contact">Kontakt</a></li>
+                        <li><a href="/privacy">Datenschutz</a></li>
+                        <li><a href="/imprint">Impressum</a></li>
+                    </ul>
+                </div>
+            </div>
+    
+            <div class="footer-bottom">
+                &copy; 2023 DeineWebsite.com | Alle Rechte vorbehalten
+            </div>
+        </footer>
+
+    <script>
+        // JavaScript-Code für die Aktivierung und Deaktivierung des Ladebildschirms
+
+        const loadingScreen = document.getElementById('loading-screen');
+        const content = document.querySelector('body');
+
+        // Warte auf das 'load'-Ereignis (Seite ist vollständig geladen)
+        window.addEventListener('load', function () {
+            // Verstecke den Ladebildschirm und zeige den Content
+            loadingScreen.classList.add('hidden');
+            content.classList.remove('hidden');
+        });
+    </script>
 
 </body>
 
