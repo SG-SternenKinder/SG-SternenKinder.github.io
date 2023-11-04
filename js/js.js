@@ -39,12 +39,12 @@ function changeLanguage(language) {
 function updateText() {
     if (currentLanguage === 'de') {
         // Texte für die Deutsche Sprache
-        document.getElementById('main-title').textContent = 'TEST <br> TEXT';
+        document.getElementById('main-title').textContent = 'TEST TEXT';
         document.getElementById('main-text').textContent = 'DIES IST EIN TEST TEXT';
         // Hier weitere Texte in Deutsch aktualisieren
     } else if (currentLanguage === 'en') {
         // Texte für die Englische Sprache
-        document.getElementById('main-title').textContent = 'TEST <br> TEXT';
+        document.getElementById('main-title').textContent = 'TEST TEXT';
         document.getElementById('main-text').textContent = 'THIS IS A TEST TEXT';
         // Hier weitere Texte in Englisch aktualisieren
     }
