@@ -50,6 +50,7 @@ header {
     font-weight: 700;
     text-decoration: none;
     cursor: default;
+    margin-left: 20px; /* Füge hier den gewünschten Abstand hinzu */
 }
 
 /* Stile für das Textelement "span" */
@@ -80,7 +81,7 @@ span {
 .follow-me {
     display: flex;
     align-items: center;
-    margin-left: 50px; /* Füge hier den gewünschten Abstand hinzu */
+    margin-left: 100px; /* Füge hier den gewünschten Abstand hinzu */
 }
 
 .follow-me a:first-child {
