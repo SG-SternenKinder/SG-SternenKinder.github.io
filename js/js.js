@@ -29,10 +29,11 @@ document.addEventListener('DOMContentLoaded', function () {
 // Diese Variable speichert die aktuelle Sprache
 let currentLanguage = 'de';
 
-// Diese Funktion ändert die Sprache
+// Diese Funktion ändert die Sprache und aktualisiert den Schieberegler
 function changeLanguage(language) {
     currentLanguage = language;
     updateText();
+    updateSlider();
 }
 
 // Diese Funktion aktualisiert den Text basierend auf der ausgewählten Sprache
@@ -48,5 +49,25 @@ function updateText() {
     }
 }
 
-// Aktualisiere den Text beim Laden der Seite
+// Diese Funktion aktualisiert den Schieberegler
+function updateSlider() {
+    const slider = document.querySelector('.slider');
+    const germanButton = document.getElementById('german-button');
+    const englishButton = document.getElementById('english-button');
+
+    if (currentLanguage === 'de') {
+        // Schieberegler nach links für Deutsch
+        slider.style.left = '0';
+        germanButton.style.textDecoration = 'underline';
+        englishButton.style.textDecoration = 'none';
+    } else if (currentLanguage === 'en') {
+        // Schieberegler nach rechts für Englisch
+        slider.style.left = '100%';
+        germanButton.style.textDecoration = 'none';
+        englishButton.style.textDecoration = 'underline';
+    }
+}
+
+// Aktualisiere den Text und den Schieberegler beim Laden der Seite
 updateText();
+updateSlider();
