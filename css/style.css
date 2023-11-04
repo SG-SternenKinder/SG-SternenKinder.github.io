@@ -94,7 +94,9 @@ span {
 
 .follow-me a:hover {
     color: var(--main-color);
-    padding-right: 10px;
+    font-size: 20px; /* Beibehalten der Icon-Größe */
+    margin-right: 18px; /* Beibehalten des Abstands rechts */
+    margin-left: 5px; /* Beibehalten des Abstands links */
 }
 
 section {
