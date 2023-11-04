@@ -50,8 +50,12 @@
     <header>
 
         <div id="language-switcher">
-            <button class="language-button" onclick="changeLanguage('de')">DE</button>
-            <button class="language-button" onclick="changeLanguage('en')">EN</button>
+            <button class="language-button" onclick="changeLanguage('de')" id="german-button">DE</button>
+            <label class="switch">
+                <input type="checkbox" id="language-slider">
+                <span class="slider round"></span>
+            </label>
+            <button class="language-button" onclick="changeLanguage('en')" id="english-button">EN</button>
         </div>
 
         <a href="" class="logo no-click">Sternkinder <span>e.V.</span></a>
@@ -82,7 +86,7 @@
         <div class="home-text">
             <h5>i forgot</h5>
             <h1 id="main-title">TEST <br> TEXT</h1>
-            <p id="main-text"></p>>THIS IS A TEST TEXT</p>
+            <p id="main-text"></p>THIS IS A TEST TEXT</p>
             <div class="btn">No idea what's supposed to be there</div>
         </div>
     </section>
