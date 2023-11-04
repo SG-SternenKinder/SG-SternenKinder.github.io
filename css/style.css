@@ -147,13 +147,6 @@ section {
     cursor: default;
 }
 
-.btn:hover {
-    transform: translateX(10px);
-    border: 5px solid var(--text-color);
-    background: transparent;
-    color: var(--text-color);
-}
-
 .container {
     position: relative;
     margin: auto;
