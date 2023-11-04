@@ -1,3 +1,4 @@
+/* Globale Zurücksetzungen und Stile */
 * {
     padding: 0;
     margin: 0;
@@ -7,40 +8,39 @@
     border: none;
     outline: none;
     scroll-behavior: smooth;
-    font-family: var(--fa-font-solid);
+    font-family: var(--fa-font-solid); /* Verwendung der Schriftart */
 }
 
+/* Definierte Farbvariablen */
 :root {
-    --text-color: white;
-    --bg-color: black;
-    --main-color: blue;
-
-    --h1-font: 6rem;
-    --h2-font: 3rem;
-    --p-font: 1rem;
+    --text-color: white; /* Haupttextfarbe */
+    --bg-color: black; /* Hintergrundfarbe */
+    --main-color: blue; /* Hauptfarbe */
+    --h1-font: 6rem; /* Schriftgröße für H1-Überschriften */
+    --p-font: 1rem; /* Schriftgröße für Absätze */
 }
 
+/* Stile für den gesamten Body */
 body {
-    color: var(--text-color);
-    background: var(--bg-color);
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../img/background.png);
-    background-size: cover;
-    background-position: bottom center;
+    color: var(--text-color); /* Textfarbe verwenden */
+    background: var(--bg-color) linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../img/background.png) center bottom / cover no-repeat; /* Hintergrundbild und Farbverlauf */
 }
 
+/* Stile für den Header */
 header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     padding: 20px 100px;
-    background: rgba(225, 225, 225, .1);
+    background: rgba(225, 225, 225, .1); /* Hintergrundfarbe mit Transparenz */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px); /* Unschärfeeffekt für Hintergrund */
 }
 
+/* Stile für das Logo */
 .logo {
     font-size: 33px;
     color: var(--text-color);
@@ -49,10 +49,12 @@ header {
     cursor: default;
 }
 
+/* Stile für das Textelement "span" */
 span {
     color: var(--main-color);
 }
 
+/* Stile für die Navigationsleiste */
 .navbar {
     display: flex;
 }
@@ -62,16 +64,16 @@ span {
     font-size: var(--p-font);
     font-weight: 500;
     margin: 15px 25px;
-    padding: 10px; /* Hinzugefügt, um den Textabstand zu erhöhen */
-    transition: all .5s ease;
+    padding: 10px; /* Erhöhung des Textabstands */
+    transition: all 0.5s ease; /* Fließender Übergangseffekt */
 }
 
 .navbar a:hover {
     color: var(--main-color);
-    font-size: var(--p-font); /* Beibehalten der Textgröße */
     padding: 10px; /* Beibehalten des erhöhten Textabstands */
 }
 
+/* Stile für die "Folge uns"-Leiste */
 .follow-me {
     display: flex;
     align-items: center;
@@ -89,27 +91,27 @@ span {
     color: var(--text-color);
     margin-right: 18px;
     margin-left: 5px;
-    transition: all .50s ease;
+    transition: all 0.5s ease;
 }
 
 .follow-me a:hover {
     color: var(--main-color);
-    font-size: 20px; /* Beibehalten der Icon-Größe */
     margin-right: 18px; /* Beibehalten des Abstands rechts */
     margin-left: 5px; /* Beibehalten des Abstands links */
 }
 
+/* Stile für Abschnitte */
 section {
     padding: 70px 20% 60px;
 }
 
+/* Stile für den "Home"-Abschnitt */
 .home {
-    position: right;
+    position: relative;
     height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-self: flex-start;
 }
 
 .home-text h5 {
@@ -121,14 +123,14 @@ section {
     color: var(--main-color);
 }
 
-.home-text h1 {
+home-text h1 {
     font-size: var(--h1-font);
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 20px;
 }
 
-.home-text p {
+home-text p {
     font-size: var(--p-font);
     font-weight: 500;
     line-height: 30px;
@@ -136,6 +138,7 @@ section {
     margin-bottom: 35px;
 }
 
+/* Stile für den Button */
 .btn {
     display: inline-block;
     padding: 13px;
@@ -145,14 +148,15 @@ section {
     font-size: 15px;
     font-weight: 350;
     cursor: default;
-    transition: background-color 0.5s ease; /* Hinzugefügte Transition für die Hintergrundfarbe */
+    transition: background-color 0.5s ease; /* Hintergrundfarbübergang */
 }
 
 .btn:hover {
-    background-color: var(--text-color); /* Änderung der Hintergrundfarbe beim Hover */
-    color: var(--main-color); /* Änderung der Textfarbe beim Hover */
+    background-color: var(--text-color); /* Hintergrundfarbe beim Hover */
+    color: var(--main-color); /* Textfarbe beim Hover */
 }
 
+/* Stile für den Container */
 .container {
     position: relative;
     margin: auto;
@@ -163,6 +167,7 @@ section {
     pointer-events: none;
 }
 
+/* Stile für den Ladebildschirm und versteckte Elemente */
 #loading-screen {
     position: fixed;
     top: 0;
@@ -192,13 +197,13 @@ footer {
     background-repeat: no-repeat; /* Hintergrundbild nicht wiederholen */
     background-position: center top; /* Hintergrundbild zentrieren */
     color: #fff;
-    padding: 10px 0; /* Verringere den oberen und unteren Padding-Wert */
+    padding: 10px 0; /* Verringerte Padding-Werte oben und unten */
     text-align: center;
 }
 
 .footer-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space between;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
@@ -230,11 +235,11 @@ footer {
 .footer-section ul li {
     margin-bottom: 6px;
     font-weight: normal; /* Standard-Schriftstärke für die Punkte */
-    transition: all .3s ease; /* Übergangseffekt für eine sanfte Änderung */
+    transition: all 0.3s ease; /* Übergangseffekt für eine sanfte Änderung */
 }
 
 .footer-section ul li:hover {
-    font-weight: bold; /* Fettschrift, wenn man mit der Maus darüber hovert */
+    font-weight: bold; /* Fettschrift beim Hover */
 }
 
 .footer-section a {
