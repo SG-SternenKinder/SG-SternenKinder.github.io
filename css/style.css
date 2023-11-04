@@ -267,7 +267,8 @@ input:checked + .slider:before {
 }
 
 .language-button {
-    display: none; /* Verstecke die alten Sprachauswahl-Buttons */
+    color: #000; /* Ändere die Textfarbe auf Schwarz */
+    cursor: pointer;
 }
 
 /* Stile für das Popup */
