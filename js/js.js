@@ -27,49 +27,57 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-// LANGUAGE SWITCHER !
-// Diese Variable speichert die aktuelle Sprache
-let currentLanguage = 'de';
+document.addEventListener('DOMContentLoaded', function () {
+    const languageSlider = document.getElementById('language-slider');
+    const savedLanguage = getCookie('language');
 
-function updateText() {
-    const titleElement = document.getElementById('main-title');
-    const textElement = document.getElementById('main-text');
-
-    if (currentLanguage === 'de') {
-        titleElement.textContent = 'TEST TEXT';
-        textElement.textContent = 'DIES IST EIN TEST TEXT';
-    } else if (currentLanguage === 'en') {
-        titleElement.textContent = 'TEST TEXT';
-        textElement.textContent = 'THIS IS A TEST TEXT';
+    // Wenn es ein gespeichertes Sprach-Cookie gibt, stelle den Schieberegler entsprechend ein
+    if (savedLanguage === 'en') {
+        languageSlider.checked = true;
     }
-}
 
-// Funktion zum Ändern der Sprache
-function changeLanguage(language) {
-    currentLanguage = language;
-    updateText();
-}
-
-// Aktualisiere den Text beim Laden der Seite
-updateText();
-
-// Event-Listener für die Schaltflächen zum Ändern der Sprache
-const languageButtons = document.querySelectorAll('.language-button');
-
-languageButtons.forEach(button => {
-    button.addEventListener('click', function () {
-        const selectedLanguage = this.getAttribute('data-lang');
-        changeLanguage(selectedLanguage);
+    // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie
+    languageSlider.addEventListener('change', function () {
+        if (languageSlider.checked) {
+            setCookie('language', 'en', 365); // Englisch ausgewählt
+        } else {
+            setCookie('language', 'de', 365); // Deutsch ausgewählt
+        }
     });
+
+    // Initialisiere den Text basierend auf dem gespeicherten Cookie
+    updateText(savedLanguage);
 });
 
-// Event-Listener für den Slider des Language Switchers
-const languageSlider = document.getElementById('language-slider');
-
-languageSlider.addEventListener('change', function () {
-    if (this.checked) {
-        changeLanguage('en'); // Wenn der Slider nach rechts verschoben wird, ändere die Sprache auf Englisch
-    } else {
-        changeLanguage('de'); // Wenn der Slider nach links verschoben wird, ändere die Sprache auf Deutsch
+// Diese Funktion aktualisiert den Text basierend auf der ausgewählten Sprache
+function updateText(language) {
+    if (language === 'de') {
+        document.getElementById('main-title').textContent = 'TEST\nTEXT';
+        document.getElementById('main-text').textContent = 'DIES IST EIN TEST TEXT';
+    } else if (language === 'en') {
+        document.getElementById('main-title').textContent = 'TEST\nTEXT';
+        document.getElementById('main-text').textContent = 'THIS IS A TEST TEXT';
     }
-});
+}
+
+// Cookie-Funktionen zum Speichern und Abrufen des Sprach-Cookies
+function setCookie(name, value, days) {
+    var expires = '';
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = '; expires=' + date.toUTCString();
+    }
+    document.cookie = name + '=' + value + expires + '; path=/';
+}
+
+function getCookie(name) {
+    var nameEQ = name + '=';
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
