@@ -93,6 +93,6 @@ function showConfirmationPopup() {
     popup.style.display = 'flex';
     const closeBtn = document.getElementById('close-popup');
     closeBtn.addEventListener('click', function () {
-        popup.style display = 'none';
+        popup.style.display = 'none';
     });
 }
