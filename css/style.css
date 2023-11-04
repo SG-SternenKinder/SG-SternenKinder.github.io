@@ -22,8 +22,9 @@
 
 /* Stile für den gesamten Body */
 body {
-    color: var(--text-color); /* Textfarbe verwenden */
-    background: var(--bg-color) linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../img/background.png) center bottom / cover no-repeat; /* Hintergrundbild und Farbverlauf */
+    color: var(--text-color);
+    background: var(--bg-color);
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../img/background.png) center bottom / cover no-repeat; /* Hintergrundbild und Farbverlauf */
 }
 
 /* Stile für den Header */
