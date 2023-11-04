@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedLanguage = languageSlider.checked ? 'en' : 'de';
         setCookie('language', selectedLanguage, 365);
         updateText(selectedLanguage);
+        showConfirmationPopup(); // Zeige das Popup zur Bestätigung
     });
 
     // Initialisiere den Text basierend auf dem gespeicherten Cookie
@@ -30,5 +31,15 @@ function updateText(language) {
     } else if (language === 'en') {
         mainTitle.textContent = 'TEST\nTEXT';
         mainText.textContent = 'THIS IS A TEST TEXT';
+    }
+}
+
+// Funktion zum Sprachwechsel
+function changeLanguage(language) {
+    const languageSlider = document.getElementById('language-slider');
+    if (language === 'de') {
+        languageSlider.checked = false;
+    } else if (language === 'en') {
+        languageSlider.checked = true;
     }
 }
