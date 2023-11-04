@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', function () {
         languageSlider.checked = true;
     }
 
-    // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie
+    // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie mit 7 Tagen Ablaufzeit
     languageSlider.addEventListener('change', function () {
         const selectedLanguage = languageSlider.checked ? 'en' : 'de';
-        setCookie('language', selectedLanguage, 365);
+        setCookie('language', selectedLanguage, 7); // Hier die Ablaufzeit auf 7 Tage festlegen
         updateText(selectedLanguage);
         showConfirmationPopup(); // Zeige das Popup zur Bestätigung
     });

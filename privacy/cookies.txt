@@ -1,0 +1,13 @@
+Verwendung von Cookies auf unserer Website
+
+Wir nutzen Cookies auf unserer Website sowie unser Webhoster [Github](Github Link). Bei uns auf der Website verwenden wir Cookies für folgende Zwecke:
+
+Sprachauswahl: Wir verwenden Cookies, um deine ausgewählte Spracheinstellung zu speichern, damit du die gewünschte Benutzererfahrung erhältst. Diese Cookies haben eine Gültigkeitsdauer von 7 Tagen.
+
+Cookie-Banner: Um sicherzustellen, dass du über unsere Verwendung von Cookies informiert bist, verwenden wir ein Cookie-Banner. Dieses Banner speichert deine Zustimmung zur Verwendung von Cookies, um dir die bestmögliche Website-Erfahrung zu bieten. Diese Zustimmung wird ebenfalls für 7 Tage gespeichert.
+
+Cookies sind kleine Textdateien, die von deinem Browser gespeichert werden. Sie ermöglichen es uns, die Website anzupassen, Analysen durchzuführen und die Website-Leistung zu verbessern.
+
+Durch die Nutzung unserer Website stimmst du der Verwendung von Cookies zu, wie in unserer Datenschutzrichtlinie beschrieben. Du kannst die Verwendung von Cookies in den Einstellungen deines Browsers deaktivieren oder anpassen.
+
+Weitere Informationen zur Verwendung von Cookies und zu deinen Datenschutzrechten findest du in unserer Datenschutzrichtlinie.
