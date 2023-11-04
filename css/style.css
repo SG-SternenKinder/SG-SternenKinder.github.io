@@ -80,7 +80,7 @@ span {
 .follow-me {
     display: flex;
     align-items: center;
-    margin-left: 20px; /* Füge hier den gewünschten Abstand hinzu */
+    margin-left: 50px; /* Füge hier den gewünschten Abstand hinzu */
 }
 
 .follow-me a:first-child {
