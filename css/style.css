@@ -171,6 +171,8 @@ section {
     pointer-events: none;
 }
 
+
+
 /* Stile für den Ladebildschirm und versteckte Elemente */
 #loading-screen {
     position: fixed;
@@ -268,8 +270,10 @@ input:checked + .slider:before {
 
 .language-button {
     color: #000; /* Ändere die Textfarbe auf Schwarz */
-    cursor: pointer;
+    display: none; /* Verstecke die alten Sprachauswahl-Buttons */
 }
+
+
 
 /* Stile für das Popup */
 .popup {
