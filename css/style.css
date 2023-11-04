@@ -236,3 +236,13 @@ footer {
     text-align: center;
     font-size: 12px;
 }
+
+.footer-section ul li {
+    margin-bottom: 6px;
+    font-weight: normal; /* Standard-Schriftstärke für die Punkte */
+    transition: all .3s ease; /* Übergangseffekt für eine sanfte Änderung */
+}
+
+.footer-section ul li:hover {
+    font-weight: bold; /* Fettschrift, wenn man mit der Maus darüber hovert */
+}
