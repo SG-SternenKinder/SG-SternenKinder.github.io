@@ -196,6 +196,8 @@ section {
     display: none;
 }
 
+
+
 /* Stile für den Footer */
 footer {
     color: #fff;
@@ -269,8 +271,11 @@ input:checked + .slider:before {
 }
 
 .language-button {
-    color: #000; /* Ändere die Textfarbe auf Schwarz */
-    display: none; /* Verstecke die alten Sprachauswahl-Buttons */
+    color: var(--text-color); /* Verwende die Haupttextfarbe */
+    font-size: var(--p-font); /* Verwende die Schriftgröße für Absätze */
+    font-weight: 500; /* Verwende die Schriftgewichtung 500 */
+    display: inline-block; /* Zeige die Sprachauswahl-Buttons inline */
+    cursor: pointer;
 }
 
 
