@@ -185,9 +185,12 @@ section {
 
 /* Stile für den Footer */
 footer {
-    background-color: #333;
+    background-image: url('../img/footer-background.png'); /* Hintergrundbild hinzufügen */
+    background-size: cover; /* Hintergrundbild über das gesamte Layout erstrecken */
+    background-repeat: no-repeat; /* Hintergrundbild nicht wiederholen */
+    background-position: center; /* Hintergrundbild zentrieren */
     color: #fff;
-    padding: 20px 0;
+    padding: 10px 0; /* Verringere den oberen und unteren Padding-Wert */
     text-align: center;
 }
 
