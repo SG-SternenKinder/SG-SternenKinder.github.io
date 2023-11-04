@@ -144,7 +144,6 @@ section {
     color: var(--text-color);
     font-size: 15px;
     font-weight: 350;
-    transition: all .50s ease;
     cursor: default;
 }
 
