@@ -145,6 +145,12 @@ section {
     font-size: 15px;
     font-weight: 350;
     cursor: default;
+    transition: background-color 0.5s ease; /* Hinzugefügte Transition für die Hintergrundfarbe */
+}
+
+.btn:hover {
+    background-color: var(--text-color); /* Änderung der Hintergrundfarbe beim Hover */
+    color: var(--main-color); /* Änderung der Textfarbe beim Hover */
 }
 
 .container {
