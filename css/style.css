@@ -189,9 +189,9 @@ section {
 /* Stile für den Footer */
 footer {
     background-image: url('../img/footer-background.png'); /* Hintergrundbild hinzufügen */
-    background-size: cover; /* Hintergrundbild über das gesamte Layout erstrecken */
+    background-size: contain; /* Hintergrundbild über das gesamte Layout erstrecken */
     background-repeat: no-repeat; /* Hintergrundbild nicht wiederholen */
-    background-position: center; /* Hintergrundbild zentrieren */
+    background-position: center top; /* Hintergrundbild zentrieren */
     color: #fff;
     padding: 10px 0; /* Verringere den oberen und unteren Padding-Wert */
     text-align: center;
