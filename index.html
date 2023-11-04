@@ -82,40 +82,7 @@
         </div>
     </section>
 
-        <!-- Footer -->
-        <footer>
-            <div class="footer-container">
-                <div class="footer-section">
-                    <h2>Über uns</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed pellentesque justo ac tortor congue, in fermentum ex mattis.
-                    </p>
-                </div>
-    
-                <div class="footer-section">
-                    <h2>Kontakt</h2>
-                    <p>
-                        Email: info@deinewebsite.com<br>
-                        Telefon: +123 456 789
-                    </p>
-                </div>
-    
-                <div class="footer-section">
-                    <h2>Nützliche Links</h2>
-                    <ul>
-                        <li><a href="/">Startseite</a></li>
-                        <li><a href="/about">Über uns</a></li>
-                        <li><a href="/contact">Kontakt</a></li>
-                        <li><a href="/privacy">Datenschutz</a></li>
-                        <li><a href="/imprint">Impressum</a></li>
-                    </ul>
-                </div>
-            </div>
-    
-            <div class="footer-bottom">
-                &copy; 2023 DeineWebsite.com | Alle Rechte vorbehalten
-            </div>
-        </footer>
+    <div id="footer-container"></div>
 
     <script>
         // JavaScript-Code für die Aktivierung und Deaktivierung des Ladebildschirms
@@ -128,6 +95,23 @@
             // Verstecke den Ladebildschirm und zeige den Content
             loadingScreen.classList.add('hidden');
             content.classList.remove('hidden');
+        });
+    </script>
+    <script>
+        window.addEventListener('load', function () {
+            // Das Ziel-Element, in das der Footer geladen werden soll
+            var footerContainer = document.getElementById('footer-container');
+
+            // Lade den Footer von der "footer.html"-Datei
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'footer/footer.html', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Füge den Footer-Inhalt dem Ziel-Element hinzu
+                    footerContainer.innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send();
         });
     </script>
 
