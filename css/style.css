@@ -276,13 +276,6 @@ input:checked + .slider {
     background-color: #2196F3; /* Blau, wenn der Slider nach rechts verschoben ist (English) */
 }
 
-.language-button {
-    color: var(--text-color); /* Verwende die Haupttextfarbe */
-    font-size: var(--p-font); /* Verwende die Schriftgröße für Absätze */
-    font-weight: 500; /* Verwende die Schriftgewichtung 500 */
-    display: inline-block; /* Zeige die Sprachauswahl-Buttons inline */
-    cursor: pointer;
-}
 
 
 
