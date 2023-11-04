@@ -94,7 +94,7 @@ span {
     color: var(--text-color);
     margin-right: 18px;
     margin-left: 5px;
-    transition: all 0.5s ease;
+    transition: all 0.50s ease;
 }
 
 .follow-me a:hover {
@@ -110,11 +110,12 @@ section {
 
 /* Stile für den "Home"-Abschnitt */
 .home {
-    position: relative;
+    position: right;
     height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
+    justify-self: flex-start;
 }
 
 .home-text h5 {
@@ -126,14 +127,14 @@ section {
     color: var(--main-color);
 }
 
-home-text h1 {
+.home-text h1 {
     font-size: var(--h1-font);
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 20px;
 }
 
-home-text p {
+.home-text p {
     font-size: var(--p-font);
     font-weight: 500;
     line-height: 30px;
@@ -206,7 +207,7 @@ footer {
 
 .footer-container {
     display: flex;
-    justify-content: space between;
+    justify-content: space-between;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
