@@ -282,6 +282,7 @@ input:checked + .slider:before {
     z-index: 9999;
     align-items: center;
     justify-content: center;
+    color: #000; /* Ändere die Textfarbe auf Schwarz (oder eine andere gewünschte Farbe) */
 }
 
 .popup-content {
