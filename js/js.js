@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// Initialisiere den Text und den Language Slider
 document.addEventListener('DOMContentLoaded', function () {
     const languageSlider = document.getElementById('language-slider');
     const savedLanguage = getCookie('language');
@@ -38,11 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie
     languageSlider.addEventListener('change', function () {
-        if (languageSlider.checked) {
-            setCookie('language', 'en', 365); // Englisch ausgewählt
-        } else {
-            setCookie('language', 'de', 365); // Deutsch ausgewählt
-        }
+        const selectedLanguage = languageSlider.checked ? 'en' : 'de';
+        setCookie('language', selectedLanguage, 365);
+        updateText(selectedLanguage);
     });
 
     // Initialisiere den Text basierend auf dem gespeicherten Cookie
@@ -51,13 +50,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Diese Funktion aktualisiert den Text basierend auf der ausgewählten Sprache
 function updateText(language) {
+    const mainTitle = document.getElementById('main-title');
+    const mainText = document.getElementById('main-text');
+
     if (language === 'de') {
-        document.getElementById('main-title').textContent = 'TEST\nTEXT';
-        document.getElementById('main-text').textContent = 'DIES IST EIN TEST TEXT';
+        mainTitle.textContent = 'TEST\nTEXT';
+        mainText.textContent = 'DIES IST EIN TEST TEXT';
     } else if (language === 'en') {
-        document.getElementById('main-title').textContent = 'TEST\nTEXT';
-        document.getElementById('main-text').textContent = 'THIS IS A TEST TEXT';
+        mainTitle.textContent = 'TEST\nTEXT';
+        mainText.textContent = 'THIS IS A TEST TEXT';
     }
+
+    // Zeige das Popup zur Bestätigung
+    showConfirmationPopup();
 }
 
 // Cookie-Funktionen zum Speichern und Abrufen des Sprach-Cookies
@@ -88,20 +93,6 @@ function showConfirmationPopup() {
     popup.style.display = 'flex';
     const closeBtn = document.getElementById('close-popup');
     closeBtn.addEventListener('click', function () {
-        popup.style.display = 'none';
+        popup.style display = 'none';
     });
-}
-
-// Diese Funktion aktualisiert den Text basierend auf der ausgewählten Sprache und zeigt das Popup
-function updateText(language) {
-    if (language === 'de') {
-        document.getElementById('main-title').textContent = 'TEST TEXT';
-        document.getElementById('main-text').textContent = 'DIES IST EIN TEST TEXT';
-    } else if (language === 'en') {
-        document.getElementById('main-title').textContent = 'TEST TEXT';
-        document.getElementById('main-text').textContent = 'THIS IS A TEST TEXT';
-    }
-
-    // Zeige das Popup zur Bestätigung
-    showConfirmationPopup();
 }
