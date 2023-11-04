@@ -81,3 +81,27 @@ function getCookie(name) {
     }
     return null;
 }
+
+// Zeige das Popup und setze einen Event-Listener für den OK-Button
+function showConfirmationPopup() {
+    const popup = document.getElementById('confirmation-popup');
+    popup.style.display = 'flex';
+    const closeBtn = document.getElementById('close-popup');
+    closeBtn.addEventListener('click', function () {
+        popup.style.display = 'none';
+    });
+}
+
+// Diese Funktion aktualisiert den Text basierend auf der ausgewählten Sprache und zeigt das Popup
+function updateText(language) {
+    if (language === 'de') {
+        document.getElementById('main-title').textContent = 'TEST TEXT';
+        document.getElementById('main-text').textContent = 'DIES IST EIN TEST TEXT';
+    } else if (language === 'en') {
+        document.getElementById('main-title').textContent = 'TEST TEXT';
+        document.getElementById('main-text').textContent = 'THIS IS A TEST TEXT';
+    }
+
+    // Zeige das Popup zur Bestätigung
+    showConfirmationPopup();
+}

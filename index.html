@@ -75,10 +75,6 @@
 
         <div id="language-switcher">
             <button class="language-button" onclick="changeLanguage('de')">DE</button>
-            <label class="switch">
-                <input type="checkbox" id="language-slider">
-                <span class="slider round"></span>
-            </label>
             <button class="language-button" onclick="changeLanguage('en')">EN</button>
         </div>
 
@@ -94,6 +90,13 @@
     </section>
 
     <div id="footer-container"></div>
+
+    <div id="confirmation-popup" class="popup">
+        <div class="popup-content">
+            <p>Deine Sprachauswahl wurde gespeichert.</p>
+            <button id="close-popup">OK</button>
+        </div>
+    </div>
 
 </body>
 
