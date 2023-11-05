@@ -8,38 +8,36 @@ document.addEventListener('DOMContentLoaded', function () {
         languageSlider.checked = true;
     }
 
-    // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie mit 7 Tagen Ablaufzeit
+    // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie
     languageSlider.addEventListener('change', function () {
         const selectedLanguage = languageSlider.checked ? 'en' : 'de';
-        setCookie('language', selectedLanguage, 7); // Hier die Ablaufzeit auf 7 Tage festlegen
+        setCookie('language', selectedLanguage, 7); // Cookie für 7 Tage speichern
         updateText(selectedLanguage);
         showConfirmationPopup(); // Zeige das Popup zur Bestätigung
+        // Hier könntest du den Code einfügen, um die entsprechenden Seiten zu laden
+        loadPageContent(selectedLanguage);
     });
 
     // Initialisiere den Text basierend auf dem gespeicherten Cookie
     updateText(savedLanguage);
+    // Hier kannst du den Code einfügen, um die entsprechenden Seiten basierend auf dem gespeicherten Cookie zu laden
+    loadPageContent(savedLanguage);
 });
 
-// Diese Funktion aktualisiert den Text basierend auf der ausgewählten Sprache
-function updateText(language) {
-    const mainTitle = document.getElementById('main-title');
-    const mainText = document.getElementById('main-text');
+// Funktion zum Laden der Seiteninhalte basierend auf der ausgewählten Sprache
+function loadPageContent(language) {
+    const contentContainer = document.getElementById('content-container');
 
-    if (language === 'de') {
-        mainTitle.textContent = 'TEST\nTEXT';
-        mainText.textContent = 'DIES IST EIN TEST TEXT';
-    } else if (language === 'en') {
-        mainTitle.textContent = 'TEST\nTEXT';
-        mainText.textContent = 'THIS IS A TEST TEXT';
-    }
-}
+    // Hier musst du den Code hinzufügen, um die Seiteninhalte basierend auf der ausgewählten Sprache zu laden und im contentContainer anzuzeigen.
+    // Du könntest die Inhalte von verschiedenen Dateien laden, z. B. "de/index.html" und "en/index.html" für die Hauptseite, und so weiter.
 
-// Funktion zum Sprachwechsel
-function changeLanguage(language) {
-    const languageSlider = document.getElementById('language-slider');
-    if (language === 'de') {
-        languageSlider.checked = false;
-    } else if (language === 'en') {
-        languageSlider.checked = true;
-    }
+    // Ein einfaches Beispiel:
+    fetch(`${language}/index.html`) // Annahme: Die Seiten befinden sich in separaten Verzeichnissen "de" und "en".
+        .then((response) => response.text())
+        .then((html) => {
+            contentContainer.innerHTML = html;
+        })
+        .catch((error) => {
+            console.error(`Fehler beim Laden der Seite: ${error}`);
+        });
 }
