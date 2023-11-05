@@ -1,1 +1,1 @@
-# Sternenkinder-e-V.github.io
+# SG-SternenKinder.github.io
