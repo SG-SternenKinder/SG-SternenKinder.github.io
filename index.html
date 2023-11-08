@@ -9,39 +9,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#87ceeb">
-    <meta name="author" content="Dein Name">
+    <meta name="author" content="OsbornTV">
     <meta name="keywords" content="Webseite, SG SternenKinder, Webseite-Github">
-    <meta name="description" content="Kurze Beschreibung der Webseite">
+    <meta name="description" content="Spielegemeinschaft (SG) SternenKinder">
+
+    <title>SG SternenKinder</title>
 
     <!-- Hinzufügen von Open Graph-Metadaten für soziale Medien -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="SG SternenKinder">
     <meta property="og:url" content="sg-sternenkinder.github.io/index.html">
-    <meta property="og:description" content="Kurze Beschreibung für soziale Medien">
+    <meta property="og:description" content="Spielegemeinschaft (SG) SternenKinder">
     <meta property="og:site_name" content="SG SternenKinder">
     <meta property="og:locale" content="de_DE">
+
+    <!-- Hinzufügen von TwitterX-Metadaten für soziale Medien -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="SG SternenKinder">
-    <meta name="twitter:description" content="Kurze Beschreibung für Twitter">
+    <meta name="twitter:description" content="Spielegemeinschaft (SG) SternenKinder">
 
     <!-- Hinzufügen eines favicon-Tags für verschiedene Bildformate -->
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
     <link rel="icon" href="img/favicon/favicon.ico">
+    <link rel="manifest" href="img/favicon/site.webmanifest">
 
     <!-- Weitere Stile und Skripte in externe Dateien auslagern -->
     <link rel="stylesheet" href="css/style.css">
-
-    <title>SG SternenKinder</title>
 
     <!-- Fontawesome -->
     <script defer src="fonts/fontawesome/js/brands.js"></script>
     <script defer src="fonts/fontawesome/js/solid.js"></script>
     <script defer src="fonts/fontawesome/js/fontawesome.js"></script>
-
-    <link rel="canonical" href="https://sg-sternenkinder.github.io/">
-
 </head>
 
 <body>
@@ -65,15 +65,10 @@
 
         <div class="follow-me">
             <a href="" class="no-click" draggable="false" rel="noopener">Follow us</a>
-            <a href="/" draggable="false" title="TikTok" rel="noopener" target="_blank"><i
-                    class="fa-brands fa-tiktok"></i></a>
-            <a href="/" draggable="false" title="Instagram" rel="noopener" target="_blank"><i
-                    class="fa-brands fa-instagram"></i></a>
-            <a href="https://discord.gg/7BkTCYNkZt" draggable="false" title="Discord" rel="noopener" target="_blank"><i
-                    class="fa-brands fa-discord"></i></a>
-            <a href="https://osborntv.github.io" draggable="false"
-                title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i
-                    class="fa-solid fa-globe"></i></a>
+            <a href="/" draggable="false" title="TikTok" rel="noopener" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="/" draggable="false" title="Instagram" rel="noopener" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://discord.gg/7BkTCYNkZt" draggable="false" title="Discord" rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://osborntv.github.io" draggable="false" title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
         </div>
 
         <div id="language-switcher">
@@ -88,6 +83,13 @@
 
     </header>
 
+    <div id="confirmation-popup" class="popup">
+        <div class="popup-content">
+            <p>Deine Sprachauswahl wurde gespeichert.</p>
+            <button id="close-popup">OK</button>
+        </div>
+    </div>
+
     <section class="home">
         <div class="home-text">
             <h5>i forgot</h5>
@@ -99,18 +101,11 @@
 
     <div id="footer-container"></div>
 
-    <div id="confirmation-popup" class="popup">
-        <div class="popup-content">
-            <p>Deine Sprachauswahl wurde gespeichert.</p>
-            <button id="close-popup">OK</button>
-        </div>
-    </div>
-
     <script src="js/footer.js"></script>
-    <script src="js/weusecookies.js"></script>
     <script src="js/noscript-loading.js"></script>
     <script src="js/language-switcher.js"></script>
     <script src="js/popup.js"></script>
+    <script src="js/weusecookies.js"></script>
 
 </body>
 

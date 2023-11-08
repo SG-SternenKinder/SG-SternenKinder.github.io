@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const cookieBanner = document.getElementById('cookie-banner');
     const acceptCookiesButton = document.getElementById('accept-cookies');
-    
+
     const acceptedCookies = getCookie('cookiesAccepted');
 
     if (!acceptedCookies) {

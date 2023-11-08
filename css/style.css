@@ -285,7 +285,6 @@ input:checked + .slider {
 
 /* Stile für das Popup */
 .popup {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
