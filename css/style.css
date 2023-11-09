@@ -249,6 +249,7 @@ footer {
 
 .slider:before {
     content: 'DE';
+    /* statt DE das Logo img\language\de-32.png */
     position: absolute;
     height: 26px;
     width: 26px;
@@ -271,6 +272,7 @@ input:checked + .slider:before {
     background-color: #fff; /* Weiß, wenn der Slider nach rechts verschoben ist (Deutsch) */
     color: #000; /* Schwarz für den Text "DE" */
     content: 'EN';
+    /* statt EN das Logo img\language\uk-32.png */
 }
 
 input:checked + .slider {

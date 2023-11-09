@@ -6,5 +6,10 @@
         <button id="accept-cookies">OK</button>
     </div>
 
-Fontawsome einbinden? anders
-per link oder anständiges inhalt der Ordnerstruktur
+<!-- popup -->
+    <div id="confirmation-popup" class="popup">
+        <div class="popup-content">
+            <p>Deine Sprachauswahl wurde gespeichert.</p>
+            <button id="close-popup">OK</button>
+        </div>
+    </div>
