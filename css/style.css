@@ -389,16 +389,6 @@ section {
     text-align: center;
 }
 
-@keyframes blink {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
-@keyframes slide {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(0); }
-}
-
 /* Stile für den Footer */
 footer {
     color: #fff;

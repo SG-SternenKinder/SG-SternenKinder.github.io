@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Initialisiere den Text basierend auf dem gespeicherten Cookie
-    const savedLanguage = getCookie('language');
+    const savedLanguage = getCookie('language') || 'de';
     setSliderState(savedLanguage);
     loadTexts(savedLanguage);
 });

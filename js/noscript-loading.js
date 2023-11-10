@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Überprüfe, ob das Element gefunden wurde, bevor es verwendet wird
     if (loadingScreen) {
-        const content = document.querySelector('body');
-
         // Array mit freundlichen Nachrichten
         const messages = [
             "Willkommen! Bitte aktiviere JavaScript, um unsere Website vollständig zu genießen.",
@@ -26,11 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const loadingSpinner = document.createElement('div');
         loadingSpinner.classList.add('loading-spinner');
         loadingScreen.appendChild(loadingSpinner);
-
-        // Fügt eine freundliche Animation hinzu
-        setInterval(function () {
-            messageElement.classList.toggle('highlight');
-        }, 1000);
 
         // Warte, bis die Seite vollständig geladen ist, und blende dann den Ladebildschirm aus
         window.addEventListener('load', function () {
