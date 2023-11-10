@@ -14,5 +14,4 @@
 
 ### Nebenbeitrag
 - denke longstorge to sessionstorge Überarbeiten
-
--texte übersetzen wenn language fertig ist
+- texte übersetzen wenn language fertig ist
