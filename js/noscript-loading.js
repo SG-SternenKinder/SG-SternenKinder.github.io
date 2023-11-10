@@ -13,10 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Zufällige Nachricht auswählen
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
-    // Verstecke den Ladebildschirm und zeige den Content
-    loadingScreen.classList.add('hidden');
-    content.classList.remove('hidden');
-
     // Zeige freundliche Nachricht an
     const messageElement = document.createElement('p');
     messageElement.textContent = randomMessage;
@@ -31,4 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
         messageElement.classList.toggle('highlight');
     }, 1000);
 
+    // Warte, bis die Seite vollständig geladen ist, und blende dann den Ladebildschirm aus
+    window.addEventListener('load', function () {
+        loadingScreen.classList.add('hidden');
+        content.classList.remove('hidden');
+    });
 });
