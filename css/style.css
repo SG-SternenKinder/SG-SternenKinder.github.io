@@ -199,12 +199,7 @@ section {
     display: flex;
     align-items: center;
     justify-self: flex-start;
-    position: relative; /* Änderung: Position relativ für die untergeordneten Elemente */
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
-    padding: 20px;
-    filter: blur(2px);
-    transition: background-color 0.3s ease, filter 0.3s ease;
+
 }
 
 .home-text {
