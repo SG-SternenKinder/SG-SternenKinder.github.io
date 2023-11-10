@@ -14,6 +14,7 @@
 ### Nebenbeitrag
 - denke longstorge to sessionstorge Überarbeiten würde den popup erstmal überflüssig machen, wieder mal
 - fenster kleiner das überarbeiten (skalierung)
+- unten rechts, pfeil top arrow
 
 ### Überarbeiten
 - Navbar mit übersetzen lassen
@@ -23,3 +24,4 @@
 - Language switch auf allen seiten und voreingestellt dann englisch
 - navbar fehler bei der seite neuladen ?
 - seiten laden überarbeiten
+- navbar aktiv layer ein führen (leicht blur effekt ?)
