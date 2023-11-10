@@ -7,6 +7,7 @@
 ### Scripte
 - Lernen mit Javascripten (.js) step by step
 - language-switche.js Überarbeiten
+- footer bearbeiten, code ändern so kopieren statt httxr aufruf
 
 ### Website aussehen
 - style.css über und erarbeiten
