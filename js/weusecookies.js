@@ -1,3 +1,4 @@
+//WeuseCookies.js
 // Zeige das Cookie-Banner, es sei denn, der Benutzer hat bereits Cookies akzeptiert
 document.addEventListener('DOMContentLoaded', function () {
     const cookieBanner = document.getElementById('cookie-banner');

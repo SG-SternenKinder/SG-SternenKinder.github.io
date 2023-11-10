@@ -43,15 +43,13 @@
 
 <body>
 
-    <noscript>
-        <div id="loading-screen">
-            <p>Bitte aktiviere JavaScript, um diese Seite zu nutzen.</p>
-        </div>
+    <noscript class="noscript-message">
+        <div>Bitte aktiviere JavaScript, um diese Seite vollständig nutzen zu können.</div>
     </noscript>
 
     <header>
         
-        <a href="" class="logo no-click"><span>SG</span> SternenKinder</a>
+        <a href="" class="logo no-click"><span>SG</span>SternenKinder</a>
         
         <ul class="navbar">
             <li><a href="/">Home</a></li>
@@ -80,12 +78,46 @@
         </div>
     </section>
 
+        <!-- Popup-Container -->
+        <div class="popup-container" id="popup">
+            <div class="popup-content">
+                <h2>Cookie-Hinweis</h2>
+                <p>Durch die Nutzung unserer Website akzeptieren Sie unsere</p>
+                <p>Wenn Sie fortfahren, stimmen Sie der Verwendung von Cookies zu.</p>
+                <br>
+                    <div class="mitte-container">
+                        <a href="../imprint/index.html" target="_blank">Datenschutzrichtlinien</a>
+                        <a href="../cookies/cookies.html" target="_blank">Cookie-Richtlinien</a>
+                    </div>
+                <button id="accept-cookies">Cookies akzeptieren</button> <!-- Cookies akzeptieren-Schaltfläche -->
+                <button id="close-cookies">Cookies ablehnen</button> <!-- Cookies ablehnen-Schaltfläche -->
+            </div>
+        </div>
+    
+        <!-- Akzeptiertes-Cookies-Popup -->
+        <div class="popup-container" id="accepted-popup">
+            <div class="popup-content">
+                <h2>Vielen Dank!</h2>
+                <p>das Sie Cookies akzeptieren.</p>
+                <button id="close-accepted-popup">Schließen</button>
+            </div>
+        </div>
+    
+        <!-- Abgelehntes-Cookies-Popup -->
+        <div class="popup-container" id="rejected-popup">
+            <div class="popup-content">
+                <h2>Cookies abgelehnt</h2>
+                <p>Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung Cookies speichern.</p>
+                <button id="close-rejected-popup">Schließen</button>
+            </div>
+        </div>
+
     <div id="footer-container"></div>
 
-    <script src="../js/footer.js"></script>
-    <script src="../js/noscript-loading.js"></script>
+    <script src="..js/footer.js"></script>
+    <script src="..js/noscript-loading.js"></script>
+    <script src="../js/cookie.js"></script>
     <script src="../js/popup.js"></script>
-    <script src="../js/weusecookies.js"></script>
 
 </body>
 

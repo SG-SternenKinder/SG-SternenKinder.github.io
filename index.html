@@ -23,7 +23,7 @@
     <meta property="og:site_name" content="SG SternenKinder">
     <meta property="og:locale" content="de_DE">
 
-    <!-- Hinzufügen von TwitterX-Metadaten für soziale Medien -->
+    <!-- Hinzufügen von Twitter-Metadaten für soziale Medien -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="SG SternenKinder">
     <meta name="twitter:description" content="Spielegemeinschaft (SG) SternenKinder">
@@ -42,19 +42,22 @@
     <script defer src="fonts/fontawesome/js/brands.js"></script>
     <script defer src="fonts/fontawesome/js/solid.js"></script>
     <script defer src="fonts/fontawesome/js/fontawesome.js"></script>
+
+    <!-- JavaScript für Mobile Optimierungen 
+    <script src="js/mobile-optimizations.js" defer></script>
+    -->
+
 </head>
 
 <body>
 
-    <noscript>
-        <div id="loading-screen">
-            <p>Bitte aktiviere JavaScript, um diese Seite zu nutzen.</p>
-        </div>
+    <noscript class="noscript-message">
+        <div>Bitte aktiviere JavaScript, um diese Seite vollständig nutzen zu können.</div>
     </noscript>
 
     <header>
 
-        <a href="" class="logo no-click"><span>SG</span> SternenKinder</a>
+        <a href="" class="logo no-click"><span>SG</span>SternenKinder</a>
 
         <ul class="navbar">
             <li><a href="/">Home</a></li>
@@ -65,7 +68,7 @@
         </ul>
 
         <div class="follow-me">
-            <a href="" class="no-click" draggable="false" rel="noopener">Follow us</a>
+            <a href="" class="no-click" draggable="false" rel="noopener">Follow us on</a>
             <a href="/" draggable="false" title="TikTok" rel="noopener" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
             <a href="/" draggable="false" title="Instagram" rel="noopener" target="_blank"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://discord.gg/7BkTCYNkZt" draggable="false" title="Discord" rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
@@ -80,7 +83,8 @@
                 <span class="slider"></span>
             </label>
             <div class="language-button" onclick="changeLanguage('en')"></div>
-        </div>
+            <div class="slider-text"></div>
+        </div>        
 
     </header>
 
@@ -93,13 +97,47 @@
         </div>
     </section>
 
+    <!-- Popup-Container -->
+    <div class="popup-container" id="popup">
+        <div class="popup-content">
+            <h2>Cookie-Hinweis</h2>
+            <p>Durch die Nutzung unserer Website akzeptieren Sie unsere</p>
+            <p>Wenn Sie fortfahren, stimmen Sie der Verwendung von Cookies zu.</p>
+            <br>
+                <div class="mitte-container">
+                    <a href="imprint/index.html" target="_blank">Datenschutzrichtlinien</a>
+                    <a href="cookies/cookies.html" target="_blank">Cookie-Richtlinien</a>
+                </div>
+            <button id="accept-cookies">Cookies akzeptieren</button> <!-- Cookies akzeptieren-Schaltfläche -->
+            <button id="close-cookies">Cookies ablehnen</button> <!-- Cookies ablehnen-Schaltfläche -->
+        </div>
+    </div>
+
+    <!-- Akzeptiertes-Cookies-Popup -->
+    <div class="popup-container" id="accepted-popup">
+        <div class="popup-content">
+            <h2>Vielen Dank!</h2>
+            <p>das Sie Cookies akzeptieren.</p>
+            <button id="close-accepted-popup">Schließen</button>
+        </div>
+    </div>
+
+    <!-- Abgelehntes-Cookies-Popup -->
+    <div class="popup-container" id="rejected-popup">
+        <div class="popup-content">
+            <h2>Cookies abgelehnt</h2>
+            <p>Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung Cookies speichern.</p>
+            <button id="close-rejected-popup">Schließen</button>
+        </div>
+    </div>
+
     <div id="footer-container"></div>
 
     <script src="js/footer.js"></script>
     <script src="js/noscript-loading.js"></script>
-    <script src="js/language-switcher.js"></script>
     <script src="js/popup.js"></script>
-    <script src="js/weusecookies.js"></script>
+    <script src="js/cookie.js"></script>
+    <script src="js/language-switcher.js"></script>
 
 </body>
 

@@ -1,23 +1,23 @@
 /* Globale Zurücksetzungen und Stile */
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    list-style: none;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    scroll-behavior: smooth;
-    font-family: var(--fa-font-solid); /* Verwendung der Schriftart */
+    padding: 0; /* Setzt den Innenabstand aller Elemente auf 0 */
+    margin: 0; /* Setzt den Außenabstand aller Elemente auf 0 */
+    box-sizing: border-box; /* Stellt sicher, dass Padding und Border nicht die Gesamtbreite des Elements beeinflussen */
+    list-style: none; /* Entfernt Aufzählungspunkte von Listen */
+    text-decoration: none; /* Entfernt Standard-Textdekorationen wie Unterstreichungen */
+    border: none; /* Entfernt Standard-Rahmen für Elemente */
+    outline: none; /* Entfernt den Standard-Kontur-Stil für Elemente */
+    scroll-behavior: smooth; /* Fügt ein sanftes Scrollen für Anchor-Links hinzu */
+    font-family: var(--fa-font-solid); /* Verwendet die definierte Schriftart */
 }
 
 /* Definierte Farbvariablen */
 :root {
-    --text-color: white; /* Haupttextfarbe */
-    --bg-color: black; /* Hintergrundfarbe */
-    --main-color: blue; /* Hauptfarbe */
-    --h1-font: 6rem; /* Schriftgröße für H1-Überschriften */
-    --p-font: 1rem; /* Schriftgröße für Absätze */
+    --text-color: white; /* Definiert die Haupttextfarbe */
+    --bg-color: black; /* Definiert die Hintergrundfarbe */
+    --main-color: blue; /* Definiert die Hauptfarbe */
+    --h1-font: 6rem; /* Definiert die Schriftgröße für H1-Überschriften */
+    --p-font: 1rem; /* Definiert die Schriftgröße für Absätze */
 }
 
 /* Stile für den gesamten Body */
@@ -31,7 +31,7 @@ body {
 
 /* Stile für den Header */
 header {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
@@ -49,7 +49,12 @@ header {
     color: var(--text-color);
     font-weight: 700;
     text-decoration: none;
-    cursor: default;
+    justify-content: flex-start; /* Ändere justify-content auf flex-start */
+    display: inline-block;
+}
+
+.logo span {
+    margin-right: 8px; /* Hier den gewünschten Abstand eintragen */
 }
 
 /* Stile für das Textelement "span" */
@@ -60,47 +65,44 @@ span {
 /* Stile für die Navigationsleiste */
 .navbar {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .navbar a {
     color: var(--text-color);
     font-size: var(--p-font);
-    font-weight: 500;
-    margin: 15px 25px;
-    padding: 5px; /* Erhöhung des Textabstands */
-    transition: all 0.5s ease; /* Fließender Übergangseffekt */
+    margin: 15px 18px;
 }
 
 .navbar a:hover {
     color: var(--main-color);
-    padding: 10px; /* Beibehalten des erhöhten Textabstands */
 }
 
 /* Stile für die "Folge uns"-Leiste */
 .follow-me {
     display: flex;
     align-items: center;
-    margin-right: 50px; /* Füge hier den gewünschten Abstand hinzu */
+    margin-right: 120px; /* Füge hier den gewünschten Abstand hinzu */
 }
 
 .follow-me a:first-child {
     color: var(--text-color);
     font-size: var(--p-font);
-    margin-right: 20px;
+    margin-right: 14px;
 }
 
 .follow-me a {
     vertical-align: middle;
     font-size: 20px;
     color: var(--text-color);
-    margin-right: 18px;
+    margin-right: 16px;
     margin-left: 5px;
-    transition: all 0.50s ease;
 }
 
 .follow-me a:hover {
     color: var(--main-color);
-    margin-right: 18px; /* Beibehalten des Abstands rechts */
+    margin-right: 16px; /* Beibehalten des Abstands rechts */
     margin-left: 5px; /* Beibehalten des Abstands links */
 }
 
@@ -153,7 +155,7 @@ section {
     font-size: 15px;
     font-weight: 350;
     cursor: default;
-    transition: background-color 0.5s ease; /* Hintergrundfarbübergang */
+    transition: background-color 0.5s ease; /* Hintergrundfarbübergang */   
 }
 
 .btn:hover {
@@ -193,9 +195,75 @@ section {
     font-size: 24px;
 }
 
+
+.highlight {
+    background-color: yellow;
+    color: black;
+}
+
 .hidden {
     display: none;
 }
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #fff;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+    margin-top: 20px;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  @keyframes slide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-30px);
+    }
+    60% {
+      transform: translateY(-15px);
+    }
+  }
+
+  
+  .noscript-message {
+    animation: blink 2s infinite alternate, slide 1s infinite;
+    background: #ff0000;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@keyframes slide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0); }
+}
+
+
 
 
 
@@ -241,42 +309,29 @@ footer {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #fff; /* Weiß, wenn der Slider nach links verschoben ist (Deutsch) */
-    -webkit-transition: .4s;
-    transition: .4s;
+    background-color: #fff;
     border-radius: 34px;
+    transition: background-color 0.4s ease;
 }
 
 .slider:before {
-    content: 'DE';
-    /* statt DE das Logo img\language\de-32.png */
+    content: '';
     position: absolute;
     height: 26px;
     width: 26px;
     left: 4px;
     bottom: 4px;
-    background-color: #2196F3; /* Blau, wenn der Slider nach rechts verschoben ist (English) */
-    -webkit-transition: .4s;
-    transition: .4s;
     border-radius: 50%;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-    background-color: #fff; /* Weiß, wenn der Slider nach rechts verschoben ist (Deutsch) */
-    color: #000; /* Schwarz für den Text "DE" */
-    content: 'EN';
-    /* statt EN das Logo img\language\uk-32.png */
+    background-size: cover;
+    transition: transform 0.4s ease;
 }
 
 input:checked + .slider {
     background-color: #2196F3; /* Blau, wenn der Slider nach rechts verschoben ist (English) */
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
 }
 
 /* Füge einen Abstand zwischen "Sprache" und dem Slider hinzu */
@@ -284,9 +339,20 @@ input:checked + .slider {
     margin-right: 10px; /* Passe den Abstand nach Bedarf an */
 }
 
+/* Stile für die deutschen und englischen Flaggen */
+.slider:before {
+    background-image: url('../img/language/de-32.png'); /* Pfad zur deutschen Flagge */
+}
+
+input:checked + .slider:before {
+    background-image: url('../img/language/uk-32.png'); /* Pfad zur englischen Flagge */
+}
+
+
 
 /* Stile für das Popup */
-.popup {
+.popup-container {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -296,53 +362,70 @@ input:checked + .slider {
     z-index: 9999;
     align-items: center;
     justify-content: center;
-    color: #000; /* Ändere die Textfarbe auf Schwarz (oder eine andere gewünschte Farbe) */
 }
 
 .popup-content {
     background: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 40px; /* Größeren Innenabstand hinzufügen */
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    color: #000;
+    position: relative; /* Position auf relative ändern, um den absolut positionierten Schließen-Button zu positionieren */
+    font-size: 18px; /* Hier kannst du die Schriftgröße ändern */
 }
 
-/* Stile für den OK-Button im Popup */
-#close-popup {
-    background: #2196F3;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 20px;
+.popup-content a {
+    display: block;
+    margin-bottom: 10px; /* Fügt 10 Pixel Abstand zwischen den Links hinzu */
 }
 
-
-/* Stile für das Cookie-Banner */
-.cookie-banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    z-index: 9999;
-    display: none;
+.popup-content .mitte-container {
+    text-align: center; /* Zentriert den Inhalt innerhalb des Containers */
+    width: 80%; /* Ändern Sie die Breite des Containers nach Bedarf (hier 80%) */
+    margin: 0 auto; /* Zentriert den Container horizontal auf der Seite */
 }
 
-.cookie-banner a {
-    color: #2196F3;
-    text-decoration: underline;
+.popup-content .mitte-container a {
+    display: inline-block; /* Stellt sicher, dass die Links nebeneinander angeordnet werden */
+    margin-right: 10px; /* Fügt einen Abstand zwischen den Links hinzu */
 }
 
-.cookie-banner button {
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-left: 10px;
+.popup-content .mitte-container a:last-child {
+    margin-bottom: 0; /* Entfernt den unteren Abstand vom letzten Link */
+}
+
+.popup-content button {
+    padding: 15px 30px; /* Erhöht die Padding-Eigenschaft für den Button */
+    font-size: 16px; /* Passt die Schriftgröße des Buttons an */
+}
+
+.popup-content h2 {
+    margin-bottom: 10px; /* Fügt 10 Pixel Abstand unter dem h2-Element hinzu */
+}
+
+.popup-content br {
+    margin-top: 10px;
+}
+
+/* Stile für  Popup */
+/* Stile für die neuen Schaltflächen und den Link im Popup */
+#accept-cookies,
+#close-cookies,
+#close-accepted-popup,
+#close-rejected-popup {
+    margin-top: 10px; /* Fügt Abstand zwischen den Schaltflächen hinzu */
+    padding: 10px 20px; /* Ändert die Schaltflächen-Padding-Werte nach Bedarf an */
+    background-color: #2196F3; /* Hintergrundfarbe der Schaltflächen */
+    color: #fff; /* Textfarbe der Schaltflächen */
+    border: none; /* Entfernt den Schaltflächenrahmen */
+    cursor: pointer; /* Zeigt den Zeiger beim Überfahren der Schaltflächen an */
+    border-radius: 5px; /* Runde Ecken für die Schaltflächen */
+}
+
+#accept-cookies:hover,
+#close-cookies:hover,
+#close-accepted-popup:hover,
+#close-rejected-popup:hover {
+    background-color: #0c7cd5; /* Hintergrundfarbe beim Hover */
 }
