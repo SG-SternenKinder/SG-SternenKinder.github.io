@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         };
 
-        xhr.open('GET', `../language-${language}.txt`, true);
+        xhr.open('GET', `language-${language}.txt`, true);
         xhr.send();
     }
 
