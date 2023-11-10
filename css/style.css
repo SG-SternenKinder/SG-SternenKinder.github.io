@@ -343,6 +343,12 @@ section {
     100% { transform: rotate(360deg); }
 }
 
+/* Stile für die Nachrichten */
+.message {
+    font-size: 18px; /* Schriftgröße anpassen */
+    margin-top: 10px; /* Abstand zur Ladeanimation */
+}
+
 /* Stile für den Footer */
 footer {
     color: #fff;
