@@ -1,39 +1,39 @@
 // noscript-loading.js
 document.addEventListener('DOMContentLoaded', function () {
-    const loadingScreen = document.getElementById('loading-screen');
-    const noscriptMessage = document.querySelector('.noscript-message');
-    const content = document.querySelector('body');
+    const messageElement = document.querySelector('.message-text');
+    const spinnerElement = document.querySelector('.loading-spinner');
 
-    // Überprüfe, ob das Element gefunden wurde, bevor es verwendet wird
-    if (loadingScreen) {
-        console.log('loadingScreen gefunden.');
+    // Array mit freundlichen Nachrichten
+    const messages = [
+        "Willkommen! Bitte aktiviere JavaScript, um unsere Website vollständig zu genießen.",
+        "JavaScript macht unsere Website interaktiv und benutzerfreundlich. Aktiviere es, um alle Funktionen zu nutzen!",
+        "Hey! Unsere Website wird noch besser, wenn du JavaScript einschaltest. Viel Spaß beim Erkunden!"
+    ];
 
-        // Array mit freundlichen Nachrichten
-        const messages = [
-            "Willkommen! Bitte aktiviere JavaScript, um unsere Website vollständig zu genießen.",
-            "JavaScript macht unsere Website interaktiv und benutzerfreundlich. Aktiviere es, um alle Funktionen zu nutzen!",
-            "Hey! Unsere Website wird noch besser, wenn du JavaScript einschaltest. Viel Spaß beim Erkunden!"
-        ];
+    let messageIndex = 0;
 
-        // Zufällige Nachricht auswählen
-        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    // Funktion zum Wechseln der Nachrichten alle 8 Sekunden
+    function changeMessage() {
+        messageElement.textContent = messages[messageIndex];
+        messageIndex = (messageIndex + 1) % messages.length;
+    }
 
-        // Zeige freundliche Nachricht an
-        const messageElement = document.createElement('p');
-        messageElement.textContent = randomMessage;
-        noscriptMessage.appendChild(messageElement);
+    // Initialisiere die erste Nachricht
+    changeMessage();
 
-        const loadingSpinner = document.createElement('div');
-        loadingSpinner.classList.add('loading-spinner');
-        loadingScreen.appendChild(loadingSpinner);
+    // Starte die Animation und den Nachrichtenwechsel
+    setInterval(function () {
+        spinnerElement.style.borderTopColor = getRandomColor();
+        changeMessage();
+    }, 8000);
 
-        // Warte, bis die Seite vollständig geladen ist, und blende dann den Ladebildschirm aus
-        window.addEventListener('load', function () {
-            console.log('Seite vollständig geladen.');
-            loadingScreen.classList.add('hidden');
-            content.classList.remove('hidden');
-        });
-    } else {
-        console.error("Das Element mit der ID 'loading-screen' wurde nicht gefunden.");
+    // Hilfsfunktion für eine zufällige Farbe
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
     }
 });
