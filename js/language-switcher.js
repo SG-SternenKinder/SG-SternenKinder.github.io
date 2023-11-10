@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Funktion zum Laden von Texten aus der Datei
     async function loadTexts(language) {
         try {
-            const response = await fetch(`../language/language-${language}.txt`);
+            const response = await fetch(`language/language-${language}.txt`);
             const texts = await response.text();
 
             texts.split('\n').forEach(function (text) {
