@@ -14,5 +14,5 @@
 - Fontawsome einbinden anders. per link oder anständiges inhalt der Ordnerstruktur
 
 ### Nebenbeitrag
-- denke longstorge to sessionstorge Überarbeiten
+- denke longstorge to sessionstorge Überarbeiten würde den popup erstmal überflüssig machen, wieder mal
 - texte übersetzen und externieren in eine txt wenn language fertig ist
