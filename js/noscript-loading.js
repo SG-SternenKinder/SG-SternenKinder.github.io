@@ -1,6 +1,7 @@
 // noscript-loading.js
 document.addEventListener('DOMContentLoaded', function () {
     const spinnerElement = document.querySelector('.loading-spinner');
+    const messageElement = document.querySelector('.message');
 
     // Überprüfe, ob das Element gefunden wurde, bevor es verwendet wird
     if (spinnerElement) {
@@ -15,7 +16,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             return color;
         }
+
+        // Verstecke das Spinner-Element nach einer kurzen Verzögerung
+        setTimeout(function () {
+            spinnerElement.style.display = 'none';
+            messageElement.style.display = 'none';
+        }, 2000); // Hier können Sie die Verzögerung nach Bedarf anpassen
     } else {
         console.error("Das Element mit der Klasse 'loading-spinner' wurde nicht gefunden.");
     }
 });
+

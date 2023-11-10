@@ -1,14 +1,6 @@
 // language-switcher.js
 document.addEventListener('DOMContentLoaded', function () {
-    const savedLanguage = getCookie('language') || 'de';
-
     const languageSlider = document.getElementById('language-slider');
-    const translatableElements = document.querySelectorAll('.translatable');
-
-    // Wenn es ein gespeichertes Sprach-Cookie gibt, stelle den Schieberegler entsprechend ein
-    if (savedLanguage === 'en') {
-        languageSlider.checked = true;
-    }
 
     // Funktion zum Laden von Texten aus der Datei
     async function loadTexts(language) {
@@ -20,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const [key, value] = text.split('=');
                 if (key && value) {
                     const element = document.getElementById(key);
-                    if (element && element.classList.contains('translatable')) {
+                    if (element) {
                         element.textContent = value;
                     }
                 }
@@ -40,9 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie
     languageSlider.addEventListener('change', function () {
-        const selectedLanguage = languageSlider.checked ? 'de' : 'en';
+        const savedLanguage = getCookie('language') || 'de';
+        const selectedLanguage = languageSlider.checked ? 'en' : 'de';
 
-        // Aktualisiere den Text der translatable-Elemente basierend auf der ausgewählten Sprache
+        // Aktualisiere den Text der Elemente basierend auf der ausgewählten Sprache
         loadTexts(selectedLanguage);
 
         // Speichere die ausgewählte Sprache im Cookie
@@ -50,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Initialisiere den Text basierend auf dem gespeicherten Cookie
+    const savedLanguage = getCookie('language') || 'de';
     setSliderState(savedLanguage);
     loadTexts(savedLanguage);
 });
