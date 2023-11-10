@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Überprüfe, ob das Element gefunden wurde, bevor es verwendet wird
     if (loadingScreen) {
+        console.log('loadingScreen gefunden.');
+
         // Array mit freundlichen Nachrichten
         const messages = [
             "Willkommen! Bitte aktiviere JavaScript, um unsere Website vollständig zu genießen.",
@@ -27,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Warte, bis die Seite vollständig geladen ist, und blende dann den Ladebildschirm aus
         window.addEventListener('load', function () {
+            console.log('Seite vollständig geladen.');
             loadingScreen.classList.add('hidden');
             content.classList.remove('hidden');
         });
