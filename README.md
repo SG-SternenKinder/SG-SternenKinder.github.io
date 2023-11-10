@@ -9,7 +9,7 @@
 - language-switche.js Überarbeiten
 
 ### Website aussehen
-- stlye.css über und erarbeiten
+- style.css über und erarbeiten
 - Fontawsome einbinden anders. per link oder anständiges inhalt der Ordnerstruktur
 
 ### Nebenbeitrag
