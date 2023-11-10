@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie
     languageSlider.addEventListener('change', function () {
-        const selectedLanguage = languageSlider.checked ? 'en' : 'de';
+        const selectedLanguage = languageSlider.checked ? 'de' : 'en';
 
         // Aktualisiere den Text der translatable-Elemente basierend auf der ausgewählten Sprache
         loadTexts(selectedLanguage);
