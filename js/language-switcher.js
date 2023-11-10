@@ -10,25 +10,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Funktion zum Laden von Texten aus der Datei
-    function loadTexts(language) {
-        const xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                const texts = xhr.responseText.split('\n');
-                texts.forEach(function (text) {
-                    const [key, value] = text.split('=');
-                    if (key && value) {
-                        const element = document.getElementById(key);
-                        if (element && element.classList.contains('translatable')) {
-                            element.textContent = value;
-                        }
-                    }
-                });
-            }
-        };
+    async function loadTexts(language) {
+        try {
+            const response = await fetch(`../language/language-${language}.txt`);
+            const texts = await response.text();
 
-        xhr.open('GET', `language-${language}.txt`, true);
-        xhr.send();
+            texts.split('\n').forEach(function (text) {
+                const [key, value] = text.split('=');
+                if (key && value) {
+                    const element = document.getElementById(key);
+                    if (element && element.classList.contains('translatable')) {
+                        element.textContent = value;
+                    }
+                }
+            });
+        } catch (error) {
+            console.error('Fehler beim Laden der Texte:', error);
+        }
     }
 
     function updateLanguageCookie(language) {
