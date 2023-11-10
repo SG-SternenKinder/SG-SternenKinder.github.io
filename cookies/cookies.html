@@ -57,6 +57,7 @@
 
         <a href="" class="logo no-click"><span>SG</span>SternenKinder</a>
 
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul class="navbar">
             <li><a href="/">Home</a></li>
             <li><a href="../about/index.html">Über uns</a></li>
@@ -70,6 +71,27 @@
             function reloadPage() {
                 location.reload(true);
             }
+        </script>
+
+        <script>
+            function toggleMenu() {
+                const navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('active');
+            }
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Aktives Element basierend auf der aktuellen URL ermitteln
+                const currentUrl = window.location.href;
+                const navbarLinks = document.querySelectorAll('.navbar a');
+
+                for (const link of navbarLinks) {
+                    if (link.href === currentUrl) {
+                        link.classList.add('active');
+                    }
+                }
+            });
         </script>
 
         <div class="follow-me">
@@ -107,6 +129,16 @@
             }
         </script>
 
+        <div id="language-switcher">
+            <div id="language-title" class="language-label translatable">Sprache</div>
+            <div class="language-button" onclick="changeLanguage('de')"></div>
+            <label class="switch">
+                <input type="checkbox" id="language-slider">
+                <span class="slider"></span>
+            </label>
+            <div class="language-button" onclick="changeLanguage('en')"></div>
+        </div>
+
     </header>
 
     <section class="cookie-section">
@@ -116,7 +148,7 @@
                 auf der Website verwenden wir Cookies für folgende Zwecke:</p>
             <p>Cookie-Banner: Um sicherzustellen, dass du über unsere Verwendung von Cookies informiert bist, verwenden
                 wir ein Cookie-Banner. Dieses Banner speichert deine Zustimmung zur Verwendung von Cookies, um dir die
-                bestmögliche Website-Erfahrung zu bieten. Diese Zustimmung wird ebenfalls für 7 Tage gespeichert.</p>
+                bestmögliche Website-Erfahrung zu bieten. Diese Zustimmung wird ebenfalls für 4 Tage gespeichert.</p>
             <p>Cookies sind kleine Textdateien, die von deinem Browser gespeichert werden. Sie ermöglichen es uns, die
                 Website anzupassen, Analysen durchzuführen und die Website-Leistung zu verbessern.</p>
             <p>Durch die Nutzung unserer Website stimmst du der Verwendung von Cookies zu, wie in unserer
@@ -162,12 +194,18 @@
         </div>
     </div>
 
+    <div id="scroll-to-top">
+        <div class="fas fa-arrow-up"></div>
+    </div>
+
     <div id="footer-container"></div>
 
     <script src="../js/footer.js"></script>
     <script src="../js/noscript-loading.js"></script>
     <script src="../js/cookie.js"></script>
     <script src="../js/popup.js"></script>
+    <script src="../js/language-switcher.js"></script>
+    <script src="../js/scrollback.js"></script>
 
 </body>
 

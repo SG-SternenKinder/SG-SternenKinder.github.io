@@ -1,23 +1,23 @@
 /* Globale Zurücksetzungen und Stile */
 * {
-    padding: 0; /* Setzt den Innenabstand aller Elemente auf 0 */
-    margin: 0; /* Setzt den Außenabstand aller Elemente auf 0 */
-    box-sizing: border-box; /* Stellt sicher, dass Padding und Border nicht die Gesamtbreite des Elements beeinflussen */
-    list-style: none; /* Entfernt Aufzählungspunkte von Listen */
-    text-decoration: none; /* Entfernt Standard-Textdekorationen wie Unterstreichungen */
-    border: none; /* Entfernt Standard-Rahmen für Elemente */
-    outline: none; /* Entfernt den Standard-Kontur-Stil für Elemente */
-    scroll-behavior: smooth; /* Fügt ein sanftes Scrollen für Anchor-Links hinzu */
-    font-family: var(--fa-font-solid); /* Verwendet die definierte Schriftart */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: var(--fa-font-solid);
 }
 
 /* Definierte Farbvariablen */
 :root {
-    --text-color: white; /* Definiert die Haupttextfarbe */
-    --bg-color: black; /* Definiert die Hintergrundfarbe */
-    --main-color: blue; /* Definiert die Hauptfarbe */
-    --h1-font: 6rem; /* Definiert die Schriftgröße für H1-Überschriften */
-    --p-font: 1rem; /* Definiert die Schriftgröße für Absätze */
+    --text-color: white;
+    --bg-color: black;
+    --main-color: blue;
+    --h1-font: 6rem;
+    --p-font: 1rem;
 }
 
 /* Stile für den gesamten Body */
@@ -27,6 +27,13 @@ body {
     background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../img/background.png);
     background-size: cover;
     background-position: bottom center;
+}
+
+/* Media Query für kleinere Bildschirme */
+@media screen and (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
 }
 
 /* Stile für den Header */
@@ -40,7 +47,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    backdrop-filter: blur(12px); /* Unschärfeeffekt für Hintergrund */
+    backdrop-filter: blur(12px);
 }
 
 /* Stile für das Logo */
@@ -49,12 +56,12 @@ header {
     color: var(--text-color);
     font-weight: 700;
     text-decoration: none;
-    justify-content: flex-start; /* Ändere justify-content auf flex-start */
+    justify-content: flex-start;
     display: inline-block;
 }
 
 .logo span {
-    margin-right: 8px; /* Hier den gewünschten Abstand eintragen */
+    margin-right: 8px;
 }
 
 /* Stile für das Textelement "span" */
@@ -65,25 +72,98 @@ span {
 /* Stile für die Navigationsleiste */
 .navbar {
     display: flex;
-    align-items: center;
+    align-items: space-around;
     justify-content: center;
+}
+
+/* Stile für das Hamburger-Menü */
+.menu-toggle {
+    display: none; /* Verstecke das Menüsymbol standardmäßig */
+    cursor: pointer;
+}
+
+/* Stile für kleinere Bildschirme und mobile Geräte */
+@media only screen and (max-width: 767px) {
+    .menu-toggle {
+        display: block; /* Zeige das Menüsymbol für kleine Bildschirme */
+    }
+
+    .navbar {
+        display: none;
+        flex-direction: column; /* Ändere die Richtung auf Spalte */
+        align-items: stretch; /* Dehne die Elemente über die Breite aus */
+        text-align: center; /* Zentriere den Text */
+    }
+
+    .navbar li {
+        padding: 10px; /* Füge Abstand zwischen den Elementen hinzu */
+        border-bottom: 1px solid #ddd; /* Füge eine Trennlinie zwischen den Elementen hinzu */
+    }
+
+    .navbar a {
+        display: block; /* Mache die Links zu Blockelementen */
+    }
+
+    .navbar.active {
+        display: flex; /* Zeige die Navbar, wenn sie aktiv ist (z. B. nach einem Klick auf das Menüsymbol) */
+    }
 }
 
 .navbar a {
     color: var(--text-color);
     font-size: var(--p-font);
     margin: 15px 18px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--main-color);
+    transform: translateX(-50%);
+    filter: blur(2px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 5px;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+    opacity: 1;
 }
 
 .navbar a:hover {
     color: var(--main-color);
 }
 
+/* Stile für den aktiven Link */
+.navbar a.active {
+    position: relative;
+}
+
+.navbar a.active::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140%;
+    height: 140%;
+    backdrop-filter: blur(2px);
+    z-index: -1;
+    border-radius: 10px;
+}
+
 /* Stile für die "Folge uns"-Leiste */
 .follow-me {
     display: flex;
     align-items: center;
-    margin-right: 120px; /* Füge hier den gewünschten Abstand hinzu */
+    margin-right: 120px;
 }
 
 .follow-me a:first-child {
@@ -102,8 +182,8 @@ span {
 
 .follow-me a:hover {
     color: var(--main-color);
-    margin-right: 16px; /* Beibehalten des Abstands rechts */
-    margin-left: 5px; /* Beibehalten des Abstands links */
+    margin-right: 16px;
+    margin-left: 5px;
 }
 
 /* Stile für Abschnitte */
@@ -112,7 +192,6 @@ section {
 }
 
 /* Stile für den "Home"-Abschnitt */
-.cookie-section,
 .home {
     position: right;
     height: 100vh;
@@ -120,9 +199,18 @@ section {
     display: flex;
     align-items: center;
     justify-self: flex-start;
+    position: relative; /* Änderung: Position relativ für die untergeordneten Elemente */
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    filter: blur(2px);
+    transition: background-color 0.3s ease, filter 0.3s ease;
 }
 
-.cookie-text h5,
+.home-text {
+    color: #333;
+}
+
 .home-text h5 {
     font-size: 18px;
     font-weight: 600;
@@ -132,7 +220,6 @@ section {
     color: var(--main-color);
 }
 
-.cookie-text h1,
 .home-text h1 {
     font-size: var(--h1-font);
     font-weight: 800;
@@ -140,13 +227,67 @@ section {
     margin-bottom: 20px;
 }
 
-.cookie-text p,
 .home-text p {
     font-size: var(--p-font);
     font-weight: 500;
     line-height: 30px;
     color: #ffffffab;
     margin-bottom: 35px;
+}
+
+/* Stile für .cookie-section */
+.cookie-section {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.cookie-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    filter: blur(2px);
+    z-index: -1;
+    transition: background-color 0.3s ease, filter 0.3s ease;
+}
+
+.cookie-text {
+    color: #000;
+    text-align: center;
+    z-index: 1;
+}
+
+.cookie-text h5 {
+    font-size: 24px; /* Größere Schriftgröße */
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    color: var(--main-color);
+}
+
+.cookie-text h2 {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 30px; /* Erhöhter Abstand unter der Überschrift */
+    text-transform: uppercase;
+}
+
+.cookie-text p {
+    font-size: 22px; /* Größere Schriftgröße */
+    font-weight: 650;
+    line-height: 24px; /* Geringerer Zeilenabstand */
+    margin-bottom: 25px; /* Geringerer Abstand zwischen den Absätzen */
 }
 
 /* Stile für den Button */
@@ -159,12 +300,12 @@ section {
     font-size: 15px;
     font-weight: 350;
     cursor: default;
-    transition: background-color 0.5s ease; /* Hintergrundfarbübergang */   
+    transition: background-color 0.5s ease;
 }
 
 .btn:hover {
-    background-color: var(--text-color); /* Hintergrundfarbe beim Hover */
-    color: var(--main-color); /* Textfarbe beim Hover */
+    background-color: var(--text-color);
+    color: var(--main-color);
 }
 
 /* Stile für den Container */
@@ -177,8 +318,6 @@ section {
 .no-click {
     pointer-events: none;
 }
-
-
 
 /* Stile für den Ladebildschirm und versteckte Elemente */
 #loading-screen {
@@ -198,7 +337,6 @@ section {
 #loading-screen p {
     font-size: 24px;
 }
-
 
 .highlight {
     background-color: yellow;
@@ -232,14 +370,14 @@ section {
     0% { opacity: 1; }
     50% { opacity: 0; }
     100% { opacity: 1; }
-  }
-  
-  @keyframes slide {
+}
+
+@keyframes slide {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(0); }
-  }
-  
-  @keyframes bounce {
+}
+
+@keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
       transform: translateY(0);
     }
@@ -249,10 +387,9 @@ section {
     60% {
       transform: translateY(-15px);
     }
-  }
+}
 
-  
-  .noscript-message {
+.noscript-message {
     animation: blink 2s infinite alternate, slide 1s infinite;
     background: #ff0000;
     color: #ffffff;
@@ -271,8 +408,6 @@ section {
     100% { transform: translateX(0); }
 }
 
-
-
 /* Stile für den Footer */
 footer {
     color: #fff;
@@ -284,8 +419,6 @@ footer {
     padding: 10px 0;
     font-size: 14px;
 }
-
-
 
 /* Stile für den Language Switcher */
 #language-switcher {
@@ -330,24 +463,22 @@ footer {
     border-radius: 50%;
     background-size: cover;
     transition: transform 0.4s ease;
-    background-image: url('../img/language/de-32.png'); /* Pfad zur deutschen Flagge */
+    background-image: url('../img/language/de-32.png');
 }
 
 input:checked + .slider {
-    background-color: #2196F3; /* Blau, wenn der Slider nach rechts verschoben ist (English) */
+    background-color: #2196F3;
 }
 
 input:checked + .slider:before {
     transform: translateX(26px);
-    background-image: url('../img/language/uk-32.png'); /* Pfad zur englischen Flagge */
+    background-image: url('../img/language/uk-32.png');
 }
 
 /* Füge einen Abstand zwischen "Sprache" und dem Slider hinzu */
 .language-label {
-    margin-right: 10px; /* Passe den Abstand nach Bedarf an */
+    margin-right: 10px;
 }
-
-
 
 /* Stile für das Popup */
 .popup-container {
@@ -366,41 +497,41 @@ input:checked + .slider:before {
 .popup-content {
     background: #fff;
     text-align: center;
-    padding: 40px; /* Größeren Innenabstand hinzufügen */
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     color: #000;
-    position: relative; /* Position auf relative ändern, um den absolut positionierten Schließen-Button zu positionieren */
-    font-size: 18px; /* Hier kannst du die Schriftgröße ändern */
+    position: relative;
+    font-size: 18px;
 }
 
 .popup-content a {
     display: block;
-    margin-bottom: 10px; /* Fügt 10 Pixel Abstand zwischen den Links hinzu */
+    margin-bottom: 10px;
 }
 
 .popup-content .mitte-container {
-    text-align: center; /* Zentriert den Inhalt innerhalb des Containers */
-    width: 80%; /* Ändern Sie die Breite des Containers nach Bedarf (hier 80%) */
-    margin: 0 auto; /* Zentriert den Container horizontal auf der Seite */
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .popup-content .mitte-container a {
-    display: inline-block; /* Stellt sicher, dass die Links nebeneinander angeordnet werden */
-    margin-right: 10px; /* Fügt einen Abstand zwischen den Links hinzu */
+    display: inline-block;
+    margin-right: 10px;
 }
 
 .popup-content .mitte-container a:last-child {
-    margin-bottom: 0; /* Entfernt den unteren Abstand vom letzten Link */
+    margin-bottom: 0;
 }
 
 .popup-content button {
-    padding: 15px 30px; /* Erhöht die Padding-Eigenschaft für den Button */
-    font-size: 16px; /* Passt die Schriftgröße des Buttons an */
+    padding: 15px 30px;
+    font-size: 16px;
 }
 
 .popup-content h2 {
-    margin-bottom: 10px; /* Fügt 10 Pixel Abstand unter dem h2-Element hinzu */
+    margin-bottom: 10px;
 }
 
 .popup-content br {
@@ -413,18 +544,51 @@ input:checked + .slider:before {
 #close-cookies,
 #close-accepted-popup,
 #close-rejected-popup {
-    margin-top: 10px; /* Fügt Abstand zwischen den Schaltflächen hinzu */
-    padding: 10px 20px; /* Ändert die Schaltflächen-Padding-Werte nach Bedarf an */
-    background-color: #2196F3; /* Hintergrundfarbe der Schaltflächen */
-    color: #fff; /* Textfarbe der Schaltflächen */
-    border: none; /* Entfernt den Schaltflächenrahmen */
-    cursor: pointer; /* Zeigt den Zeiger beim Überfahren der Schaltflächen an */
-    border-radius: 5px; /* Runde Ecken für die Schaltflächen */
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #2196F3;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 #accept-cookies:hover,
 #close-cookies:hover,
 #close-accepted-popup:hover,
 #close-rejected-popup:hover {
-    background-color: #0c7cd5; /* Hintergrundfarbe beim Hover */
+    background-color: #0c7cd5;
 }
+
+/* Zurückscroll-Pfeil-Stil */
+#scroll-to-top {
+    position: fixed;
+    bottom: -40px; /* Startposition, außerhalb des Bildschirms */
+    right: 40px;
+    width: 30px;
+    height: 30px;
+    background-color: #2c3e50;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, bottom 0.3s ease, filter 0.3s ease; /* Animation für Farbwechsel und Position */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#scroll-to-top i {
+    font-size: 15px; /* Kleinere Schriftgröße */
+    color: #fff;
+    transition: color 0.3s ease;
+    position: relative;
+    top: 1px;
+    text-align: center;
+}
+
+body.scroll-up #scroll-to-top {
+    bottom: 40px;
+}
+
+body:not(.scroll-up) #scroll-to-top {
+    bottom: -40px;
+} 

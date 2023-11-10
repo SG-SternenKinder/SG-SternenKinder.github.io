@@ -11,27 +11,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Überprüfen, ob das Popup bereits angezeigt wurde
     const popupShown = sessionStorage.getItem('popupShown');
+
+    // Überprüfe, ob Cookies akzeptiert wurden
     const acceptedCookies = getCookie('cookiesAccepted');
 
-    if (!popupShown) {
-        popup.style.display = 'flex';
-    }
+    // Überprüfe, ob Cookies abgelehnt wurden
+    const rejectedCookies = getCookie('cookiesRejected');
 
-    if (!acceptedCookies) {
+    // Entscheidung des Benutzers überprüfen und Popup entsprechend anzeigen
+    if (!popupShown && !acceptedCookies) {
         popup.style.display = 'flex';
     }
 
     acceptCookiesButton.addEventListener('click', function () {
-        setCookie('cookiesAccepted', 'true', 7);
+        setCookie('cookiesAccepted', 'true', 4);
         popup.style.display = 'none';
         acceptedPopup.style.display = 'flex';
     });
 
     closeCookiesButton.addEventListener('click', function () {
-        popup.style.display = 'none';
-        rejectedPopup.style.display = 'flex';
         // Markiere das Popup als angezeigt in der Session-Speicherung
         sessionStorage.setItem('popupShown', 'true');
+        popup.style.display = 'none';
+        rejectedPopup.style.display = 'flex';
     });
 
     closeAcceptedPopupButton.addEventListener('click', function () {

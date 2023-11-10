@@ -1,4 +1,4 @@
-    <!-- Cookie-Hinweis -->
+<!-- Cookie-Hinweis -->
     <div id="cookie-banner">
         <p>Wir nutzen Cookies auf unserer Website und auf Github (Github Link). <br> Bei uns auf der Website verwenden
             wir Cookies, um deine ausgewählte Spracheinstellung zu speichern und das Cookie-Banner anzuzeigen. Diese
@@ -13,6 +13,3 @@
             <button id="close-popup">OK</button>
         </div>
     </div>
-
-
-- 

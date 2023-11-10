@@ -57,6 +57,7 @@
 
         <a href="" class="logo no-click"><span>SG</span>SternenKinder</a>
 
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul class="navbar">
             <li><a href="/">Home</a></li>
             <li><a href="../about/index.html">About us</a></li>
@@ -69,6 +70,27 @@
             function reloadPage() {
                 location.reload(true);
             }
+        </script>
+
+        <script>
+            function toggleMenu() {
+                const navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('active');
+            }
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Aktives Element basierend auf der aktuellen URL ermitteln
+                const currentUrl = window.location.href;
+                const navbarLinks = document.querySelectorAll('.navbar a');
+
+                for (const link of navbarLinks) {
+                    if (link.href === currentUrl) {
+                        link.classList.add('active');
+                    }
+                }
+            });
         </script>
 
         <div class="follow-me">
@@ -106,13 +128,23 @@
             }
         </script>
 
+        <div id="language-switcher">
+            <div id="language-title" class="language-label translatable">Sprache</div>
+            <div class="language-button" onclick="changeLanguage('de')"></div>
+            <label class="switch">
+                <input type="checkbox" id="language-slider">
+                <span class="slider"></span>
+            </label>
+            <div class="language-button" onclick="changeLanguage('en')"></div>
+        </div>
+
     </header>
 
     <section class="home">
         <div class="home-text">
             <h5>i forgot</h5>
-            <h1>TEST <br> TEXT</h1>
-            <p>THIS IS A TEST TEXT</p>
+            <h1 id="imprint-title" class="translatable">TEST <br> TEXT</h1>
+            <p id="imprint-title" class="translatable">THIS IS A TEST TEXT</p>
             <div class="btn">No idea what's supposed to be there</div>
         </div>
     </section>
@@ -152,12 +184,18 @@
         </div>
     </div>
 
+    <div id="scroll-to-top">
+        <div class="fas fa-arrow-up"></div>
+    </div>
+
     <div id="footer-container"></div>
 
     <script src="../js/footer.js"></script>
     <script src="../js/noscript-loading.js"></script>
     <script src="../js/cookie.js"></script>
     <script src="../js/popup.js"></script>
+    <script src="../js/language-switcher.js"></script>
+    <script src="../js/scrollback.js"></script>
 
 </body>
 

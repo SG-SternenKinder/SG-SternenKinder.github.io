@@ -24,4 +24,3 @@
 - Language switch auf allen seiten und voreingestellt dann englisch
 - navbar fehler bei der seite neuladen ?
 - seiten laden überarbeiten
-- navbar aktiv layer ein führen (leicht blur effekt ?)

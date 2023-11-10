@@ -65,6 +65,7 @@
 
         <a href="" class="logo no-click"><span>SG</span>SternenKinder</a>
 
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul class="navbar">
             <li><a href="" onclick="reloadPage()">Home</a></li>
             <li><a href="about/index.html">About us</a></li>
@@ -78,6 +79,27 @@
                 location.reload(true);
             }
         </script>
+
+        <script>
+            function toggleMenu() {
+                const navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('active');
+            }
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+            // Aktives Element basierend auf der aktuellen URL ermitteln
+                const currentUrl = window.location.href;
+                const navbarLinks = document.querySelectorAll('.navbar a');
+
+                for (const link of navbarLinks) {
+                    if (link.href === currentUrl) {
+                    link.classList.add('active');
+                	}
+                }
+            });
+        </script>       
 
         <div class="follow-me">
             <a href="" class="no-click" draggable="false" rel="noopener">Follow us on</a>
@@ -115,12 +137,12 @@
         </script>
 
         <div id="language-switcher">
-            <div class="language-label">Sprache</div>
+            <div id="language-title" class="language-label translatable">Sprache</div>
             <div class="language-button" onclick="changeLanguage('de')"></div>
-                <label class="switch">
-                    <input type="checkbox" id="language-slider">
-                    <span class="slider"></span>
-                </label>
+            <label class="switch">
+                <input type="checkbox" id="language-slider">
+                <span class="slider"></span>
+            </label>
             <div class="language-button" onclick="changeLanguage('en')"></div>
         </div>
 
@@ -129,8 +151,8 @@
     <section class="home">
         <div class="home-text">
             <h5>i forgot</h5>
-            <h1 id="home-title" class="translatable"></h1>
-            <p id="home-text" class="translatable"></p>
+            <h1 id="home-title" class="translatable">English Title</h1>
+            <p id="home-text" class="translatable">This is an English text.</p>
             <div class="btn">No idea what's supposed to be there</div>
         </div>
     </section>
@@ -170,6 +192,10 @@
         </div>
     </div>
 
+    <div id="scroll-to-top">
+        <div class="fas fa-arrow-up"></div>
+    </div>
+
     <div id="footer-container"></div>
 
     <script src="js/footer.js"></script>
@@ -177,6 +203,7 @@
     <script src="js/popup.js"></script>
     <script src="js/cookie.js"></script>
     <script src="js/language-switcher.js"></script>
+    <script src="js/scrollback.js"></script>
 
 </body>
 
