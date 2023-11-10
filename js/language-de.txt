@@ -1,0 +1,4 @@
+language-label=Language
+
+home-title=Deutscher Titel
+home-text=Dies ist ein deutscher Text.

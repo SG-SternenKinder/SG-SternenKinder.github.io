@@ -53,11 +53,12 @@
 
     <noscript class="noscript-message">
         <!-- Ladebildschirm -->
-        <div id="loading-screen" class="hidden">
+        <div id="loading-screen">
             <!-- Hier wird der Inhalt des Ladebildschirms platziert -->
             <p>Loading...</p>
             <div class="loading-spinner"></div>
         </div>
+        <p>test text</p>
     </noscript>
 
     <header>
@@ -65,39 +66,71 @@
         <a href="" class="logo no-click"><span>SG</span>SternenKinder</a>
 
         <ul class="navbar">
-            <li><a href="/">Home</a></li>
+            <li><a href="" onclick="reloadPage()">Home</a></li>
             <li><a href="about/index.html">About us</a></li>
             <li><a href="contact/index.html">Contact</a></li>
             <li><a href="privacy/index.html">Privacy</a></li>
             <li><a href="imprint/index.html">Imprint</a></li>
         </ul>
 
+        <script>
+            function reloadPage() {
+                location.reload(true);
+            }
+        </script>
+
         <div class="follow-me">
             <a href="" class="no-click" draggable="false" rel="noopener">Follow us on</a>
-            <a href="/" draggable="false" title="TikTok" rel="noopener" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="/" draggable="false" title="Instagram" rel="noopener" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://discord.gg/7BkTCYNkZt" draggable="false" title="Discord" rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
-            <a href="https://osborntv.github.io" draggable="false" title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
+            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener" onclick="checkLink('TikTok')"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener" onclick="checkLink('Instagram')"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://discord.gg/7BkTCYNkZt" onclick="checkLink('Discord')" draggable="false" title="Discord" rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://osborntv.github.io" onclick="checkLink('Github')" draggable="false" title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
         </div>
+
+        <script>
+            function checkLink(platform) {
+                switch (platform) {
+                    case 'TikTok':
+                        break;
+                    case 'Instagram':
+                        break;
+                }
+
+                if (true) {
+                    alert('Die Seite existiert noch nicht.');
+                }
+            }
+
+            function checkLink2(platform) {
+                switch (platform) {
+                    case 'Discord':
+                        break;
+                    case 'Github':
+                        break;
+                }
+                if (true) {
+                    alert('Achtung! Sie werden weitergeleitet')
+                }
+            }
+        </script>
 
         <div id="language-switcher">
             <div class="language-label">Sprache</div>
             <div class="language-button" onclick="changeLanguage('de')"></div>
-            <label class="switch">
-                <input type="checkbox" id="language-slider">
-                <span class="slider"></span>
-            </label>
+                <label class="switch">
+                    <input type="checkbox" id="language-slider">
+                    <span class="slider"></span>
+                </label>
             <div class="language-button" onclick="changeLanguage('en')"></div>
-            <div class="slider-text"></div>
-        </div>        
+        </div>
 
     </header>
 
     <section class="home">
         <div class="home-text">
             <h5>i forgot</h5>
-            <h1 id="main-title">TEST<br>TEXT</h1>
-            <p id="main-text">THIS IS A TEST TEXT</p>
+            <h1 id="home-title" class="translatable">TEST<br>TEXT</h1>
+            <p id="home-text" class="translatable">THIS IS A TEST TEXT</p>
             <div class="btn">No idea what's supposed to be there</div>
         </div>
     </section>
@@ -109,12 +142,12 @@
             <p>Durch die Nutzung unserer Website akzeptieren Sie unsere</p>
             <p>Wenn Sie fortfahren, stimmen Sie der Verwendung von Cookies zu.</p>
             <br>
-                <div class="mitte-container">
-                    <a href="imprint/index.html" target="_blank">Datenschutzrichtlinien</a>
-                    <a href="cookies/cookies.html" target="_blank">Cookie-Richtlinien</a>
-                </div>
-            <button id="accept-cookies">Cookies akzeptieren</button> <!-- Cookies akzeptieren-Schaltfläche -->
-            <button id="close-cookies">Cookies ablehnen</button> <!-- Cookies ablehnen-Schaltfläche -->
+            <div class="mitte-container">
+                <a href="imprint/index.html" target="_blank">Datenschutzrichtlinien</a>
+                <a href="cookies/cookies.html" target="_blank">Cookie-Richtlinien</a>
+            </div>
+            <button id="accept-cookies">Cookies akzeptieren</button>
+            <button id="close-cookies">Cookies ablehnen</button>
         </div>
     </div>
 
@@ -131,7 +164,8 @@
     <div class="popup-container" id="rejected-popup">
         <div class="popup-content">
             <h2>Cookies abgelehnt</h2>
-            <p>Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung Cookies speichern.</p>
+            <p>Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung
+                Cookies speichern.</p>
             <button id="close-rejected-popup">Schließen</button>
         </div>
     </div>

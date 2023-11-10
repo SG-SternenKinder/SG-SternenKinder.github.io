@@ -1,0 +1,4 @@
+language-label=Sprache
+
+home-title=English Title
+home-text=This is an English text.

@@ -44,28 +44,66 @@
 <body>
 
     <noscript class="noscript-message">
-        <div>Bitte aktiviere JavaScript, um diese Seite vollständig nutzen zu können.</div>
+        <!-- Ladebildschirm -->
+        <div id="loading-screen" class="hidden">
+            <!-- Hier wird der Inhalt des Ladebildschirms platziert -->
+            <p>Loading...</p>
+            <div class="loading-spinner"></div>
+        </div>
     </noscript>
 
     <header>
-        
+
         <a href="" class="logo no-click"><span>SG</span>SternenKinder</a>
 
         <ul class="navbar">
             <li><a href="/">Home</a></li>
-            <li><a href="/about/index.html">About us</a></li>
-            <li><a href="/contact/index.html">Contact</a></li>
-            <li><a href="/privacy/index.html">Privacy</a></li>
-            <li><a href="/imprint/index.html">Imprint</a></li>
+            <li><a href="../about/index.html">About us</a></li>
+            <li><a href="" onclick="reloadPage()">Contact</a></li>
+            <li><a href="../privacy/index.html">Privacy</a></li>
+            <li><a href="../imprint/index.html">Imprint</a></li>
         </ul>
 
+        <script>
+            function reloadPage() {
+                location.reload(true);
+            }
+        </script>
+
         <div class="follow-me">
-            <a href="" class="no-click" draggable="false" rel="noopener">Follow us</a>
-            <a href="/" draggable="false" title="TikTok" rel="noopener" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="/" draggable="false" title="Instagram" rel="noopener" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://discord.gg/7BkTCYNkZt" draggable="false" title="Discord" rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
-            <a href="https://osborntv.github.io" draggable="false" title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
+            <a href="" class="no-click" draggable="false" rel="noopener">Follow us on</a>
+            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener" onclick="checkLink('TikTok')"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener" onclick="checkLink('Instagram')"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://discord.gg/7BkTCYNkZt" onclick="checkLink('Discord')" draggable="false" title="Discord" rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://osborntv.github.io" onclick="checkLink('Github')" draggable="false" title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
         </div>
+
+        <script>
+            function checkLink(platform) {
+                switch (platform) {
+                    case 'TikTok':
+                        break;
+                    case 'Instagram':
+                        break;
+                }
+
+                if (true) {
+                    alert('Die Seite existiert noch nicht.');
+                }
+            }
+
+            function checkLink2(platform) {
+                switch (platform) {
+                    case 'Discord':
+                        break;
+                    case 'Github':
+                        break;
+                }
+                if (true) {
+                    alert('Achtung! Sie werden weitergeleitet')
+                }
+            }
+        </script>
 
     </header>
 
@@ -78,39 +116,40 @@
         </div>
     </section>
 
-        <!-- Popup-Container -->
-        <div class="popup-container" id="popup">
-            <div class="popup-content">
-                <h2>Cookie-Hinweis</h2>
-                <p>Durch die Nutzung unserer Website akzeptieren Sie unsere</p>
-                <p>Wenn Sie fortfahren, stimmen Sie der Verwendung von Cookies zu.</p>
-                <br>
-                    <div class="mitte-container">
-                        <a href="../imprint/index.html" target="_blank">Datenschutzrichtlinien</a>
-                        <a href="../cookies/cookies.html" target="_blank">Cookie-Richtlinien</a>
-                    </div>
-                <button id="accept-cookies">Cookies akzeptieren</button> <!-- Cookies akzeptieren-Schaltfläche -->
-                <button id="close-cookies">Cookies ablehnen</button> <!-- Cookies ablehnen-Schaltfläche -->
+    <!-- Popup-Container -->
+    <div class="popup-container" id="popup">
+        <div class="popup-content">
+            <h2>Cookie-Hinweis</h2>
+            <p>Durch die Nutzung unserer Website akzeptieren Sie unsere</p>
+            <p>Wenn Sie fortfahren, stimmen Sie der Verwendung von Cookies zu.</p>
+            <br>
+            <div class="mitte-container">
+                <a href="../imprint/index.html" target="_blank">Datenschutzrichtlinien</a>
+                <a href="../cookies/cookies.html" target="_blank">Cookie-Richtlinien</a>
             </div>
+            <button id="accept-cookies">Cookies akzeptieren</button>
+            <button id="close-cookies">Cookies ablehnen</button>
         </div>
-    
-        <!-- Akzeptiertes-Cookies-Popup -->
-        <div class="popup-container" id="accepted-popup">
-            <div class="popup-content">
-                <h2>Vielen Dank!</h2>
-                <p>das Sie Cookies akzeptieren.</p>
-                <button id="close-accepted-popup">Schließen</button>
-            </div>
+    </div>
+
+    <!-- Akzeptiertes-Cookies-Popup -->
+    <div class="popup-container" id="accepted-popup">
+        <div class="popup-content">
+            <h2>Vielen Dank!</h2>
+            <p>das Sie Cookies akzeptieren.</p>
+            <button id="close-accepted-popup">Schließen</button>
         </div>
-    
-        <!-- Abgelehntes-Cookies-Popup -->
-        <div class="popup-container" id="rejected-popup">
-            <div class="popup-content">
-                <h2>Cookies abgelehnt</h2>
-                <p>Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung Cookies speichern.</p>
-                <button id="close-rejected-popup">Schließen</button>
-            </div>
+    </div>
+
+    <!-- Abgelehntes-Cookies-Popup -->
+    <div class="popup-container" id="rejected-popup">
+        <div class="popup-content">
+            <h2>Cookies abgelehnt</h2>
+            <p>Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung
+                Cookies speichern.</p>
+            <button id="close-rejected-popup">Schließen</button>
         </div>
+    </div>
 
     <div id="footer-container"></div>
 
