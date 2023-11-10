@@ -347,6 +347,11 @@ section {
 .message {
     font-size: 18px; /* Schriftgröße anpassen */
     margin-top: 10px; /* Abstand zur Ladeanimation */
+    color: #000; /* Schwarzer Text */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Stile für den Footer */
