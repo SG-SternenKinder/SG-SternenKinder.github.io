@@ -1,6 +1,6 @@
 // noscript-loading.js
 document.addEventListener('DOMContentLoaded', function () {
-    const messageElement = document.querySelector('.message-text');
+    const messageElement = document.querySelector('.message');
     const spinnerElement = document.querySelector('.loading-spinner');
 
     // Array mit freundlichen Nachrichten
