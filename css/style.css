@@ -240,13 +240,13 @@ section {
 .cookie-section::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    filter: blur(2px);
+    filter: blur(8px); /* Ändern Sie den Blur-Effekt nach Bedarf */
     z-index: -1;
     transition: background-color 0.3s ease, filter 0.3s ease;
 }
