@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (key && value) {
                     const element = document.getElementById(key);
                     if (element) {
-                        element.innerText = value;
+                        element.inneinnerHTML = value;
                     }
                 }
             });
@@ -26,9 +26,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function fetchTexts(language) {
-        // Hier den Pfad zur zentralen Textdatei einfügen
-        const response = await fetch(`../language/language-${language}.txt`);
-        return response;
+        try {
+            const response = await fetch(`../language/language-${language}.txt`);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch language file for ${language}`);
+            }
+            return response;
+        } catch (error) {
+            throw new Error(`Error fetching language file: ${error.message}`);
+        }
     }
 
     function updateTexts(texts, language) {
@@ -47,28 +53,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Überprüfe, ob der Slider auf Englisch steht und lade entsprechende Texte
         async function loadDynamicTexts() {
-            const linkTexts = await getLinkTexts();
-            const tikTokLink = getTextValue('tiktok-link', linkTexts);
-            const instagramLink = getTextValue('instagram-link', linkTexts);
-            const discordLink = getTextValue('discord-link', linkTexts);
-            const githubLink = getTextValue('github-link', linkTexts);
+            try {
+                const linkTexts = await getLinkTexts();
+                const tikTokLink = getTextValue('tiktok-link', linkTexts);
+                const instagramLink = getTextValue('instagram-link', linkTexts);
+                const discordLink = getTextValue('discord-link', linkTexts);
+                const githubLink = getTextValue('github-link', linkTexts);
 
-            // Füge Event Listener für die Links hinzu
-            document.getElementById('tiktok-link').addEventListener('click', function () {
-                checkLink('TikTok', tikTokLink);
-            });
+                // Füge Event Listener für die Links hinzu
+                document.getElementById('tiktok-link').addEventListener('click', function () {
+                    checkLink('TikTok', tikTokLink);
+                });
 
-            document.getElementById('instagram-link').addEventListener('click', function () {
-                checkLink('Instagram', instagramLink);
-            });
+                document.getElementById('instagram-link').addEventListener('click', function () {
+                    checkLink('Instagram', instagramLink);
+                });
 
-            document.getElementById('discord-link').addEventListener('click', function () {
-                checkLink2('Discord', discordLink);
-            });
+                document.getElementById('discord-link').addEventListener('click', function () {
+                    checkLink2('Discord', discordLink);
+                });
 
-            document.getElementById('github-link').addEventListener('click', function () {
-                checkLink2('Github', githubLink);
-            });
+                document.getElementById('github-link').addEventListener('click', function () {
+                    checkLink2('Github', githubLink);
+                });
+            } catch (error) {
+                console.error('Fehler beim Laden dynamischer Texte:', error);
+            }
         }
 
         function getTextValue(textId, texts) {
