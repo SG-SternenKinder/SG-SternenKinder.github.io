@@ -255,11 +255,11 @@ section {
     color: #000;
     text-align: center;
     z-index: 1;
-    background-color: rgba(255, 255, 255, 0.9); /* Hintergrundfarbe des Kastens */
-    border-radius: 10px; /* Abgerundete Ecken für den Kasten */
+    /*background-color: rgba(255, 255, 255, 0.9); Hintergrundfarbe des Kastens */
+    border-radius: 20px; /* Abgerundete Ecken für den Kasten */
     padding: 20px; /* Innenabstand für den Kasten */
     backdrop-filter: blur(10px); /* Blur-Effekt für den Hintergrund */
-    height: 80vh; /* Ändern Sie die Höhe nach Bedarf */
+    height: 40vh; /* Ändern Sie die Höhe nach Bedarf */
     width: 80%; /* Ändern Sie die Breite nach Bedarf */
     margin: auto; /* Zentrieren Sie den Kasten horizontal */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Schatten für den Kasten */
