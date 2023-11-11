@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (key && value) {
                     const element = document.getElementById(key);
                     if (element) {
-                        element.textContent = value;
+                        element.innerText = value;
                     }
                 }
             });
