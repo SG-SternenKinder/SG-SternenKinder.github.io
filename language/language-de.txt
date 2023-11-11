@@ -2,19 +2,19 @@
 
 language-title=Language
 
-home-title=Deutscher&lt;br&gt;Titel
+home-title=Deutscher <br> Titel
 home-text=Dies ist ein deutscher Text.
 
-about-title=Deutscher&lt;br&gt;Titel
+about-title=Deutscher <br> Titel
 about-text=Dies ist ein deutscher Text.
 
-contact-title=Deutscher&lt;br&gt;Titel
+contact-title=Deutscher <br> Titel
 contact-text=Dies ist ein deutscher Text.
 
-imprint-title=Deutscher&lt;br&gt;Titel
+imprint-title=Deutscher <br> Titel
 imprint-text=Dies ist ein deutscher Text.
 
-privacy-title=Deutscher&lt;br&gt;Titel
+privacy-title=Deutscher <br> Titel
 privacy-text=Dies ist ein deutscher Text.
 
 cookie-header=Verwendung von Cookies auf unserer Website
