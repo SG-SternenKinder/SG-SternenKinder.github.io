@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             });
+
+            // Aktualisiere auch die Texte der Navbar
+            updateNavbarTexts(texts, language);
         } catch (error) {
             console.error('Fehler beim Laden der Texte:', error);
         }
@@ -26,6 +29,37 @@ document.addEventListener('DOMContentLoaded', function () {
         // Hier den Pfad zur zentralen Textdatei einfügen
         const response = await fetch(`../language/language-${language}.txt`);
         return response;
+    }
+
+    function updateNavbarTexts(texts, language) {
+        // Array mit den IDs der Navbar-Elemente
+        const navbarElementIds = ['home-link', 'about-link', 'contact-link', 'privacy-link', 'imprint-link'];
+
+        navbarElementIds.forEach(function (elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                // Ersetze '-link' am Ende der ID mit '' (leerem String) für die entsprechende Text-ID
+                const textId = elementId.replace('-link', '');
+                const newText = getTextValue(textId, texts);
+                element.textContent = newText;
+            }
+        });
+    }
+
+    function getTextValue(textId, texts) {
+        // Finde die Zeile in den Texten, die mit der gewünschten ID beginnt
+        const regex = new RegExp(`^${textId}=`);
+
+        // Filtere die Zeilen basierend auf der ID
+        const matchingLines = texts.split('\n').filter(line => regex.test(line));
+
+        // Extrahiere den Wert aus der Zeile (alles nach dem Gleichheitszeichen)
+        if (matchingLines.length > 0) {
+            return matchingLines[0].split('=')[1];
+        }
+
+        // Wenn keine Übereinstimmung gefunden wurde, gib eine leere Zeichenfolge zurück
+        return '';
     }
 
     function updateLanguageCookie(language) {

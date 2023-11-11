@@ -1,18 +1,20 @@
+//language-de.txt
+
 language-title=Language
 
-home-title=Deutscher <br> Titel
+home-title=Deutscher Titel
 home-text=Dies ist ein deutscher Text.
 
-about-title=Deutscher <br> Titel
+about-title=Deutscher Titel
 about-text=Dies ist ein deutscher Text.
 
-contact-title=Deutscher <br> Titel
+contact-title=Deutscher Titel
 contact-text=Dies ist ein deutscher Text.
 
-imprint-title=Deutscher <br> Titel
+imprint-title=Deutscher Titel
 imprint-text=Dies ist ein deutscher Text.
 
-privacy-title=Deutscher <br> Titel
+privacy-title=Deutscher Titel
 privacy-text=Dies ist ein deutscher Text.
 
 cookie-header=Verwendung von Cookies auf unserer Website
@@ -21,3 +23,16 @@ cookie-paragraph-2=Cookie-Banner: Um sicherzustellen, dass Sie über unsere Verw
 cookie-paragraph-3=Cookies sind kleine Textdateien, die von Ihrem Browser gespeichert werden. Sie ermöglichen es uns, die Website anzupassen, Analysen durchzuführen und die Leistung der Website zu verbessern.
 cookie-paragraph-4=Durch die Nutzung unserer Website stimmen Sie der Verwendung von Cookies zu, wie in unserer Datenschutzerklärung beschrieben. Sie können die Verwendung von Cookies in Ihren Browsereinstellungen deaktivieren oder anpassen.
 cookie-paragraph-5=Weitere Informationen zur Verwendung von Cookies und Ihren Datenschutzrechten finden Sie in unserer Datenschutzerklärung.
+
+home-link=Startseite
+about-link=Über uns
+contact-link=Kontakt
+privacy-link=Datenschutz
+imprint-link=Impressum
+
+tiktok-link=TikTok
+instagram-link=Instagram
+discord-link=Discord
+github-link=Github
+page-not-exist-alert=Die Seite existiert noch nicht.
+redirect-alert=Achtung! Sie werden weitergeleitet.

@@ -59,12 +59,12 @@
 
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul class="navbar">
-            <li><a href="/">Home</a></li>
-            <li><a href="../about/index.html">Über uns</a></li>
-            <li><a href="../contact/index.html">Kontakt</a></li>
-            <li><a href="../imprint/index.html">Impressum</a></li>
-            <li><a href="../privacy/index.html">Datenschutzerklärung</a></li>
-            <li><a href="" onclick="reloadPage()">Cookies</a></li>
+            <li><a id="home-link" href="/">Home</a></li>
+            <li><a id="about-link" href="../about/index.html"></a></li>
+            <li><a id="contact-link" href="../contact/index.html"></a></li>
+            <li><a id="imprint-link" href="../imprint/index.html"></a></li>
+            <li><a id="privacy-link" href="../privacy/index.html"></a></li>
+            <li><a id="cookie-link" href="" onclick="reloadPage()"></a></li>
         </ul>
 
         <script>
@@ -106,31 +106,30 @@
             function checkLink(platform) {
                 switch (platform) {
                     case 'TikTok':
-                        break;
                     case 'Instagram':
+                        alert(getText(`${platform.toLowerCase()}-link`));
                         break;
-                }
-
-                if (true) {
-                    alert('Die Seite existiert noch nicht.');
+                    default:
+                        alert(getText('page-not-exist-alert'));
+                        break;
                 }
             }
 
-            function checkLink2(platform) {
-                switch (platform) {
+            function checkLink2(platform2) {
+                switch (platform2) {
                     case 'Discord':
-                        break;
                     case 'Github':
+                        alert(getText(`${platform2.toLowerCase()}-link`));
                         break;
-                }
-                if (true) {
-                    alert('Achtung! Sie werden weitergeleitet')
+                    default:
+                        alert(getText('redirect-alert'));
+                        break;
                 }
             }
         </script>
 
         <div id="language-switcher">
-            <div id="language-title" class="language-label">Sprache</div>
+            <div id="language-title" class="language-label"></div>
             <div class="language-button" onclick="changeLanguage('de')"></div>
             <label class="switch">
                 <input type="checkbox" id="language-slider">
