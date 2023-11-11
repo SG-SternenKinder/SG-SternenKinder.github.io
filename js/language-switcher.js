@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const languageSlider = document.getElementById('language-slider');
     const selectedLanguage = getCookie('language') || 'de';
 
+    // Funktion zum Setzen des Slider-Zustands
+    function setSliderState(language) {
+        languageSlider.checked = language === 'en' ;
+    }
+
     // Wenn es ein gespeichertes Sprach-Cookie gibt, stelle den Schieberegler entsprechend ein
     if (selectedLanguage === 'en') {
         languageSlider.checked = true;
