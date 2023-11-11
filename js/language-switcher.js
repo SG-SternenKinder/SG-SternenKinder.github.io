@@ -54,11 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
         setCookie('language', language, 4); // Speichere die Sprache für 4 Tage
     }
 
-    function setSliderState(language) {
-        languageSlider.checked = language === 'en';
-    }
-
-
     // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie
     languageSlider.addEventListener('change', function () {
         const selectedLanguage = languageSlider.checked ? 'en' : 'de';
