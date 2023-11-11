@@ -1,7 +1,7 @@
 // language-switcher.js
 document.addEventListener('DOMContentLoaded', function () {
     const languageSlider = document.getElementById('language-slider');
-    
+
     const currentUrl = window.location.href;
     const navbarLinks = document.querySelectorAll('.navbar a');
     for (const link of navbarLinks) {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function fetchTexts(language) {
         try {
-            const response = await fetch(`../language/language-${language}.txt`);
+            const response = await fetch(`language/language-${language}.txt`);
             if (!response.ok) {
                 throw new Error(`Failed to fetch language file for ${language}`);
             }
@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateTexts(texts, language) {
+        // Array mit den IDs der Navbar-Elemente
         // Array mit den IDs der Navbar-Elemente
         const ElementIds = ['home-link', 'about-link', 'contact-link', 'privacy-link', 'imprint-link', 'tiktok-link', 'instagram-link', 'discord-link', 'github-link'];
 
