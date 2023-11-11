@@ -110,23 +110,28 @@
         </div>
 
         <script>
-            // Funktion zum Abrufen des Texts aus der zentralen Datei
-            async function getText(textId) {
-            const savedLanguage = getCookie('language') || 'de';
-            const texts = await fetchTexts(savedLanguage);
-            const matchingLines = texts.split('\n').filter(line => line.startsWith(`${textId}=`));
-                if (matchingLines.length > 0) {
-                return matchingLines[0].split('=')[1];
+            function checkLink(platform) {
+                switch (platform) {
+                    case 'TikTok':
+                    case 'Instagram':
+                        alert(getText(`${platform.toLowerCase()}-link`));
+                        break;
+                    default:
+                        alert(getText('page-not-exist-alert'));
+                        break;
                 }
-            return '';
             }
 
-            function checkLink(platform, linkText) {
-                    alert(linkText || getText('page-not-exist-alert'));
-            }
-
-            function checkLink2(platform, linkText) {
-                alert(linkText || getText('redirect-alert'));
+            function checkLink2(platform2) {
+                switch (platform2) {
+                    case 'Discord':
+                    case 'Github':
+                        alert(getText(`${platform2.toLowerCase()}-link`));
+                        break;
+                    default:
+                        alert(getText('redirect-alert'));
+                        break;
+                }
             }
         </script>
 

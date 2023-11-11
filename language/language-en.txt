@@ -24,15 +24,5 @@ cookie-paragraph-3=Cookies are small text files stored by your browser. They all
 cookie-paragraph-4=By using our website, you agree to the use of cookies as described in our privacy policy. You can disable or adjust the use of cookies in your browser settings.
 cookie-paragraph-5=For more information on the use of cookies and your privacy rights, please refer to our privacy policy.
 
-home-link=Home
-about-link=About us
-contact-link=Contact
-privacy-link=Privacy
-imprint-link=Imprint
-
-tiktok-link=TikTok
-instagram-link=Instagram
-discord-link=Discord
-github-link=Github
 page-not-exist-alert=The page does not exist yet.
 redirect-alert=Attention! You will be redirected.

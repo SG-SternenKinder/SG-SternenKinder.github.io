@@ -24,15 +24,5 @@ cookie-paragraph-3=Cookies sind kleine Textdateien, die von Ihrem Browser gespei
 cookie-paragraph-4=Durch die Nutzung unserer Website stimmen Sie der Verwendung von Cookies zu, wie in unserer Datenschutzerklärung beschrieben. Sie können die Verwendung von Cookies in Ihren Browsereinstellungen deaktivieren oder anpassen.
 cookie-paragraph-5=Weitere Informationen zur Verwendung von Cookies und Ihren Datenschutzrechten finden Sie in unserer Datenschutzerklärung.
 
-home-link=Startseite
-about-link=Über uns
-contact-link=Kontakt
-privacy-link=Datenschutz
-imprint-link=Impressum
-
-tiktok-link=TikTok
-instagram-link=Instagram
-discord-link=Discord
-github-link=Github
 page-not-exist-alert=Die Seite existiert noch nicht.
 redirect-alert=Achtung! Sie werden weitergeleitet.
