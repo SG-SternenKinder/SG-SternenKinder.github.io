@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Konsolenausgabe für Debugging
             console.log('Fetching texts for language:', language);
 
-            const response = await fetch(`language/language-${language}.txt`);
+            const response = await fetch(`/language/language-${language}.txt`);
             if (!response.ok) {
                 throw new Error(`Failed to fetch language file for ${language}`);
             }
