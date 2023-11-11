@@ -1,12 +1,12 @@
 // language-switcher.js
 document.addEventListener('DOMContentLoaded', function () {
     const languageSlider = document.getElementById('language-slider');
-
-    const currentUrl = window.location.href;
     const navbarLinks = document.querySelectorAll('.navbar a');
+
+    // Konsolenausgabe für Debugging
     for (const link of navbarLinks) {
-        console.log(link.href, currentUrl); // Konsolenausgabe hinzufügen
-        if (link.href === currentUrl) {
+        console.log(link.href, window.location.href);
+        if (link.href === window.location.href) {
             link.classList.add('active');
         }
     }
@@ -16,24 +16,15 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             const response = await fetchTexts(language);
             const texts = await response.text();
-
-            texts.split('\n').forEach(function (text) {
-                const [key, value] = text.split('=');
-                if (key && value) {
-                    const element = document.getElementById(key);
-                    if (element) {
-                        element.innerHTML = value;
-                    }
-                }
-            });
-
-            // Aktualisiere auch die Texte
+            updatePageTexts(texts);
             updateTexts(texts, language);
+            loadDynamicTexts(texts);
         } catch (error) {
             console.error('Fehler beim Laden der Texte:', error);
         }
     }
 
+    // Funktion zum Fetchen der Texte
     async function fetchTexts(language) {
         try {
             const response = await fetch(`language/language-${language}.txt`);
@@ -46,8 +37,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Funktion zum Aktualisieren von statischem Text
+    function updatePageTexts(texts) {
+        const ElementIds = ['home-link', 'about-link', 'contact-link', 'privacy-link', 'imprint-link'];
+        ElementIds.forEach(function (elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                const textId = elementId.replace('-link', '');
+                const newText = getTextValue(textId, texts);
+                element.innerHTML = newText;
+            }
+        });
+    }
+
     function updateTexts(texts, language) {
-        // Array mit den IDs der Navbar-Elemente
         // Array mit den IDs der Navbar-Elemente
         const ElementIds = ['home-link', 'about-link', 'contact-link', 'privacy-link', 'imprint-link', 'tiktok-link', 'instagram-link', 'discord-link', 'github-link'];
 
@@ -61,8 +64,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Überprüfe, ob der Slider auf Englisch steht und lade entsprechende Texte
-        async function loadDynamicTexts() {
+        // Funktion zum Aktualisieren von dynamischem Text
+        async function loadDynamicTexts(texts) {
             try {
                 const linkTexts = await getLinkTexts();
                 const tikTokLink = getTextValue('tiktok-link', linkTexts);
@@ -70,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const discordLink = getTextValue('discord-link', linkTexts);
                 const githubLink = getTextValue('github-link', linkTexts);
 
-                // Füge Event Listener für die Links hinzu
                 document.getElementById('tiktok-link').addEventListener('click', function () {
                     checkLink('TikTok', tikTokLink);
                 });
@@ -143,4 +145,15 @@ document.addEventListener('DOMContentLoaded', function () {
         const texts = await response.text();
         return texts;
     }
+    // Initialisierung basierend auf gespeichertem Cookie
+    const savedLanguage = getCookie('language') || 'de';
+    setSliderState(savedLanguage);
+    loadTexts(savedLanguage);
+
+    // Überwachung des Schiebereglers und Speichern der Sprache im Cookie
+    languageSlider.addEventListener('change', function () {
+        const selectedLanguage = languageSlider.checked ? 'en' : 'de';
+        loadTexts(selectedLanguage);
+        updateLanguageCookie(selectedLanguage);
+    });
 });
