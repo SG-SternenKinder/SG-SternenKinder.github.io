@@ -258,6 +258,7 @@ section {
     background-color: rgba(255, 255, 255, 0.9); /* Hintergrundfarbe des Kastens */
     border-radius: 10px; /* Abgerundete Ecken für den Kasten */
     padding: 20px; /* Innenabstand für den Kasten */
+    backdrop-filter: blur(10px); /* Blur-Effekt für den Hintergrund */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Schatten für den Kasten */
 }
 
