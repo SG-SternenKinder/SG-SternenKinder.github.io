@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (key && value) {
                     const element = document.getElementById(key);
                     if (element) {
-                        element.inneinnerHTML = value;
+                        element.innerHTML = value;
                     }
                 }
             });
