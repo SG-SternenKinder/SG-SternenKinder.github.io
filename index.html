@@ -119,10 +119,7 @@
                 switch (platform) {
                     case 'TikTok':
                     case 'Instagram':
-                        displayNotification(`${platform.toLowerCase()}-link`);
-                        break;
-                    default:
-                        displayNotification('page-not-exist-alert');
+                        alert('The page does not exist yet.');
                         break;
                 }
             }
@@ -131,33 +128,9 @@
                 switch (platform2) {
                     case 'Discord':
                     case 'Github':
-                        displayNotification(`${platform2.toLowerCase()}-link`);
-                        break;
-                    default:
-                        displayNotification('redirect-alert');
+                        alert('Attention! You will be redirected.');
                         break;
                 }
-            }
-
-            function displayNotification(text) {
-                const notificationContainer = document.createElement('div');
-                notificationContainer.classList.add('notification-container');
-
-                const notification = document.createElement('div');
-                notification.classList.add('notification');
-                notification.textContent = text;
-
-                const closeButton = document.createElement('button');
-                closeButton.classList.add('close-button');
-                closeButton.textContent = 'Close';
-
-                closeButton.addEventListener('click', function () {
-                    notificationContainer.remove();
-                });
-
-                notification.appendChild(closeButton);
-                notificationContainer.appendChild(notification);
-                document.body.appendChild(notificationContainer);
             }
         </script>
 
@@ -176,7 +149,7 @@
     <section class="home">
         <div class="home-text">
             <h5>i forgot</h5>
-            <h1 id="home-title">English<br>Title</h1>
+            <h1 id="home-title"></h1>
             <p id="home-text">This is an English text.</p>
             <div class="btn">No idea what's supposed to be there</div>
         </div>

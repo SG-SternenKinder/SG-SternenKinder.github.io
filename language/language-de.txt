@@ -23,6 +23,3 @@ cookie-paragraph-2=Cookie-Banner: Um sicherzustellen, dass Sie über unsere Verw
 cookie-paragraph-3=Cookies sind kleine Textdateien, die von Ihrem Browser gespeichert werden. Sie ermöglichen es uns, die Website anzupassen, Analysen durchzuführen und die Leistung der Website zu verbessern.
 cookie-paragraph-4=Durch die Nutzung unserer Website stimmen Sie der Verwendung von Cookies zu, wie in unserer Datenschutzerklärung beschrieben. Sie können die Verwendung von Cookies in Ihren Browsereinstellungen deaktivieren oder anpassen.
 cookie-paragraph-5=Weitere Informationen zur Verwendung von Cookies und Ihren Datenschutzrechten finden Sie in unserer Datenschutzerklärung.
-
-page-not-exist-alert=Die Seite existiert noch nicht.
-redirect-alert=Achtung! Sie werden weitergeleitet.

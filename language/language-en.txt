@@ -23,6 +23,3 @@ cookie-paragraph-2=Cookie Banner: To ensure that you are informed about our use 
 cookie-paragraph-3=Cookies are small text files stored by your browser. They allow us to customize the website, perform analytics, and improve website performance.
 cookie-paragraph-4=By using our website, you agree to the use of cookies as described in our privacy policy. You can disable or adjust the use of cookies in your browser settings.
 cookie-paragraph-5=For more information on the use of cookies and your privacy rights, please refer to our privacy policy.
-
-page-not-exist-alert=The page does not exist yet.
-redirect-alert=Attention! You will be redirected.
