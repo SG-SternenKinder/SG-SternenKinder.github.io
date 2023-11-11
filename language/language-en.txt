@@ -2,19 +2,19 @@
 
 language-title=Sprache
 
-home-title=English Title
+home-title=English <br> Title
 home-text=This is an English text.
 
-about-title=English Titel
+about-title=English <br> Titel
 about-text=This is an English text.
 
-contact-title=English Titel
+contact-title=English <br> Titel
 contact-text=This is an English text.
 
-imprint-title=English Titel
+imprint-title=English <br> Titel
 imprint-text=This is an English text.
 
-privacy-title=English Titel
+privacy-title=English <br> Titel
 privacy-text=This is an English text.
 
 cookie-header=Usage of Cookies on Our Website

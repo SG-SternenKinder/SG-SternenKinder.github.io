@@ -102,32 +102,6 @@
             <a href="https://osborntv.github.io" onclick="checkLink2('Github')" draggable="false" title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
         </div>
 
-        <script>
-            function checkLink(platform) {
-                switch (platform) {
-                    case 'TikTok':
-                    case 'Instagram':
-                        alert(getText(`${platform.toLowerCase()}-link`));
-                        break;
-                    default:
-                        alert(getText('page-not-exist-alert'));
-                        break;
-                }
-            }
-
-            function checkLink2(platform2) {
-                switch (platform2) {
-                    case 'Discord':
-                    case 'Github':
-                        alert(getText(`${platform2.toLowerCase()}-link`));
-                        break;
-                    default:
-                        alert(getText('redirect-alert'));
-                        break;
-                }
-            }
-        </script>
-
         <div id="language-switcher">
             <div id="language-title" class="language-label"></div>
             <div class="language-button" onclick="changeLanguage('de')"></div>
