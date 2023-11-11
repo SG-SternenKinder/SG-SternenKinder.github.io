@@ -39,9 +39,13 @@
     <link rel="stylesheet" href="css/style.css">
 
     <!-- Fontawesome -->
-    <script defer src="fontawesome/js/brands.js"></script>
-    <script defer src="fontawesome/js/solid.js"></script>
-    <script defer src="fontawesome/js/fontawesome.js"></script>
+    <script src="fontawesome/js/brands.js"></script>
+    <script src="fontawesome/js/solid.js"></script>
+    <script src="fontawesome/js/fontawesome.js"></script>
+
+    <script defer src="js/language-switcher.js"></script>
+    <script defer src="js/noscript-loading.js"></script>
+    <script defer src="js/popup.js"></script>
 
 </head>
 
@@ -105,6 +109,27 @@
             <a href="https://osborntv.github.io" onclick="checkLink2('Github')" draggable="false" title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
         </div>
 
+        <script>
+            // Funktion zum Abrufen des Texts aus der zentralen Datei
+            async function getText(textId) {
+            const savedLanguage = getCookie('language') || 'de';
+            const texts = await fetchTexts(savedLanguage);
+            const matchingLines = texts.split('\n').filter(line => line.startsWith(`${textId}=`));
+                if (matchingLines.length > 0) {
+                return matchingLines[0].split('=')[1];
+                }
+            return '';
+            }
+
+            function checkLink(platform, linkText) {
+                    alert(linkText || getText('page-not-exist-alert'));
+            }
+
+            function checkLink2(platform, linkText) {
+                alert(linkText || getText('redirect-alert'));
+            }
+        </script>
+
         <div id="language-switcher">
             <div id="language-title" class="language-label"></div>
             <div class="language-button" onclick="changeLanguage('de')"></div>
@@ -167,10 +192,7 @@
     <div id="footer-container"></div>
 
     <script src="js/footer.js"></script>
-    <script src="js/noscript-loading.js"></script>
-    <script src="js/popup.js"></script>
     <script src="js/cookie.js"></script>
-    <script src="js/language-switcher.js"></script>
     <script src="js/scrollback.js"></script>
 
 </body>

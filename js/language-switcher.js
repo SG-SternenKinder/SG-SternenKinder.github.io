@@ -1,6 +1,15 @@
 // language-switcher.js
 document.addEventListener('DOMContentLoaded', function () {
     const languageSlider = document.getElementById('language-slider');
+    
+    const currentUrl = window.location.href;
+    const navbarLinks = document.querySelectorAll('.navbar a');
+    for (const link of navbarLinks) {
+        console.log(link.href, currentUrl); // Konsolenausgabe hinzufügen
+        if (link.href === currentUrl) {
+            link.classList.add('active');
+        }
+    }
 
     // Funktion zum Laden von Texten aus der Datei
     async function loadTexts(language) {
@@ -132,24 +141,5 @@ document.addEventListener('DOMContentLoaded', function () {
         const response = await fetchTexts(savedLanguage);
         const texts = await response.text();
         return texts;
-    }
-
-    function checkLink(platform, linkText) {
-        alert(linkText || getText('page-not-exist-alert'));
-    }
-
-    function checkLink2(platform, linkText) {
-        alert(linkText || getText('redirect-alert'));
-    }
-
-    // Funktion zum Abrufen des Texts aus der zentralen Datei
-    async function getText(textId) {
-        const savedLanguage = getCookie('language') || 'de';
-        const texts = await fetchTexts(savedLanguage);
-        const matchingLines = texts.split('\n').filter(line => line.startsWith(`${textId}=`));
-        if (matchingLines.length > 0) {
-            return matchingLines[0].split('=')[1];
-        }
-        return '';
     }
 });
