@@ -1,16 +1,23 @@
-language-label=Language
+language-title=Language
 
-home-title=Deutscher Titel
+home-title=Deutscher <br> Titel
 home-text=Dies ist ein deutscher Text.
 
-about-title=Deutscher Titel
+about-title=Deutscher <br> Titel
 about-text=Dies ist ein deutscher Text.
 
-contact-title=Deutscher Titel
+contact-title=Deutscher <br> Titel
 contact-text=Dies ist ein deutscher Text.
 
-imprint-title=Deutscher Titel
+imprint-title=Deutscher <br> Titel
 imprint-text=Dies ist ein deutscher Text.
 
-privacy-title=Deutscher Titel
+privacy-title=Deutscher <br> Titel
 privacy-text=Dies ist ein deutscher Text.
+
+cookie-header=Verwendung von Cookies auf unserer Website
+cookie-paragraph-1=Wir verwenden Cookies auf unserer Website, sowie unserem Webhoster [Github](Github-Link). Auf unserer Website verwenden wir Cookies für folgende Zwecke:
+cookie-paragraph-2=Cookie-Banner: Um sicherzustellen, dass Sie über unsere Verwendung von Cookies informiert werden, verwenden wir ein Cookie-Banner. Dieses Banner speichert Ihre Zustimmung zur Verwendung von Cookies, um Ihnen das bestmögliche Website-Erlebnis zu bieten. Auch diese Einwilligung wird für 4 Tage gespeichert.
+cookie-paragraph-3=Cookies sind kleine Textdateien, die von Ihrem Browser gespeichert werden. Sie ermöglichen es uns, die Website anzupassen, Analysen durchzuführen und die Leistung der Website zu verbessern.
+cookie-paragraph-4=Durch die Nutzung unserer Website stimmen Sie der Verwendung von Cookies zu, wie in unserer Datenschutzerklärung beschrieben. Sie können die Verwendung von Cookies in Ihren Browsereinstellungen deaktivieren oder anpassen.
+cookie-paragraph-5=Weitere Informationen zur Verwendung von Cookies und Ihren Datenschutzrechten finden Sie in unserer Datenschutzerklärung.

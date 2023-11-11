@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Funktion zum Laden von Texten aus der Datei
     async function loadTexts(language) {
         try {
-            const response = await fetch(`language/language-${language}.txt`);
+            const response = await fetchTexts(language);
             const texts = await response.text();
 
             texts.split('\n').forEach(function (text) {
@@ -22,6 +22,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    async function fetchTexts(language) {
+        // Hier den Pfad zur zentralen Textdatei einfügen
+        const response = await fetch(`../language/language-${language}.txt`);
+        return response;
+    }
+
     function updateLanguageCookie(language) {
         setCookie('language', language, 4); // Speichere die Sprache für 4 Tage
     }
@@ -30,9 +36,15 @@ document.addEventListener('DOMContentLoaded', function () {
         languageSlider.checked = language === 'en';
     }
 
+    // Initialisiere den Text basierend auf dem gespeicherten Cookie
+    const savedLanguage = getCookie('language') || 'de';
+    setSliderState(savedLanguage);
+
+    // Lade die Texte basierend auf der gespeicherten Sprache
+    loadTexts(savedLanguage);
+
     // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie
     languageSlider.addEventListener('change', function () {
-        const savedLanguage = getCookie('language') || 'de';
         const selectedLanguage = languageSlider.checked ? 'en' : 'de';
 
         // Aktualisiere den Text der Elemente basierend auf der ausgewählten Sprache
@@ -41,9 +53,4 @@ document.addEventListener('DOMContentLoaded', function () {
         // Speichere die ausgewählte Sprache im Cookie
         updateLanguageCookie(selectedLanguage);
     });
-
-    // Initialisiere den Text basierend auf dem gespeicherten Cookie
-    const savedLanguage = getCookie('language') || 'de';
-    setSliderState(savedLanguage);
-    loadTexts(savedLanguage);
 });
