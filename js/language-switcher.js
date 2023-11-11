@@ -1,10 +1,10 @@
 // language-switcher.js
 document.addEventListener('DOMContentLoaded', function () {
     const languageSlider = document.getElementById('language-slider');
-    const savedLanguage = getCookie('language') || 'de';
+    const selectedLanguage = getCookie('language') || 'de';
 
     // Wenn es ein gespeichertes Sprach-Cookie gibt, stelle den Schieberegler entsprechend ein
-    if (savedLanguage === 'en') {
+    if (selectedLanguage === 'en') {
         languageSlider.checked = true;
     }
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (key && value) {
                     const element = document.getElementById(key);
                     if (element) {
-                        element.textContent = value;
+                        element.innerHTML = value;
                     }
                 }
             });
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedLanguage = languageSlider.checked ? 'en' : 'de';
 
         // Initialisiere den Text basierend auf dem gespeicherten Cookie
-        setSliderState(savedLanguage);
+        setSliderState(selectedLanguage);
 
         // Aktualisiere den Text der Elemente basierend auf der ausgewählten Sprache
         loadTexts(selectedLanguage);
@@ -72,7 +72,5 @@ document.addEventListener('DOMContentLoaded', function () {
         // Speichere die ausgewählte Sprache im Cookie
         updateLanguageCookie(selectedLanguage);
     });
-
-    loadTexts(savedLanguage);
 
 });

@@ -67,11 +67,11 @@
 
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul class="navbar">
-            <li><a id="home-link" href="" onclick="reloadPage()">home</a></li>
-            <li><a id="about-link" href="about/index.html">about</a></li>
-            <li><a id="contact-link" href="contact/index.html">contact</a></li>
-            <li><a id="privacy-link" href="privacy/index.html">privacy</a></li>
-            <li><a id="imprint-link" href="imprint/index.html">imprint</a></li>
+            <li><a href="" onclick="reloadPage()">Home</a></li>
+            <li><a href="about/index.html">About</a></li>
+            <li><a href="contact/index.html">Contact</a></li>
+            <li><a href="privacy/index.html">Privacy</a></li>
+            <li><a href="imprint/index.html">Imprint</a></li>
         </ul>
 
         <script>
@@ -103,10 +103,15 @@
 
         <div class="follow-me">
             <a href="" class="no-click" draggable="false" rel="noopener">Follow us on</a>
-            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener" onclick="checkLink('TikTok')"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener" onclick="checkLink('Instagram')"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://discord.gg/7BkTCYNkZt" onclick="checkLink2('Discord')" draggable="false" title="Discord" rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
-            <a href="https://osborntv.github.io" onclick="checkLink2('Github')" draggable="false" title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
+            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener"
+                onclick="checkLink('TikTok')"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener"
+                onclick="checkLink('Instagram')"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://discord.gg/7BkTCYNkZt" onclick="checkLink2('Discord')" draggable="false" title="Discord"
+                rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://osborntv.github.io" onclick="checkLink2('Github')" draggable="false"
+                title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i
+                    class="fa-solid fa-globe"></i></a>
         </div>
 
         <script>
@@ -114,10 +119,10 @@
                 switch (platform) {
                     case 'TikTok':
                     case 'Instagram':
-                        alert(getText(`${platform.toLowerCase()}-link`));
+                        displayNotification(`${platform.toLowerCase()}-link`);
                         break;
                     default:
-                        alert(getText('page-not-exist-alert'));
+                        displayNotification('page-not-exist-alert');
                         break;
                 }
             }
@@ -126,12 +131,33 @@
                 switch (platform2) {
                     case 'Discord':
                     case 'Github':
-                        alert(getText(`${platform2.toLowerCase()}-link`));
+                        displayNotification(`${platform2.toLowerCase()}-link`);
                         break;
                     default:
-                        alert(getText('redirect-alert'));
+                        displayNotification('redirect-alert');
                         break;
                 }
+            }
+
+            function displayNotification(text) {
+                const notificationContainer = document.createElement('div');
+                notificationContainer.classList.add('notification-container');
+
+                const notification = document.createElement('div');
+                notification.classList.add('notification');
+                notification.textContent = text;
+
+                const closeButton = document.createElement('button');
+                closeButton.classList.add('close-button');
+                closeButton.textContent = 'Close';
+
+                closeButton.addEventListener('click', function () {
+                    notificationContainer.remove();
+                });
+
+                notification.appendChild(closeButton);
+                notificationContainer.appendChild(notification);
+                document.body.appendChild(notificationContainer);
             }
         </script>
 

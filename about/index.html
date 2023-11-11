@@ -59,11 +59,11 @@
 
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <ul class="navbar">
-            <li><a id="home-link" href="/"></a></li>
-            <li><a id="about-link" href="" onclick="reloadPage()"></a></li>
-            <li><a id="contact-link" href="../contact/index.html"></a></li>
-            <li><a id="privacy-link" href="../privacy/index.html"></a></li>
-            <li><a id="imprint-link" href="../imprint/index.html"></a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="" onclick="reloadPage()">About</a></li>
+            <li><a href="../contact/index.html">Contact</a></li>
+            <li><a href="../privacy/index.html">Privacy</a></li>
+            <li><a href="../imprint/index.html">Imprint</a></li>
         </ul>
 
         <script>
@@ -106,10 +106,10 @@
                 switch (platform) {
                     case 'TikTok':
                     case 'Instagram':
-                        alert(getText(`${platform.toLowerCase()}-link`));
+                        displayNotification(`${platform.toLowerCase()}-link`);
                         break;
                     default:
-                        alert(getText('page-not-exist-alert'));
+                        displayNotification('page-not-exist-alert');
                         break;
                 }
             }
@@ -118,12 +118,33 @@
                 switch (platform2) {
                     case 'Discord':
                     case 'Github':
-                        alert(getText(`${platform2.toLowerCase()}-link`));
+                        displayNotification(`${platform2.toLowerCase()}-link`);
                         break;
                     default:
-                        alert(getText('redirect-alert'));
+                        displayNotification('redirect-alert');
                         break;
                 }
+            }
+
+            function displayNotification(text) {
+                const notificationContainer = document.createElement('div');
+                notificationContainer.classList.add('notification-container');
+
+                const notification = document.createElement('div');
+                notification.classList.add('notification');
+                notification.textContent = text;
+
+                const closeButton = document.createElement('button');
+                closeButton.classList.add('close-button');
+                closeButton.textContent = 'Close';
+
+                closeButton.addEventListener('click', function () {
+                    notificationContainer.remove();
+                });
+
+                notification.appendChild(closeButton);
+                notificationContainer.appendChild(notification);
+                document.body.appendChild(notificationContainer);
             }
         </script>
 
