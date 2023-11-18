@@ -2,10 +2,6 @@
 
 /* Media Query für kleinere Bildschirme */
 @media screen and (max-width: 600px) {
-    .navbar {
-        padding: 10px;
-    }
-
     .navbar a {
         margin: 10px;
         font-size: 16px;
@@ -24,17 +20,6 @@
 
 /* Media Query für kleinere Bildschirme und mobile Geräte */
 @media only screen and (max-width: 767px) {
-.navbar {
-        padding: 15px;
-        flex-direction: column;
-        /* Ändere die Richtung auf Spalte */
-        align-items: stretch;
-        /* Dehne die Elemente über die Breite aus */
-        text-align: center;
-        /* Zentriere den Text */
-        display: none;
-    }
-
     .navbar li {
         padding: 10px;
         /* Füge Abstand zwischen den Elementen hinzu */
@@ -69,10 +54,6 @@
 
 /* Media Query für Tablets und kleinere Desktops */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    .navbar {
-        padding: 15px;
-    }
-
     .navbar a {
         margin: 12px;
         font-size: 18px;
@@ -91,10 +72,6 @@
 
 /* Media Query für größere Desktops */
 @media only screen and (min-width: 1024px) {
-    .navbar {
-        padding: 20px;
-    }
-
     .navbar li {
         padding: 15px;
     }
@@ -117,10 +94,6 @@
 
 /* Media Query für sehr kleine Bildschirme */
 @media screen and (max-width: 400px) {
-    .navbar {
-        padding: 5px;
-    }
-
     .navbar a {
         margin: 8px;
         font-size: 14px;
@@ -139,10 +112,6 @@
 
 /* Media Query für kleine Tablets und größere Handys */
 @media screen and (min-width: 401px) and (max-width: 767px) {
-    .navbar {
-        padding: 10px;
-    }
-
     .navbar a {
         margin: 10px;
         font-size: 16px;
@@ -161,10 +130,6 @@
 
 /* Media Query für größere Tablets und kleine Laptops */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-    .navbar {
-        padding: 15px;
-    }
-
     .navbar a {
         margin: 12px;
         font-size: 18px;
@@ -183,10 +148,6 @@
 
 /* Media Query für größere Laptops und Desktops */
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
-    .navbar {
-        padding: 20px;
-    }
-
     .navbar li {
         padding: 15px;
     }
@@ -209,10 +170,6 @@
 
 /* Media Query für größere Desktops und Breitbildschirme */
 @media screen and (min-width: 1280px) {
-    .navbar {
-        padding: 25px;
-    }
-
     .navbar li {
         padding: 20px;
     }
