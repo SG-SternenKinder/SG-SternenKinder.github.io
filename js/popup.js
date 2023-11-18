@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeRejectedPopupButton = document.getElementById('close-rejected-popup');
 
     // Überprüfen, ob das Popup bereits angezeigt wurde
-    const popupShown = CookieUtil.setSessionItem('popupShown');
+    const popupShown = sessionStorage.getItem('popupShown');
 
     // Überprüfe, ob Cookies akzeptiert wurden
     const acceptedCookies = CookieUtil.getCookie('cookiesAccepted');

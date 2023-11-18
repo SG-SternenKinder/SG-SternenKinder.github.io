@@ -42,16 +42,16 @@ const CookieUtil = (function () {
         document.cookie = `${name}=${encodeURIComponent(value)};path=/`;
     }
 
-        // Abrufen eines Werts aus dem Session Storage anhand des Namens
-        function getSessionItem(name) {
-            try {
-                const item = sessionStorage.getItem(name);
-                return item ? JSON.parse(item) : null;
-            } catch (error) {
-                console.error('Fehler beim Abrufen des Session-Items:', error);
-                return null;
-            }
+    // Abrufen eines Werts aus dem Session Storage anhand des Namens
+    function getSessionItem(name) {
+        try {
+            const item = sessionStorage.getItem(name);
+            return item ? JSON.parse(item) : null;
+        } catch (error) {
+            console.error('Fehler beim Abrufen des Session-Items:', error);
+            return null;
         }
+    }
 
     // Abrufen eines Cookies anhand des Namens
     function getCookie(name) {
