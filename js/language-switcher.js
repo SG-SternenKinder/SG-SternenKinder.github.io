@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateLanguageCookie(language) {
-        setCookie('language', language, 4); // Speichere die Sprache für 4 Tage
+        CookieUtil.setCookie('language', language, 4); // Speichere die Sprache für 4 Tage
     }
 
     // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie

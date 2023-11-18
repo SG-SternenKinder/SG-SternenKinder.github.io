@@ -8,23 +8,22 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeAcceptedPopupButton = document.getElementById('close-accepted-popup');
     const closeRejectedPopupButton = document.getElementById('close-rejected-popup');
 
-
     // Überprüfen, ob das Popup bereits angezeigt wurde
     const popupShown = sessionStorage.getItem('popupShown');
 
     // Überprüfe, ob Cookies akzeptiert wurden
-    const acceptedCookies = getCookie('cookiesAccepted');
+    const acceptedCookies = CookieUtil.getCookie('cookiesAccepted');
 
     // Überprüfe, ob Cookies abgelehnt wurden
-    const rejectedCookies = getCookie('cookiesRejected');
+    const rejectedCookies = CookieUtil.getCookie('cookiesRejected');
 
     // Entscheidung des Benutzers überprüfen und Popup entsprechend anzeigen
-    if (!popupShown && !acceptedCookies) {
+    if (!popupShown && !acceptedCookies && !rejectedCookies) {
         popup.style.display = 'flex';
     }
 
     acceptCookiesButton.addEventListener('click', function () {
-        setCookie('cookiesAccepted', 'true', 4);
+        CookieUtil.setCookie('cookiesAccepted', 'true', 4);
         popup.style.display = 'none';
         acceptedPopup.style.display = 'flex';
     });
@@ -33,6 +32,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Markiere das Popup als angezeigt in der Session-Speicherung
         sessionStorage.setItem('popupShown', 'true');
         popup.style.display = 'none';
+        
+        // Setze ein Session-Cookie für die Ablehnung von Cookies
+        CookieUtil.setSessionCookie('cookiesRejected', 'true');
         rejectedPopup.style.display = 'flex';
     });
 
@@ -45,5 +47,4 @@ document.addEventListener('DOMContentLoaded', function () {
         // Abgelehnt-Popup schließen
         rejectedPopup.style.display = 'none';
     });
-
 });

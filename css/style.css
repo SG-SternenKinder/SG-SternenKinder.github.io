@@ -18,6 +18,7 @@
     --main-color: blue;
     --h1-font: 6rem;
     --p-font: 1rem;
+    --accent-color: red;
 }
 
 /* Stile für den gesamten Body */
@@ -27,13 +28,6 @@ body {
     background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../img/background.png);
     background-size: cover;
     background-position: bottom center;
-}
-
-/* Media Query für kleinere Bildschirme */
-@media screen and (max-width: 600px) {
-    body {
-        font-size: 14px;
-    }
 }
 
 /* Stile für den Header */
@@ -80,33 +74,6 @@ span {
 .menu-toggle {
     display: none; /* Verstecke das Menüsymbol standardmäßig */
     cursor: pointer;
-}
-
-/* Stile für kleinere Bildschirme und mobile Geräte */
-@media only screen and (max-width: 767px) {
-    .menu-toggle {
-        display: block; /* Zeige das Menüsymbol für kleine Bildschirme */
-    }
-
-    .navbar {
-        display: none;
-        flex-direction: column; /* Ändere die Richtung auf Spalte */
-        align-items: stretch; /* Dehne die Elemente über die Breite aus */
-        text-align: center; /* Zentriere den Text */
-    }
-
-    .navbar li {
-        padding: 10px; /* Füge Abstand zwischen den Elementen hinzu */
-        border-bottom: 1px solid #ddd; /* Füge eine Trennlinie zwischen den Elementen hinzu */
-    }
-
-    .navbar a {
-        display: block; /* Mache die Links zu Blockelementen */
-    }
-
-    .navbar.active {
-        display: flex; /* Zeige die Navbar, wenn sie aktiv ist (z. B. nach einem Klick auf das Menüsymbol) */
-    }
 }
 
 .navbar a {
@@ -300,6 +267,7 @@ section {
     font-weight: 350;
     cursor: default;
     transition: background-color 0.5s ease;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .btn:hover {
@@ -543,3 +511,6 @@ body.scroll-up #scroll-to-top {
 body:not(.scroll-up) #scroll-to-top {
     bottom: -40px;
 } 
+
+/* Importiere die Media Queries */
+@import url('media.css');
