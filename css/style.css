@@ -345,7 +345,7 @@ footer {
 /* Stile für den Language Switcher */
 #language-switcher {
     position: absolute;
-    top: 24px;
+    top: 26px;
     right: 20px;
     display: flex;
     align-items: center;
