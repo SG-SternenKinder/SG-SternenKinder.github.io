@@ -31,17 +31,6 @@ const CookieUtil = (function () {
         document.cookie = cookieString;
     }
 
-    // Setzen eines Session-Cookies mit angegebenem Namen und Wert
-    function setSessionCookie(name, value) {
-        name = escapeCookieName(name);
-
-        if (!name || !value) {
-            return;
-        }
-
-        document.cookie = `${name}=${encodeURIComponent(value)};path=/`;
-    }
-
     // Abrufen eines Cookies anhand des Namens
     function getCookie(name) {
         const cookieName = escapeCookieName(name) + '=';
@@ -57,7 +46,6 @@ const CookieUtil = (function () {
 
     return {
         setCookie,
-        getCookie,
-        setSessionCookie
+        getCookie
     };
 })();
