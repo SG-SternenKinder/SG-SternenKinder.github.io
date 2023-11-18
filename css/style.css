@@ -1,3 +1,6 @@
+/* Importiere die Media Queries */
+@import url('media.css');
+
 /* Globale Zurücksetzungen und Stile */
 * {
     padding: 0;
@@ -526,6 +529,3 @@ body.scroll-up #scroll-to-top {
 body:not(.scroll-up) #scroll-to-top {
     bottom: -40px;
 } 
-
-/* Importiere die Media Queries */
-@import url('media.css');
