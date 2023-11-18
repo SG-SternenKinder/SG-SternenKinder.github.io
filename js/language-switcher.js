@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             if (!isOnline) {
                 // Keine Internetverbindung, zeige den Sprachcode anstelle der Flaggen
-                const offlineText = language.toUpperCase(); // Zeige den Sprachcode (EN oder DE)
+                //const offlineText = language.toUpperCase(); // Zeige den Sprachcode (EN oder DE)
 
                 const languageElement = document.getElementById('language');
                 if (languageElement) {
