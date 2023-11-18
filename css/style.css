@@ -366,10 +366,11 @@ footer {
 .slider {
     position: absolute;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    transform: translate(-50%, -50%); /* Um den Slider zu zentrieren */
     background-color: #fff;
     border-radius: 34px;
     transition: background-color 0.4s ease;
