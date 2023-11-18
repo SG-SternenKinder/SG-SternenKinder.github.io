@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
             popup.style.display = 'none';
 
             // Setze ein Session-Cookie für die Ablehnung von Cookies
-            CookieUtil.setSessionCookie('cookiesRejected', 'true');
+            sessionStorage.setItem ('cookiesRejected', 'true');
             rejectedPopup.style.display = 'flex';
         });
 
