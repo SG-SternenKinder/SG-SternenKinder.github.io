@@ -381,8 +381,8 @@ footer {
     position: absolute;
     height: 26px;
     width: 26px;
-    left: 4px;
-    bottom: 4px;
+    left: 50%;
+    bottom: 50%;
     border-radius: 50%;
     background-size: cover;
     transition: transform 0.4s ease;
