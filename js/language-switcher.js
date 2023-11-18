@@ -17,25 +17,25 @@ document.addEventListener('DOMContentLoaded', function () {
     async function loadTexts(language) {
         try {
             // Überprüfe, ob eine Internetverbindung besteht
-            const isOnline = navigator.onLine;
+            //const isOnline = navigator.onLine;
 
-            if (!isOnline) {
+            //if (!isOnline) {
                 // Keine Internetverbindung, zeige den Sprachcode anstelle der Flaggen
                 //const offlineText = language.toUpperCase(); // Zeige den Sprachcode (EN oder DE)
 
-                const languageElement = document.getElementById('language');
-                if (languageElement) {
-                    languageElement.innerHTML = offlineText;
-                }
+                //const languageElement = document.getElementById('language');
+                //if (languageElement) {
+                    //languageElement.innerHTML = offlineText;
+                //}
 
                 // Verstecke die Flaggen
-                const flagsElement = document.getElementById('flags');
-                if (flagsElement) {
-                    flagsElement.style.display = 'none';
-                }
+                //const flagsElement = document.getElementById('flags');
+                //if (flagsElement) {
+                //    flagsElement.style.display = 'none';
+                //}
 
-                return; // Beende die Funktion, wenn keine Internetverbindung besteht
-            }
+                //return; // Beende die Funktion, wenn keine Internetverbindung besteht
+            //}
 
             // Wenn eine Internetverbindung besteht, lade die Texte normal
             console.log('Loading texts for language:', language);
