@@ -289,9 +289,8 @@ section {
 /* Stile für die Nachricht bei deaktiviertem JavaScript */
 .noscript-message {
     position: fixed;
-    top: 50%; /* ändere dies nach Bedarf */
-    left: 50%; /* ändere dies nach Bedarf */
-    transform: translate(-50%, -50%);
+    top: 20px; /* ändere dies nach Bedarf */
+    left: 20px; /* ändere dies nach Bedarf */
     width: 100%;
     height: 100%;
     background: #7c7474;

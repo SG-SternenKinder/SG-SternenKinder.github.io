@@ -6,7 +6,6 @@
 
 ### Scripte
 - Lernen mit Javascripten (.js) step by step
-- Mehr Cookies mit einbinden? (Like Analyse)
 
 ### Website aussehen
 - style.css über und erarbeiten

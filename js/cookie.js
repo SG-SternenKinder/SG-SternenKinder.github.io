@@ -6,19 +6,29 @@ const CookieUtil = (function () {
     }
 
     // Setzen eines Cookies mit angegebenem Namen, Wert und Gültigkeitsdauer in Tagen
-    function setCookie(name, value, days) {
+    function setCookie(name, value, days, options = {}) {
         name = escapeCookieName(name);
-
+    
         if (typeof days !== 'number' || days <= 0) {
             return;
         }
         if (!name || !value) {
             return;
         }
-
+    
         const expires = new Date();
         expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
-        document.cookie = name + '=' + encodeURIComponent(value) + ';expires=' + expires.toUTCString() + ';path=/';
+    
+        let cookieString = `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/`;
+    
+        // Füge optionale Cookie-Optionen hinzu
+        for (const option in options) {
+            if (options.hasOwnProperty(option)) {
+                cookieString += `;${option}${options[option] === true ? '' : `=${options[option]}`}`;
+            }
+        }
+    
+        document.cookie = cookieString;
     }
 
     // Abrufen eines Cookies anhand des Namens
@@ -33,8 +43,6 @@ const CookieUtil = (function () {
         }
         return null;
     }
-
-    // Andere Funktionen, falls erforderlich
 
     return {
         setCookie,

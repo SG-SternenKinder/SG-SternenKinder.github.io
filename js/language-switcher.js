@@ -13,9 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
         languageSlider.checked = true;
     }
 
-    // Konsolenausgabe für Debugging
-    console.log('DOMContentLoaded event fired');
-
     // Funktion zum Laden von Texten aus der Datei
     async function loadTexts(language) {
         try {
@@ -58,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updateLanguageCookie(language) {
-        CookieUtil.setCookie('language', language, 4); // Speichere die Sprache für 4 Tage
+        CookieUtil.setCookie('language', language, 4, { secure: true }); // Speichere die Sprache für 4 Tage
     }
 
     function setSliderText(language) {
@@ -79,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Aktualisiere den Text der Elemente basierend auf der ausgewählten Sprache
         loadTexts(selectedLanguage);
 
-        // Speichere die ausgewählte Sprache im Cookie
+        // Speichere die ausgewählte     Sprache im Cookie
         updateLanguageCookie(selectedLanguage);
     });
 

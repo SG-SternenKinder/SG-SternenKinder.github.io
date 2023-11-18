@@ -15,7 +15,7 @@
             "type": "image/png"
         },
         {
-            "src": "apple-touch-icon.png",
+            "src": "../../apple-touch-icon.png",
             "type": "image/png"  
         }
     ],
