@@ -20,3 +20,4 @@
 
 ### Überarbeiten
 - Cookie Site weiter machen
+- Language offline maken mit flagen oder mit DE or EN

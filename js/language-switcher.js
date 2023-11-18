@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             // Setze den Text für den Slider
-            setSliderText(language);
+            //setSliderText(language);
         } catch (error) {
             console.error('Fehler beim Laden der Texte:', error);
         }
