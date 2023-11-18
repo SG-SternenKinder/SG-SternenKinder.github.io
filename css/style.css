@@ -394,6 +394,21 @@ input:checked + .slider:before {
     background-image: url('../img/language/uk-32.png');
 }
 
+/* #flags Abschnitt - Kombiniere beide Hintergrundbilder */
+#flags {
+    background-image: url('../img/language/de-32.png'), url('../img/language/uk-32.png');
+}
+
+/* Füge eine Klasse für das Ausblenden der Flaggen hinzu, wenn keine Internetverbindung besteht */
+.no-internet #flags {
+    display: none;
+}
+
+/* Füge eine Klasse für das Anzeigen des Texts hinzu, wenn keine Internetverbindung besteht */
+.no-internet #language {
+    display: inline-block;
+}
+
 /* Füge einen Abstand zwischen "Sprache" und dem Slider hinzu */
 .language-label {
     margin-right: 10px;

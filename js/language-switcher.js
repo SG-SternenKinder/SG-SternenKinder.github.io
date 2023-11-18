@@ -16,7 +16,28 @@ document.addEventListener('DOMContentLoaded', function () {
     // Funktion zum Laden von Texten aus der Datei
     async function loadTexts(language) {
         try {
-            // Konsolenausgabe für Debugging
+            // Überprüfe, ob eine Internetverbindung besteht
+            const isOnline = navigator.onLine;
+
+            if (!isOnline) {
+                // Keine Internetverbindung, zeige den Sprachcode anstelle der Flaggen
+                const offlineText = language.toUpperCase(); // Zeige den Sprachcode (EN oder DE)
+
+                const languageElement = document.getElementById('language');
+                if (languageElement) {
+                    languageElement.innerHTML = offlineText;
+                }
+
+                // Verstecke die Flaggen
+                const flagsElement = document.getElementById('flags');
+                if (flagsElement) {
+                    flagsElement.style.display = 'none';
+                }
+
+                return; // Beende die Funktion, wenn keine Internetverbindung besteht
+            }
+
+            // Wenn eine Internetverbindung besteht, lade die Texte normal
             console.log('Loading texts for language:', language);
 
             const response = await fetchTexts(language);
@@ -31,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             });
+
             // Setze den Text für den Slider
             setSliderText(language);
         } catch (error) {
