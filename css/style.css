@@ -372,7 +372,7 @@ footer {
 }
 
 .slider:before {
-    content: 'DE';
+    /*content: 'DE'; */
     position: absolute;
     height: 26px;
     width: 26px;
@@ -389,7 +389,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    content: 'EN';
+    /*content: 'EN';*/
     transform: translateX(26px);
     background-image: url('../img/language/uk-32.png');
 }
