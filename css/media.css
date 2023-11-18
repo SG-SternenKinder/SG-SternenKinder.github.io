@@ -2,18 +2,6 @@
 
 /* Media Query für kleinere Bildschirme */
 @media screen and (max-width: 600px) {
-    body {
-        font-size: 14px;
-    }
-
-    header {
-        padding: 15px;
-    }
-
-    .logo {
-        font-size: 28px;
-    }
-
     .navbar {
         padding: 10px;
     }
@@ -21,7 +9,8 @@
     .navbar a {
         margin: 10px;
         font-size: 16px;
-        display: block; /* Mache die Links zu Blockelementen */
+        display: block;
+        /* Mache die Links zu Blockelementen */
     }
 
     .cookie-text {
@@ -35,30 +24,28 @@
 
 /* Media Query für kleinere Bildschirme und mobile Geräte */
 @media only screen and (max-width: 767px) {
-    header {
+.navbar {
         padding: 15px;
-    }
-
-    .logo {
-        font-size: 28px;
-    }
-
-    .navbar {
-        padding: 15px;
-        flex-direction: column; /* Ändere die Richtung auf Spalte */
-        align-items: stretch; /* Dehne die Elemente über die Breite aus */
-        text-align: center; /* Zentriere den Text */
+        flex-direction: column;
+        /* Ändere die Richtung auf Spalte */
+        align-items: stretch;
+        /* Dehne die Elemente über die Breite aus */
+        text-align: center;
+        /* Zentriere den Text */
         display: none;
     }
 
     .navbar li {
-        padding: 10px; /* Füge Abstand zwischen den Elementen hinzu */
-        border-bottom: 1px solid #ddd; /* Füge eine Trennlinie zwischen den Elementen hinzu */
+        padding: 10px;
+        /* Füge Abstand zwischen den Elementen hinzu */
+        border-bottom: 1px solid #ddd;
+        /* Füge eine Trennlinie zwischen den Elementen hinzu */
     }
 
     .navbar a {
         margin: 10px;
-        display: block; /* Mache die Links zu Blockelementen */
+        display: block;
+        /* Mache die Links zu Blockelementen */
     }
 
     .cookie-text {
@@ -70,24 +57,18 @@
     }
 
     .menu-toggle {
-        display: block; /* Zeige das Menüsymbol für kleine Bildschirme */
+        display: block;
+        /* Zeige das Menüsymbol für kleine Bildschirme */
     }
 
     .navbar.active {
-        display: flex; /* Zeige die Navbar, wenn sie aktiv ist (z. B. nach einem Klick auf das Menüsymbol) */
+        display: flex;
+        /* Zeige die Navbar, wenn sie aktiv ist (z. B. nach einem Klick auf das Menüsymbol) */
     }
 }
 
 /* Media Query für Tablets und kleinere Desktops */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    header {
-        padding: 20px;
-    }
-
-    .logo {
-        font-size: 32px;
-    }
-
     .navbar {
         padding: 15px;
     }
@@ -95,7 +76,8 @@
     .navbar a {
         margin: 12px;
         font-size: 18px;
-        display: block; /* Mache die Links zu Blockelementen */
+        display: block;
+        /* Mache die Links zu Blockelementen */
     }
 
     .cookie-text {
@@ -109,14 +91,6 @@
 
 /* Media Query für größere Desktops */
 @media only screen and (min-width: 1024px) {
-    header {
-        padding: 25px 100px;
-    }
-
-    .logo {
-        font-size: 36px;
-    }
-
     .navbar {
         padding: 20px;
     }
@@ -128,7 +102,8 @@
     .navbar a {
         margin: 15px;
         font-size: 20px;
-        display: block; /* Mache die Links zu Blockelementen */
+        display: block;
+        /* Mache die Links zu Blockelementen */
     }
 
     .cookie-text {
@@ -142,18 +117,6 @@
 
 /* Media Query für sehr kleine Bildschirme */
 @media screen and (max-width: 400px) {
-    body {
-        font-size: 12px;
-    }
-
-    header {
-        padding: 10px;
-    }
-
-    .logo {
-        font-size: 24px;
-    }
-
     .navbar {
         padding: 5px;
     }
@@ -161,7 +124,8 @@
     .navbar a {
         margin: 8px;
         font-size: 14px;
-        display: block; /* Mache die Links zu Blockelementen */
+        display: block;
+        /* Mache die Links zu Blockelementen */
     }
 
     .cookie-text {
@@ -175,14 +139,6 @@
 
 /* Media Query für kleine Tablets und größere Handys */
 @media screen and (min-width: 401px) and (max-width: 767px) {
-    header {
-        padding: 15px;
-    }
-
-    .logo {
-        font-size: 28px;
-    }
-
     .navbar {
         padding: 10px;
     }
@@ -190,7 +146,8 @@
     .navbar a {
         margin: 10px;
         font-size: 16px;
-        display: block; /* Mache die Links zu Blockelementen */
+        display: block;
+        /* Mache die Links zu Blockelementen */
     }
 
     .cookie-text {
@@ -204,14 +161,6 @@
 
 /* Media Query für größere Tablets und kleine Laptops */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-    header {
-        padding: 20px;
-    }
-
-    .logo {
-        font-size: 32px;
-    }
-
     .navbar {
         padding: 15px;
     }
@@ -219,7 +168,8 @@
     .navbar a {
         margin: 12px;
         font-size: 18px;
-        display: block; /* Mache die Links zu Blockelementen */
+        display: block;
+        /* Mache die Links zu Blockelementen */
     }
 
     .cookie-text {
@@ -233,14 +183,6 @@
 
 /* Media Query für größere Laptops und Desktops */
 @media screen and (min-width: 1024px) and (max-width: 1279px) {
-    header {
-        padding: 25px 100px;
-    }
-
-    .logo {
-        font-size: 36px;
-    }
-
     .navbar {
         padding: 20px;
     }
@@ -252,7 +194,8 @@
     .navbar a {
         margin: 15px;
         font-size: 20px;
-        display: block; /* Mache die Links zu Blockelementen */
+        display: block;
+        /* Mache die Links zu Blockelementen */
     }
 
     .cookie-text {
@@ -266,14 +209,6 @@
 
 /* Media Query für größere Desktops und Breitbildschirme */
 @media screen and (min-width: 1280px) {
-    header {
-        padding: 30px 150px;
-    }
-
-    .logo {
-        font-size: 40px;
-    }
-
     .navbar {
         padding: 25px;
     }
@@ -285,7 +220,8 @@
     .navbar a {
         margin: 20px;
         font-size: 24px;
-        display: block; /* Mache die Links zu Blockelementen */
+        display: block;
+        /* Mache die Links zu Blockelementen */
     }
 
     .cookie-text {
@@ -304,7 +240,7 @@
         background-image: none;
     }
 
-    input:checked + .slider:before {
+    input:checked+.slider:before {
         background-image: none;
     }
 }
