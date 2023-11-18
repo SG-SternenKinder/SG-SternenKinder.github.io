@@ -1,7 +1,7 @@
 // service-worker.js
 
 // Cach Versionsname
-const CACHE_NAME = 'cache-v2';
+const CACHE_NAME = 'cache-v2.1';
 
 // Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.
 self.addEventListener('install', (event) => {
@@ -10,7 +10,7 @@ self.addEventListener('install', (event) => {
         caches.open(CACHE_NAME).then((cache) => {
             // Füge die erforderlichen Ressourcen zum Cache hinzu.
             return cache.addAll([
-                '/',
+                'index.html',
                 '/about/index.html',
                 '/privacy/index.html',
                 '/imprint/index.html',
@@ -29,9 +29,9 @@ self.addEventListener('install', (event) => {
                 '/language/language-en.txt',
                 '/css/style.css',
                 '/css/media.css',
-                'fontawesome/js/fontawesome.js',
-                'fontawesome/js/brand.js',
-                'fontawesome/js/solid.js'
+                '/fontawesome/js/fontawesome.js',
+                '/fontawesome/js/brand.js',
+                '/fontawesome/js/solid.js'
             ]);
         })
     );
