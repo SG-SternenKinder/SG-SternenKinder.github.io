@@ -7,10 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const rejectedPopup = document.getElementById('rejected-popup');
     const closeAcceptedPopupButton = document.getElementById('close-accepted-popup');
     const closeRejectedPopupButton = document.getElementById('close-rejected-popup');
-    const closeOfflinePopupButton = document.getElementById('close-offline-popup');
 
     // Überprüfen, ob das Popup bereits angezeigt wurde
-    const popupShown = sessionStorage.getItem('popupShown');
+    const popupShown = CookieUtil.setSessionItem('popupShown');
 
     // Überprüfe, ob Cookies akzeptiert wurden
     const acceptedCookies = CookieUtil.getCookie('cookiesAccepted');
@@ -55,11 +54,5 @@ document.addEventListener('DOMContentLoaded', function () {
             const offlinePopup = document.getElementById('offline-popup');
             offlinePopup.style.display = 'flex';
         }
-    });
-
-    closeOfflinePopupButton.addEventListener('click', function () {
-        // Close the offline popup
-        const offlinePopup = document.getElementById('offline-popup');
-        offlinePopup.style.display = 'none';
     });
 });
