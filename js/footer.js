@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const footerHtml = `
         <footer>
             <div class="footer-bottom">
-                &copy; 2016 - ${currentYear} Spiele-Gemeinschaft (SG) SternenKinder | Alle Rechte vorbehalten
+                &copy; 2016 - ${currentYear} | Spiele-Gemeinschaft (SG) SternenKinder | Alle Rechte vorbehalten
             </div>
         </footer>
     `;
