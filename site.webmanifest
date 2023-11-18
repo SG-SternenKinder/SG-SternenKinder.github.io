@@ -1,7 +1,6 @@
 {
     "name": "SG-SternenKinder",
     "short_name": "SG-SK",
-    "theme_color": "#87ceeb",
     "start_url": "https://sg-sternenkinder.github.io",
     "icons": [
         {
