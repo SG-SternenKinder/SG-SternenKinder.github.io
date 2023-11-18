@@ -368,8 +368,8 @@ footer {
     cursor: pointer;
     height: 26px;
     width: 26px;
-    left: 4px;
-    bottom: 4px;
+    left: 50%;
+    bottom: 50%;
     transform: translate(-50%, -50%); /* Um den Slider zu zentrieren */
     background-color: #fff;
     border-radius: 34px;
