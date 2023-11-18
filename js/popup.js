@@ -37,17 +37,17 @@ document.addEventListener('DOMContentLoaded', function () {
             CookieUtil.setSessionCookie('cookiesRejected', 'true');
             rejectedPopup.style.display = 'flex';
         });
+
+        closeAcceptedPopupButton.addEventListener('click', function () {
+            // Akzeptieren-Popup schließen
+            acceptedPopup.style.display = 'none';
+        });
+
+        closeRejectedPopupButton.addEventListener('click', function () {
+            // Abgelehnt-Popup schließen
+            rejectedPopup.style.display = 'none';
+        });
     }
-
-    closeAcceptedPopupButton.addEventListener('click', function () {
-        // Akzeptieren-Popup schließen
-        acceptedPopup.style.display = 'none';
-    });
-
-    closeRejectedPopupButton.addEventListener('click', function () {
-        // Abgelehnt-Popup schließen
-        rejectedPopup.style.display = 'none';
-    });
 
     navigator.serviceWorker.addEventListener('message', (event) => {
         if (event.data === 'showOfflinePopup') {

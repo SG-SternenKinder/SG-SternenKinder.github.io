@@ -1,7 +1,7 @@
 // language-switcher.js
 document.addEventListener('DOMContentLoaded', function () {
     const languageSlider = document.getElementById('language-slider');
-    const selectedLanguage = getCookie('language') || 'de';
+    const selectedLanguage = CookieUtil.getCookie('language') || 'de';
 
     // Funktion zum Setzen des Slider-Zustands
     function setSliderState(language) {
