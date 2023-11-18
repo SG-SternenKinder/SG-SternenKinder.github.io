@@ -39,12 +39,12 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 0px 80px;
+    padding: 0px 40px;
     background: rgba(225, 225, 225, .1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(1px);
 }
 
 /* Stile für das Logo */
@@ -59,6 +59,7 @@ header {
 
 .logo span {
     margin-right: 8px;
+    color: #2196F3;
 }
 
 /* Stile für das Textelement "span" */
