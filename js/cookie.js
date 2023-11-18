@@ -8,27 +8,38 @@ const CookieUtil = (function () {
     // Setzen eines Cookies mit angegebenem Namen, Wert und Gültigkeitsdauer in Tagen
     function setCookie(name, value, days, options = {}) {
         name = escapeCookieName(name);
-    
+
         if (typeof days !== 'number' || days <= 0) {
             return;
         }
         if (!name || !value) {
             return;
         }
-    
+
         const expires = new Date();
         expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
-    
+
         let cookieString = `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/`;
-    
+
         // Füge optionale Cookie-Optionen hinzu
         for (const option in options) {
             if (options.hasOwnProperty(option)) {
                 cookieString += `;${option}${options[option] === true ? '' : `=${options[option]}`}`;
             }
         }
-    
+
         document.cookie = cookieString;
+    }
+
+    // Setzen eines Session-Cookies mit angegebenem Namen und Wert
+    function setSessionCookie(name, value) {
+        name = escapeCookieName(name);
+
+        if (!name || !value) {
+            return;
+        }
+
+        document.cookie = `${name}=${encodeURIComponent(value)};path=/`;
     }
 
     // Abrufen eines Cookies anhand des Namens
@@ -46,6 +57,7 @@ const CookieUtil = (function () {
 
     return {
         setCookie,
-        getCookie
+        getCookie,
+        setSessionCookie
     };
 })();
