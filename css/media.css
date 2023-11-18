@@ -21,6 +21,7 @@
     .navbar a {
         margin: 10px;
         font-size: 16px;
+        display: block; /* Mache die Links zu Blockelementen */
     }
 
     .follow-me {
@@ -47,15 +48,21 @@
     }
 
     .navbar {
-        padding: 10px;
+        padding: 15px;
+        flex-direction: column; /* Ändere die Richtung auf Spalte */
+        align-items: stretch; /* Dehne die Elemente über die Breite aus */
+        text-align: center; /* Zentriere den Text */
+        display: none;
     }
 
     .navbar li {
-        padding: 10px;
+        padding: 10px; /* Füge Abstand zwischen den Elementen hinzu */
+        border-bottom: 1px solid #ddd; /* Füge eine Trennlinie zwischen den Elementen hinzu */
     }
 
     .navbar a {
         margin: 10px;
+        display: block; /* Mache die Links zu Blockelementen */
     }
 
     .follow-me {
@@ -72,22 +79,6 @@
 
     .menu-toggle {
         display: block; /* Zeige das Menüsymbol für kleine Bildschirme */
-    }
-
-    .navbar {
-        display: none;
-        flex-direction: column; /* Ändere die Richtung auf Spalte */
-        align-items: stretch; /* Dehne die Elemente über die Breite aus */
-        text-align: center; /* Zentriere den Text */
-    }
-
-    .navbar li {
-        padding: 10px; /* Füge Abstand zwischen den Elementen hinzu */
-        border-bottom: 1px solid #ddd; /* Füge eine Trennlinie zwischen den Elementen hinzu */
-    }
-
-    .navbar a {
-        display: block; /* Mache die Links zu Blockelementen */
     }
 
     .navbar.active {
@@ -112,6 +103,7 @@
     .navbar a {
         margin: 12px;
         font-size: 18px;
+        display: block; /* Mache die Links zu Blockelementen */
     }
 
     .follow-me {
@@ -148,6 +140,7 @@
     .navbar a {
         margin: 15px;
         font-size: 20px;
+        display: block; /* Mache die Links zu Blockelementen */
     }
 
     .follow-me {
@@ -184,6 +177,7 @@
     .navbar a {
         margin: 8px;
         font-size: 14px;
+        display: block; /* Mache die Links zu Blockelementen */
     }
 
     .follow-me {
@@ -216,6 +210,7 @@
     .navbar a {
         margin: 10px;
         font-size: 16px;
+        display: block; /* Mache die Links zu Blockelementen */
     }
 
     .follow-me {
@@ -248,6 +243,7 @@
     .navbar a {
         margin: 12px;
         font-size: 18px;
+        display: block; /* Mache die Links zu Blockelementen */
     }
 
     .follow-me {
@@ -284,6 +280,7 @@
     .navbar a {
         margin: 15px;
         font-size: 20px;
+        display: block; /* Mache die Links zu Blockelementen */
     }
 
     .follow-me {
@@ -320,6 +317,7 @@
     .navbar a {
         margin: 20px;
         font-size: 24px;
+        display: block; /* Mache die Links zu Blockelementen */
     }
 
     .follow-me {
@@ -332,5 +330,17 @@
 
     .popup-content {
         padding: 50px;
+    }
+}
+
+/* Media Query für den Schieberegler */
+/* Zeige das Hintergrundbild nur online an */
+@media (hover: hover) {
+    .slider:before {
+        background-image: none;
+    }
+
+    input:checked + .slider:before {
+        background-image: none;
     }
 }

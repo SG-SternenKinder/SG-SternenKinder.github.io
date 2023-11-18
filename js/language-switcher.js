@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             });
+            // Setze den Text für den Slider
+            setSliderText(language);
         } catch (error) {
             console.error('Fehler beim Laden der Texte:', error);
         }
@@ -57,6 +59,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateLanguageCookie(language) {
         CookieUtil.setCookie('language', language, 4); // Speichere die Sprache für 4 Tage
+    }
+
+    function setSliderText(language) {
+        const sliderText = language === 'en' ? 'EN' : 'DE';
+        const slider = document.querySelector('.slider');
+        if (slider) {
+            slider.innerText = sliderText;
+        }
     }
 
     // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie

@@ -10,11 +10,9 @@ const CookieUtil = (function () {
         name = escapeCookieName(name);
 
         if (typeof days !== 'number' || days <= 0) {
-            console.error("Fehler: Die Gültigkeitsdauer muss eine positive Zahl sein!");
             return;
         }
         if (!name || !value) {
-            console.error("Fehler: Name und Wert sind erforderlich!");
             return;
         }
 

@@ -9,10 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Hilfsfunktion für eine zufällige Farbe
         function getRandomColor() {
-            const letters = '0123456789ABCDEFGHIJKLMONQPRSTUVWXYZ';
             let color = '#';
             for (let i = 0; i < 6; i++) {
-                color += letters[Math.floor(Math.random() * 16)];
+                color += '0123456789ABCDEF'[Math.floor(Math.random() * 16)];
             }
             return color;
         }
@@ -26,4 +25,3 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error("Das Element mit der Klasse 'loading-spinner' wurde nicht gefunden.");
     }
 });
-

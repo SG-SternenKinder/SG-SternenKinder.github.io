@@ -36,28 +36,56 @@
 
 
     <link rel="manifest" href="site.webmanifest">
-    <script>
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('js/service-worker.js')
-            .then((registration) => {
-              console.log('Service Worker registriert:', registration);
-            })
-            .catch((error) => {
-              console.error('Fehler bei der Registrierung des Service Workers:', error);
-            });
-        }
-      </script>
 
     <!-- Weitere Stile und Skripte in externe Dateien auslagern -->
     <link rel="stylesheet" href="css/style.css">
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('js/service-worker.js')
+                .then((registration) => {
+                    navigator.serviceWorker.addEventListener('message', (event) => {
+                        if (event.data === 'showOfflinePopup') {
+                            // Behandle den Offline-Zustand
+                            // Hier kannst du zusätzlichen Code für die Behandlung des Offline-Zustands hinzufügen
+    
+                            // Erstelle das Popup-Element
+                            const offlinePopup = document.createElement('div');
+                            offlinePopup.classList.add('popup-container');
+                            offlinePopup.id = 'offline-popup';
+    
+                            const popupContent = document.createElement('div');
+                            popupContent.classList.add('popup-content');
+    
+                            popupContent.innerHTML = 
+                            `
+                                <h2>Offline</h2>
+                                <p>You are currently offline. Some features may not be available.</p>
+                                <button id="close-offline-popup">Close</button>
+                            `;
+    
+                            offlinePopup.appendChild(popupContent);
+    
+                            // Füge das Popup zur Seite hinzu
+                            document.body.appendChild(offlinePopup);
+                        }
+                    });
+                })
+                .catch((error) => {
+                    //console.error('Fehler bei der Registrierung des Service Workers:', error);
+                });
+        }
+    </script>
 
     <!-- Fontawesome -->
     <script src="fontawesome/js/brands.js"></script>
     <script src="fontawesome/js/solid.js"></script>
     <script src="fontawesome/js/fontawesome.js"></script>
 
-    <script defer src="js/noscript-loading.js"></script>
-    <script defer src="js/popup.js"></script>
+    <!-- Cookie-Skript -->
+    <script src="js/cookie.js"></script>
+
+    <!-- Sprachumschalter-Skript -->
     <script defer src="js/language-switcher.js"></script>
 
 </head>
@@ -168,10 +196,6 @@
         </div>
     </section>
 
-    <script src="js/footer.js"></script>
-    <script src="js/cookie.js"></script>
-    <script src="js/scrollback.js"></script>
-
     <!-- Popup-Container -->
     <div class="popup-container" id="popup">
         <div class="popup-content">
@@ -212,6 +236,12 @@
     </div>
 
     <div id="footer-container"></div>
+
+    <script src="js/noscript-loading.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/scrollback.js"></script>
+
+    <script src="js/footer.js"></script>
 
 </body>
 
