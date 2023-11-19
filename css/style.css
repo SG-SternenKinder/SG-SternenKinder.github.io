@@ -558,7 +558,7 @@ body:not(.scroll-up) #scroll-to-top {
 #announcement-banner {
     display: block;
     position: fixed;
-    top: 20px; /* Erhöhe die Höhe des Banners */
+    top: 0px; /* Erhöhe die Höhe des Banners */
     left: 50%;
     transform: translateX(-50%);
     width: 70%; /* Verringere die Breite des Banners */
@@ -573,7 +573,7 @@ body:not(.scroll-up) #scroll-to-top {
 
 #announcement-banner p {
     font-family: 'Comic Sans MS', cursive;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 #close-announcement {
