@@ -1,7 +1,7 @@
 // service-worker.js
 
 // Cach Versionsname
-const CACHE_NAME = 'cache-v1.1.2.3';
+const CACHE_NAME = 'cache-v1.1.2.5';
 
 // Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.
 self.addEventListener('install', (event) => {
@@ -12,6 +12,7 @@ self.addEventListener('install', (event) => {
             console.log('Cache opened');
             // Füge die erforderlichen Ressourcen zum Cache hinzu.
             return cache.addAll([
+                new URL('index.html', self.registration.scope),
                 'https://sg-sternenkinder.github.io/index.html',
                 'https://sg-sternenkinder.github.io/about/index.html',
                 'https://sg-sternenkinder.github.io/privacy/index.html',
@@ -41,32 +42,35 @@ self.addEventListener('install', (event) => {
 });
 
 //Network-first-fallback-to-Cach event
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', async (event) => {
     console.log('Fetching:', event.request.url);
-    event.respondWith(
-        fetch(event.request).then((response) => {
-            console.log('Fetch successful:', response);
-            // Hier prüfen, ob die Anfrage erfolgreich war
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-                return caches.match(event.request);
-            }
 
-            // Aktualisiere den Cache mit der neuen Ressource
-            return caches.open(CACHE_NAME).then((cache) => {
-                cache.put(event.request, response.clone());
-                return response;
-            });
-        }).catch(() => {
-            console.log('Fetch failed, falling back to cache');
-            // Hier kann auch auf die Offline-Status-Nachricht reagiert werden
-            self.clients.matchAll().then(clients => {
-                clients.forEach(client => client.postMessage('offline'));
-            });
+    try {
+        const response = await fetch(event.request);
 
-            // Falle auf den Cache zurück, wenn das Netzwerk nicht verfügbar ist
+        console.log('Fetch successful:', response);
+
+        // Hier prüfen, ob die Anfrage erfolgreich war
+        if (!response || response.status !== 200 || response.type !== 'basic') {
+            console.log('Fetching failed, falling back to cache');
             return caches.match(event.request);
-        })
-    );
+        }
+
+        // Aktualisiere den Cache mit der neuen Ressource
+        const cache = await caches.open(CACHE_NAME);
+        await cache.put(event.request, response.clone());
+
+        return response;
+    } catch (error) {
+        console.error('Fetch error:', error);
+
+        // Hier kann auch auf die Offline-Status-Nachricht reagiert werden
+        const clients = await self.clients.matchAll();
+        clients.forEach(client => client.postMessage('offline'));
+
+        // Falle auf den Cache zurück, wenn das Netzwerk nicht verfügbar ist
+        return caches.match(event.request);
+    }
 });
 
 // Add this event listener for offline detection
