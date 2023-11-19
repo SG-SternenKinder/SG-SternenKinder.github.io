@@ -1,7 +1,7 @@
 // service-worker.js
 
 // Cach Versionsname
-const FILE_VERSION = 'v0.0.0.7';
+const FILE_VERSION = 'v0.0.0.8';
 const CACHE_NAME = 'cache-' + FILE_VERSION;
 
 // Funktion zum Entfernen von Dateinamen aus URLs
@@ -64,7 +64,8 @@ self.addEventListener('install', (event) => {
     );
 });
 
-//Network-first-fallback-to-Cach event
+/*
+// Network-first-fallback-to-Cach event
 self.addEventListener('fetch', async (event) => {
     console.log('Fetching:', event.request.url);
 
@@ -95,6 +96,42 @@ self.addEventListener('fetch', async (event) => {
         return caches.match(event.request);
     }
 });
+*/
+
+//Network-first-fallback-to-Cache event
+self.addEventListener('fetch', async (event) => {
+    console.log('Fetching:', event.request.url);
+
+    try {
+        const response = await caches.match(event.request);
+
+        if (response) {
+            console.log('Cache hit:', event.request.url);
+            return response;
+        }
+
+        console.log('Cache miss, fetching from network');
+        const networkResponse = await fetch(event.request);
+
+        if (networkResponse && networkResponse.status === 200) {
+            console.log('Network response successful, updating cache');
+            const cache = await caches.open(CACHE_NAME);
+            await cache.put(event.request, networkResponse.clone());
+        }
+
+        return networkResponse;
+    } catch (error) {
+        console.error('Fetch error:', error);
+
+        // Hier kann auch auf die Offline-Status-Nachricht reagiert werden
+        const clients = await self.clients.matchAll();
+        clients.forEach(client => client.postMessage('offline'));
+
+        // Falle auf den Cache zurück, wenn das Netzwerk nicht verfügbar ist
+        return caches.match(event.request);
+    }
+});
+
 
 // Add this event listener for offline detection
 self.addEventListener('message', (event) => {
