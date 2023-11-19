@@ -3,6 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
     // Finde das HTML-Element, in dem der Footer angezeigt werden soll
     const footerContainer = document.getElementById('footer-container');
 
+    if (!footerContainer) {
+        console.error('Das HTML-Element für den Footer wurde nicht gefunden.');
+        return;
+    }
+
     // Aktuelles Jahr extrahieren
     const currentYear = new Date().getFullYear();
 
@@ -18,4 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Setze den erstellten HTML-Code in das Footer-Element ein
     footerContainer.innerHTML = footerHtml;
+
+    if (consolen.getConsoleOutput()) {
+        console.log('Der Footer wurde erfolgreich erstellt und angezeigt.');
+    }
 });

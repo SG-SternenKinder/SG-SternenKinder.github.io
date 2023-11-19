@@ -6,12 +6,13 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Funktion zum Setzen des Slider-Zustands
     function setSliderState(language) {
         languageSlider.checked = language === 'en';
+        if (consolen.getConsoleOutput()) {
+            console.log(`Slider state set to ${language}`);
+        }
     }
 
     // Wenn es ein gespeichertes Sprach-Cookie gibt, stelle den Schieberegler entsprechend ein
-    if (currentLanguage === 'en') {
-        languageSlider.checked = true;
-    }
+    setSliderState(currentLanguage);
 
     // Funktion zum Laden von Texten aus der Datei basierend auf der ausgewählten Sprache
     async function loadTexts(language) {
@@ -34,11 +35,17 @@ document.addEventListener('DOMContentLoaded', async function () {
                     flagsElement.style.display = 'none';
                 }
 
+                if (consolen.getConsoleOutput()) {
+                    console.log(`No internet connection. Displaying language code: ${offlineText}`);
+                }
+
                 return; // Beende die Funktion, wenn keine Internetverbindung besteht
             }
 
             // Wenn eine Internetverbindung besteht, lade die Texte normal
-            console.log('Loading texts for language:', language);
+            if (consolen.getConsoleOutput()) {
+                console.log('Loading texts for language:', language);
+            }
 
             const response = await fetchTexts(language);
             const texts = await response.text();
@@ -52,6 +59,10 @@ document.addEventListener('DOMContentLoaded', async function () {
                 }
             });
 
+            if (consolen.getConsoleOutput()) {
+                console.log(`Texts loaded successfully for language: ${language}`);
+            }
+
             // Setze den Text für den Slider
             //setSliderText(language);
         } catch (error) {
@@ -63,7 +74,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     async function fetchTexts(language) {
         try {
             // Konsolenausgabe für Debugging
-            console.log('Fetching texts for language:', language);
+            if (consolen.getConsoleOutput()) {
+                console.log('Fetching texts for language:', language);
+            }
 
             const response = await fetch(`/language/language-${language}.txt`);
 
@@ -80,14 +93,14 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Funktion zum Aktualisieren des Sprach-Cookies
     function updateLanguageCookie(language) {
         CookieUtil.setCookie('language', language, 4, { secure: true }); // Speichere die Sprache für 4 Tage
+        if (consolen.getConsoleOutput()) {
+            console.log(`Language cookie updated: ${language}`);
+        }
     }
 
     // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie
     languageSlider.addEventListener('change', function () {
         currentLanguage = languageSlider.checked ? 'en' : 'de';
-
-        // Initialisiere den Text basierend auf dem gespeicherten Cookie
-        setSliderState(currentLanguage);
 
         // Aktualisiere den Text der Elemente basierend auf der ausgewählten Sprache
         loadTexts(currentLanguage);

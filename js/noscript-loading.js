@@ -1,18 +1,25 @@
 // noscript-loading.js
 document.addEventListener('DOMContentLoaded', function () {
-    const spinnerElement = document.querySelector('.loading-spinner');
+    const noscriptContainer = document.querySelector('.noscript-message');
 
-    // Überprüfe, ob das Element gefunden wurde, bevor es verwendet wird
-    if (spinnerElement) {
-        spinnerElement.style.borderTopColor = getRandomColor();
+    if (noscriptContainer) {
+        // Ladeanimation erstellen
+        const spinnerElement = document.createElement('div');
+        spinnerElement.classList.add('loading-spinner');
 
-        // Hilfsfunktion für eine zufällige Farbe
-        function getRandomColor() {
-            let color = '#';
-            for (let i = 0; i < 6; i++) {
-                color += '0123456789ABCDEF'[Math.floor(Math.random() * 16)];
-            }
-            return color;
+        // Nachricht erstellen
+        const messageElement = document.createElement('p');
+        messageElement.classList.add('message');
+        messageElement.textContent = 'Welcome! Please enable JavaScript to fully enjoy our website.';
+
+        // Elemente dem Container hinzufügen
+        noscriptContainer.appendChild(spinnerElement);
+        noscriptContainer.appendChild(messageElement);
+
+        if (consolen.getConsoleOutput()) {
+            console.log('JavaScript is disabled. NoScript message has been created successfully.');
         }
+    } else {
+        console.error('NoScript container not found.');
     }
 });

@@ -10,9 +10,11 @@ const CookieUtil = (function () {
         name = escapeCookieName(name);
 
         if (typeof days !== 'number' || days <= 0) {
+            console.error('Ungültiger Gültigkeitsdauer-Wert für das Cookie.');
             return;
         }
         if (!name || !value) {
+            console.error('Ungültiger Name oder Wert für das Cookie.');
             return;
         }
 
@@ -29,6 +31,9 @@ const CookieUtil = (function () {
         }
 
         document.cookie = cookieString;
+        if (consolen.getConsoleOutput()) {
+            console.log(`Cookie "${name}" wurde erfolgreich gesetzt.`);
+        }
     }
 
     // Abrufen eines Cookies anhand des Namens
@@ -38,8 +43,15 @@ const CookieUtil = (function () {
         for (let i = 0; i < cookies.length; i++) {
             let cookie = cookies[i].trim();
             if (cookie.indexOf(cookieName) === 0) {
-                return decodeURIComponent(cookie.substring(cookieName.length, cookie.length));
+                const cookieValue = decodeURIComponent(cookie.substring(cookieName.length, cookie.length));
+                if (consolen.getConsoleOutput()) {
+                    console.log(`Cookie "${name}" wurde erfolgreich abgerufen.`);
+                }
+                return cookieValue;
             }
+        }
+        if (consolen.getConsoleOutput()) {
+            console.warn(`Cookie "${name}" wurde nicht gefunden.`);
         }
         return null;
     }

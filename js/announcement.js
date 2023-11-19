@@ -1,9 +1,8 @@
 // Ankündigungsbanner.js
-
 document.addEventListener('DOMContentLoaded', function () {
     // Banner-Informationen
     const bannerName = 'Aktion';
-    const bannerVersion = 'v0.0.0.2';
+    const bannerVersion = 'v0.0.0.2.1';
 
     // DOM-Elemente
     const announcementBanner = document.getElementById('announcement-banner');
@@ -23,11 +22,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // Funktion zum Anzeigen des Banners
     function showBanner() {
         announcementBanner.style.display = 'block';
+        if (consolen.getConsoleOutput()) {
+            console.log('Banner wird angezeigt.');
+        }
     }
 
     // Überprüfen, ob das Banner geschlossen wurde und nicht für die aktuelle Sitzung angezeigt werden soll
     if (!bannerClosed || (lastCloseTime && currentTime - lastCloseTime > 1000 * 60 * 60 * 24 && !isPageReloaded())) {
         showBanner();
+    } else {
+        if (consolen.getConsoleOutput()) {
+            console.log('Banner wird nicht angezeigt.');
+        }
     }
 
     // Event-Listener für den Schließen-Button des Banners
@@ -38,11 +44,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Ausblenden des Banners
         announcementBanner.style.display = 'none';
+        if (consolen.getConsoleOutput()) {
+            console.log('Banner wurde geschlossen.');
+        }
     });
 
     // Überprüfen, ob sich die Banner-Version geändert hat und das Banner anzeigen
     const savedBannerClosed = CookieUtil.getCookie(`${bannerName}-${bannerVersion}Closed`);
     if (savedBannerClosed !== 'true') {
         showBanner();
+        // Aktualisierte Banner-Version speichern
+        CookieUtil.setCookie(`${bannerName}-${bannerVersion}Closed`, 'true', 1); // Banner wird für 1 Tag geschlossen
+        if (consolen.getConsoleOutput()) {
+            console.log('Banner wird angezeigt, da sich die Version geändert hat.');
+        }
+    } else {
+        if (consolen.getConsoleOutput()) {
+            console.log('Banner wird nicht angezeigt, da die Version gleich ist.');
+        }
     }
 });
