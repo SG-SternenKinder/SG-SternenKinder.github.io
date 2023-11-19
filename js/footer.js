@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         `
             <footer>
                 <div class="footer-bottom">
-                    &copy; 2016 - ${currentYear} | Spiel-Gemeinschaft (SG) SternenKinder | Alle Rechte vorbehalten | Aktuelle Zeit: ${currentTime}
+                    &copy; 2016 - ${currentYear} | Spiele-Gemeinschaft (SG) SternenKinder | Alle Rechte vorbehalten | Aktuelle Zeit: ${currentTime}
                 </div>
             </footer>
         `;
