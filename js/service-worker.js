@@ -1,7 +1,7 @@
 // service-worker.js
 
 // Cach Versionsname
-const FILE_VERSION = 'v0.0.0.2';
+const FILE_VERSION = 'v0.0.0.3';
 const CACHE_NAME = 'cache-' + FILE_VERSION;
 
 // Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.
@@ -13,30 +13,32 @@ self.addEventListener('install', (event) => {
             console.log('Cache opened');
             // Füge die erforderlichen Ressourcen zum Cache hinzu.
             return cache.addAll([
-                new URL('index.html', self.registration.scope),
-                'https://sg-sternenkinder.github.io/index.html',
-                'https://sg-sternenkinder.github.io/about/index.html',
-                'https://sg-sternenkinder.github.io/privacy/index.html',
-                'https://sg-sternenkinder.github.io/imprint/index.html',
-                'https://sg-sternenkinder.github.io/cookies/index.html',
-                'https://sg-sternenkinder.github.io/contact/index.html',
-                'https://sg-sternenkinder.github.io/img/favicon/favicon.ico',
-                'https://sg-sternenkinder.github.io/img/language/de-32.png',
-                'https://sg-sternenkinder.github.io/img/language/en-32.png',
-                'https://sg-sternenkinder.github.io/js/announcement.js',
-                'https://sg-sternenkinder.github.io/js/cookie.js',
-                'https://sg-sternenkinder.github.io/js/footer.js',
-                'https://sg-sternenkinder.github.io/js/language-switcher.js',
-                'https://sg-sternenkinder.github.io/js/popup.js',
-                'https://sg-sternenkinder.github.io/js/scrollback.js',
-                'https://sg-sternenkinder.github.io/language/language-de.txt',
-                'https://sg-sternenkinder.github.io/language/language-en.txt',
-                'https://sg-sternenkinder.github.io/css/style.css',
-                'https://sg-sternenkinder.github.io/css/media.css',
-                'https://sg-sternenkinder.github.io/fontawesome/js/fontawesome.js',
-                'https://sg-sternenkinder.github.io/fontawesome/js/brand.js',
-                'https://sg-sternenkinder.github.io/fontawesome/js/solid.js'
-            ]);
+                './',
+                './index.html',
+                './about/index.html',
+                './privacy/index.html',
+                './imprint/index.html',
+                './cookies/index.html',
+                './contact/index.html',
+                './img/favicon/favicon.ico',
+                './img/language/de-32.png',
+                './img/language/en-32.png',
+                './js/announcement.js',
+                './js/cookie.js',
+                './js/footer.js',
+                './js/language-switcher.js',
+                './js/popup.js',
+                './js/scrollback.js',
+                './language/language-de.txt',
+                './language/language-en.txt',
+                './css/style.css',
+                './css/media.css',
+                './fontawesome/js/fontawesome.js',
+                './fontawesome/js/brand.js',
+                './fontawesome/js/solid.js'
+            ].map(url => new URL(url, self.registration.scope)));
+        }).then(() => {
+            console.log('Resources added to cache');
         }).catch((error) => {
             console.error('Error adding to cache:', error);
         })

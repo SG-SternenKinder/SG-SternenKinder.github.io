@@ -583,6 +583,8 @@ body:not(.scroll-up) #scroll-to-top {
     padding: 8px; /* Erhöhe den Innenabstand des Schließen-Buttons */
     cursor: pointer;
     border-radius: 5px;
+    font-family: 'Comic Sans MS';
+    font-size: 11px;
 }
 
 #close-announcement:hover {
