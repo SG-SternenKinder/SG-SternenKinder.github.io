@@ -32,8 +32,6 @@
     <!-- Weitere Stile und Skripte in externe Dateien auslagern -->
     <link rel="stylesheet" href="../css/style.css">
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('../js/service-worker.js')
@@ -241,17 +239,8 @@
     <script src="../js/popup.js"></script>
     <script src="../js/scrollback.js"></script>
 
-    <script src="../js/footer.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            if (history.pushState) {
-                var newURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
-                window.history.pushState({ path: newURL }, '', newURL);
-            }
-        });
-    </script>    
-
+    <script src="../js/footer.js"></script> 
+    
 </body>
 
 </html>

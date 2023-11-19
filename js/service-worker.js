@@ -1,24 +1,21 @@
 // service-worker.js
 
 // Cach Versionsname
-const FILE_VERSION = 'v0.0.0.5';
+const FILE_VERSION = 'v0.0.0.6';
 const CACHE_NAME = 'cache-' + FILE_VERSION;
 
-// Importiere die urlHelper-Funktionen
-self.importScripts('urlHelper.js');
-
 // Definiere die URLs ohne Dateinamen
-const urlsToModify = [
-    'https://sg-sternenkinder.github.io/index.html',
-    'https://sg-sternenkinder.github.io/about/index.html',
-    'https://sg-sternenkinder.github.io/privacy/index.html',
-    'https://sg-sternenkinder.github.io/imprint/index.html',
-    'https://sg-sternenkinder.github.io/cookies/cookies.html',
-    'https://sg-sternenkinder.github.io/contact/index.html'
+const urlsToCache = [
+    removeFileName('https://sg-sternenkinder.github.io/index.html'),
+    removeFileName('https://sg-sternenkinder.github.io/about/index.html'),
+    removeFileName('https://sg-sternenkinder.github.io/privacy/index.html'),
+    removeFileName('https://sg-sternenkinder.github.io/imprint/index.html'),
+    removeFileName('https://sg-sternenkinder.github.io/cookies/cookies.html'),
+    removeFileName('https://sg-sternenkinder.github.io/contact/index.html')
 ];
 
 // Definiere die URLs, die nicht modifiziert werden sollen
-const urlsToKeep = [
+const RessourceToCache = [
     './',
     './img/favicon/favicon.ico',
     './img/language/de-32.png',
@@ -29,7 +26,6 @@ const urlsToKeep = [
     './js/language-switcher.js',
     './js/popup.js',
     './js/scrollback.js',
-    './js/urlHelper.js',
     './language/language-de.txt',
     './language/language-en.txt',
     './css/style.css',
@@ -47,11 +43,11 @@ self.addEventListener('install', (event) => {
         caches.open(CACHE_NAME).then((cache) => {
             console.log('Cache opened');
 
-            // Füge die modifizierten URLs zum Cache hinzu
-            const modifiedCachePromise = cache.addAll(modifyURLs(urlsToModify));
+            // Füge zum Cache hinzu
+            const modifiedCachePromise = cache.addAll(urlsToCache);
 
-            // Füge die nicht modifizierten URLs zum Cache hinzu
-            const unmodifiedCachePromise = cache.addAll(urlsToKeep);
+            // Füge zum Cache hinzu
+            const unmodifiedCachePromise = cache.addAll(RessourceToCache);
 
             // Warte darauf, dass beide Vorgänge abgeschlossen sind
             return Promise.all([modifiedCachePromise, unmodifiedCachePromise]);
