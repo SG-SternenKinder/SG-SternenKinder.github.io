@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Event-Listener für den Schließen-Button des Banners
     closeButton.addEventListener('click', function () {
-        announcementBanner.style.display = 'none'; // Banner ausblenden
+        announcementBanner.parentNode.removeChild(announcementBanner); // Banner ausblenden
         // Setze Cookies für geschlossenes Banner, Zeitpunkt der Schließung und Dateiversion mit Ablaufdatum
         CookieUtil.setCookie('announcementBannerClosed', 'true', 4);  // Banner wird für 4 Tage geschlossen
         CookieUtil.setCookie('lastBannerDisplayTime', currentTime, 1);  // Banner wird für 1 Tag nicht erneut angezeigt
