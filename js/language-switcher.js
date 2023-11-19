@@ -1,15 +1,7 @@
 // language-switcher.js
-// Warte, bis das DOM vollständig geladen ist
 document.addEventListener('DOMContentLoaded', function () {
     // Holen Sie sich das Element des Sprach-Umschalters
     const languageSwitcher = document.getElementById('language-switcher');
-    
-    // Holen Sie sich die im Cookie gespeicherte Sprache oder verwenden Sie 'de' als Standard
-    const defaultLanguage = 'de';
-    const selectedLanguage = CookieUtil.getCookie('language') || defaultLanguage;
-
-    // Holen Sie sich die im localStorage gespeicherte Sprache
-    const storedLanguage = localStorage.getItem('selectedLanguage');
 
     // Funktion zum Setzen des Zustands des Sprach-Umschalters basierend auf der ausgewählten Sprache
     function setSwitcherState(language) {
@@ -17,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Überprüfen und Anpassen des Zustands des Sprach-Umschalters beim Laden der Seite
+    const defaultLanguage = 'de';
+    const selectedLanguage = CookieUtil.getCookie('language') || defaultLanguage;
+    const storedLanguage = localStorage.getItem('selectedLanguage');
     setSwitcherState(storedLanguage || selectedLanguage);
 
     // Funktion zum Laden von Texten aus der Datei basierend auf der ausgewählten Sprache
