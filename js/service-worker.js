@@ -1,7 +1,7 @@
 // service-worker.js
 
 // Cach Versionsname
-const CACHE_NAME = 'cache-v1.1.2.5';
+const CACHE_NAME = 'cache-v1.1.2.6';
 
 // Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.
 self.addEventListener('install', (event) => {
@@ -36,9 +36,10 @@ self.addEventListener('install', (event) => {
                 'https://sg-sternenkinder.github.io/fontawesome/js/brand.js',
                 'https://sg-sternenkinder.github.io/fontawesome/js/solid.js'
             ]);
+        }).catch((error) => {
+            console.error('Error adding to cache:', error);
         })
     );
-    console.log('Cache closed');
 });
 
 //Network-first-fallback-to-Cach event
