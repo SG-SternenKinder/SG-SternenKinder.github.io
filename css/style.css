@@ -76,7 +76,8 @@ span {
 
 /* Stile für das Hamburger-Menü */
 .menu-toggle {
-    display: none; /* Verstecke das Menüsymbol standardmäßig */
+    display: none;
+    /* Verstecke das Menüsymbol standardmäßig */
     cursor: pointer;
 }
 
@@ -217,7 +218,8 @@ section {
     bottom: 4px;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    filter: blur(8px); /* Ändern Sie den Blur-Effekt nach Bedarf */
+    filter: blur(8px);
+    /* Ändern Sie den Blur-Effekt nach Bedarf */
     z-index: -1;
     transition: background-color 0.3s ease, filter 0.3s ease;
 }
@@ -227,17 +229,25 @@ section {
     text-align: center;
     z-index: 1;
     /*background-color: rgba(255, 255, 255, 0.9); Hintergrundfarbe des Kastens */
-    border-radius: 20px; /* Abgerundete Ecken für den Kasten */
-    padding: 20px; /* Innenabstand für den Kasten */
-    backdrop-filter: blur(10px); /* Blur-Effekt für den Hintergrund */
-    height: 60vh; /* Ändern Sie die Höhe nach Bedarf */
-    width: 80%; /* Ändern Sie die Breite nach Bedarf */
-    margin: auto; /* Zentrieren Sie den Kasten horizontal */
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2); /* Schatten für den Kasten */
+    border-radius: 20px;
+    /* Abgerundete Ecken für den Kasten */
+    padding: 20px;
+    /* Innenabstand für den Kasten */
+    backdrop-filter: blur(10px);
+    /* Blur-Effekt für den Hintergrund */
+    height: 60vh;
+    /* Ändern Sie die Höhe nach Bedarf */
+    width: 80%;
+    /* Ändern Sie die Breite nach Bedarf */
+    margin: auto;
+    /* Zentrieren Sie den Kasten horizontal */
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+    /* Schatten für den Kasten */
 }
 
 .cookie-text h5 {
-    font-size: 24px; /* Größere Schriftgröße */
+    font-size: 24px;
+    /* Größere Schriftgröße */
     font-weight: 600;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -249,15 +259,19 @@ section {
     font-size: 36px;
     font-weight: 800;
     line-height: 1.1;
-    margin-bottom: 30px; /* Erhöhter Abstand unter der Überschrift */
+    margin-bottom: 30px;
+    /* Erhöhter Abstand unter der Überschrift */
     text-transform: uppercase;
 }
 
 .cookie-text p {
-    font-size: 22px; /* Größere Schriftgröße */
+    font-size: 22px;
+    /* Größere Schriftgröße */
     font-weight: 650;
-    line-height: 24px; /* Geringerer Zeilenabstand */
-    margin-bottom: 25px; /* Geringerer Abstand zwischen den Absätzen */
+    line-height: 24px;
+    /* Geringerer Zeilenabstand */
+    margin-bottom: 25px;
+    /* Geringerer Abstand zwischen den Absätzen */
 }
 
 /* Stile für den Button */
@@ -319,8 +333,13 @@ section {
 
 /* Animation für die Ladeanimation */
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Stile für die Nachrichten */
@@ -389,11 +408,11 @@ footer {
     background-image: url('../img/language/de-32.png');
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     content: '';
     transform: translateX(26px);
     background-image: url('../img/language/uk-32.png');
@@ -502,21 +521,24 @@ input:checked + .slider:before {
 /* Zurückscroll-Pfeil-Stil */
 #scroll-to-top {
     position: fixed;
-    bottom: -40px; /* Startposition, außerhalb des Bildschirms */
+    bottom: -40px;
+    /* Startposition, außerhalb des Bildschirms */
     right: 40px;
     width: 30px;
     height: 30px;
     background-color: #2c3e50;
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s ease, bottom 0.3s ease, filter 0.3s ease; /* Animation für Farbwechsel und Position */
+    transition: background-color 0.3s ease, bottom 0.3s ease, filter 0.3s ease;
+    /* Animation für Farbwechsel und Position */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #scroll-to-top i {
-    font-size: 15px; /* Kleinere Schriftgröße */
+    font-size: 15px;
+    /* Kleinere Schriftgröße */
     color: #fff;
     transition: color 0.3s ease;
     position: relative;
@@ -530,4 +552,44 @@ body.scroll-up #scroll-to-top {
 
 body:not(.scroll-up) #scroll-to-top {
     bottom: -40px;
-} 
+}
+
+/* Stile für das Ankündigungsbanner */
+#announcement-banner {
+    display: block;
+    position: absolute;
+    top: 60px; /* Ändere dies basierend auf der Höhe deiner Navbar */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-width: 800px;
+    background-color: #ffcccc;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 1000; /* Stelle sicher, dass das Banner über anderen Elementen liegt */
+}
+
+#announcement-banner p {
+    font-family: 'Comic Sans MS', cursive;
+    font-size: 16px;
+}
+
+#close-announcement {
+    background-color: black;
+    color: white;
+    border: 1px solid black;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#close-announcement:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Falls du einen Schatten hinzufügen möchtest */
+#announcement-banner {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}

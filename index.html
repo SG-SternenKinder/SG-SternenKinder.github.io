@@ -43,24 +43,24 @@
                         if (event.data === 'showOfflinePopup') {
                             // Behandle den Offline-Zustand
                             // Hier kannst du zusätzlichen Code für die Behandlung des Offline-Zustands hinzufügen
-    
+
                             // Erstelle das Popup-Element
                             const offlinePopup = document.createElement('div');
                             offlinePopup.classList.add('popup-container');
                             offlinePopup.id = 'offline-popup';
-    
+
                             const popupContent = document.createElement('div');
                             popupContent.classList.add('popup-content');
-    
-                            popupContent.innerHTML = 
+
+                            popupContent.innerHTML =
                             `
                                 <h2>Offline</h2>
                                 <p>You are currently offline. Some features may not be available.</p>
                                 <button id="close-offline-popup">Close</button>
                             `;
-    
+
                             offlinePopup.appendChild(popupContent);
-    
+
                             // Füge das Popup zur Seite hinzu
                             document.body.appendChild(offlinePopup);
                         }
@@ -140,10 +140,10 @@
             });
         </script>
 
-            <!-- Ankündigungsbanner (verschieben)-->
-        <div id="announcement-banner" style="display: none; background-color: #ffcccc; color: white; padding: 10px;">
-            <p style="font-family: 'Comic Sans MS', cursive; font-size: 16px;">kleine aber feine Aktion gestartet</p>
-            <button id="close-announcement" style="background-color: black; color: white; border: 1px solid black; padding: 5px; cursor: pointer;">Schließen</button>
+        <!-- Ankündigungsbanner (verschieben)-->
+        <div id="announcement-banner">
+            <p>kleine aber feine Aktion gestartet</p>
+            <button id="close-announcement">Schließen</button>
         </div>
 
         <div class="follow-me">
