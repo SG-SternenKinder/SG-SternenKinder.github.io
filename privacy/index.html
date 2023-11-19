@@ -32,8 +32,8 @@
     <!-- Weitere Stile und Skripte in externe Dateien auslagern -->
     <link rel="stylesheet" href="../css/style.css">
 
-    <script importent>
-    // Verstecke den Dateinamen in der URL
+    <script>
+        // Verstecke den Dateinamen in der URL
         if (history.pushState) {
             var newURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
             window.history.pushState({ path: newURL }, '', newURL);
