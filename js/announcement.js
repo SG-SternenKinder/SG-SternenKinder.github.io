@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Banner-Informationen
     const bannerName = 'Aktion';
-    const bannerVersion = 'v0.0.0.1';
+    const bannerVersion = 'v0.0.0.2';
 
     // DOM-Elemente
     const announcementBanner = document.getElementById('announcement-banner');
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Funktion zum Anzeigen des Banners
     function showBanner() {
-        announcementBanner.style.display = 'flex';
+        announcementBanner.style.display = 'block';
     }
 
     // Überprüfen, ob das Banner geschlossen wurde und nicht für die aktuelle Sitzung angezeigt werden soll
@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Überprüfen, ob sich die Banner-Version geändert hat und das Banner anzeigen
-    const savedBannerVersion = CookieUtil.getCookie(`${bannerName}-${bannerVersion}Closed`);
-    if (savedBannerVersion !== 'true') {
+    const savedBannerClosed = CookieUtil.getCookie(`${bannerName}-${bannerVersion}Closed`);
+    if (savedBannerClosed !== 'true') {
         showBanner();
     }
 });

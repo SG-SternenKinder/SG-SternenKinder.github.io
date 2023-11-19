@@ -556,7 +556,6 @@ body:not(.scroll-up) #scroll-to-top {
 
 /* Stile für das Ankündigungsbanner */
 #announcement-banner {
-    display: block;
     position: fixed;
     top: 0px;
     /* Erhöhe die Höhe des Banners */
