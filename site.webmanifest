@@ -16,7 +16,7 @@
         {
             "src": "img/favicon/apple-touch-icon.png",
             "sizes": "180x180",
-            "type": "image/png"  
+            "type": "image/png"
         },
         {
             "src": "img/favicon/favicon-32x32.png",
@@ -33,11 +33,6 @@
     "splash_pages": null,
     "scope": "/",
     "orientation": "any",
-    "related_applications": [],
-    "prefer_related_applications": false,
-    "permissions": [],
-    "shortcuts": [],
-    "categories": [],
     "serviceworker": {
         "src": "js/service-worker.js",
         "scope": "/"

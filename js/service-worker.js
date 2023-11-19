@@ -1,13 +1,15 @@
 // service-worker.js
 
 // Cach Versionsname
-const CACHE_NAME = 'cache-v1.1.2.2';
+const CACHE_NAME = 'cache-v1.1.2.3';
 
 // Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.
 self.addEventListener('install', (event) => {
+    console.log('Service Worker installed');
     event.waitUntil(
         // Öffne den Cache mit dem Namen CACHE_NAME.
         caches.open(CACHE_NAME).then((cache) => {
+            console.log('Cache opened');
             // Füge die erforderlichen Ressourcen zum Cache hinzu.
             return cache.addAll([
                 'https://sg-sternenkinder.github.io/index.html',
@@ -35,12 +37,15 @@ self.addEventListener('install', (event) => {
             ]);
         })
     );
+    console.log('Cache closed');
 });
 
 //Network-first-fallback-to-Cach event
 self.addEventListener('fetch', (event) => {
+    console.log('Fetching:', event.request.url);
     event.respondWith(
         fetch(event.request).then((response) => {
+            console.log('Fetch successful:', response);
             // Hier prüfen, ob die Anfrage erfolgreich war
             if (!response || response.status !== 200 || response.type !== 'basic') {
                 return caches.match(event.request);
@@ -52,6 +57,7 @@ self.addEventListener('fetch', (event) => {
                 return response;
             });
         }).catch(() => {
+            console.log('Fetch failed, falling back to cache');
             // Hier kann auch auf die Offline-Status-Nachricht reagiert werden
             self.clients.matchAll().then(clients => {
                 clients.forEach(client => client.postMessage('offline'));
@@ -65,7 +71,9 @@ self.addEventListener('fetch', (event) => {
 
 // Add this event listener for offline detection
 self.addEventListener('message', (event) => {
+    console.log('Message event:', event.data);
     if (event.data.type === 'offline') {
+        console.log('Offline message received');
         // Wenn offline, sende eine Nachricht an die Clients, um das Offline-Popup anzuzeigen
         self.clients.matchAll().then(clients => {
             clients.forEach(client => client.postMessage({ type: 'showOfflinePopup', data: event.data.data }));

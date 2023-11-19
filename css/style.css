@@ -135,7 +135,7 @@ span {
 .follow-me {
     display: flex;
     align-items: center;
-    margin-right: 120px;
+    margin-right: 360px;
 }
 
 .follow-me a:first-child {
