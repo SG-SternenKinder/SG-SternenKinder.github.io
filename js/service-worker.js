@@ -1,7 +1,7 @@
 // service-worker.js
 
 // Cach Versionsname
-const CACHE_NAME = 'cache-v1.1.1';
+const CACHE_NAME = 'cache-v1.1.2';
 
 // Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.
 self.addEventListener('install', (event) => {
@@ -11,27 +11,27 @@ self.addEventListener('install', (event) => {
             // Füge die erforderlichen Ressourcen zum Cache hinzu.
             return cache.addAll([
                 'index.html',
-                '/about/index.html',
-                '/privacy/index.html',
-                '/imprint/index.html',
-                '/cookies/index.html',
-                '/contact/index.html',
-                '/img/favicon/favicon.ico',
-                '/img/language/de-32.png',
-                '/img/language/en-32.png',
-                '/js/announcement.js',
-                '/js/cookie.js',
-                '/js/footer.js',
-                '/js/language-switcher.js',
-                '/js/popup.js',
-                '/js/scrollback.js',
-                '/language/language-de.txt',
-                '/language/language-en.txt',
-                '/css/style.css',
-                '/css/media.css',
-                '/fontawesome/js/fontawesome.js',
-                '/fontawesome/js/brand.js',
-                '/fontawesome/js/solid.js'
+                'about/index.html',
+                'privacy/index.html',
+                'imprint/index.html',
+                'cookies/index.html',
+                'contact/index.html',
+                'img/favicon/favicon.ico',
+                'img/language/de-32.png',
+                'img/language/en-32.png',
+                'js/announcement.js',
+                'js/cookie.js',
+                'js/footer.js',
+                'js/language-switcher.js',
+                'js/popup.js',
+                'js/scrollback.js',
+                'language/language-de.txt',
+                'language/language-en.txt',
+                'css/style.css',
+                'css/media.css',
+                'fontawesome/js/fontawesome.js',
+                'fontawesome/js/brand.js',
+                'fontawesome/js/solid.js'
             ]);
         })
     );
@@ -63,10 +63,10 @@ self.addEventListener('fetch', (event) => {
 
 // Add this event listener for offline detection
 self.addEventListener('message', (event) => {
-    if (event.data === 'offline') {
-        // If offline, send a message to the clients to show the offline popup
+    if (event.data.type === 'offline') {
+        // Wenn offline, sende eine Nachricht an die Clients, um das Offline-Popup anzuzeigen
         self.clients.matchAll().then(clients => {
-            clients.forEach(client => client.postMessage('showOfflinePopup'));
+            clients.forEach(client => client.postMessage({ type: 'showOfflinePopup', data: event.data.data }));
         });
     }
 });
