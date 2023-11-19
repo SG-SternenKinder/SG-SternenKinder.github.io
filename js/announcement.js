@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeButton = document.getElementById('close-announcement');
 
     // Cookies und Zeitpunkte
-    const bannerClosed = CookieUtil.getCookie(`${bannerName}Closed`);
-    const lastCloseTime = parseInt(CookieUtil.getCookie(`${bannerName}LastCloseTime`));
+    const bannerClosed = CookieUtil.getCookie(`${bannerName}-${bannerVersion}Closed`);
+    const lastCloseTime = parseInt(CookieUtil.getCookie(`${bannerName}-${bannerVersion}LastCloseTime`));
     const currentTime = new Date().getTime();
     const reloadTime = performance.timeOrigin;
 
@@ -33,18 +33,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // Event-Listener für den Schließen-Button des Banners
     closeButton.addEventListener('click', function () {
         // Setzen der Cookies und Zeitpunkte
-        CookieUtil.setCookie(`${bannerName}-${bannerVersion} Closed`, 'true', 1); // Banner wird für 1 Tag geschlossen
-        CookieUtil.setCookie(`${bannerName}-${bannerVersion} LastCloseTime`, currentTime.toString(), 365); // Zeitpunkt der Schließung für 1 Jahr speichern
+        CookieUtil.setCookie(`${bannerName}-${bannerVersion}Closed`, 'true', 1); // Banner wird für 1 Tag geschlossen
+        CookieUtil.setCookie(`${bannerName}-${bannerVersion}LastCloseTime`, currentTime.toString(), 365); // Zeitpunkt der Schließung für 1 Jahr speichern
 
         // Ausblenden des Banners
         announcementBanner.style.display = 'none';
     });
 
     // Überprüfen, ob sich die Banner-Version geändert hat und das Banner anzeigen
-    const savedBannerVersion = CookieUtil.getCookie(`${bannerName}-${bannerVersion}`);
-    if (savedBannerVersion !== bannerVersion) {
+    const savedBannerVersion = CookieUtil.getCookie(`${bannerName}-${bannerVersion}Closed`);
+    if (savedBannerVersion !== 'true') {
         showBanner();
-        // Aktualisierte Banner-Version speichern
-        CookieUtil.setCookie(`${bannerName}-${bannerVersion}`, 365); // Banner-Version wird für 1 Jahr gespeichert
     }
 });
