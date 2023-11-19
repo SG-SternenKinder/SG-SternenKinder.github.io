@@ -241,13 +241,15 @@
 
     <script src="../js/footer.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
-        // Verstecke den Dateinamen in der URL
-        if (history.pushState) {
-            var newURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
-            window.history.pushState({ path: newURL }, '', newURL);
-        }
-    </script>
+        $(document).ready(function() {
+            if (history.pushState) {
+                var newURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.pushState({ path: newURL }, '', newURL);
+            }
+        });
+    </script>    
 
 </body>
 
