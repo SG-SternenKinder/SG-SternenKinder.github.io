@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeButton = document.getElementById('close-announcement');
 
     // Überprüfe, ob das Banner in den letzten 4 Tagen angezeigt wurde oder geschlossen wurde
-    const lastDisplayTime = localStorage.getItem('lastBannerDisplayTime');
-    const bannerClosed = localStorage.getItem('announcementBannerClosed');
+    const lastDisplayTime = CookieUtil.getCookie('lastBannerDisplayTime');
+    const bannerClosed = CookieUtil.getCookie('announcementBannerClosed');
     const currentTime = new Date().getTime();
     const fourDaysInMilliseconds = 4 * 24 * 60 * 60 * 1000;
 
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     closeButton.addEventListener('click', function () {
         // Schließe das Banner und speichere dies in der Session
         announcementBanner.style.display = 'none';
-        localStorage.setItem('announcementBannerClosed', 'true');
-        localStorage.setItem('lastBannerDisplayTime', currentTime);
+        CookieUtil.setCookie('announcementBannerClosed', 'true');
+        CookieUtil.setCookie('lastBannerDisplayTime', currentTime);
     });
 });
