@@ -356,7 +356,11 @@ footer {
     text-align: center;
 }
 
-footer .span {
+footer span {
+    color: #fff;
+}
+
+.footer-time {
     color: #fff;
 }
 
