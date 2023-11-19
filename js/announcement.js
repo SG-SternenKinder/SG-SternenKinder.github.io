@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Funktion zum Anzeigen des Banners
     function showBanner() {
         announcementBanner.style.display = 'block';
-        if (consolen.getConsoleOutput()) {
+        if (consoleManager.getConsoleOutput()) {
             console.log('Banner wird angezeigt.');
         }
     }
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!bannerClosed || (lastCloseTime && currentTime - lastCloseTime > 1000 * 60 * 60 * 24 && !isPageReloaded())) {
         showBanner();
     } else {
-        if (consolen.getConsoleOutput()) {
+        if (consoleManager.getConsoleOutput()) {
             console.log('Banner wird nicht angezeigt.');
         }
     }
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Ausblenden des Banners
         announcementBanner.style.display = 'none';
-        if (consolen.getConsoleOutput()) {
+        if (consoleManager.getConsoleOutput()) {
             console.log('Banner wurde geschlossen.');
         }
     });
@@ -55,11 +55,11 @@ document.addEventListener('DOMContentLoaded', function () {
         showBanner();
         // Aktualisierte Banner-Version speichern
         CookieUtil.setCookie(`${bannerName}-${bannerVersion}Closed`, 'true', 1); // Banner wird für 1 Tag geschlossen
-        if (consolen.getConsoleOutput()) {
+        if (consoleManager.getConsoleOutput()) {
             console.log('Banner wird angezeigt, da sich die Version geändert hat.');
         }
     } else {
-        if (consolen.getConsoleOutput()) {
+        if (consoleManager.getConsoleOutput()) {
             console.log('Banner wird nicht angezeigt, da die Version gleich ist.');
         }
     }

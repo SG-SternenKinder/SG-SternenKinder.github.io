@@ -31,7 +31,7 @@ const CookieUtil = (function () {
         }
 
         document.cookie = cookieString;
-        if (consolen.getConsoleOutput()) {
+        if (consoleManager.getConsoleOutput()) {
             console.log(`Cookie "${name}" wurde erfolgreich gesetzt.`);
         }
     }
@@ -44,13 +44,13 @@ const CookieUtil = (function () {
             let cookie = cookies[i].trim();
             if (cookie.indexOf(cookieName) === 0) {
                 const cookieValue = decodeURIComponent(cookie.substring(cookieName.length, cookie.length));
-                if (consolen.getConsoleOutput()) {
+                if (consoleManager.getConsoleOutput()) {
                     console.log(`Cookie "${name}" wurde erfolgreich abgerufen.`);
                 }
                 return cookieValue;
             }
         }
-        if (consolen.getConsoleOutput()) {
+        if (consoleManager.getConsoleOutput()) {
             console.warn(`Cookie "${name}" wurde nicht gefunden.`);
         }
         return null;

@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Funktion zum Setzen des Slider-Zustands
     function setSliderState(language) {
         languageSlider.checked = language === 'en';
-        if (consolen.getConsoleOutput()) {
+        if (consoleManager.getConsoleOutput()) {
             console.log(`Slider state set to ${language}`);
         }
     }
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     flagsElement.style.display = 'none';
                 }
 
-                if (consolen.getConsoleOutput()) {
+                if (consoleManager.getConsoleOutput()) {
                     console.log(`No internet connection. Displaying language code: ${offlineText}`);
                 }
 
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
 
             // Wenn eine Internetverbindung besteht, lade die Texte normal
-            if (consolen.getConsoleOutput()) {
+            if (consoleManager.getConsoleOutput()) {
                 console.log('Loading texts for language:', language);
             }
 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 }
             });
 
-            if (consolen.getConsoleOutput()) {
+            if (consoleManager.getConsoleOutput()) {
                 console.log(`Texts loaded successfully for language: ${language}`);
             }
 
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     async function fetchTexts(language) {
         try {
             // Konsolenausgabe für Debugging
-            if (consolen.getConsoleOutput()) {
+            if (consoleManager.getConsoleOutput()) {
                 console.log('Fetching texts for language:', language);
             }
 
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Funktion zum Aktualisieren des Sprach-Cookies
     function updateLanguageCookie(language) {
         CookieUtil.setCookie('language', language, 4, { secure: true }); // Speichere die Sprache für 4 Tage
-        if (consolen.getConsoleOutput()) {
+        if (consoleManager.getConsoleOutput()) {
             console.log(`Language cookie updated: ${language}`);
         }
     }

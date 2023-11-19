@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         noscriptContainer.appendChild(spinnerElement);
         noscriptContainer.appendChild(messageElement);
 
-        if (consolen.getConsoleOutput()) {
+        if (consoleManager.getConsoleOutput()) {
             console.log('JavaScript is disabled. NoScript message has been created successfully.');
         }
     } else {

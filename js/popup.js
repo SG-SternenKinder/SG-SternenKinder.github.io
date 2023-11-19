@@ -10,25 +10,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Überprüfen, ob das Popup bereits angezeigt wurde
     const popupShown = sessionStorage.getItem('popupShown');
-    if (consolen.getConsoleOutput()) {
+    if (consoleManager.getConsoleOutput()) {
         console.log('Popup wurde bereits angezeigt:', popupShown);
     }
 
     // Überprüfe, ob Cookies akzeptiert wurden
     const acceptedCookies = CookieUtil.getCookie('cookiesAccepted');
-    if (consolen.getConsoleOutput()) {
+    if (consoleManager.getConsoleOutput()) {
         console.log('Cookies wurden akzeptiert:', acceptedCookies);
     }
 
     // Überprüfe, ob Cookies abgelehnt wurden
     const rejectedCookies = CookieUtil.getCookie('cookiesRejected');
-    if (consolen.getConsoleOutput()) {
+    if (consoleManager.getConsoleOutput()) {
         console.log('Cookies wurden abgelehnt:', rejectedCookies);
     }
 
     // Entscheidung des Benutzers überprüfen und Popup entsprechend anzeigen
     if (!popupShown && !acceptedCookies && !rejectedCookies && navigator.onLine) {
-        if (consolen.getConsoleOutput()) {
+        if (consoleManager.getConsoleOutput()) {
             console.log('Popup wird angezeigt.');
         }
 
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
             CookieUtil.setCookie('cookiesAccepted', 'true', 4);
             popup.style.display = 'none';
             acceptedPopup.style.display = 'flex';
-            if (consolen.getConsoleOutput()) {
+            if (consoleManager.getConsoleOutput()) {
                 console.log('Cookies wurden akzeptiert.');
             }
         });
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Setze ein Session-Cookie für die Ablehnung von Cookies
             sessionStorage.setItem('cookiesRejected', 'true');
             rejectedPopup.style.display = 'flex';
-            if (consolen.getConsoleOutput()) {
+            if (consoleManager.getConsoleOutput()) {
                 console.log('Cookies wurden abgelehnt.');
             }
         });
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
         closeAcceptedPopupButton.addEventListener('click', function () {
             // Akzeptieren-Popup schließen
             acceptedPopup.style.display = 'none';
-            if (consolen.getConsoleOutput()) {
+            if (consoleManager.getConsoleOutput()) {
                 console.log('Akzeptieren-Popup wurde geschlossen.');
             }
         });
@@ -67,12 +67,12 @@ document.addEventListener('DOMContentLoaded', function () {
         closeRejectedPopupButton.addEventListener('click', function () {
             // Abgelehnt-Popup schließen
             rejectedPopup.style.display = 'none';
-            if (consolen.getConsoleOutput()) {
+            if (consoleManager.getConsoleOutput()) {
                 console.log('Abgelehnt-Popup wurde geschlossen.');
             }
         });
     } else {
-        if (consolen.getConsoleOutput()) {
+        if (consoleManager.getConsoleOutput()) {
             console.log('Popup wird nicht angezeigt.');
         }
     }
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Show the offline popup
             const offlinePopup = document.getElementById('offline-popup');
             offlinePopup.style.display = 'flex';
-            if (consolen.getConsoleOutput()) {
+            if (consoleManager.getConsoleOutput()) {
                 console.log('Offline-Popup wird angezeigt.');
             }
         }

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Setze den erstellten HTML-Code in das Footer-Element ein
     footerContainer.innerHTML = footerHtml;
 
-    if (consolen.getConsoleOutput()) {
+    if (consoleManager.getConsoleOutput()) {
         console.log('Der Footer wurde erfolgreich erstellt und angezeigt.');
     }
 });
