@@ -557,8 +557,8 @@ body:not(.scroll-up) #scroll-to-top {
 /* Stile für das Ankündigungsbanner */
 #announcement-banner {
     display: block;
-    position: absolute;
-    top: 60px; /* Ändere dies basierend auf der Höhe deiner Navbar */
+    position: fixed;
+    top: 0; /* Positioniere das Banner oben */
     left: 50%;
     transform: translateX(-50%);
     width: 80%;
@@ -567,7 +567,7 @@ body:not(.scroll-up) #scroll-to-top {
     color: white;
     padding: 10px;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 0 0 10px 10px; /* Abgerundete Ecken nur unten */
     z-index: 1000; /* Stelle sicher, dass das Banner über anderen Elementen liegt */
 }
 
@@ -577,19 +577,20 @@ body:not(.scroll-up) #scroll-to-top {
 }
 
 #close-announcement {
-    background-color: black;
+    background-color: #ff6666; /* Hellerer Hintergrundfarbe für den Schließen-Button */
     color: white;
-    border: 1px solid black;
+    border: 1px solid #ff6666; /* Hellerer Rand für den Schließen-Button */
     padding: 5px;
     cursor: pointer;
+    border-radius: 5px; /* Abgerundete Ecken für den Schließen-Button */
 }
 
 #close-announcement:hover {
     background-color: white;
-    color: black;
+    color: #ff6666;
 }
 
 /* Falls du einen Schatten hinzufügen möchtest */
 #announcement-banner {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
