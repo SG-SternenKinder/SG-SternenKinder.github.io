@@ -558,17 +558,17 @@ body:not(.scroll-up) #scroll-to-top {
 #announcement-banner {
     display: block;
     position: fixed;
-    top: 0; /* Positioniere das Banner oben */
+    top: 20px; /* Erhöhe die Höhe des Banners */
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
-    max-width: 800px;
-    background-color: #ffcccc;
+    width: 70%; /* Verringere die Breite des Banners */
+    max-width: 600px; /* Maximale Breite des Banners */
+    background-color: rgba(255, 204, 204, 0.9); /* Hintergrundfarbe mit leichter Transparenz */
     color: white;
-    padding: 10px;
+    padding: 15px; /* Erhöhe den Innenabstand des Banners */
     text-align: center;
-    border-radius: 0 0 10px 10px; /* Abgerundete Ecken nur unten */
-    z-index: 1000; /* Stelle sicher, dass das Banner über anderen Elementen liegt */
+    border-radius: 15px; /* Stärker abgerundete Ecken */
+    z-index: 1000;
 }
 
 #announcement-banner p {
@@ -577,12 +577,12 @@ body:not(.scroll-up) #scroll-to-top {
 }
 
 #close-announcement {
-    background-color: #ff6666; /* Hellerer Hintergrundfarbe für den Schließen-Button */
+    background-color: #ff6666;
     color: white;
-    border: 1px solid #ff6666; /* Hellerer Rand für den Schließen-Button */
-    padding: 5px;
+    border: 1px solid #ff6666;
+    padding: 8px; /* Erhöhe den Innenabstand des Schließen-Buttons */
     cursor: pointer;
-    border-radius: 5px; /* Abgerundete Ecken für den Schließen-Button */
+    border-radius: 5px;
 }
 
 #close-announcement:hover {
