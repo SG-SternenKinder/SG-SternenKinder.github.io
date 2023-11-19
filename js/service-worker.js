@@ -1,11 +1,11 @@
 // service-worker.js
 
 // Cach Versionsname
-const FILE_VERSION = 'v0.0.0.4';
+const FILE_VERSION = 'v0.0.0.5';
 const CACHE_NAME = 'cache-' + FILE_VERSION;
 
 // Importiere die urlHelper-Funktionen
-import { modifyURLs } from './urlHelper.js';
+self.importScripts('urlHelper.js');
 
 // Definiere die URLs ohne Dateinamen
 const urlsToModify = [
