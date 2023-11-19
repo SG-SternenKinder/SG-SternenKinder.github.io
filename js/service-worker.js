@@ -1,7 +1,7 @@
 // service-worker.js
 
 // Cach Versionsname
-const CACHE_NAME = 'cache-v1.1.2.1';
+const CACHE_NAME = 'cache-v1.1.2.2';
 
 // Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.
 self.addEventListener('install', (event) => {
@@ -10,28 +10,28 @@ self.addEventListener('install', (event) => {
         caches.open(CACHE_NAME).then((cache) => {
             // Füge die erforderlichen Ressourcen zum Cache hinzu.
             return cache.addAll([
-                '/index.html',
-                '/about/index.html',
-                '/privacy/index.html',
-                '/imprint/index.html',
-                '/cookies/index.html',
-                '/contact/index.html',
-                '/img/favicon/favicon.ico',
-                '/img/language/de-32.png',
-                '/img/language/en-32.png',
-                '/js/announcement.js',
-                '/js/cookie.js',
-                '/js/footer.js',
-                '/js/language-switcher.js',
-                '/js/popup.js',
-                '/js/scrollback.js',
-                '/language/language-de.txt',
-                '/language/language-en.txt',
-                '/css/style.css',
-                '/css/media.css',
-                '/fontawesome/js/fontawesome.js',
-                '/fontawesome/js/brand.js',
-                '/fontawesome/js/solid.js'
+                'https://sg-sternenkinder.github.io/index.html',
+                'https://sg-sternenkinder.github.io/about/index.html',
+                'https://sg-sternenkinder.github.io/privacy/index.html',
+                'https://sg-sternenkinder.github.io/imprint/index.html',
+                'https://sg-sternenkinder.github.io/cookies/index.html',
+                'https://sg-sternenkinder.github.io/contact/index.html',
+                'https://sg-sternenkinder.github.io/img/favicon/favicon.ico',
+                'https://sg-sternenkinder.github.io/img/language/de-32.png',
+                'https://sg-sternenkinder.github.io/img/language/en-32.png',
+                'https://sg-sternenkinder.github.io/js/announcement.js',
+                'https://sg-sternenkinder.github.io/js/cookie.js',
+                'https://sg-sternenkinder.github.io/js/footer.js',
+                'https://sg-sternenkinder.github.io/js/language-switcher.js',
+                'https://sg-sternenkinder.github.io/js/popup.js',
+                'https://sg-sternenkinder.github.io/js/scrollback.js',
+                'https://sg-sternenkinder.github.io/language/language-de.txt',
+                'https://sg-sternenkinder.github.io/language/language-en.txt',
+                'https://sg-sternenkinder.github.io/css/style.css',
+                'https://sg-sternenkinder.github.io/css/media.css',
+                'https://sg-sternenkinder.github.io/fontawesome/js/fontawesome.js',
+                'https://sg-sternenkinder.github.io/fontawesome/js/brand.js',
+                'https://sg-sternenkinder.github.io/fontawesome/js/solid.js'
             ]);
         })
     );
@@ -40,21 +40,23 @@ self.addEventListener('install', (event) => {
 //Network-first-fallback-to-Cach event
 self.addEventListener('fetch', (event) => {
     event.respondWith(
-        // Versuche die Ressource vom Netzwerk zu laden und fallbacke auf den Cache, falls erforderlich.
         fetch(event.request).then((response) => {
+            // Hier prüfen, ob die Anfrage erfolgreich war
+            if (!response || response.status !== 200 || response.type !== 'basic') {
+                return caches.match(event.request);
+            }
+
             // Aktualisiere den Cache mit der neuen Ressource
             return caches.open(CACHE_NAME).then((cache) => {
                 cache.put(event.request, response.clone());
                 return response;
             });
         }).catch(() => {
-            //prüfe, ob der Service Worker offline ist
-            if (!navigator.onLine) {
-                // Service Worker ist offline, sende eine Nachricht an die Seite
-                self.clients.matchAll().then(clients => {
-                    clients.forEach(client => client.postMessage('offline'));
-                });
-            }
+            // Hier kann auch auf die Offline-Status-Nachricht reagiert werden
+            self.clients.matchAll().then(clients => {
+                clients.forEach(client => client.postMessage('offline'));
+            });
+
             // Falle auf den Cache zurück, wenn das Netzwerk nicht verfügbar ist
             return caches.match(event.request);
         })
