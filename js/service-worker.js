@@ -1,71 +1,14 @@
 // service-worker.js
 
 // Cach Versionsname
-const FILE_VERSION = 'v0.0.0.8';
+const FILE_VERSION = 'v0.0.0.9';
 const CACHE_NAME = 'cache-' + FILE_VERSION;
-
-// Funktion zum Entfernen von Dateinamen aus URLs
-function removeFileName(url) {
-    const parts = url.split('/');
-    parts[parts.length - 1] = '';
-    return parts.join('/');
-}
-
-// Definiere die URLs ohne Dateinamen
-const urlsToCache = [
-    removeFileName('https://sg-sternenkinder.github.io/index.html'),
-    removeFileName('https://sg-sternenkinder.github.io/about/index.html'),
-    removeFileName('https://sg-sternenkinder.github.io/privacy/index.html'),
-    removeFileName('https://sg-sternenkinder.github.io/imprint/index.html'),
-    removeFileName('https://sg-sternenkinder.github.io/cookies/cookies.html'),
-    removeFileName('https://sg-sternenkinder.github.io/contact/index.html')
-];
-
-// Definiere die URLs, die nicht modifiziert werden sollen
-const RessourceToCache = [
-    './',
-    './img/favicon/favicon.ico',
-    './img/language/de-32.png',
-    './img/language/en-32.png',
-    './js/announcement.js',
-    './js/cookie.js',
-    './js/footer.js',
-    './js/language-switcher.js',
-    './js/popup.js',
-    './js/scrollback.js',
-    './language/language-de.txt',
-    './language/language-en.txt',
-    './css/style.css',
-    './css/media.css',
-    './fontawesome/js/fontawesome.js',
-    './fontawesome/js/brand.js',
-    './fontawesome/js/solid.js'
-];
 
 // Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.
 self.addEventListener('install', (event) => {
     console.log('Service Worker installed');
-    event.waitUntil(
-        // Öffne den Cache mit dem Namen CACHE_NAME.
-        caches.open(CACHE_NAME).then((cache) => {
-            console.log('Cache opened');
-
-            // Füge zum Cache hinzu
-            const modifiedCachePromise = cache.addAll(urlsToCache);
-            const unmodifiedCachePromise = cache.addAll(RessourceToCache);
-
-            // Warte darauf, dass beide Vorgänge abgeschlossen sind
-            return Promise.all([modifiedCachePromise, unmodifiedCachePromise]);
-        }).then(() => {
-            console.log('Resources added to cache');
-        }).catch((error) => {
-            console.error('Error adding to cache:', error);
-        })
-    );
 });
 
-/*
-// Network-first-fallback-to-Cach event
 self.addEventListener('fetch', async (event) => {
     console.log('Fetching:', event.request.url);
 
@@ -76,13 +19,10 @@ self.addEventListener('fetch', async (event) => {
 
         // Hier prüfen, ob die Anfrage erfolgreich war
         if (!response || response.status !== 200 || response.type !== 'basic') {
-            console.log('Fetching failed, falling back to cache');
-            return caches.match(event.request);
+            console.log('Fetching failed');
+            // Hier kannst du eine benutzerdefinierte Offline-Seite anzeigen oder die Anfrage ablehnen
+            // z.B.: return new Response('<h1>Offline</h1>', { headers: { 'Content-Type': 'text/html' } });
         }
-
-        // Aktualisiere den Cache mit der neuen Ressource
-        const cache = await caches.open(CACHE_NAME);
-        await cache.put(event.request, response.clone());
 
         return response;
     } catch (error) {
@@ -92,43 +32,8 @@ self.addEventListener('fetch', async (event) => {
         const clients = await self.clients.matchAll();
         clients.forEach(client => client.postMessage('offline'));
 
-        // Falle auf den Cache zurück, wenn das Netzwerk nicht verfügbar ist
-        return caches.match(event.request);
-    }
-});
-*/
-
-//Network-first-fallback-to-Cache event
-self.addEventListener('fetch', async (event) => {
-    console.log('Fetching:', event.request.url);
-
-    try {
-        const response = await caches.match(event.request);
-
-        if (response) {
-            console.log('Cache hit:', event.request.url);
-            return response;
-        }
-
-        console.log('Cache miss, fetching from network');
-        const networkResponse = await fetch(event.request);
-
-        if (networkResponse && networkResponse.status === 200) {
-            console.log('Network response successful, updating cache');
-            const cache = await caches.open(CACHE_NAME);
-            await cache.put(event.request, networkResponse.clone());
-        }
-
-        return networkResponse;
-    } catch (error) {
-        console.error('Fetch error:', error);
-
-        // Hier kann auch auf die Offline-Status-Nachricht reagiert werden
-        const clients = await self.clients.matchAll();
-        clients.forEach(client => client.postMessage('offline'));
-
-        // Falle auf den Cache zurück, wenn das Netzwerk nicht verfügbar ist
-        return caches.match(event.request);
+        // Dieser Teil kann nach deinen Anforderungen angepasst werden
+        // z.B.: return caches.match('/offline.html');
     }
 });
 
