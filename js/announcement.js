@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Banner-Informationen
     const bannerName = 'Aktion';
-    const bannerVersion = 'v0.0.0.2.1';
+    const bannerVersion = 'v0.0.0.2.2';
 
     // DOM-Elemente
     const announcementBanner = document.getElementById('announcement-banner');
