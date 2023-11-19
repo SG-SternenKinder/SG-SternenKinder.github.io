@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Überwache Änderungen am Sprach-Umschalter und aktualisiere die Sprache
     languageSwitcher.addEventListener('change', function () {
         // Bestimme die ausgewählte Sprache basierend auf dem Zustand des Sprach-Umschalters
-        const selectedLanguage = languageSwitcher.checked ? 'en' : 'de';
+        const selectedLanguage = languageSwitcher.checked ? 'de' : 'en';
 
         // Aktualisiere das Sprach-Cookie
         updateLanguageCookie(selectedLanguage);
