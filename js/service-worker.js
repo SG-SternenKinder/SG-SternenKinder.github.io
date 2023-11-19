@@ -1,8 +1,15 @@
 // service-worker.js
 
 // Cach Versionsname
-const FILE_VERSION = 'v0.0.0.6';
+const FILE_VERSION = 'v0.0.0.7';
 const CACHE_NAME = 'cache-' + FILE_VERSION;
+
+// Funktion zum Entfernen von Dateinamen aus URLs
+function removeFileName(url) {
+    const parts = url.split('/');
+    parts[parts.length - 1] = '';
+    return parts.join('/');
+}
 
 // Definiere die URLs ohne Dateinamen
 const urlsToCache = [
@@ -45,8 +52,6 @@ self.addEventListener('install', (event) => {
 
             // Füge zum Cache hinzu
             const modifiedCachePromise = cache.addAll(urlsToCache);
-
-            // Füge zum Cache hinzu
             const unmodifiedCachePromise = cache.addAll(RessourceToCache);
 
             // Warte darauf, dass beide Vorgänge abgeschlossen sind
