@@ -1,8 +1,43 @@
 // service-worker.js
 
 // Cach Versionsname
-const FILE_VERSION = 'v0.0.0.3';
+const FILE_VERSION = 'v0.0.0.4';
 const CACHE_NAME = 'cache-' + FILE_VERSION;
+
+// Importiere die urlHelper-Funktionen
+import { modifyURLs } from './urlHelper.js';
+
+// Definiere die URLs ohne Dateinamen
+const urlsToModify = [
+    'https://sg-sternenkinder.github.io/index.html',
+    'https://sg-sternenkinder.github.io/about/index.html',
+    'https://sg-sternenkinder.github.io/privacy/index.html',
+    'https://sg-sternenkinder.github.io/imprint/index.html',
+    'https://sg-sternenkinder.github.io/cookies/cookies.html',
+    'https://sg-sternenkinder.github.io/contact/index.html'
+];
+
+// Definiere die URLs, die nicht modifiziert werden sollen
+const urlsToKeep = [
+    './',
+    './img/favicon/favicon.ico',
+    './img/language/de-32.png',
+    './img/language/en-32.png',
+    './js/announcement.js',
+    './js/cookie.js',
+    './js/footer.js',
+    './js/language-switcher.js',
+    './js/popup.js',
+    './js/scrollback.js',
+    './js/urlHelper.js',
+    './language/language-de.txt',
+    './language/language-en.txt',
+    './css/style.css',
+    './css/media.css',
+    './fontawesome/js/fontawesome.js',
+    './fontawesome/js/brand.js',
+    './fontawesome/js/solid.js'
+];
 
 // Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.
 self.addEventListener('install', (event) => {
@@ -11,32 +46,15 @@ self.addEventListener('install', (event) => {
         // Öffne den Cache mit dem Namen CACHE_NAME.
         caches.open(CACHE_NAME).then((cache) => {
             console.log('Cache opened');
-            // Füge die erforderlichen Ressourcen zum Cache hinzu.
-            return cache.addAll([
-                './',
-                './index.html',
-                './about/index.html',
-                './privacy/index.html',
-                './imprint/index.html',
-                './cookies/index.html',
-                './contact/index.html',
-                './img/favicon/favicon.ico',
-                './img/language/de-32.png',
-                './img/language/en-32.png',
-                './js/announcement.js',
-                './js/cookie.js',
-                './js/footer.js',
-                './js/language-switcher.js',
-                './js/popup.js',
-                './js/scrollback.js',
-                './language/language-de.txt',
-                './language/language-en.txt',
-                './css/style.css',
-                './css/media.css',
-                './fontawesome/js/fontawesome.js',
-                './fontawesome/js/brand.js',
-                './fontawesome/js/solid.js'
-            ].map(url => new URL(url, self.registration.scope)));
+
+            // Füge die modifizierten URLs zum Cache hinzu
+            const modifiedCachePromise = cache.addAll(modifyURLs(urlsToModify));
+
+            // Füge die nicht modifizierten URLs zum Cache hinzu
+            const unmodifiedCachePromise = cache.addAll(urlsToKeep);
+
+            // Warte darauf, dass beide Vorgänge abgeschlossen sind
+            return Promise.all([modifiedCachePromise, unmodifiedCachePromise]);
         }).then(() => {
             console.log('Resources added to cache');
         }).catch((error) => {
