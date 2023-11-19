@@ -1,7 +1,7 @@
 // language-switcher.js
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', async function () {
     const languageSlider = document.getElementById('language-slider');
-    const selectedLanguage = CookieUtil.getCookie('language') || 'de';
+    let currentLanguage = CookieUtil.getCookie('language') || 'de';
 
     // Funktion zum Setzen des Slider-Zustands
     function setSliderState(language) {
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Wenn es ein gespeichertes Sprach-Cookie gibt, stelle den Schieberegler entsprechend ein
-    if (selectedLanguage === 'en') {
+    if (currentLanguage === 'en') {
         languageSlider.checked = true;
     }
 
@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             // Wenn eine Internetverbindung besteht, lade die Texte normal
-            // Lade die Texte normal, wenn eine Internetverbindung besteht
             console.log('Loading texts for language:', language);
 
             const response = await fetchTexts(language);
@@ -85,15 +84,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie
     languageSlider.addEventListener('change', function () {
-        const selectedLanguage = languageSlider.checked ? 'en' : 'de';
+        currentLanguage = languageSlider.checked ? 'en' : 'de';
 
         // Initialisiere den Text basierend auf dem gespeicherten Cookie
-        setSliderState(selectedLanguage);
+        setSliderState(currentLanguage);
 
         // Aktualisiere den Text der Elemente basierend auf der ausgewählten Sprache
-        loadTexts(selectedLanguage);
-        // Speichere die ausgewählte Sprache im Cookie
-        updateLanguageCookie(selectedLanguage);
-    });
+        loadTexts(currentLanguage);
 
+        // Speichere die ausgewählte Sprache im Cookie
+        updateLanguageCookie(currentLanguage);
+    });
 });
