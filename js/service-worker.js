@@ -1,7 +1,7 @@
 // service-worker.js
 
 // Cach Versionsname
-const CACHE_NAME = 'cache-v1.1.2';
+const CACHE_NAME = 'cache-v1.1.2.1';
 
 // Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.
 self.addEventListener('install', (event) => {
@@ -10,28 +10,28 @@ self.addEventListener('install', (event) => {
         caches.open(CACHE_NAME).then((cache) => {
             // Füge die erforderlichen Ressourcen zum Cache hinzu.
             return cache.addAll([
-                'index.html',
-                'about/index.html',
-                'privacy/index.html',
-                'imprint/index.html',
-                'cookies/index.html',
-                'contact/index.html',
-                'img/favicon/favicon.ico',
-                'img/language/de-32.png',
-                'img/language/en-32.png',
-                'js/announcement.js',
-                'js/cookie.js',
-                'js/footer.js',
-                'js/language-switcher.js',
-                'js/popup.js',
-                'js/scrollback.js',
-                'language/language-de.txt',
-                'language/language-en.txt',
-                'css/style.css',
-                'css/media.css',
-                'fontawesome/js/fontawesome.js',
-                'fontawesome/js/brand.js',
-                'fontawesome/js/solid.js'
+                '/index.html',
+                '/about/index.html',
+                '/privacy/index.html',
+                '/imprint/index.html',
+                '/cookies/index.html',
+                '/contact/index.html',
+                '/img/favicon/favicon.ico',
+                '/img/language/de-32.png',
+                '/img/language/en-32.png',
+                '/js/announcement.js',
+                '/js/cookie.js',
+                '/js/footer.js',
+                '/js/language-switcher.js',
+                '/js/popup.js',
+                '/js/scrollback.js',
+                '/language/language-de.txt',
+                '/language/language-en.txt',
+                '/css/style.css',
+                '/css/media.css',
+                '/fontawesome/js/fontawesome.js',
+                '/fontawesome/js/brand.js',
+                '/fontawesome/js/solid.js'
             ]);
         })
     );
