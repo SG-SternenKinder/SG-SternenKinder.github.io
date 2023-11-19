@@ -1,0 +1,69 @@
+# Automatisches Handling von Zeilenumbrüchen
+* text=auto
+
+# Text- und Binärdateien
+*.css           text diff=css
+*.html          text diff=html
+*.js            text
+*.md            text
+
+# Ignorierte Dateien und Ordner
+*.gitattributes   export-ignore
+*.gitignore       export-ignore
+
+# Graphics 
+*.png             binary
+*.jpg             binary
+*.jpeg            binary
+*.gif             binary
+
+# Documentation 
+*.txt             text
+AUTHORS           text
+CHANGELOG         text
+CHANGES           text
+CONTRIBUTING      text
+COPYING           text
+copyright         text
+*COPYRIGHT*       text
+license           text
+LICENSE           text
+readme            text
+*README*          text
+TODO              text
+
+# Configs 
+*.config          text
+.editorconfig     text
+.gitattributes    text
+.gitconfig        text
+browserslist      text
+
+# If you want to treat it as binary,
+# use the following line instead.
+*.tiff            binary
+*.wbmp            binary
+*.webp            binary
+
+# Audio 
+*.mp3             binary
+*.ogg             binary
+
+# Video 
+*.avi             binary
+*.flv             binary
+*.m4v             binary
+*.mov             binary
+*.mp4             binary
+*.ogv             binary
+*.webm            binary
+
+# Fonts 
+*.ttf             binary
+*.eot             binary
+*.otf             binary
+*.woff            binary
+*.woff2           binary
+
+# Ignore files (like .npmignore or .gitignore)
+*.*ignore         text
