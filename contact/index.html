@@ -41,24 +41,24 @@
                         if (event.data === 'showOfflinePopup') {
                             // Behandle den Offline-Zustand
                             // Hier kannst du zusätzlichen Code für die Behandlung des Offline-Zustands hinzufügen
-    
+
                             // Erstelle das Popup-Element
                             const offlinePopup = document.createElement('div');
                             offlinePopup.classList.add('popup-container');
                             offlinePopup.id = 'offline-popup';
-    
+
                             const popupContent = document.createElement('div');
                             popupContent.classList.add('popup-content');
-    
-                            popupContent.innerHTML = 
-                            `
+
+                            popupContent.innerHTML =
+                                `
                                 <h2>Offline</h2>
                                 <p>You are currently offline. Some features may not be available.</p>
                                 <button id="close-offline-popup">Close</button>
                             `;
-    
+
                             offlinePopup.appendChild(popupContent);
-    
+
                             // Füge das Popup zur Seite hinzu
                             document.body.appendChild(offlinePopup);
                         }
@@ -137,10 +137,15 @@
 
         <div class="follow-me">
             <a href="" class="no-click" draggable="false" rel="noopener">Follow us on</a>
-            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener" onclick="checkLink('TikTok')"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener" onclick="checkLink('Instagram')"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://discord.gg/7BkTCYNkZt" onclick="checkLink2('Discord')" draggable="false" title="Discord" rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
-            <a href="https://osborntv.github.io" onclick="checkLink2('Github')" draggable="false" title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
+            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener"
+                onclick="checkLink('TikTok')"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener"
+                onclick="checkLink('Instagram')"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://discord.gg/7BkTCYNkZt" onclick="checkLink2('Discord')" draggable="false" title="Discord"
+                rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://osborntv.github.io" onclick="checkLink2('Github')" draggable="false"
+                title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i
+                    class="fa-solid fa-globe"></i></a>
         </div>
 
         <script>
@@ -165,12 +170,18 @@
 
         <div id="language-switcher">
             <div id="language-title" class="language-label">Language</div>
-            <div class="language-button" onclick="changeLanguage('en')"></div>
+
+            <!-- Button für Englisch -->
+            <button class="language-button" onclick="changeLanguage('en')">EN</button>
+
+            <!-- Schieberegler -->
             <label class="switch">
-                <input type="checkbox" id="language-slider">
+                <input type="checkbox" id="language-switcher">
                 <span class="slider"></span>
             </label>
-            <div class="language-button" onclick="changeLanguage('de')"></div>
+
+            <!-- Button für Deutsch -->
+            <button class="language-button" onclick="changeLanguage('de')">DE</button>
         </div>
 
     </header>
@@ -213,7 +224,8 @@
     <div class="popup-container" id="rejected-popup">
         <div class="popup-content">
             <h2>Cookies abgelehnt</h2>
-            <p>Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung speichern.</p>
+            <p>Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung
+                speichern.</p>
             <button id="close-rejected-popup">Schließen</button>
         </div>
     </div>
