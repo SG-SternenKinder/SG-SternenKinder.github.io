@@ -1,43 +1,47 @@
 // language-switcher.js
+// Warte, bis das DOM vollständig geladen ist
 document.addEventListener('DOMContentLoaded', function () {
-    const languageSlider = document.getElementById('language-slider');
-    const selectedLanguage = CookieUtil.getCookie('language') || 'de';
+    // Holen Sie sich das Element des Sprach-Umschalters
+    const languageSwitcher = document.getElementById('language-switcher');
+    
+    // Holen Sie sich die im Cookie gespeicherte Sprache oder verwenden Sie 'de' als Standard
+    const defaultLanguage = 'de';
+    const selectedLanguage = CookieUtil.getCookie('language') || defaultLanguage;
 
-    // Funktion zum Setzen des Slider-Zustands
-    function setSliderState(language) {
-        languageSlider.checked = language === 'en';
+    // Holen Sie sich die im localStorage gespeicherte Sprache
+    const storedLanguage = localStorage.getItem('selectedLanguage');
+
+    // Funktion zum Setzen des Zustands des Sprach-Umschalters basierend auf der ausgewählten Sprache
+    function setSwitcherState(language) {
+        languageSwitcher.checked = language === 'en';
     }
 
-    // Wenn es ein gespeichertes Sprach-Cookie gibt, stelle den Schieberegler entsprechend ein
-    if (selectedLanguage === 'en') {
-        languageSlider.checked = true;
-    }
+    // Überprüfen und Anpassen des Zustands des Sprach-Umschalters beim Laden der Seite
+    setSwitcherState(storedLanguage || selectedLanguage);
 
-    // Funktion zum Laden von Texten aus der Datei
+    // Funktion zum Laden von Texten aus der Datei basierend auf der ausgewählten Sprache
     async function loadTexts(language) {
         try {
-            // Überprüfe, ob eine Internetverbindung besteht
             const isOnline = navigator.onLine;
 
             if (!isOnline) {
                 // Keine Internetverbindung, zeige den Sprachcode anstelle der Flaggen
-                const offlineText = language.toUpperCase(); // Zeige den Sprachcode (EN oder DE)
+                const offlineText = language.toUpperCase();
 
                 const languageElement = document.getElementById('language');
                 if (languageElement) {
                     languageElement.innerHTML = offlineText;
                 }
 
-                // Verstecke die Flaggen
                 const flagsElement = document.getElementById('flags');
                 if (flagsElement) {
                     flagsElement.style.display = 'none';
                 }
 
-                return; // Beende die Funktion, wenn keine Internetverbindung besteht
+                return;
             }
 
-            // Wenn eine Internetverbindung besteht, lade die Texte normal
+            // Lade die Texte normal, wenn eine Internetverbindung besteht
             console.log('Loading texts for language:', language);
 
             const response = await fetchTexts(language);
@@ -52,54 +56,45 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 }
             });
-
-            // Setze den Text für den Slider
-            //setSliderText(language);
         } catch (error) {
             console.error('Fehler beim Laden der Texte:', error);
         }
     }
 
-    // Funktion zum Fetchen der Texte
+    // Funktion zum Fetchen der Texte für eine bestimmte Sprache
     async function fetchTexts(language) {
         try {
-            // Konsolenausgabe für Debugging
             console.log('Fetching texts for language:', language);
 
             const response = await fetch(`/language/language-${language}.txt`);
+
             if (!response.ok) {
                 throw new Error(`Failed to fetch language file for ${language}`);
             }
+
             return response;
         } catch (error) {
             throw new Error(`Error fetching language file: ${error.message}`);
         }
     }
 
+    // Funktion zum Aktualisieren des Sprach-Cookies
     function updateLanguageCookie(language) {
-        CookieUtil.setCookie('language', language, 4, { secure: true }); // Speichere die Sprache für 4 Tage
+        CookieUtil.setCookie('language', language, 4, { secure: true });
     }
 
-    function setSliderText(language) {
-        const sliderText = language === 'en' ;
-        const slider = document.querySelector('.slider');
-        if (slider) {
-            slider.innerText = sliderText;
-        }
-    }
+    // Überwache Änderungen am Sprach-Umschalter und aktualisiere die Sprache
+    languageSwitcher.addEventListener('change', function () {
+        // Bestimme die ausgewählte Sprache basierend auf dem Zustand des Sprach-Umschalters
+        const selectedLanguage = languageSwitcher.checked ? 'en' : 'de';
 
-    // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie
-    languageSlider.addEventListener('change', function () {
-        const selectedLanguage = languageSlider.checked ? 'en' : 'de';
-
-        // Initialisiere den Text basierend auf dem gespeicherten Cookie
-        setSliderState(selectedLanguage);
-
-        // Aktualisiere den Text der Elemente basierend auf der ausgewählten Sprache
-        loadTexts(selectedLanguage);
-
-        // Speichere die ausgewählte Sprache im Cookie
+        // Aktualisiere das Sprach-Cookie
         updateLanguageCookie(selectedLanguage);
-    });
 
+        // Speichere die ausgewählte Sprache im localStorage
+        localStorage.setItem('selectedLanguage', selectedLanguage);
+
+        // Lade die Texte basierend auf der ausgewählten Sprache
+        loadTexts(selectedLanguage);
+    });
 });
