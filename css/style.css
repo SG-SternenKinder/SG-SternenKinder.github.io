@@ -356,6 +356,10 @@ footer {
     text-align: center;
 }
 
+footer .span {
+    color: #fff;
+}
+
 .footer-bottom {
     background-color: #222;
     padding: 10px 0;
