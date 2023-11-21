@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Banner-Informationen
     const bannerName = 'Aktion';
-    const bannerVersion = 'v0.0.0.2.6';
+    const bannerVersion = 'v0.0.0.2.7';
 
     // DOM-Elemente
     const announcementBanner = document.getElementById('announcement-banner');
@@ -55,12 +55,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Überprüfen, ob die Seite neu geladen wurde
+    // Überprüfen, ob die Seite neu geladen wurde und der Benutzer von einer anderen Seite zurückkehrt
     const reloadTime = performance.timeOrigin;
     const currentTime = new Date().getTime();
-    
-    // Überprüfen, ob die Seite innerhalb von 1 Sekunde neu geladen wurde
-    if (currentTime - reloadTime < 1000 && document.referrer) {
+    const isReload = currentTime - reloadTime < 1000;
+
+    // Überprüfen, ob die Seite innerhalb von 1 Sekunde neu geladen wurde und es einen Referrer gibt (z.B. der Benutzer kehrt von einer anderen Seite zurück)
+    if (isReload && document.referrer) {
         // Seite wurde innerhalb von 1 Sekunde neu geladen und es gibt einen Referrer (z.B. der Benutzer kehrt von einer anderen Seite zurück)
         // Banner wieder anzeigen
         showBanner();
