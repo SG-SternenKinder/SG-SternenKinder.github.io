@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Banner-Informationen
     const bannerName = 'Aktion';
-    const bannerVersion = 'v0.0.0.3.0';
+    const bannerVersion = 'v0.0.0.3.1';
 
     // DOM-Elemente
     const announcementBanner = document.getElementById('announcement-banner');
@@ -11,19 +11,19 @@ document.addEventListener('DOMContentLoaded', function () {
     // Überprüfen, ob das Banner geschlossen wurde
     const bannerClosed = localStorage.getItem(`${bannerName}-${bannerVersion}-Closed`);
 
-    // Überprüfen, ob sich die Banner-Version geändert hat und das Banner anzeigen
-    const savedBannerVersion = localStorage.getItem(`${bannerName}-LastVersion`);
-    if (!bannerClosed || savedBannerVersion !== bannerVersion) {
-        announcementBanner.style.display = 'block';
+    // Überprüfen, ob das Banner aufgrund einer neuen Version oder Schließung angezeigt werden soll
+    if (!bannerClosed) {
+        // Hier könntest du weitere Bedingungen hinzufügen, z.B. Zeitintervalle
+        // bevor das Banner erneut angezeigt wird, um zu verhindern, dass es bei jedem Laden erscheint.
 
-        // Aktualisierte Banner-Version speichern
-        localStorage.setItem(`${bannerName}-LastVersion`, bannerVersion);
+        // Banner anzeigen
+        announcementBanner.style.display = 'block';
         if (consoleManager.getConsoleOutput()) {
             console.log('Banner wird angezeigt.');
         }
     } else {
         if (consoleManager.getConsoleOutput()) {
-            console.log('Banner wird nicht angezeigt, da die Version gleich ist und das Banner geschlossen wurde.');
+            console.log('Banner wird nicht angezeigt, da es geschlossen wurde.');
         }
     }
 
