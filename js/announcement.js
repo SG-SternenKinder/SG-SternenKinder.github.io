@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Banner-Informationen
     const bannerName = 'Aktion';
-    const bannerVersion = 'v0.0.0.2.5';
+    const bannerVersion = 'v0.0.0.2.6';
 
     // DOM-Elemente
     const announcementBanner = document.getElementById('announcement-banner');
@@ -58,12 +58,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // Überprüfen, ob die Seite neu geladen wurde
     const reloadTime = performance.timeOrigin;
     const currentTime = new Date().getTime();
-    if (currentTime - reloadTime < 1000) {
-        // Seite wurde innerhalb von 1 Sekunde neu geladen
+    
+    // Überprüfen, ob die Seite innerhalb von 1 Sekunde neu geladen wurde
+    if (currentTime - reloadTime < 1000 && document.referrer) {
+        // Seite wurde innerhalb von 1 Sekunde neu geladen und es gibt einen Referrer (z.B. der Benutzer kehrt von einer anderen Seite zurück)
         // Banner wieder anzeigen
         showBanner();
         if (consoleManager.getConsoleOutput()) {
-            console.log('Banner wird angezeigt, da die Seite neu geladen wurde.');
+            console.log('Banner wird angezeigt, da die Seite innerhalb von 1 Sekunde neu geladen wurde.');
         }
     }
 });
