@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Ladeanimation erstellen
         const spinnerElement = document.createElement('div');
         spinnerElement.classList.add('loading-spinner');
+        spinnerElement.style.borderColor = getRandomColor(); // Setze die zufällige Farbe
 
         // Nachricht erstellen
         const messageElement = document.createElement('p');
@@ -21,5 +22,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     } else {
         console.error('NoScript container not found.');
+    }
+
+    // Funktion für eine zufällige Hex-Farbe
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
     }
 });
