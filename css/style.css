@@ -76,8 +76,7 @@ span {
 
 /* Stile für das Hamburger-Menü */
 .menu-toggle {
-    display: none;
-    /* Verstecke das Menüsymbol standardmäßig */
+    display: none; /* Verstecke das Menüsymbol standardmäßig */
     cursor: pointer;
 }
 
@@ -218,8 +217,7 @@ section {
     bottom: 4px;
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    filter: blur(8px);
-    /* Ändern Sie den Blur-Effekt nach Bedarf */
+    filter: blur(8px); /* Ändern Sie den Blur-Effekt nach Bedarf */
     z-index: -1;
     transition: background-color 0.3s ease, filter 0.3s ease;
 }
@@ -227,27 +225,19 @@ section {
 .cookie-text {
     color: #000;
     text-align: center;
-    z-index: 1;
+    z-index: 1; 
     /*background-color: rgba(255, 255, 255, 0.9); Hintergrundfarbe des Kastens */
-    border-radius: 20px;
-    /* Abgerundete Ecken für den Kasten */
-    padding: 20px;
-    /* Innenabstand für den Kasten */
-    backdrop-filter: blur(10px);
-    /* Blur-Effekt für den Hintergrund */
-    height: 60vh;
-    /* Ändern Sie die Höhe nach Bedarf */
-    width: 80%;
-    /* Ändern Sie die Breite nach Bedarf */
-    margin: auto;
-    /* Zentrieren Sie den Kasten horizontal */
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
-    /* Schatten für den Kasten */
+    border-radius: 20px; /* Abgerundete Ecken für den Kasten */
+    padding: 20px; /* Innenabstand für den Kasten */
+    backdrop-filter: blur(10px); /* Blur-Effekt für den Hintergrund */
+    height: 60vh; /* Ändern Sie die Höhe nach Bedarf */
+    width: 80%; /* Ändern Sie die Breite nach Bedarf */
+    margin: auto; /* Zentrieren Sie den Kasten horizontal */
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2); /* Schatten für den Kasten */
 }
 
 .cookie-text h5 {
-    font-size: 24px;
-    /* Größere Schriftgröße */
+    font-size: 24px; /* Größere Schriftgröße */
     font-weight: 600;
     margin-bottom: 10px;
     text-transform: uppercase;
@@ -259,19 +249,15 @@ section {
     font-size: 36px;
     font-weight: 800;
     line-height: 1.1;
-    margin-bottom: 30px;
-    /* Erhöhter Abstand unter der Überschrift */
+    margin-bottom: 30px; /* Erhöhter Abstand unter der Überschrift */
     text-transform: uppercase;
 }
 
 .cookie-text p {
-    font-size: 22px;
-    /* Größere Schriftgröße */
+    font-size: 22px; /* Größere Schriftgröße */
     font-weight: 650;
-    line-height: 24px;
-    /* Geringerer Zeilenabstand */
-    margin-bottom: 25px;
-    /* Geringerer Abstand zwischen den Absätzen */
+    line-height: 24px; /* Geringerer Zeilenabstand */
+    margin-bottom: 25px; /* Geringerer Abstand zwischen den Absätzen */
 }
 
 /* Stile für den Button */
@@ -475,8 +461,7 @@ input:checked+.slider:before {
 /* Zurückscroll-Pfeil-Stil */
 #scroll-to-top {
     position: fixed;
-    bottom: -40px;
-    /* Startposition, außerhalb des Bildschirms */
+    bottom: -40px; /* Startposition, außerhalb des Bildschirms */
     right: 40px;
     width: 30px;
     height: 30px;
@@ -491,8 +476,7 @@ input:checked+.slider:before {
 }
 
 #scroll-to-top i {
-    font-size: 15px;
-    /* Kleinere Schriftgröße */
+    font-size: 15px; /* Kleinere Schriftgröße */
     color: #fff;
     transition: color 0.3s ease;
     position: relative;
@@ -511,22 +495,16 @@ body:not(.scroll-up) #scroll-to-top {
 /* Stile für das Ankündigungsbanner */
 #announcement-banner {
     position: fixed;
-    top: 0px;
-    /* Erhöhe die Höhe des Banners */
+    top: 0px; /* Erhöhe die Höhe des Banners */
     left: 50%;
     transform: translateX(-50%);
-    width: 70%;
-    /* Verringere die Breite des Banners */
-    max-width: 600px;
-    /* Maximale Breite des Banners */
-    background-color: rgba(255, 204, 204, 0.9);
-    /* Hintergrundfarbe mit leichter Transparenz */
+    width: 70%; /* Verringere die Breite des Banners */
+    max-width: 600px; /* Maximale Breite des Banners */
+    background-color: rgba(255, 204, 204, 0.9); /* Hintergrundfarbe mit leichter Transparenz */
     color: white;
-    padding: 15px;
-    /* Erhöhe den Innenabstand des Banners */
+    padding: 15px; /* Erhöhe den Innenabstand des Banners */
     text-align: center;
-    border-radius: 15px;
-    /* Stärker abgerundete Ecken */
+    border-radius: 15px; /* Stärker abgerundete Ecken */
     z-index: 1000;
 }
 
@@ -539,8 +517,7 @@ body:not(.scroll-up) #scroll-to-top {
     background-color: #ff6666;
     color: white;
     border: 1px solid #ff6666;
-    padding: 8px;
-    /* Erhöhe den Innenabstand des Schließen-Buttons */
+    padding: 8px; /* Erhöhe den Innenabstand des Schließen-Buttons */
     cursor: pointer;
     border-radius: 5px;
     font-family: 'Comic Sans MS';
