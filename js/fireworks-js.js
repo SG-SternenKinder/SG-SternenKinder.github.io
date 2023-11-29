@@ -17,6 +17,14 @@ let fireworksSettings = {
     }
 };
 
+function generateRandomColors(numColors) {
+    const randomColors = [];
+    for (let i = 0; i < numColors; i++) {
+        randomColors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
+    }
+    return randomColors;
+}
+
 // Funktion zum Laden der Standard-Einstellungen
 function loadDefaultSettings() {
     const fireworkSizeInput = document.getElementById('firework-size');
@@ -87,6 +95,10 @@ function startFireworks() {
         }, fireworksSettings.delay);
     }
 
+    function getRandomSize(sizeArray) {
+        return sizeArray[Math.floor(Math.random() * sizeArray.length)];
+    }
+
     // Funktion zum Starten des Feuerwerks
     function spawnFireworks() {
         if (!allowFireworks) {
@@ -133,6 +145,10 @@ function startFireworks() {
             allowFireworks = true;
         }
     });
+
+    function getRandomColor(colorArray) {
+        return colorArray[Math.floor(Math.random() * colorArray.length)];
+    }
 
     // Event listener for the settings button click
     document.getElementById('settingsButton').addEventListener('click', toggleSettings);
