@@ -1,6 +1,6 @@
 function startFireworks() {
     const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
-    const sounds = ['sound1.mp3', 'sound2.mp3', 'sound3.mp3'];
+    //const sounds = ['sound1.mp3', 'sound2.mp3', 'sound3.mp3'];
   
     const fireworksContainer = document.getElementById('fireworks-container');
   
