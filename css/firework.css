@@ -1,12 +1,17 @@
-.fireworks-container {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: #000000;
+@keyframes explode {
+    to {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+        transform: translate(-50%, -50%);
+    }
 }
 
-.fireworks-container>canvas {
-    cursor: crosshair;
+.firework {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: none;
 }
