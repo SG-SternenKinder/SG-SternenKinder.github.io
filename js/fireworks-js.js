@@ -99,6 +99,10 @@ function startFireworks() {
         return sizeArray[Math.floor(Math.random() * sizeArray.length)];
     }
 
+    function getRandomSound(soundArray) {
+        return soundArray[Math.floor(Math.random() * soundArray.length)];
+    }
+
     // Funktion zum Starten des Feuerwerks
     function spawnFireworks() {
         if (!allowFireworks) {
