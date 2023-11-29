@@ -224,6 +224,25 @@
         <button onclick="applySettings()">Apply Settings</button>
     </div>
 
+    <script>
+        // Funktion zum Laden der Standard-Einstellungen
+        function loadDefaultSettings() {
+            const fireworkSizeInput = document.getElementById('firework-size');
+            const mouseTrackingCheckbox = document.getElementById('mouse-tracking');
+            const spawnOnClickCheckbox = document.getElementById('spawn-on-click');
+            const numFireworksInput = document.getElementById('num-fireworks');
+
+            // Lade die Standardwerte in die Eingabefelder
+            fireworkSizeInput.value = options.size;
+            mouseTrackingCheckbox.checked = options.mouseTracking;
+            spawnOnClickCheckbox.checked = options.spawnOnButtonClick;
+            numFireworksInput.value = options.numFireworks;
+        }
+
+        // Rufe die Funktion zum Laden der Standardwerte auf, wenn die Seite geladen ist
+        document.addEventListener('DOMContentLoaded', loadDefaultSettings);
+    </script>
+
     <!-- Popup-Container -->
     <div class="popup-container" id="popup">
         <div class="popup-content">
