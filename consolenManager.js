@@ -2,7 +2,7 @@
 
 const consoleManager = {
     consoleSettings: {
-        enableConsoleOutput: false
+        enableConsoleOutput: true
     },
     setConsoleOutput: function (value) {
         this.consoleSettings.enableConsoleOutput = value;
