@@ -26,12 +26,31 @@ function startFireworks() {
         };
     }
 
+    // Funktion zum Laden der Standard-Einstellungen
+    function loadDefaultSettings(options) {
+        const fireworkSizeInput = document.getElementById('firework-size');
+        const mouseTrackingCheckbox = document.getElementById('mouse-tracking');
+        const spawnOnClickCheckbox = document.getElementById('spawn-on-click');
+        const numFireworksInput = document.getElementById('num-fireworks');
+
+        // Lade die Standardwerte in die Eingabefelder
+        fireworkSizeInput.value = options.size;
+        mouseTrackingCheckbox.checked = options.mouseTracking;
+        spawnOnClickCheckbox.checked = options.spawnOnButtonClick;
+        numFireworksInput.value = options.numFireworks;
+    }
+
     let fireworks = [];
     let allowFireworks = true;
 
     function createFirework() {
         const firework = document.createElement('div');
+        const fireworksContainer = document.getElementById('fireworks-container');
         firework.className = 'firework';
+
+        // Überprüfe, ob es bereits gespeicherte Einstellungen gibt
+        const savedSettings = sessionStorage.getItem('fireworksSettings');
+        const options = savedSettings ? JSON.parse(savedSettings) : getDefaultSettings();
 
         // Wähle eine zufällige Größe aus den verfügbaren Größen
         const size = getRandomSize(options.sizes);
@@ -44,6 +63,8 @@ function startFireworks() {
         const audio = new Audio(getRandomSound(options.sounds));
 
         fireworksContainer.appendChild(firework);
+        // Rufe die Funktion zum Laden der Standardwerte auf
+        loadDefaultSettings(options);
 
         setTimeout(() => {
             // Verwende dynamische Keyframes basierend auf der Größe
@@ -55,6 +76,19 @@ function startFireworks() {
             });
         }, options.delay);
 
+
+        // Event listener for the button click
+        document.getElementById('startButton').addEventListener('click', () => {
+            if (allowFireworks) {
+                spawnFireworks();
+            } else {
+                stopFireworks();
+                allowFireworks = true;
+            }
+        });
+
+        // Event listener for the settings button click
+        document.getElementById('settingsButton').addEventListener('click', toggleSettings);
         return firework;
     }
 
@@ -95,6 +129,7 @@ function startFireworks() {
         fireworks.forEach(firework => fireworksContainer.removeChild(firework));
         fireworks = [];
     }
+
 
     function toggleSettings() {
         const settingsPopup = document.getElementById('settings-popup');
