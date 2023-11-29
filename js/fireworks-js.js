@@ -87,7 +87,7 @@ function startFireworks() {
         setTimeout(() => {
             // Verwende dynamische Keyframes basierend auf der Größe
             firework.style.animation = size > 15 ? 'explodeLarge 1s linear' : 'explodeSmall 1s linear';
-            audio.play();
+            //audio.play();
 
             firework.addEventListener('animationend', () => {
                 fireworksContainer.removeChild(firework);
