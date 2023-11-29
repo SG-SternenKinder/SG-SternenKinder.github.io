@@ -1,4 +1,4 @@
-@keyframes explode {
+@keyframes explodeLarge  {
     to {
         width: 200px;
         height: 200px;
@@ -14,4 +14,33 @@
     border-radius: 50%;
     transform: translate(-50%, -50%);
     animation: none;
+}
+
+#fireworks-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+@keyframes explodeSmall  {
+    0% {
+        transform: scaleY(1);
+    }
+    100% {
+        transform: scaleY(0);
+    }
+}
+
+#settings-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
 }

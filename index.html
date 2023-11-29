@@ -200,9 +200,29 @@
             <h5>i forgot</h5>
             <h1 id="home-title">English<br>Title</h1>
             <p id="home-text">This is an English text.</p>
-            <button onclick="startFireworks()" class="btn">No idea what's supposed to be there</button>
+            <div class="btn">No idea what's supposed to be there</div>
         </div>
     </section>
+
+    <button class="btn" onclick="toggleSettings()">Open Settings</button>
+    <button class="btn" onclick="startFireworks()">Start Fireworks</button>
+
+    <div id="settings-popup">
+        <h2>Fireworks Settings</h2>
+        <label for="firework-size">Firework Size:</label>
+        <input type="range" id="firework-size" min="5" max="50" step="1" value="10">
+        <br>
+        <label for="mouse-tracking">Mouse Tracking:</label>
+        <input type="checkbox" id="mouse-tracking">
+        <br>
+        <label for="spawn-on-click">Spawn on Click:</label>
+        <input type="checkbox" id="spawn-on-click">
+        <br>
+        <label for="num-fireworks">Number of Fireworks:</label>
+        <input type="number" id="num-fireworks" min="1" max="12" step="1" value="5">
+        <br>
+        <button onclick="applySettings()">Apply Settings</button>
+    </div>
 
     <!-- Popup-Container -->
     <div class="popup-container" id="popup">
