@@ -1,70 +1,80 @@
-function startFireworks() {
+// Einstellungen für das Feuerwerk
+let fireworksSettings = {
+    numFireworks: 5,
+    colors: generateRandomColors(5),
+    sounds: ['sound1.mp3', 'sound2.mp3', 'sound3.mp3'],
+    sizes: [10, 20, 30],
+    mouseTracking: true,
+    spawnOnButtonClick: true,
+    maxRandomFireworks: 12,
+    delay: 5000,
+    explosionOptions: {
+        flickering: true,
+        lineWidth: { min: 1, max: 3 },
+        explosionLength: { min: 1, max: 2 },
+        brightness: { min: 50, max: 80 },
+        decay: { min: 0.015, max: 0.03 }
+    }
+};
 
+// Funktion zum Laden der Standard-Einstellungen
+function loadDefaultSettings() {
+    const fireworkSizeInput = document.getElementById('firework-size');
+    const mouseTrackingCheckbox = document.getElementById('mouse-tracking');
+    const spawnOnClickCheckbox = document.getElementById('spawn-on-click');
+    const numFireworksInput = document.getElementById('num-fireworks');
+
+    // Lade die Standardwerte in die Eingabefelder
+    fireworkSizeInput.value = fireworksSettings.sizes[0];
+    mouseTrackingCheckbox.checked = fireworksSettings.mouseTracking;
+    spawnOnClickCheckbox.checked = fireworksSettings.spawnOnButtonClick;
+    numFireworksInput.value = fireworksSettings.numFireworks;
+}
+
+// Funktion zum Starten des Feuerwerks
+function startFireworks() {
+    let fireworks = [];
+    let allowFireworks = true;
     const fireworksContainer = document.getElementById('fireworks-container');
 
-    // Überprüfe, ob es bereits gespeicherte Einstellungen gibt
-    const savedSettings = sessionStorage.getItem('fireworksSettings');
-    const options = savedSettings ? JSON.parse(savedSettings) : getDefaultSettings();
-
-    function getDefaultSettings() {
-        return {
-            numFireworks: 5,
-            colors: colors.concat(generateRandomColors(5)),
-            sounds: ['sound1.mp3', 'sound2.mp3', 'sound3.mp3'],
-            size: [10, 20, 30],
-            mouseTracking: true,
-            spawnOnButtonClick: true,
-            maxRandomFireworks: 12,
-            delay: 5000,
-            explosionOptions: {
-                flickering: true,
-                lineWidth: { min: 1, max: 3 },
-                explosionLength: { min: 1, max: 2 },
-                brightness: { min: 50, max: 80 },
-                decay: { min: 0.015, max: 0.03 }
-            }
-        };
-    }
-
-    // Funktion zum Laden der Standard-Einstellungen
-    function loadDefaultSettings(options) {
+    // Funktion zum Anwenden der Einstellungen
+    function applySettings() {
         const fireworkSizeInput = document.getElementById('firework-size');
         const mouseTrackingCheckbox = document.getElementById('mouse-tracking');
         const spawnOnClickCheckbox = document.getElementById('spawn-on-click');
         const numFireworksInput = document.getElementById('num-fireworks');
 
-        // Lade die Standardwerte in die Eingabefelder
-        fireworkSizeInput.value = options.size;
-        mouseTrackingCheckbox.checked = options.mouseTracking;
-        spawnOnClickCheckbox.checked = options.spawnOnButtonClick;
-        numFireworksInput.value = options.numFireworks;
+        // Aktualisiere die Optionen mit den Werten aus den Eingabefeldern
+        fireworksSettings.sizes = [parseInt(fireworkSizeInput.value, 10)];
+        fireworksSettings.mouseTracking = mouseTrackingCheckbox.checked;
+        fireworksSettings.spawnOnButtonClick = spawnOnClickCheckbox.checked;
+        fireworksSettings.numFireworks = parseInt(numFireworksInput.value, 10);
+
+        // Speichere die aktualisierten Einstellungen im Session-Cookie
+        sessionStorage.setItem('fireworksSettings', JSON.stringify(fireworksSettings));
+
+        // Hier kannst du weitere Code schreiben, um die anderen Optionen zu aktualisieren
+
+        // Schließe das Einstellungspopup
+        toggleSettings();
     }
 
-    let fireworks = [];
-    let allowFireworks = true;
-
+    // Funktion zum Erstellen eines Feuerwerks
     function createFirework() {
         const firework = document.createElement('div');
-        const fireworksContainer = document.getElementById('fireworks-container');
         firework.className = 'firework';
 
-        // Überprüfe, ob es bereits gespeicherte Einstellungen gibt
-        const savedSettings = sessionStorage.getItem('fireworksSettings');
-        const options = savedSettings ? JSON.parse(savedSettings) : getDefaultSettings();
-
         // Wähle eine zufällige Größe aus den verfügbaren Größen
-        const size = getRandomSize(options.sizes);
+        const size = getRandomSize(fireworksSettings.sizes);
         firework.style.width = `${size}px`;
         firework.style.height = `${size}px`;
 
         // Wähle eine zufällige Farbe aus den verfügbaren Farben
-        firework.style.backgroundColor = getRandomColor(options.colors);
+        firework.style.backgroundColor = getRandomColor(fireworksSettings.colors);
 
-        const audio = new Audio(getRandomSound(options.sounds));
+        const audio = new Audio(getRandomSound(fireworksSettings.sounds));
 
         fireworksContainer.appendChild(firework);
-        // Rufe die Funktion zum Laden der Standardwerte auf
-        loadDefaultSettings(options);
 
         setTimeout(() => {
             // Verwende dynamische Keyframes basierend auf der Größe
@@ -74,63 +84,29 @@ function startFireworks() {
             firework.addEventListener('animationend', () => {
                 fireworksContainer.removeChild(firework);
             });
-        }, options.delay);
-
-
-        // Event listener for the button click
-        document.getElementById('startButton').addEventListener('click', () => {
-            if (allowFireworks) {
-                spawnFireworks();
-            } else {
-                stopFireworks();
-                allowFireworks = true;
-            }
-        });
-
-        // Event listener for the settings button click
-        document.getElementById('settingsButton').addEventListener('click', toggleSettings);
-        return firework;
+        }, fireworksSettings.delay);
     }
 
-    function getRandomSize(sizeArray) {
-        return sizeArray[Math.floor(Math.random() * sizeArray.length)];
-    }
-
-    function generateRandomColors(numColors) {
-        const randomColors = [];
-        for (let i = 0; i < numColors; i++) {
-            randomColors.push(`#${Math.floor(Math.random() * 16777215).toString(16)}`);
-        }
-        return randomColors;
-    }
-
-    function getRandomColor(colorArray) {
-        return colorArray[Math.floor(Math.random() * colorArray.length)];
-    }
-
-    function getRandomSound(soundArray) {
-        return soundArray[Math.floor(Math.random() * soundArray.length)];
-    }
-
+    // Funktion zum Starten des Feuerwerks
     function spawnFireworks() {
         if (!allowFireworks) {
             alert("Um das Feuerwerk zu stoppen, klicken Sie erneut auf den Button.");
             return;
         }
 
-        for (let i = 0; i < options.numFireworks; i++) {
-            const firework = createFirework();
-            fireworks.push(firework);
+        for (let i = 0; i < fireworksSettings.numFireworks; i++) {
+            createFirework();
         }
     }
 
+    // Funktion zum Stoppen des Feuerwerks
     function stopFireworks() {
         allowFireworks = false;
         fireworks.forEach(firework => fireworksContainer.removeChild(firework));
         fireworks = [];
     }
 
-
+    // Funktion zum Anzeigen/Ausblenden der Einstellungen
     function toggleSettings() {
         const settingsPopup = document.getElementById('settings-popup');
         const fireworkSizeInput = document.getElementById('firework-size');
@@ -139,10 +115,10 @@ function startFireworks() {
         const numFireworksInput = document.getElementById('num-fireworks');
 
         // Setze die aktuellen Werte der Optionen in die Eingabefelder
-        fireworkSizeInput.value = options.size;
-        mouseTrackingCheckbox.checked = options.mouseTracking;
-        spawnOnClickCheckbox.checked = options.spawnOnButtonClick;
-        numFireworksInput.value = options.numFireworks;
+        fireworkSizeInput.value = fireworksSettings.sizes[0];
+        mouseTrackingCheckbox.checked = fireworksSettings.mouseTracking;
+        spawnOnClickCheckbox.checked = fireworksSettings.spawnOnButtonClick;
+        numFireworksInput.value = fireworksSettings.numFireworks;
 
         // Blende das Einstellungspopup ein oder aus
         settingsPopup.style.display = (settingsPopup.style.display === 'none' || settingsPopup.style.display === '') ? 'block' : 'none';
@@ -160,29 +136,13 @@ function startFireworks() {
 
     // Event listener for the settings button click
     document.getElementById('settingsButton').addEventListener('click', toggleSettings);
+
+    // Event listener for the apply settings button click
+    document.getElementById('applySettingsButton').addEventListener('click', applySettings);
 }
 
-// Funktion zum Anwenden der Einstellungen
-function applySettings() {
-    const fireworkSizeInput = document.getElementById('firework-size');
-    const mouseTrackingCheckbox = document.getElementById('mouse-tracking');
-    const spawnOnClickCheckbox = document.getElementById('spawn-on-click');
-    const numFireworksInput = document.getElementById('num-fireworks');
+// Funktionsaufruf zum Laden der Standardwerte
+loadDefaultSettings();
 
-    // Aktualisiere die Optionen mit den Werten aus den Eingabefeldern
-    options.size = parseInt(fireworkSizeInput.value, 10);
-    options.mouseTracking = mouseTrackingCheckbox.checked;
-    options.spawnOnButtonClick = spawnOnClickCheckbox.checked;
-    options.numFireworks = parseInt(numFireworksInput.value, 10);
-
-    // Speichere die aktualisierten Einstellungen im Session-Cookie
-    sessionStorage.setItem('fireworksSettings', JSON.stringify(options));
-
-    // Gib die aktualisierten Optionen in der Konsole aus (kannst du entfernen)
-    consoleSettings.log('Aktualisierte Einstellungen:', options);
-
-    // Hier kannst du weitere Code schreiben, um die anderen Optionen zu aktualisieren
-
-    // Schließe das Einstellungspopup
-    toggleSettings();
-}
+// Funktionsaufruf zum Starten des Feuerwerks
+startFireworks();

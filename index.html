@@ -204,9 +204,13 @@
         </div>
     </section>
 
-    <button class="btn" onclick="toggleSettings()">Open Settings</button>
-    <button class="btn" id="startButton">Start/Stop Fireworks</button>
+    <div id="fireworks-container"></div>
 
+    <!-- Buttons für die Steuerung -->
+    <button class="btn" id="startButton">Start/Stop Fireworks</button>
+    <button class="btn" id="settingsButton">Open Settings</button>
+
+    <!-- Einstellungspopup -->
     <div id="settings-popup">
         <h2>Fireworks Settings</h2>
         <label for="firework-size">Firework Size:</label>
@@ -221,7 +225,7 @@
         <label for="num-fireworks">Number of Fireworks:</label>
         <input type="number" id="num-fireworks" min="1" max="12" step="1" value="5">
         <br>
-        <button onclick="applySettings()">Apply Settings</button>
+        <button id="applySettingsButton">Apply Settings</button>
     </div>
 
     <!-- Popup-Container -->
