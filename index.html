@@ -38,7 +38,9 @@
 
     <!-- Weitere Stile und Skripte in externe Dateien auslagern -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/firework.css">
+    
+    <!-- jsDelivr  -->
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
 
     <script>
         if ('serviceWorker' in navigator) {
@@ -202,8 +204,12 @@
             <h5>i forgot</h5>
             <h1 id="home-title">English<br>Title</h1>
             <p id="home-text">This is an English text.</p>
-            <button onclick="startFireworks()" class="btn">No idea what's supposed to be there</button>
-            <div id="fireworks-container"></div>
+            <button onclick="fireworks.start()" class="btn">No idea what's supposed to be there</button>
+            <script>
+                const container = document.querySelector('.fireworks')
+                const fireworks = new Fireworks.default(container)
+                fireworks.start()
+            </script>
         </div>
     </section>
 
