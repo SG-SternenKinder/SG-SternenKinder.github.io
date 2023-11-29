@@ -1,6 +1,6 @@
 /* Importiere die Media Queries */
-@import url(media.css);
-@import url(firework.css);
+@import url('media.css');
+@import url('firework.css');
 
 /* Globale Zurücksetzungen und Stile */
 * {

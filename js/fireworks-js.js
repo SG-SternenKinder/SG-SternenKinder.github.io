@@ -2,7 +2,7 @@
 let fireworksSettings = {
     numFireworks: 5,
     colors: generateRandomColors(5),
-    sounds: ['sound1.mp3', 'sound2.mp3', 'sound3.mp3'],
+    //sounds: ['sound1.mp3', 'sound2.mp3', 'sound3.mp3'],
     sizes: [10, 20, 30],
     mouseTracking: true,
     spawnOnButtonClick: true,
@@ -80,7 +80,7 @@ function startFireworks() {
         // Wähle eine zufällige Farbe aus den verfügbaren Farben
         firework.style.backgroundColor = getRandomColor(fireworksSettings.colors);
 
-        const audio = new Audio(getRandomSound(fireworksSettings.sounds));
+        //const audio = new Audio(getRandomSound(fireworksSettings.sounds));
 
         fireworksContainer.appendChild(firework);
 
@@ -99,9 +99,9 @@ function startFireworks() {
         return sizeArray[Math.floor(Math.random() * sizeArray.length)];
     }
 
-    function getRandomSound(soundArray) {
-        return soundArray[Math.floor(Math.random() * soundArray.length)];
-    }
+    //function getRandomSound(soundArray) {
+    //    return soundArray[Math.floor(Math.random() * soundArray.length)];
+    //}
 
     // Funktion zum Starten des Feuerwerks
     function spawnFireworks() {
