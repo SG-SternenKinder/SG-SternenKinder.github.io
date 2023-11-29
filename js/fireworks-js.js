@@ -1,25 +1,36 @@
 function startFireworks() {
     const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
     const sounds = ['sound1.mp3', 'sound2.mp3', 'sound3.mp3'];
+
     const fireworksContainer = document.getElementById('fireworks-container');
 
-    // Hier können weitere Farben hinzugefügt werden
-    const moreColors = ['#ffa500', '#008080', '#800080', '#00ff80'];
-    colors.push(...moreColors);
+    const options = {
+        numFireworks: 5,
+        colors: colors.concat(generateRandomColors(5)),
+        sounds: sounds,
+        size: 10,
+        mouseTracking: true,
+        spawnOnButtonClick: true,
+        maxRandomFireworks: 12,
+        delay: 5000,
+        explosionOptions: {
+            flickering: true,
+            lineWidth: { min: 1, max: 3 },
+            explosionLength: { min: 1, max: 2 },
+            brightness: { min: 50, max: 80 },
+            decay: { min: 0.015, max: 0.03 }
+        }
+    };
 
-    // Hier kann die Anzahl der Feuerwerke angepasst werden
-    const numFireworks = 5;
+    let fireworks = [];
+    let allowFireworks = true;
 
-    for (let i = 0; i < numFireworks; i++) {
-        createFirework(colors[Math.floor(Math.random() * colors.length)], sounds[Math.floor(Math.random() * sounds.length)]);
-    }
-
-    function createFirework(color, sound) {
+    function createFirework() {
         const firework = document.createElement('div');
         firework.className = 'firework';
-        firework.style.backgroundColor = color;
+        firework.style.backgroundColor = getRandomColor(options.colors);
 
-        const audio = new Audio(sound);
+        const audio = new Audio(getRandomSound(options.sounds));
 
         fireworksContainer.appendChild(firework);
 
@@ -30,24 +41,52 @@ function startFireworks() {
             firework.addEventListener('animationend', () => {
                 fireworksContainer.removeChild(firework);
             });
-        }, i * 1000);
+        }, options.delay);
+
+        return firework;
     }
-}
 
-function toggleSettings() {
-    const settingsPopup = document.getElementById('settings-popup');
-    settingsPopup.style.display = (settingsPopup.style.display === 'none' || settingsPopup.style.display === '') ? 'block' : 'none';
-}
+    function getRandomColor(colorArray) {
+        return colorArray[Math.floor(Math.random() * colorArray.length)];
+    }
 
-function applySettings() {
-    const fireworkSize = document.getElementById('firework-size').value;
-    const mouseTracking = document.getElementById('mouse-tracking').checked;
-    const spawnOnClick = document.getElementById('spawn-on-click').checked;
-    const numFireworks = document.getElementById('num-fireworks').value;
+    function getRandomSound(soundArray) {
+        return soundArray[Math.floor(Math.random() * soundArray.length)];
+    }
 
-    // Hier können die Einstellungen angewendet werden (z.B., um die Größe zu ändern, die Mausverfolgung zu aktivieren usw.)
-    console.log('Applied settings:', { fireworkSize, mouseTracking, spawnOnClick, numFireworks });
+    function generateRandomColors(numColors) {
+        const randomColors = [];
+        for (let i = 0; i < numColors; i++) {
+            randomColors.push(`#${Math.floor(Math.random()*16777215).toString(16)}`);
+        }
+        return randomColors;
+    }
 
-    // Schließe das Einstellungsfenster
-    toggleSettings();
+    function spawnFireworks() {
+        if (!allowFireworks) {
+            alert("Um das Feuerwerk zu stoppen, klicken Sie erneut auf den Button.");
+            return;
+        }
+
+        for (let i = 0; i < options.numFireworks; i++) {
+            const firework = createFirework();
+            fireworks.push(firework);
+        }
+    }
+
+    function stopFireworks() {
+        allowFireworks = false;
+        fireworks.forEach(firework => fireworksContainer.removeChild(firework));
+        fireworks = [];
+    }
+
+    // Event listener for the button click
+    document.getElementById('startButton').addEventListener('click', () => {
+        if (allowFireworks) {
+            spawnFireworks();
+        } else {
+            stopFireworks();
+            allowFireworks = true;
+        }
+    });
 }

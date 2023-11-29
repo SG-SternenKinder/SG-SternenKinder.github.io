@@ -205,8 +205,8 @@
     </section>
 
     <button class="btn" onclick="toggleSettings()">Open Settings</button>
-    <button class="btn" onclick="startFireworks()">Start Fireworks</button>
-
+    <button class="btn" id="startButton">Start/Stop Fireworks</button>
+    
     <div id="settings-popup">
         <h2>Fireworks Settings</h2>
         <label for="firework-size">Firework Size:</label>
@@ -223,6 +223,7 @@
         <br>
         <button onclick="applySettings()">Apply Settings</button>
     </div>
+    
 
     <!-- Popup-Container -->
     <div class="popup-container" id="popup">
