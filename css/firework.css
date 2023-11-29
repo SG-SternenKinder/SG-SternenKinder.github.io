@@ -1,3 +1,4 @@
+/* Keyframes für die Explosion von großen Feuerwerken */
 @keyframes explodeLarge {
     to {
         width: 200px;
@@ -7,6 +8,7 @@
     }
 }
 
+/* Keyframes für die Explosion von kleinen Feuerwerken */
 @keyframes explodeSmall {
     0% {
         transform: scaleY(1);
@@ -16,15 +18,7 @@
     }
 }
 
-.firework {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    animation: none;
-}
-
+/* Stile für den Container, der die Feuerwerke enthält */
 #fireworks-container {
     position: relative;
     width: 100%;
@@ -32,6 +26,7 @@
     overflow: hidden;
 }
 
+/* Stile für das Einstellungspopup */
 #settings-popup {
     display: none;
     position: fixed;
@@ -44,4 +39,24 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     z-index: 999;
     color: #000;
+}
+
+/* Hinzufügen von Animationen zu Feuerwerks-Elementen */
+.firework {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: none;
+}
+
+/* Füge die explodeLarge-Animation für große Feuerwerke hinzu */
+.firework.large {
+    animation: explodeLarge 1s linear;
+}
+
+/* Füge die explodeSmall-Animation für kleine Feuerwerke hinzu */
+.firework.small {
+    animation: explodeSmall 1s linear;
 }

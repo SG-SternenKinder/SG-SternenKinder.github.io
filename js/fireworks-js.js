@@ -25,9 +25,9 @@ function startFireworks() {
     let fireworks = [];
     let allowFireworks = true;
 
-    function createFirework() {
+    function createFirework(size) {
         const firework = document.createElement('div');
-        firework.className = 'firework';
+        firework.className = `firework ${size === 'large' ? 'large' : 'small'}`;
         firework.style.backgroundColor = getRandomColor(options.colors);
 
         const audio = new Audio(getRandomSound(options.sounds));
@@ -35,7 +35,7 @@ function startFireworks() {
         fireworksContainer.appendChild(firework);
 
         setTimeout(() => {
-            firework.style.animation = 'explode 1s linear';
+            firework.style.animation = `explode 1s linear`;
             audio.play();
 
             firework.addEventListener('animationend', () => {
@@ -69,7 +69,8 @@ function startFireworks() {
         }
 
         for (let i = 0; i < options.numFireworks; i++) {
-            const firework = createFirework();
+            const size = Math.random() > 0.5 ? 'large' : 'small';
+            const firework = createFirework(size);
             fireworks.push(firework);
         }
     }
