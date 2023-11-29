@@ -90,6 +90,8 @@
     <!-- Ankündigungsbanner 
     <script src="js/announcement.js" defer></script> -->
 
+    <script src="https://unpkg.com/fireworks-js@2.x/dist/index.umd.js"></script>
+
 </head>
 
 <body>
@@ -208,6 +210,7 @@
     <script>
         const container = document.querySelector('.fireworks')
         const fireworks = new Fireworks.default(container)
+        fireworks.start()
     </script>
 
     <!-- Popup-Container -->
@@ -255,7 +258,7 @@
     <script src="js/noscript-loading.js"></script>
     <script src="js/popup.js"></script>
     <script src="js/scrollback.js"></script>
-    <script src="js/fireworks-js.js"></script>
+
     <script src="js/footer.js"></script>
 
 </body>
