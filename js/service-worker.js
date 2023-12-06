@@ -1,7 +1,7 @@
 // service-worker.js
 
-// Cach Versionsname
-const FILE_VERSION = 'v0.0.1.0';
+// Cache Versionsname
+const FILE_VERSION = 'v0.0.1.1';
 const CACHE_NAME = 'cache-' + FILE_VERSION;
 
 // Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.
@@ -37,15 +37,16 @@ self.addEventListener('fetch', async (event) => {
     }
 });
 
-
-// Add this event listener for offline detection
+// Hinzufügen dieses Event-Listeners für die Offline-Erkennung mit jQuery
 self.addEventListener('message', (event) => {
     console.log('Message event:', event.data);
     if (event.data.type === 'offline') {
         console.log('Offline message received');
         // Wenn offline, sende eine Nachricht an die Clients, um das Offline-Popup anzuzeigen
-        self.clients.matchAll().then(clients => {
-            clients.forEach(client => client.postMessage({ type: 'showOfflinePopup', data: event.data.data }));
+        $.when(self.clients.matchAll()).done(function (clients) {
+            $.each(clients, function (_, client) {
+                client.postMessage({ type: 'showOfflinePopup', data: event.data.data });
+            });
         });
     }
 });

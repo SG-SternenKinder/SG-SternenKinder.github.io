@@ -1,20 +1,19 @@
-// Ankündigungsbanner.js
-document.addEventListener('DOMContentLoaded', function () {
+$(document).ready(function () {
     // Banner-Informationen
     const bannerName = 'Aktion';
-    const bannerVersion = 'v0.0.0.3.2';
+    const bannerVersion = 'v0.0.0.3.3';
 
     // DOM-Elemente
-    const announcementBanner = document.getElementById('announcement-banner');
-    const closeButton = document.getElementById('close-announcement');
+    const announcementBanner = $('#announcement-banner');
+    const closeButton = $('#close-announcement');
 
     // Überprüfen, ob das Banner geschlossen wurde
     const bannerClosed = localStorage.getItem(`${bannerName}-${bannerVersion}-Closed`);
 
     // Funktion zum Anzeigen des Banners
     function showBanner() {
-        announcementBanner.style.display = 'block';
-        if (consoleManager.getConsoleOutput()) {
+        announcementBanner.show();
+        if ($.consoleManager.getConsoleOutput()) {
             console.log('Banner wird angezeigt.');
         }
     }
@@ -24,18 +23,18 @@ document.addEventListener('DOMContentLoaded', function () {
         showBanner();
 
         // Event-Listener für den Schließen-Button des Banners
-        closeButton.addEventListener('click', function () {
+        closeButton.on('click', function () {
             // Setzen des Flags im localStorage, dass das Banner geschlossen wurde
             localStorage.setItem(`${bannerName}-${bannerVersion}-Closed`, 'true');
 
             // Ausblenden des Banners
-            announcementBanner.style.display = 'none';
-            if (consoleManager.getConsoleOutput()) {
+            announcementBanner.hide();
+            if ($.consoleManager.getConsoleOutput()) {
                 console.log('Banner wurde geschlossen.');
             }
         });
     } else {
-        if (consoleManager.getConsoleOutput()) {
+        if ($.consoleManager.getConsoleOutput()) {
             console.log('Banner wird nicht angezeigt, da es geschlossen wurde.');
         }
     }

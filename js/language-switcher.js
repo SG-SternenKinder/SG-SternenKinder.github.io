@@ -1,12 +1,12 @@
 // language-switcher.js
-document.addEventListener('DOMContentLoaded', async function () {
-    const languageSlider = document.getElementById('language-slider');
+$(document).ready(async function () {
+    const languageSlider = $('#language-slider');
     let currentLanguage = CookieUtil.getCookie('language') || 'de';
 
     // Funktion zum Setzen des Slider-Zustands
     function setSliderState(language) {
-        languageSlider.checked = language === 'en';
-        if (consoleManager.getConsoleOutput()) {
+        languageSlider.prop('checked', language === 'en');
+        if ($.consoleManager.getConsoleOutput()) {
             console.log(`Slider state set to ${language}`);
         }
     }
@@ -24,18 +24,18 @@ document.addEventListener('DOMContentLoaded', async function () {
                 // Keine Internetverbindung, zeige den Sprachcode anstelle der Flaggen
                 const offlineText = language.toUpperCase(); // Zeige den Sprachcode (EN oder DE)
 
-                const languageElement = document.getElementById('language');
-                if (languageElement) {
-                    languageElement.innerHTML = offlineText;
+                const languageElement = $('#language');
+                if (languageElement.length) {
+                    languageElement.html(offlineText);
                 }
 
                 // Verstecke die Flaggen
-                const flagsElement = document.getElementById('flags');
-                if (flagsElement) {
-                    flagsElement.style.display = 'none';
+                const flagsElement = $('#flags');
+                if (flagsElement.length) {
+                    flagsElement.hide();
                 }
 
-                if (consoleManager.getConsoleOutput()) {
+                if ($.consoleManager.getConsoleOutput()) {
                     console.log(`No internet connection. Displaying language code: ${offlineText}`);
                 }
 
@@ -43,23 +43,25 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
 
             // Wenn eine Internetverbindung besteht, lade die Texte normal
-            if (consoleManager.getConsoleOutput()) {
+            if ($.consoleManager.getConsoleOutput()) {
                 console.log('Loading texts for language:', language);
             }
 
             const response = await fetchTexts(language);
             const texts = await response.text();
-            texts.split('\n').forEach(function (text) {
+
+            // Verwende jQuery, um Elemente zu selektieren und den Text zu setzen
+            $.each(texts.split('\n'), function (index, text) {
                 const [key, value] = text.split('=');
                 if (key && value) {
-                    const element = document.getElementById(key);
-                    if (element) {
-                        element.innerHTML = value;
+                    const element = $('#' + key);
+                    if (element.length) {
+                        element.html(value);
                     }
                 }
             });
 
-            if (consoleManager.getConsoleOutput()) {
+            if ($.consoleManager.getConsoleOutput()) {
                 console.log(`Texts loaded successfully for language: ${language}`);
             }
 
@@ -74,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     async function fetchTexts(language) {
         try {
             // Konsolenausgabe für Debugging
-            if (consoleManager.getConsoleOutput()) {
+            if ($.consoleManager.getConsoleOutput()) {
                 console.log('Fetching texts for language:', language);
             }
 
@@ -93,14 +95,14 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Funktion zum Aktualisieren des Sprach-Cookies
     function updateLanguageCookie(language) {
         CookieUtil.setCookie('language', language, 4, { secure: true }); // Speichere die Sprache für 4 Tage
-        if (consoleManager.getConsoleOutput()) {
+        if ($.consoleManager.getConsoleOutput()) {
             console.log(`Language cookie updated: ${language}`);
         }
     }
 
     // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie
-    languageSlider.addEventListener('change', function () {
-        currentLanguage = languageSlider.checked ? 'en' : 'de';
+    languageSlider.on('change', function () {
+        currentLanguage = languageSlider.prop('checked') ? 'en' : 'de';
 
         // Aktualisiere den Text der Elemente basierend auf der ausgewählten Sprache
         loadTexts(currentLanguage);

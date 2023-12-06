@@ -1,26 +1,32 @@
 // Cookie.js
-const CookieUtil = (function () {
-    // Escape-Sicherheit für Cookie-Namen
+const CookieUtil = (function ($) {
+    // Funktion für die Escape-Sicherheit von Cookie-Namen
     function escapeCookieName(name) {
         return encodeURIComponent(name);
     }
 
-    // Setzen eines Cookies mit angegebenem Namen, Wert und Gültigkeitsdauer in Tagen
+    // Funktion zum Setzen eines Cookies mit angegebenem Namen, Wert und Gültigkeitsdauer in Tagen
     function setCookie(name, value, days, options = {}) {
+        // Escape-Sicherheit für den Cookie-Namen
         name = escapeCookieName(name);
 
+        // Überprüfen der Gültigkeitsdauer
         if (typeof days !== 'number' || days <= 0) {
-            console.error('Ungültiger Gültigkeitsdauer-Wert für das Cookie.');
-            return;
-        }
-        if (!name || !value) {
-            console.error('Ungültiger Name oder Wert für das Cookie.');
+            consoleManager.error('Ungültiger Gültigkeitsdauer-Wert für das Cookie.');
             return;
         }
 
+        // Überprüfen von Name und Wert
+        if (!name || !value) {
+            consoleManager.error('Ungültiger Name oder Wert für das Cookie.');
+            return;
+        }
+
+        // Berechnen des Ablaufdatums
         const expires = new Date();
         expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
 
+        // Erstellen des Cookie-Strings
         let cookieString = `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/`;
 
         // Füge optionale Cookie-Optionen hinzu
@@ -30,34 +36,50 @@ const CookieUtil = (function () {
             }
         }
 
+        // Setzen des Cookies im DOM
         document.cookie = cookieString;
-        if (consoleManager.getConsoleOutput()) {
+
+        // Logge eine Erfolgsmeldung, wenn die Konsolenausgabe aktiviert ist
+        if ($.consoleManager.getConsoleOutput()) {
             console.log(`Cookie "${name}" wurde erfolgreich gesetzt.`);
         }
     }
 
-    // Abrufen eines Cookies anhand des Namens
+    // Funktion zum Abrufen eines Cookies anhand des Namens
     function getCookie(name) {
+        // Escape-Sicherheit für den Cookie-Namen
         const cookieName = escapeCookieName(name) + '=';
         const cookies = document.cookie.split(';');
+
+        // Durchsuchen aller Cookies
         for (let i = 0; i < cookies.length; i++) {
             let cookie = cookies[i].trim();
+
+            // Wenn das Cookie gefunden wurde
             if (cookie.indexOf(cookieName) === 0) {
+                // Dekodiere den Wert und gebe ihn zurück
                 const cookieValue = decodeURIComponent(cookie.substring(cookieName.length, cookie.length));
-                if (consoleManager.getConsoleOutput()) {
+
+                // Logge eine Erfolgsmeldung, wenn die Konsolenausgabe aktiviert ist
+                if ($.consoleManager.getConsoleOutput()) {
                     console.log(`Cookie "${name}" wurde erfolgreich abgerufen.`);
                 }
+
                 return cookieValue;
             }
         }
-        if (consoleManager.getConsoleOutput()) {
+
+        // Wenn das Cookie nicht gefunden wurde
+        if ($.consoleManager.getConsoleOutput()) {
             console.warn(`Cookie "${name}" wurde nicht gefunden.`);
         }
+
         return null;
     }
 
+    // Öffentlich zugängliche Methoden
     return {
         setCookie,
         getCookie
     };
-})();
+})(jQuery);
