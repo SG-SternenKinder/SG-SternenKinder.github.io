@@ -15,13 +15,13 @@ $(document).ready(function () {
     }
 
     // Überprüfe, ob Cookies akzeptiert wurden
-    const acceptedCookies = CookieUtil.getCookie('cookiesAccepted');
+    const acceptedCookies = $.CookieUtil.getCookie('cookiesAccepted');
     if ($.consoleManager.getConsoleOutput()) {
         console.log('Cookies wurden akzeptiert:', acceptedCookies);
     }
 
     // Überprüfe, ob Cookies abgelehnt wurden
-    const rejectedCookies = CookieUtil.getCookie('cookiesRejected');
+    const rejectedCookies = $.CookieUtil.getCookie('cookiesRejected');
     if ($.consoleManager.getConsoleOutput()) {
         console.log('Cookies wurden abgelehnt:', rejectedCookies);
     }
@@ -35,7 +35,7 @@ $(document).ready(function () {
         popup.css('display', 'flex');
 
         acceptCookiesButton.on('click', function () {
-            CookieUtil.setCookie('cookiesAccepted', 'true', 4);
+            $.CookieUtil.setCookie('cookiesAccepted', 'true', 4);
             popup.css('display', 'none');
             acceptedPopup.css('display', 'flex');
             if ($.consoleManager.getConsoleOutput()) {

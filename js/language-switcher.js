@@ -1,7 +1,7 @@
 // language-switcher.js
 $(document).ready(async function () {
     const languageSlider = $('#language-slider');
-    let currentLanguage = CookieUtil.getCookie('language') || 'de';
+    let currentLanguage = $.CookieUtil.getCookie('language') || 'de';
 
     // Funktion zum Setzen des Slider-Zustands
     function setSliderState(language) {
@@ -94,7 +94,7 @@ $(document).ready(async function () {
 
     // Funktion zum Aktualisieren des Sprach-Cookies
     function updateLanguageCookie(language) {
-        CookieUtil.setCookie('language', language, 4, { secure: true }); // Speichere die Sprache für 4 Tage
+        $.CookieUtil.setCookie('language', language, 4, { secure: true }); // Speichere die Sprache für 4 Tage
         if ($.consoleManager.getConsoleOutput()) {
             console.log(`Language cookie updated: ${language}`);
         }
