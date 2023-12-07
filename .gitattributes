@@ -5,6 +5,7 @@
 *.css           text diff=css
 *.html          text diff=html
 *.js            text
+*.*.js          text
 *.md            text
 
 # Ignorierte Dateien und Ordner
@@ -34,10 +35,8 @@ TODO              text
 
 # Configs 
 *.config          text
-.editorconfig     text
 .gitattributes    text
 .gitconfig        text
-browserslist      text
 
 # If you want to treat it as binary,
 # use the following line instead.

@@ -2,6 +2,7 @@
     "name": "SG-SternenKinder",
     "short_name": "SG-SK",
     "start_url": "https://sg-sternenkinder.github.io",
+    "version": "1.0.2",
     "icons": [
         {
             "src": "img/favicon/android-chrome-192x192.png",
