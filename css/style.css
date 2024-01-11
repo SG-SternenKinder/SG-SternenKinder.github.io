@@ -345,6 +345,7 @@ footer {
     background-color: #fff;
     border-radius: 34px;
     transition: background-color 0.4s ease;
+    background-image: url('../img/language/uk-32.png');
 }
 
 .slider:before {
@@ -357,6 +358,7 @@ footer {
     border-radius: 50%;
     background-size: cover;
     transition: transform 0.4s ease;
+    background-image: url('../img/language/de-32.png');
 }
 
 input:checked+.slider {
