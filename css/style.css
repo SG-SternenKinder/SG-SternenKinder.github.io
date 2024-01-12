@@ -357,7 +357,7 @@ footer {
     border-radius: 50%;
     background-size: cover;
     transition: transform 0.4s ease;
-    background-image: url('../img/language/uk-32.png');
+    background-image: url('../img/language/de-32.png');
 }
 
 input:checked+.slider {
@@ -367,7 +367,7 @@ input:checked+.slider {
 input:checked+.slider:before {
     content: '';
     transform: translateX(26px);
-    background-image: url('../img/language/de-32.png');
+    background-image: url('../img/language/uk-32.png');
 }
 
 /* Füge eine Klasse für das Ausblenden der Flaggen hinzu, wenn keine Internetverbindung besteht */
