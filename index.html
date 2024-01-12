@@ -94,8 +94,6 @@
     <script src="js/announcement.js" defer></script> -->
 
     <script src="js/popup.js"></script>
-    <script src="js/scrollback.js"></script>
-    <script src="js/footer.js"></script>
 
 </head>
 
@@ -105,6 +103,41 @@
         <div class="loading-spinner"></div>
         <p class="message">Welcome! Please enable JavaScript to fully enjoy our website.</p>
     </noscript>
+
+        <!-- Popup-Container -->
+        <div class="popup-container" id="popup">
+            <div class="popup-content">
+                <h2>Cookie-Hinweis</h2>
+                <p>Durch die Nutzung unserer Website akzeptieren Sie unsere</p>
+                <p>Wenn Sie fortfahren, stimmen Sie der Verwendung von Cookies zu.</p>
+                <br>
+                <div class="mitte-container">
+                    <a href="imprint/index.html" target="_blank">Datenschutzrichtlinien</a>
+                    <a href="cookies/cookies.html" target="_blank">Cookie-Richtlinien</a>
+                </div>
+                <button id="accept-cookies">Cookies akzeptieren</button>
+                <button id="close-cookies">Cookies ablehnen</button>
+            </div>
+        </div>
+    
+        <!-- Akzeptiertes-Cookies-Popup -->
+        <div class="popup-container" id="accepted-popup">
+            <div class="popup-content">
+                <h2>Vielen Dank!</h2>
+                <p>das Sie Cookies akzeptieren.</p>
+                <button id="close-accepted-popup">Schließen</button>
+            </div>
+        </div>
+    
+        <!-- Abgelehntes-Cookies-Popup -->
+        <div class="popup-container" id="rejected-popup">
+            <div class="popup-content">
+                <h2>Cookies abgelehnt</h2>
+                <p>Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung
+                    speichern.</p>
+                <button id="close-rejected-popup">Schließen</button>
+            </div>
+        </div>
 
     <header>
 
@@ -212,40 +245,8 @@
         </div>
     </section>
 
-    <!-- Popup-Container -->
-    <div class="popup-container" id="popup">
-        <div class="popup-content">
-            <h2>Cookie-Hinweis</h2>
-            <p>Durch die Nutzung unserer Website akzeptieren Sie unsere</p>
-            <p>Wenn Sie fortfahren, stimmen Sie der Verwendung von Cookies zu.</p>
-            <br>
-            <div class="mitte-container">
-                <a href="imprint/index.html" target="_blank">Datenschutzrichtlinien</a>
-                <a href="cookies/cookies.html" target="_blank">Cookie-Richtlinien</a>
-            </div>
-            <button id="accept-cookies">Cookies akzeptieren</button>
-            <button id="close-cookies">Cookies ablehnen</button>
-        </div>
-    </div>
-
-    <!-- Akzeptiertes-Cookies-Popup -->
-    <div class="popup-container" id="accepted-popup">
-        <div class="popup-content">
-            <h2>Vielen Dank!</h2>
-            <p>das Sie Cookies akzeptieren.</p>
-            <button id="close-accepted-popup">Schließen</button>
-        </div>
-    </div>
-
-    <!-- Abgelehntes-Cookies-Popup -->
-    <div class="popup-container" id="rejected-popup">
-        <div class="popup-content">
-            <h2>Cookies abgelehnt</h2>
-            <p>Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung
-                speichern.</p>
-            <button id="close-rejected-popup">Schließen</button>
-        </div>
-    </div>
+    <script src="js/scrollback.js"></script>
+    <script src="js/footer.js"></script>
 
     <div id="scroll-to-top">
         <div class="fas fa-arrow-up"></div>
