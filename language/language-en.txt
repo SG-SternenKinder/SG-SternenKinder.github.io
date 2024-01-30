@@ -5,16 +5,16 @@ language-title=Sprache
 home-title=English <br> Title
 home-text=This is an English text.
 
-about-title=English <br> Titel
+about-title=English <br> Title
 about-text=This is an English text.
 
-contact-title=English <br> Titel
+contact-title=English <br> Title
 contact-text=This is an English text.
 
-imprint-title=English <br> Titel
+imprint-title=English <br> Title
 imprint-text=This is an English text.
 
-privacy-title=English <br> Titel
+privacy-title=English <br> Title
 privacy-text=This is an English text.
 
 cookie-header=Usage of Cookies on Our Website

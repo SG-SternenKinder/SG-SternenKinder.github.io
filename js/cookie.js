@@ -1,4 +1,6 @@
 // Cookie.js
+
+// Überprüfe, ob jQuery vorhanden ist
 if (typeof jQuery !== 'undefined') {
     (function ($) {
         // Escape-Sicherheit für Cookie-Namen
@@ -57,7 +59,7 @@ if (typeof jQuery !== 'undefined') {
             return null;
         }
 
-        // Assign CookieUtil to jQuery
+        // Füge CookieUtil zu jQuery hinzu
         $.CookieUtil = {
             setCookie,
             getCookie
