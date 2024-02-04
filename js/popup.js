@@ -1,72 +1,72 @@
 // popup.js
 $(document).ready(function () {
-    const popup = $('#popup');
-    const acceptCookiesButton = $('#accept-cookies');
-    const closeCookiesButton = $('#close-cookies');
-    const acceptedPopup = $('#accepted-popup');
-    const rejectedPopup = $('#rejected-popup');
-    const closeAcceptedPopupButton = $('#close-accepted-popup');
-    const closeRejectedPopupButton = $('#close-rejected-popup');
+    const p = $('#popup');
+    const a = $('#accept-cookies');
+    const c = $('#close-cookies');
+    const ap = $('#accepted-popup');
+    const rp = $('#rejected-popup');
+    const capb = $('#close-accepted-popup');
+    const crpb = $('#close-rejected-popup');
 
     // Überprüfen, ob das Popup bereits angezeigt wurde
-    const popupShown = sessionStorage.getItem('popupShown');
+    const ps = sessionStorage.getItem('popupShown');
     if ($.consoleManager.getConsoleOutput()) {
-        console.log('Popup wurde bereits angezeigt:', popupShown);
+        console.log('Popup wurde bereits angezeigt:', ps);
     }
 
     // Überprüfe, ob Cookies akzeptiert wurden
-    const acceptedCookies = $.CookieUtil.getCookie('cookiesAccepted');
+    const ac = $.CookieUtil.getCookie('cookiesAccepted');
     if ($.consoleManager.getConsoleOutput()) {
-        console.log('Cookies wurden akzeptiert:', acceptedCookies);
+        console.log('Cookies wurden akzeptiert:', ac);
     }
 
     // Überprüfe, ob Cookies abgelehnt wurden
-    const rejectedCookies = $.CookieUtil.getCookie('cookiesRejected');
+    const rc = $.CookieUtil.getCookie('cookiesRejected');
     if ($.consoleManager.getConsoleOutput()) {
-        console.log('Cookies wurden abgelehnt:', rejectedCookies);
+        console.log('Cookies wurden abgelehnt:', rc);
     }
 
     // Entscheidung des Benutzers überprüfen und Popup entsprechend anzeigen
-    if (!popupShown && !acceptedCookies && !rejectedCookies && navigator.onLine) {
+    if (!ps && !ac && !rc && navigator.onLine) {
         if ($.consoleManager.getConsoleOutput()) {
             console.log('Popup wird angezeigt.');
         }
 
-        popup.css('display', 'flex');
+        p.css('display', 'flex');
 
-        acceptCookiesButton.on('click', function () {
+        a.on('click', function () {
             $.CookieUtil.setCookie('cookiesAccepted', 'true', 4);
-            popup.css('display', 'none');
-            acceptedPopup.css('display', 'flex');
+            p.css('display', 'none');
+            ap.css('display', 'flex');
             if ($.consoleManager.getConsoleOutput()) {
                 console.log('Cookies wurden akzeptiert.');
             }
         });
 
-        closeCookiesButton.on('click', function () {
+        c.on('click', function () {
             // Markiere das Popup als angezeigt in der Session-Speicherung
             sessionStorage.setItem('popupShown', 'true');
-            popup.css('display', 'none');
+            p.css('display', 'none');
 
             // Setze ein Session-Cookie für die Ablehnung von Cookies
             sessionStorage.setItem('cookiesRejected', 'true');
-            rejectedPopup.css('display', 'flex');
+            rp.css('display', 'flex');
             if ($.consoleManager.getConsoleOutput()) {
                 console.log('Cookies wurden abgelehnt.');
             }
         });
 
-        closeAcceptedPopupButton.on('click', function () {
+        capb.on('click', function () {
             // Akzeptieren-Popup schließen
-            acceptedPopup.css('display', 'none');
+            ap.css('display', 'none');
             if ($.consoleManager.getConsoleOutput()) {
                 console.log('Akzeptieren-Popup wurde geschlossen.');
             }
         });
 
-        closeRejectedPopupButton.on('click', function () {
+        crpb.on('click', function () {
             // Abgelehnt-Popup schließen
-            rejectedPopup.css('display', 'none');
+            rp.css('display', 'none');
             if ($.consoleManager.getConsoleOutput()) {
                 console.log('Abgelehnt-Popup wurde geschlossen.');
             }
@@ -80,8 +80,8 @@ $(document).ready(function () {
     navigator.serviceWorker.addEventListener('message', (event) => {
         if (event.data === 'showOfflinePopup') {
             // Show the offline popup
-            const offlinePopup = $('#offline-popup');
-            offlinePopup.css('display', 'flex');
+            const op = $('#offline-popup');
+            op.css('display', 'flex');
             if ($.consoleManager.getConsoleOutput()) {
                 console.log('Offline-Popup wird angezeigt.');
             }
