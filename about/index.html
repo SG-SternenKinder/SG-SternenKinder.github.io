@@ -31,7 +31,6 @@
 
     <!-- Weitere Stile und Skripte in externe Dateien auslagern -->
     <link rel="stylesheet" href="../css/style.css">
-    <style type="text/css"></style>
 
     <script>
         if ('serviceWorker' in navigator) {
@@ -98,40 +97,40 @@
         </div>
     </noscript>
 
-        <!-- Popup-Container -->
-        <div class="popup-container" id="popup">
-            <div class="popup-content">
-                <h2>Cookie-Hinweis</h2>
-                <p>Durch die Nutzung unserer Website akzeptieren Sie unsere</p>
-                <p>Wenn Sie fortfahren, stimmen Sie der Verwendung von Cookies zu.</p>
-                <br>
-                <div class="mitte-container">
-                    <a href="../imprint/index.html" target="_blank">Datenschutzrichtlinien</a>
-                    <a href="../cookies/cookies.html" target="_blank">Cookie-Richtlinien</a>
-                </div>
-                <button id="accept-cookies">Cookies akzeptieren</button>
-                <button id="close-cookies">Cookies ablehnen</button>
+    <!-- Popup-Container -->
+    <div class="popup-container" id="popup">
+        <div class="popup-content">
+            <h2>Cookie-Hinweis</h2>
+            <p>Durch die Nutzung unserer Website akzeptieren Sie unsere</p>
+            <p>Wenn Sie fortfahren, stimmen Sie der Verwendung von Cookies zu.</p>
+            <br>
+            <div class="mitte-container">
+                <a href="../imprint/index.html" target="_self">Datenschutzrichtlinien</a>
+                <a href="../cookies/cookies.html" target="_self">Cookie-Richtlinien</a>
             </div>
+            <button id="accept-cookies">Cookies akzeptieren</button>
+            <button id="close-cookies">Cookies ablehnen</button>
         </div>
-    
-        <!-- Akzeptiertes-Cookies-Popup -->
-        <div class="popup-container" id="accepted-popup">
-            <div class="popup-content">
-                <h2>Vielen Dank!</h2>
-                <p>das Sie Cookies akzeptieren.</p>
-                <button id="close-accepted-popup">Schließen</button>
-            </div>
+    </div>
+
+    <!-- Akzeptiertes-Cookies-Popup -->
+    <div class="popup-container" id="accepted-popup">
+        <div class="popup-content">
+            <h2>Vielen Dank!</h2>
+            <p>das Sie Cookies akzeptieren.</p>
+            <button id="close-accepted-popup">Schließen</button>
         </div>
-    
-        <!-- Abgelehntes-Cookies-Popup -->
-        <div class="popup-container" id="rejected-popup">
-            <div class="popup-content">
-                <h2>Cookies abgelehnt</h2>
-                <p>Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung
-                    speichern.</p>
-                <button id="close-rejected-popup">Schließen</button>
-            </div>
+    </div>
+
+    <!-- Abgelehntes-Cookies-Popup -->
+    <div class="popup-container" id="rejected-popup">
+        <div class="popup-content">
+            <h2>Cookies abgelehnt</h2>
+            <p>Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung
+                speichern.</p>
+            <button id="close-rejected-popup">Schließen</button>
         </div>
+    </div>
 
     <header>
 
