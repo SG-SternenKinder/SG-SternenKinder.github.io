@@ -137,14 +137,16 @@
 
         <div class="logo no-click"><span>SG</span>SternenKinder</div>
 
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-        <ul class="navbar">
-            <li><a href="" onclick="reloadPage()">Home</a></li>
-            <li><a href="about/index.html">About</a></li>
-            <li><a href="contact/index.html">Contact</a></li>
-            <li><a href="privacy/index.html">Privacy</a></li>
-            <li><a href="imprint/index.html">Imprint</a></li>
-        </ul>
+        <nav>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-expanded="false">☰</button>
+            <ul class="navbar">
+                <li><a href="" onclick="reloadPage()">Home</a></li>
+                <li><a href="about/index.html">About</a></li>
+                <li><a href="contact/index.html">Contact</a></li>
+                <li><a href="privacy/index.html">Privacy</a></li>
+                <li><a href="imprint/index.html">Imprint</a></li>
+            </ul>
+        </nav>
 
         <script>
             function reloadPage() {
