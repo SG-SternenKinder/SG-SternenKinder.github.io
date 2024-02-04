@@ -1,6 +1,15 @@
 /* Importiere die Media Queries */
-@import url('media.css');
-/* @import url('firework.css'); */
+@import url('../css/media.css');
+
+/* Definierte Farbvariablen */
+:root {
+    --text-color: white;
+    --bg-color: black;
+    --main-color: blue;
+    --h1-font: 6rem;
+    --p-font: 1rem;
+    --accent-color: red;
+}
 
 /* Globale Zurücksetzungen und Stile */
 * {
@@ -15,17 +24,7 @@
     font-family: var(--fa-font-solid);
 }
 
-/* Definierte Farbvariablen */
-:root {
-    --text-color: white;
-    --bg-color: black;
-    --main-color: blue;
-    --h1-font: 6rem;
-    --p-font: 1rem;
-    --accent-color: red;
-}
-
-/* Stile für den gesamten Body */
+/* Stile für den Body */
 body {
     color: var(--text-color);
     background: var(--bg-color);
@@ -79,17 +78,11 @@ span {
     color: var(--main-color);
 }
 
+
 /* Stile für die Navigationsleiste */
 .navbar {
     display: flex;
-    align-items: space-around;
     justify-content: center;
-}
-
-/* Stile für das Hamburger-Menü */
-.menu-toggle {
-    display: none; /* Verstecke das Menüsymbol standardmäßig */
-    cursor: pointer;
 }
 
 .navbar a {
@@ -140,6 +133,12 @@ span {
     backdrop-filter: blur(2px);
     z-index: -1;
     border-radius: 10px;
+}
+
+/* Stile für das Hamburger-Menü */
+.menu-toggle {
+    display: none; /* Verstecke das Menüsymbol standardmäßig */
+    cursor: pointer;
 }
 
 /* Stile für die "Folge uns"-Leiste */
