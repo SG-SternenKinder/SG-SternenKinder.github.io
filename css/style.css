@@ -1,5 +1,5 @@
 /* Importiere die Media Queries */
-@import url('../css/media.css');
+@import url('./css/media.css');
 
 /* Definierte Farbvariablen */
 :root {

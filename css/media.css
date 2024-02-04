@@ -20,40 +20,58 @@
 
 /* Media Query für kleinere Bildschirme und mobile Geräte */
 @media (max-width: 767px) {
-    .navbar li {
-        padding: 10px;
-        /* Füge Abstand zwischen den Elementen hinzu */
-        border-bottom: 1px solid #ddd;
-        /* Füge eine Trennlinie zwischen den Elementen hinzu */
-    }
-
-    .navbar a {
-        margin: 10px;
-        display: block;
-        /* Mache die Links zu Blockelementen */
-    }
-
-    .cookie-text {
-        height: 80vh;
-    }
-
-    .popup-content {
-        padding: 20px;
-    }
-
-    .menu-toggle {
-        display: block;
-        /* Zeige das Menüsymbol für kleine Bildschirme */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
     }
 
     .navbar.active {
-        display: flex;
-        /* Zeige die Navbar, wenn sie aktiv ist (z. B. nach einem Klick auf das Menüsymbol) */
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
+    }
+
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
     }
 }
 
 /* Media Query für Tablets und kleinere Desktops */
 @media (min-width: 768px) and (max-width: 1023px) {
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
+    }
+
     .navbar a {
         margin: 12px;
         font-size: 18px;
@@ -61,75 +79,78 @@
         /* Mache die Links zu Blockelementen */
     }
 
-    .cookie-text {
-        height: 70vh;
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
     }
 
-    .popup-content {
-        padding: 30px;
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
     }
+
 }
 
 /* Media Query für größere Desktops */
 @media (min-width: 1024px) {
-    .navbar li {
-        padding: 15px;
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
     }
 
     .navbar a {
-        margin: 15px;
-        font-size: 20px;
+        margin: 12px;
+        font-size: 18px;
         display: block;
         /* Mache die Links zu Blockelementen */
     }
 
-    .cookie-text {
-        height: 60vh;
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
     }
 
-    .popup-content {
-        padding: 40px;
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
     }
 }
 
 /* Media Query für sehr kleine Bildschirme */
 @media (max-width: 400px) {
-    .navbar a {
-        margin: 8px;
-        font-size: 14px;
-        display: block;
-        /* Mache die Links zu Blockelementen */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
     }
 
-    .cookie-text {
-        height: 90vh;
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
     }
 
-    .popup-content {
-        padding: 15px;
-    }
-}
-
-/* Media Query für kleine Tablets und größere Handys */
-@media (min-width: 401px) and (max-width: 767px) {
-    .navbar a {
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
         margin: 10px;
         font-size: 16px;
-        display: block;
-        /* Mache die Links zu Blockelementen */
     }
 
-    .cookie-text {
-        height: 80vh;
-    }
-
-    .popup-content {
-        padding: 20px;
-    }
-}
-
-/* Media Query für größere Tablets und kleine Laptops */
-@media (min-width: 768px) and (max-width: 1023px) {
     .navbar a {
         margin: 12px;
         font-size: 18px;
@@ -137,55 +158,168 @@
         /* Mache die Links zu Blockelementen */
     }
 
-    .cookie-text {
-        height: 70vh;
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
     }
 
-    .popup-content {
-        padding: 30px;
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
+    }
+}
+
+/* Media Query für kleine Tablets und größere Handys */
+@media (min-width: 401px) and (max-width: 767px) {
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .navbar a {
+        margin: 12px;
+        font-size: 18px;
+        display: block;
+        /* Mache die Links zu Blockelementen */
+    }
+
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
+    }
+
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
+    }
+}
+
+/* Media Query für größere Tablets und kleine Laptops */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .navbar a {
+        margin: 12px;
+        font-size: 18px;
+        display: block;
+        /* Mache die Links zu Blockelementen */
+    }
+
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
+    }
+
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
     }
 }
 
 /* Media Query für größere Laptops und Desktops */
 @media (min-width: 1024px) and (max-width: 1279px) {
-    .navbar li {
-        padding: 15px;
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
     }
 
     .navbar a {
-        margin: 15px;
-        font-size: 20px;
+        margin: 12px;
+        font-size: 18px;
         display: block;
         /* Mache die Links zu Blockelementen */
     }
 
-    .cookie-text {
-        height: 60vh;
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
     }
 
-    .popup-content {
-        padding: 40px;
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
     }
 }
 
 /* Media Query für größere Desktops und Breitbildschirme */
 @media (min-width: 1280px) {
-    .navbar li {
-        padding: 20px;
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
     }
 
     .navbar a {
-        margin: 20px;
-        font-size: 24px;
+        margin: 12px;
+        font-size: 18px;
         display: block;
         /* Mache die Links zu Blockelementen */
     }
 
-    .cookie-text {
-        height: 50vh;
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
     }
 
-    .popup-content {
-        padding: 50px;
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
     }
 }
