@@ -40,37 +40,26 @@ html {
 }
 */
 
-#bg, #bg table, #bg td {
-    height:100%;
-    width:100%;
-    overflow:hidden;
-    -webkit-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
-	-o-text-size-adjust: 100%;
-}
+img#fsb_image {
+	/* Set rules to fill background */
+	min-height: 100%;
+	min-width: 1024px;
 
-#bg { 
-    position: fixed; 
-}
+	/* Set up proportionate scaling */
+	width: 100%;
+	height: auto;
 
-#bg div {
-    height:200%;
-    left:-50%;
-    position:absolute;
-    top:-50%;
-    width:200%;
+	/* Set up positioning */
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -9999;
 }
-
-#bg td {
-    text-align:center;
-    vertical-align:middle;
-}
-
-#bg img {
-    margin:0 auto;
-    min-height:50%;
-    min-width:50%;
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+	img#fsb_image {
+		left: 50%;
+		margin-left: -512px;   /* 50% */
+	}
 }
 
 /* Stile für den Header */
