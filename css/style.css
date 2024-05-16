@@ -55,11 +55,6 @@ img#fsb_image {
 	left: 0;
 	z-index: -9999;
 }
-@media screen and (max-width: 1920px) { /* Specific to this particular image */
-	img#fsb_image {
-		margin-left: -512px;   /* 50% */
-	}
-}
 
 /* Stile für den Header */
 header {
