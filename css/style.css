@@ -40,7 +40,7 @@ html {
 }
 */
 
-html, #bg, #bg table, #bg td {
+#bg, #bg table, #bg td {
     height:100%;
     width:100%;
     overflow:hidden;
