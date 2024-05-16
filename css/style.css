@@ -38,7 +38,6 @@ html {
 	-ms-text-size-adjust: 100%;
 	-o-text-size-adjust: 100%;
 }
-*/
 
 .box { 
     margin: 0 auto; 
@@ -48,6 +47,7 @@ html {
     padding-bottom:100px;
     font: 14px/2.8 Georgia, Serif;
 }
+*/
 
 img#fsb_image {
 	/* Set rules to fill background */
