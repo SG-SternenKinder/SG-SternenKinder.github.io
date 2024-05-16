@@ -27,16 +27,50 @@
 /* Stile für den Body */
 body {
     color: var(--text-color);
-    background: var(--bg-color);
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../img/background.png);
-    background-size: cover;
-    background-position: bottom center;
+	text-size-adjust: 100%;
+}
 
+/*
+html {
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../img/background.png) no-repeat center center fixed;
     -webkit-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
 	-o-text-size-adjust: 100%;
-	text-size-adjust: 100%;
+}
+*/
+
+html, #bg, #bg table, #bg td {
+    height:100%;
+    width:100%;
+    overflow:hidden;
+    -webkit-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-o-text-size-adjust: 100%;
+}
+
+#bg { 
+    position: fixed; 
+}
+
+#bg div {
+    height:200%;
+    left:-50%;
+    position:absolute;
+    top:-50%;
+    width:200%;
+}
+
+#bg td {
+    text-align:center;
+    vertical-align:middle;
+}
+
+#bg img {
+    margin:0 auto;
+    min-height:50%;
+    min-width:50%;
 }
 
 /* Stile für den Header */
