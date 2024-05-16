@@ -43,7 +43,7 @@ html {
 img#fsb_image {
 	/* Set rules to fill background */
 	min-height: 100%;
-	min-width: 1024px;
+	min-width: 1920px;
 
 	/* Set up proportionate scaling */
 	width: 100%;
@@ -55,7 +55,7 @@ img#fsb_image {
 	left: 0;
 	z-index: -9999;
 }
-@media screen and (max-width: 1024px) { /* Specific to this particular image */
+@media screen and (max-width: 1920px) { /* Specific to this particular image */
 	img#fsb_image {
 		left: 50%;
 		margin-left: -512px;   /* 50% */
