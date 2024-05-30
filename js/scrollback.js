@@ -5,7 +5,7 @@ $(document).ready(function () {
     const scrollThreshold = 20;
 
     /**
-     * Show or hide the scroll-to-top button based on the scroll position.
+     * Zeigt oder versteckt den Scroll-to-Top-Button basierend auf der Scroll-Position.
      */
     function toggleScrollToTopButton() {
         const scrollTop = $(document).scrollTop();
@@ -20,28 +20,28 @@ $(document).ready(function () {
     }
 
     /**
-     * Scroll the page to the top with an animation.
+     * Scrollt die Seite mit einer Animation nach oben.
      */
     function scrollToTop() {
-        $('body,html').animate({ scrollTop: 0 }, 'slow', function() {
+        $('body,html').animate({ scrollTop: 0 }, 'slow', function () {
             $(document.body).removeClass('scroll-up');
             logToConsole('Benutzer hat zum oberen Bildschirmrand zurückgescrollt.');
         });
     }
 
     /**
-     * Log messages to the console if the consoleManager is enabled.
-     * @param {string} message - The message to log.
+     * Loggt Nachrichten in die Konsole, falls der consoleManager aktiviert ist.
+     * @param {string} message - Die zu loggende Nachricht.
      */
     function logToConsole(message) {
-        if ($.consoleManager && $.consoleManager.getConsoleOutput()) {
+        if (typeof $.consoleManager !== 'undefined' && $.consoleManager.getConsoleOutput()) {
             console.log(message);
         }
     }
 
-    // Add scroll event listener to toggle the button visibility
+    // Scroll-Event-Listener hinzufügen, um die Sichtbarkeit des Buttons zu steuern
     $(window).scroll(toggleScrollToTopButton);
 
-    // Add click event listener to the scroll-to-top button
+    // Click-Event-Listener zum Scroll-to-Top-Button hinzufügen
     scrollToTopButton.on('click', scrollToTop);
 });

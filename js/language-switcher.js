@@ -3,18 +3,22 @@ $(document).ready(async function () {
     const languageSlider = $('#language-slider');
     let currentLanguage = $.CookieUtil.getCookie('language') || 'de';
 
-    // Funktion zum Setzen des Slider-Zustands
+    /**
+     * Setzt den Zustand des Sliders basierend auf der aktuellen Sprache.
+     * @param {string} language - Die aktuelle Sprache.
+     */
     function setSliderState(language) {
         languageSlider.prop('checked', language === 'en');
-        if ($.consoleManager.getConsoleOutput()) {
-            console.log(`Slider state set to ${language}`);
-        }
+        logToConsole(`Slider state set to ${language}`);
     }
 
     // Wenn es ein gespeichertes Sprach-Cookie gibt, stelle den Schieberegler entsprechend ein
     setSliderState(currentLanguage);
 
-    // Funktion zum Laden von Texten aus der Datei basierend auf der ausgewählten Sprache
+    /**
+     * Lädt die Texte aus der Datei basierend auf der ausgewählten Sprache.
+     * @param {string} language - Die ausgewählte Sprache.
+     */
     async function loadTexts(language) {
         try {
             // Überprüfe, ob eine Internetverbindung besteht
@@ -29,23 +33,16 @@ $(document).ready(async function () {
                     languageElement.html(offlineText);
                 }
 
-                // Verstecke die Flaggen
                 const flagsElement = $('#flags');
                 if (flagsElement.length) {
                     flagsElement.hide();
                 }
 
-                if ($.consoleManager.getConsoleOutput()) {
-                    console.log(`No internet connection. Displaying language code: ${offlineText}`);
-                }
-
+                logToConsole(`No internet connection. Displaying language code: ${offlineText}`);
                 return; // Beende die Funktion, wenn keine Internetverbindung besteht
             }
 
-            // Wenn eine Internetverbindung besteht, lade die Texte normal
-            if ($.consoleManager.getConsoleOutput()) {
-                console.log('Loading texts for language:', language);
-            }
+            logToConsole(`Loading texts for language: ${language}`);
 
             const response = await fetchTexts(language);
             const texts = await response.text();
@@ -61,25 +58,20 @@ $(document).ready(async function () {
                 }
             });
 
-            if ($.consoleManager.getConsoleOutput()) {
-                console.log(`Texts loaded successfully for language: ${language}`);
-            }
-
-            // Setze den Text für den Slider
-            //setSliderText(language);
+            logToConsole(`Texts loaded successfully for language: ${language}`);
         } catch (error) {
             console.error('Fehler beim Laden der Texte:', error);
         }
     }
 
-    // Funktion zum Fetchen der Texte für eine bestimmte Sprache
+    /**
+     * Ruft die Texte für eine bestimmte Sprache ab.
+     * @param {string} language - Die Sprache, für die die Texte abgerufen werden sollen.
+     * @returns {Promise<Response>} - Die Fetch-Response.
+     */
     async function fetchTexts(language) {
         try {
-            // Konsolenausgabe für Debugging
-            if ($.consoleManager.getConsoleOutput()) {
-                console.log('Fetching texts for language:', language);
-            }
-
+            logToConsole(`Fetching texts for language: ${language}`);
             const response = await fetch(`/language/language-${language}.txt`);
 
             if (!response.ok) {
@@ -92,11 +84,22 @@ $(document).ready(async function () {
         }
     }
 
-    // Funktion zum Aktualisieren des Sprach-Cookies
+    /**
+     * Aktualisiert das Sprach-Cookie.
+     * @param {string} language - Die Sprache, die gespeichert werden soll.
+     */
     function updateLanguageCookie(language) {
         $.CookieUtil.setCookie('language', language, 4, { secure: true }); // Speichere die Sprache für 4 Tage
-        if ($.consoleManager.getConsoleOutput()) {
-            console.log(`Language cookie updated: ${language}`);
+        logToConsole(`Language cookie updated: ${language}`);
+    }
+
+    /**
+     * Loggt Nachrichten in die Konsole, falls der consoleManager aktiviert ist.
+     * @param {string} message - Die zu loggende Nachricht.
+     */
+    function logToConsole(message) {
+        if (typeof $.consoleManager !== 'undefined' && $.consoleManager.getConsoleOutput()) {
+            console.log(message);
         }
     }
 

@@ -10,37 +10,26 @@ $(document).ready(function () {
 
     // Überprüfen, ob das Popup bereits angezeigt wurde
     const ps = sessionStorage.getItem('popupShown');
-    if ($.consoleManager.getConsoleOutput()) {
-        console.log('Popup wurde bereits angezeigt:', ps);
-    }
+    logToConsole('Popup wurde bereits angezeigt:', ps);
 
     // Überprüfe, ob Cookies akzeptiert wurden
     const ac = $.CookieUtil.getCookie('cookiesAccepted');
-    if ($.consoleManager.getConsoleOutput()) {
-        console.log('Cookies wurden akzeptiert:', ac);
-    }
+    logToConsole('Cookies wurden akzeptiert:', ac);
 
     // Überprüfe, ob Cookies abgelehnt wurden
     const rc = $.CookieUtil.getCookie('cookiesRejected');
-    if ($.consoleManager.getConsoleOutput()) {
-        console.log('Cookies wurden abgelehnt:', rc);
-    }
+    logToConsole('Cookies wurden abgelehnt:', rc);
 
     // Entscheidung des Benutzers überprüfen und Popup entsprechend anzeigen
     if (!ps && !ac && !rc && navigator.onLine) {
-        if ($.consoleManager.getConsoleOutput()) {
-            console.log('Popup wird angezeigt.');
-        }
-
+        logToConsole('Popup wird angezeigt.');
         p.css('display', 'flex');
 
         a.on('click', function () {
             $.CookieUtil.setCookie('cookiesAccepted', 'true', 4);
             p.css('display', 'none');
             ap.css('display', 'flex');
-            if ($.consoleManager.getConsoleOutput()) {
-                console.log('Cookies wurden akzeptiert.');
-            }
+            logToConsole('Cookies wurden akzeptiert.');
         });
 
         c.on('click', function () {
@@ -51,30 +40,22 @@ $(document).ready(function () {
             // Setze ein Session-Cookie für die Ablehnung von Cookies
             sessionStorage.setItem('cookiesRejected', 'true');
             rp.css('display', 'flex');
-            if ($.consoleManager.getConsoleOutput()) {
-                console.log('Cookies wurden abgelehnt.');
-            }
+            logToConsole('Cookies wurden abgelehnt.');
         });
 
         capb.on('click', function () {
             // Akzeptieren-Popup schließen
             ap.css('display', 'none');
-            if ($.consoleManager.getConsoleOutput()) {
-                console.log('Akzeptieren-Popup wurde geschlossen.');
-            }
+            logToConsole('Akzeptieren-Popup wurde geschlossen.');
         });
 
         crpb.on('click', function () {
             // Abgelehnt-Popup schließen
             rp.css('display', 'none');
-            if ($.consoleManager.getConsoleOutput()) {
-                console.log('Abgelehnt-Popup wurde geschlossen.');
-            }
+            logToConsole('Abgelehnt-Popup wurde geschlossen.');
         });
     } else {
-        if ($.consoleManager.getConsoleOutput()) {
-            console.log('Popup wird nicht angezeigt.');
-        }
+        logToConsole('Popup wird nicht angezeigt.');
     }
 
     navigator.serviceWorker.addEventListener('message', (event) => {
@@ -82,9 +63,17 @@ $(document).ready(function () {
             // Show the offline popup
             const op = $('#offline-popup');
             op.css('display', 'flex');
-            if ($.consoleManager.getConsoleOutput()) {
-                console.log('Offline-Popup wird angezeigt.');
-            }
+            logToConsole('Offline-Popup wird angezeigt.');
         }
     });
+
+    /**
+     * Loggt Nachrichten in die Konsole, falls der consoleManager aktiviert ist.
+     * @param {string} message - Die zu loggende Nachricht.
+     */
+    function logToConsole(message) {
+        if (typeof $.consoleManager !== 'undefined' && $.consoleManager.getConsoleOutput()) {
+            console.log(message);
+        }
+    }
 });
