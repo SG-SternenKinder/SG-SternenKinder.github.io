@@ -489,7 +489,7 @@ input:checked+.slider:before {
     background-color: #0c7cd5;
 }
 
-/* Zurückscroll-Pfeil-Stil */
+/* Stil für den Zurückscroll-Pfeil */
 #scroll-to-top {
     position: fixed;
     bottom: -40px; /* Startposition, außerhalb des Bildschirms */
@@ -514,10 +514,12 @@ input:checked+.slider:before {
     text-align: center;
 }
 
+/* Zeige den Zurückscroll-Pfeil an, wenn die Seite gescrollt wird */
 body.scroll-up #scroll-to-top {
     bottom: 40px;
 }
 
+/* Verstecke den Zurückscroll-Pfeil, wenn die Seite nicht gescrollt wird */
 body:not(.scroll-up) #scroll-to-top {
     bottom: -40px;
 }
