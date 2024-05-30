@@ -4,7 +4,7 @@
 $.consoleManager = {
     // Einstellungen für die Konsolenausgabe
     consoleSettings: {
-        enableConsoleOutput: false // Initial ist die Konsolenausgabe deaktiviert
+        enableConsoleOutput: true // Initial ist die Konsolenausgabe deaktiviert
     },
 
     // Methode zum Setzen der Konsolenausgabe (aktivieren oder deaktivieren)

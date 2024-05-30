@@ -1,7 +1,7 @@
 // service-worker.js
 
 // Cache Versionsname
-const FILE_VERSION = 'v0.0.1.2';
+const FILE_VERSION = 'v0.0.1.3';
 const CACHE_NAME = 'cache-' + FILE_VERSION;
 
 // Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.

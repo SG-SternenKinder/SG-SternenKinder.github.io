@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
@@ -27,6 +27,7 @@
     <!-- Hinzufügen eines favicon-Tags -->
     <link rel="icon" href="../img/favicon/favicon.ico">
 
+    <!-- Manifest -->
     <link rel="manifest" href="../site.webmanifest">
 
     <!-- Weitere Stile und Skripte in externe Dateien auslagern -->
@@ -174,18 +175,7 @@
             });
         </script>
 
-        <div class="follow-me">
-            <a href="" class="no-click" draggable="false" rel="noopener">Follow us on</a>
-            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener"
-                onclick="checkLink('TikTok')"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener"
-                onclick="checkLink('Instagram')"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://discord.gg" onclick="checkLink2('Discord')" draggable="false" title="Discord"
-                rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
-            <a href="https://osborntv.github.io" onclick="checkLink2('Github')" draggable="false"
-                title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i
-                    class="fa-solid fa-globe"></i></a>
-        </div>
+
 
         <script>
             function checkLink(platform) {
@@ -207,6 +197,14 @@
             }
         </script>
 
+        <div class="follow-me">
+            <a href="" class="no-click" draggable="false" rel="noopener">Follow us on</a>
+            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener" onclick="checkLink('TikTok')"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener" onclick="checkLink('Instagram')"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://discord.gg" onclick="checkLink2('Discord')" draggable="false" title="Discord" rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
+            <a href="https://osborntv.github.io" onclick="checkLink2('Github')" draggable="false" title="OsbornTV`s Website &rarr; https://osborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
+        </div>        
+
         <div id="language-switcher">
             <div id="language-title" class="language-label">Language</div>
 
@@ -225,23 +223,25 @@
 
     </header>
 
-    <section class="home">
-        <div class="home-text">
-            <h5>i forgot</h5>
-            <h1 id="imprint-title">English <br> Title</h1>
-            <p id="imprint-title">This is an English text.</p>
-            <div class="btn">No idea what's supposed to be there</div>
-        </div>
-    </section>
-
-    <script src="../js/scrollback.js"></script>
-    <script src="../js/footer.js"></script>
+    <main id="main-content" class="container">
+        <section class="home">
+            <div class="home-text">
+                <h5>i forgot</h5>
+                <h1 id="home-title">English<br>Title</h1>
+                <p id="home-text">This is an English text.</p>
+                <div class="btn">No idea what's supposed to be there</div>
+            </div>
+        </section>
+    </main>
 
     <div id="scroll-to-top">
         <div class="fas fa-arrow-up"></div>
     </div>
 
     <div id="footer-container"></div>
+
+    <script src="../js/scrollback.js"></script>
+    <script src="../js/footer.js"></script>
 
 </body>
 

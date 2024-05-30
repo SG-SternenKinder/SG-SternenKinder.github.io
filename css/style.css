@@ -326,6 +326,19 @@ section {
     pointer-events: none;
 }
 
+/* Grundlegende Stile für die Seite, um Flexbox zu aktivieren */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Stile für den Hauptinhalt, um Flexbox zu unterstützen */
+#main-content {
+    flex: 1;
+}
+
 /* Stile für den Footer */
 footer {
     color: #fff;
@@ -337,6 +350,47 @@ footer {
     padding: 10px 0;
     font-size: 14px;
 }
+
+/* Sicherstellen, dass der Footer immer unten bleibt */
+#footer-container {
+    flex-shrink: 0;
+}
+
+/* Stile für den Scroll-to-Top-Button */
+#scroll-to-top {
+    position: fixed;
+    bottom: -40px; /* Startposition, außerhalb des Bildschirms */
+    right: 40px;
+    width: 30px;
+    height: 30px;
+    background-color: #2c3e50;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, bottom 0.3s ease, filter 0.3s ease; /* Animation für Farbwechsel und Position */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#scroll-to-top i {
+    font-size: 15px; /* Kleinere Schriftgröße */
+    color: #fff;
+    transition: color 0.3s ease;
+    position: relative;
+    top: 1px;
+    text-align: center;
+}
+
+/* Zeige den Scroll-to-Top-Button an, wenn die Seite gescrollt wird */
+body.scroll-up #scroll-to-top {
+    bottom: 40px;
+}
+
+/* Verstecke den Scroll-to-Top-Button, wenn die Seite nicht gescrollt wird */
+body:not(.scroll-up) #scroll-to-top {
+    bottom: -40px;
+}
+
 
 /* Stile für den Language Switcher */
 #language-switcher {
@@ -489,40 +543,6 @@ input:checked+.slider:before {
     background-color: #0c7cd5;
 }
 
-/* Stil für den Zurückscroll-Pfeil */
-#scroll-to-top {
-    position: fixed;
-    bottom: -40px; /* Startposition, außerhalb des Bildschirms */
-    right: 40px;
-    width: 30px;
-    height: 30px;
-    background-color: #2c3e50;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease, bottom 0.3s ease, filter 0.3s ease; /* Animation für Farbwechsel und Position */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#scroll-to-top i {
-    font-size: 15px; /* Kleinere Schriftgröße */
-    color: #fff;
-    transition: color 0.3s ease;
-    position: relative;
-    top: 1px;
-    text-align: center;
-}
-
-/* Zeige den Zurückscroll-Pfeil an, wenn die Seite gescrollt wird */
-body.scroll-up #scroll-to-top {
-    bottom: 40px;
-}
-
-/* Verstecke den Zurückscroll-Pfeil, wenn die Seite nicht gescrollt wird */
-body:not(.scroll-up) #scroll-to-top {
-    bottom: -40px;
-}
 
 /* Stile für das Ankündigungsbanner */
 #announcement-banner {
