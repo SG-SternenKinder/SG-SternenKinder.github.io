@@ -1229,3 +1229,16 @@ Stile für das Ankündigungsbanner
         display: flex;
     }
 }
+
+/* Stile für den Container des Zusatzmenüs */
+.additional-menu {
+    display: none; /* Verstecke das Zusatzmenü standardmäßig */
+        position: fixed;
+        top: 60px; /* Anpassen je nach Höhe der Navbar */
+        right: 10px; /* Anpassen je nach gewünschtem Abstand zum rechten Rand */
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
