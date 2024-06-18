@@ -102,10 +102,23 @@ span {
 }
 
 
+/* Stile für das Hamburger-Menü */
+.menu-toggle {
+    display: block; /* Zeige das Menüsymbol an */
+    cursor: pointer;
+    color: var(--text-color); /* Fügen Sie die Textfarbe hinzu */
+    font-size: 24px; /* Ändern Sie die Schriftgröße nach Bedarf */
+    margin: 15px; /* Passen Sie den Abstand nach Bedarf an */
+}
+
 /* Stile für die Navigationsleiste */
 .navbar {
-    display: flex;
+    display: none; /* Menü standardmäßig ausblenden */
     justify-content: center;
+}
+
+.navbar.active {
+    display: flex; /* Menü anzeigen, wenn es aktiv ist */
 }
 
 .navbar a {
@@ -158,11 +171,6 @@ span {
     border-radius: 10px;
 }
 
-/* Stile für das Hamburger-Menü */
-.menu-toggle {
-    display: none; /* Verstecke das Menüsymbol standardmäßig */
-    cursor: pointer;
-}
 
 /* Stile für die "Folge uns"-Leiste */
 .follow-me {
@@ -1151,7 +1159,7 @@ Stile für das Ankündigungsbanner
         font-family: Arial, sans-serif; /* Verwende eine Standardschriftart */
         color: #fff; /* Weiße Textfarbe */
     }
-    
+
     .navbar ul li {
         position: fixed;
         top: 0;
