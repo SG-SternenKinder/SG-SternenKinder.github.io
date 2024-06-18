@@ -1,6 +1,3 @@
-/* Importiere die Media Queries */
-@import url('../css/media.css');
-
 /* Definierte Farbvariablen */
 :root {
     --text-color: white;
@@ -630,4 +627,437 @@ Stile für das Ankündigungsbanner
     margin-top: 10px;
     color: #000;
     text-align: center;
+}
+
+
+
+
+
+
+
+
+/* media.css */
+
+/* Media Query für kleinere Bildschirme */
+@media (max-width: 600px) {
+    .nav ul li {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar a {
+        margin: 12px;
+        font-size: 18px;
+        display: block;
+        /* Mache die Links zu Blockelementen */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
+    }
+
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
+    }
+
+    #language-switcher {
+        position: absolute;
+        top: 6px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Media Query für kleinere Bildschirme und mobile Geräte */
+@media (max-width: 767px) {
+    .nav ul li {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .navbar a {
+        margin: 12px;
+        font-size: 18px;
+        display: block;
+        /* Mache die Links zu Blockelementen */
+    }
+
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
+    }
+
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
+    }
+
+    #language-switcher {
+        position: absolute;
+        top: 6px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Media Query für Tablets und kleinere Desktops */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .nav ul li {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .navbar a {
+        margin: 12px;
+        font-size: 18px;
+        display: block;
+        /* Mache die Links zu Blockelementen */
+    }
+
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
+    }
+
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
+    }
+
+    #language-switcher {
+        position: absolute;
+        top: 6px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+}
+
+/* Media Query für größere Desktops */
+@media (min-width: 1024px) {
+    .nav ul li {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .navbar a {
+        margin: 12px;
+        font-size: 18px;
+        display: block;
+        /* Mache die Links zu Blockelementen */
+    }
+
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
+    }
+
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
+    }
+
+    #language-switcher {
+        position: absolute;
+        top: 6px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Media Query für sehr kleine Bildschirme */
+@media (max-width: 400px) {
+    .nav ul li {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .navbar a {
+        margin: 12px;
+        font-size: 18px;
+        display: block;
+        /* Mache die Links zu Blockelementen */
+    }
+
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
+    }
+
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
+    }
+
+    #language-switcher {
+        position: absolute;
+        top: 6px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Media Query für kleine Tablets und größere Handys */
+@media (min-width: 401px) and (max-width: 767px) {
+    .nav ul li {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .navbar a {
+        margin: 12px;
+        font-size: 18px;
+        display: block;
+        /* Mache die Links zu Blockelementen */
+    }
+
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
+    }
+
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
+    }
+
+    #language-switcher {
+        position: absolute;
+        top: 6px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Media Query für größere Tablets und kleine Laptops */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .nav ul li {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .navbar a {
+        margin: 12px;
+        font-size: 18px;
+        display: block;
+        /* Mache die Links zu Blockelementen */
+    }
+
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
+    }
+
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
+    }
+
+    #language-switcher {
+        position: absolute;
+        top: 6px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Media Query für größere Laptops und Desktops */
+@media (min-width: 1024px) and (max-width: 1279px) {
+    .nav ul li {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .navbar a {
+        margin: 12px;
+        font-size: 18px;
+        display: block;
+        /* Mache die Links zu Blockelementen */
+    }
+
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
+    }
+
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
+    }
+
+    #language-switcher {
+        position: absolute;
+        top: 6px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Media Query für größere Desktops und Breitbildschirme */
+@media (min-width: 1280px) {
+    .nav ul li {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        flex-direction: column; /* Links untereinander anordnen */
+        align-items: center; /* In der Mitte ausrichten */
+        display: none; /* Menü standardmäßig ausblenden */
+    }
+
+    .navbar.active a {
+        display: block; /* Links in der mobilen Ansicht anzeigen */
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .navbar a {
+        margin: 12px;
+        font-size: 18px;
+        display: block;
+        /* Mache die Links zu Blockelementen */
+    }
+
+    .navbar.active.show {
+        display: flex; /* Menü anzeigen, wenn aktiv */
+    }
+
+    .navbar button.menu-toggle {
+        display: block;
+        /* Menüsymbol für kleine Bildschirme anzeigen */
+    }
+
+    #language-switcher {
+        position: absolute;
+        top: 6px;
+        right: 20px;
+        display: flex;
+        align-items: center;
+    }
 }
