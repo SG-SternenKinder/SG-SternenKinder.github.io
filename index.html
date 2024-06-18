@@ -170,7 +170,16 @@
             }
         
             // Aufruf der Funktion beim Laden der Seite
-            window.addEventListener('load', updateAriaExpanded);
+            window.addEventListener('load', function() {
+                updateAriaExpanded(); // Initialisierung beim Laden der Seite
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768) { // Wenn die Bildschirmgröße größer als 768px ist
+                        const navbar = document.querySelector('.navbar');
+                        navbar.classList.remove('active'); // Menü schließen
+                        updateAriaExpanded(); // aria-expanded aktualisieren
+                    }
+                });
+            });
         </script>
 
         <script>
