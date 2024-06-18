@@ -147,14 +147,16 @@
             </ul>
         </nav>
 
-        <!-- JavaScript für das Menü -->
+
+
         <script>
+            function toggleMenu() {
             $(document).ready(function() {
-            // Klick-Event für das Hamburger-Menü
-            $('.menu-toggle').click(function() {
-                $('.navbar').toggleClass('active');
+                $('.menu-toggle').click(function() {
+                    $('.navbar').toggleClass('active');
+                });
             });
-        });
+        };
         </script>
 
         <script>
