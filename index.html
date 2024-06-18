@@ -135,9 +135,9 @@
     <header>
 
         <div class="logo no-click"><span>SG</span>SternenKinder</div>
+        <div class="menu-toggle" onclick="toggleMenu()" aria-expanded="false">☰</div>
 
         <nav>
-            <div class="menu-toggle" onclick="toggleMenu()" aria-expanded="false">☰</div>
             <ul class="navbar">
                 <li><a href="" onclick="reloadPage()">Home</a></li>
                 <li><a href="about/index.html">About</a></li>
@@ -160,14 +160,18 @@
 
         <!-- JavaScript für das Menü -->
         <script>
-            function toggleMenu() {
-                const additionalMenu = document.querySelector('.additional-menu');
-                additionalMenu.style.display = additionalMenu.style.display === 'block' ? 'none' : 'block';
+        function toggleMenu() {
+            const additionalMenu = document.querySelector('.additional-menu');
+            if (additionalMenu.style.right === '-250px') {
+                additionalMenu.style.right = '0'; // Öffne das Menü
+            } else {
+                additionalMenu.style.right = '-250px'; // Schließe das Menü
             }
-    
-            function reloadPage() {
-                location.reload();
-            }
+        }
+
+        function reloadPage() {
+            location.reload();
+        }
         </script>
 
         <script>
