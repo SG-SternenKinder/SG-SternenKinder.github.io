@@ -1,12 +1,20 @@
-function toggleMenu() {
-    var navbar = document.querySelector('.navbar');
-    var menuToggle = document.querySelector('.menu-toggle');
-    
-    if (navbar.classList.contains('active')) {
-        navbar.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-    } else {
-        navbar.classList.add('active');
-        menuToggle.setAttribute('aria-expanded', 'true');
-    }
-}
+// jQuery, um das Menü ein- und auszublenden
+$(document).ready(function() {
+    $('.menu-toggle').click(function() {
+        try {
+            $('.navbar').toggleClass('active');
+            var ariaExpanded = $('.navbar').hasClass('active') ? 'true' : 'false';
+            $('.menu-toggle').attr('aria-expanded', ariaExpanded);
+            
+            // Konsolenausgabe
+            if ($.consoleManager.getConsoleOutput()) {
+                console.log('Menü wurde geklickt');
+            }
+        } catch (error) {
+            // Fehlerbehandlung
+            if ($.consoleManager.getConsoleOutput()) {
+                $.consoleManager.error('Fehler beim Umschalten des Menüs: ' + error.message);
+            }
+        }
+    });
+});
