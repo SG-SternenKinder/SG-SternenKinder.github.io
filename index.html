@@ -153,30 +153,30 @@
                 const menuToggle = document.querySelector('.menu-toggle');
                 
                 navbar.classList.toggle('active');
-                const isActive = navbar.classList.contains('active');
-                menuToggle.setAttribute('aria-expanded', isActive ? 'true' : 'false');
-        
-                // Speichern des Menüzustands im localStorage
-                localStorage.setItem('menuActive', isActive);
+                const ariaExpanded = navbar.classList.contains('active') ? 'true' : 'false';
+                menuToggle.setAttribute('aria-expanded', ariaExpanded);
             }
         
             // Event-Listener für das Klicken auf das Menü-Symbol
             document.querySelector('.menu-toggle').addEventListener('click', toggleMenu);
         
-            // Funktion zum Laden des Menüzustands
-            function loadMenuState() {
-                const menuActive = localStorage.getItem('menuActive');
-        
-                if (menuActive === 'true') {
-                    toggleMenu();
+            // Funktion zum Aktivieren des Menüs basierend auf der Bildschirmgröße
+            function setMenuActiveOnMobile() {
+                const navbar = document.querySelector('.navbar');
+                const menuToggle = document.querySelector('.menu-toggle');
+                
+                if (window.innerWidth <= 768) {
+                    navbar.classList.add('active');
+                    menuToggle.setAttribute('aria-expanded', 'true');
+                } else {
+                    navbar.classList.remove('active');
+                    menuToggle.setAttribute('aria-expanded', 'false');
                 }
             }
         
-            // Laden des Menüzustands, wenn die Seite geladen wird
-            window.addEventListener('load', loadMenuState);
-        
-            // Aufruf der toggleMenu-Funktion beim Laden der Seite, um das Menü zu öffnen
-            toggleMenu();
+            // Aufruf der Funktion beim Laden der Seite und bei Änderung der Bildschirmgröße
+            window.addEventListener('load', setMenuActiveOnMobile);
+            window.addEventListener('resize', setMenuActiveOnMobile);
         </script>
 
         <script>
