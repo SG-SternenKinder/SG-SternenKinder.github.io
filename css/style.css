@@ -1209,6 +1209,7 @@ Stile für das Ankündigungsbanner
 @media screen and (max-width: 768px) {
     .menu-toggle {
         display: block;
+        cursor: pointer;
     }
     .navbar {
         display: none;
@@ -1222,6 +1223,7 @@ Stile für das Ankündigungsbanner
 @media screen and (min-width: 769px) {
     .menu-toggle {
         display: none;
+        cursor: pointer;
     }
     .navbar {
         display: flex;
