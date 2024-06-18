@@ -1220,19 +1220,6 @@ Stile für das Ankündigungsbanner
     .logo {
         display: none;
     }
-    /* Stile für den Container des Zusatzmenüs */
-    .additional-menu {
-        display: none; /* Standardmäßig verstecken */
-        position: fixed;
-        top: 0;
-        right: 0; /* Rechtsbündig, außerhalb des Bildschirms */
-        width: 250px; /* Breite des Menüs */
-        height: 100%;
-        background-color: white;
-        box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1); /* Schatten auf der linken Seite */
-        transition: right 0.3s ease; /* Transitions-Effekt für das Öffnen und Schließen */
-        z-index: 1000; /* Stelle sicher, dass das Menü über anderen Elementen liegt */
-    }
 }
 
 /* Normales Menü für größere Bildschirme */
@@ -1243,8 +1230,5 @@ Stile für das Ankündigungsbanner
     }
     .navbar {
         display: flex;
-    }
-    .additional-menu {
-        display: none; /* Bei kleinen Geräten standardmäßig verstecken */
     }
 }

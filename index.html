@@ -147,51 +147,19 @@
             </ul>
         </nav>
 
-            <!-- Container für das zusätzliche Menü -->
-    <div class="additional-menu">
-        <ul class="additional-menu-links">
-            <li><a href="" onclick="reloadPage()">Home</a></li>
-            <li><a href="about/index.html">About</a></li>
-            <li><a href="contact/index.html">Contact</a></li>
-            <li><a href="privacy/index.html">Privacy</a></li>
-            <li><a href="imprint/index.html">Imprint</a></li>
-        </ul>
-    </div>
-
         <!-- JavaScript für das Menü -->
         <script>
-        function toggleMenu() {
-            const additionalMenu = document.querySelector('.additional-menu');
-            if (additionalMenu.style.right === '-250px') {
-                additionalMenu.style.right = '0'; // Öffne das Menü
-            } else {
-                additionalMenu.style.right = '-250px'; // Schließe das Menü
-            }
-        }
-
-        function reloadPage() {
-            location.reload();
-        }
-        </script>
-
-        <script>
             $(document).ready(function() {
-                $('.menu-toggle').click(function() {
-                    $('.navbar').toggleClass('active');
-                });
+            // Klick-Event für das Hamburger-Menü
+            $('.menu-toggle').click(function() {
+                $('.navbar').toggleClass('active');
             });
+        });
         </script>
 
         <script>
             function reloadPage() {
                 location.reload();
-            }
-        </script>
-
-        <script>
-            function toggleMenu() {
-                const navbar = document.querySelector('.navbar');
-                navbar.classList.toggle('active');
             }
         </script>
 
