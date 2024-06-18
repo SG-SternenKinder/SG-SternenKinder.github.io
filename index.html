@@ -147,6 +147,21 @@
         </nav>
 
         <script>
+            // Funktion zum Umschalten des Menüs
+            function toggleMenu() {
+                const navbar = document.querySelector('.navbar');
+                const menuToggle = document.querySelector('.menu-toggle');
+                
+                navbar.classList.toggle('active');
+                const ariaExpanded = navbar.classList.contains('active') ? 'true' : 'false';
+                menuToggle.setAttribute('aria-expanded', ariaExpanded);
+            }
+        
+            // Event-Listener für das Klicken auf das Menü-Symbol
+            document.querySelector('.menu-toggle').addEventListener('click', toggleMenu);
+        </script>
+
+        <script>
             function reloadPage() {
                 location.reload();
             }
@@ -232,7 +247,6 @@
 
     <script src="js/scrollback.js"></script>
     <script src="js/footer.js"></script>
-    <script src="js/toggleMenu.js"></script>
 
 </body>
 
