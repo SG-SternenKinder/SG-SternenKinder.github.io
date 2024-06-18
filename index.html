@@ -148,6 +148,14 @@
         </nav>
 
         <script>
+            $(document).ready(function() {
+                $('.menu-toggle').click(function() {
+                    $('.navbar').toggleClass('active');
+                });
+            });
+        </script>
+
+        <script>
             function reloadPage() {
                 location.reload();
             }

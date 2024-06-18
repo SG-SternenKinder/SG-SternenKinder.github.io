@@ -1204,3 +1204,26 @@ Stile für das Ankündigungsbanner
         align-items: center;
     }
 }
+
+/* Hamburger-Menü für kleinere Bildschirme */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    .navbar {
+        display: none;
+    }
+    .navbar.active {
+        display: flex;
+    }
+}
+
+/* Normales Menü für größere Bildschirme */
+@media screen and (min-width: 769px) {
+    .menu-toggle {
+        display: none;
+    }
+    .navbar {
+        display: flex;
+    }
+}
