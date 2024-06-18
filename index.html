@@ -160,23 +160,17 @@
             // Event-Listener für das Klicken auf das Menü-Symbol
             document.querySelector('.menu-toggle').addEventListener('click', toggleMenu);
         
-            // Funktion zum Aktivieren des Menüs basierend auf der Bildschirmgröße
-            function setMenuActiveOnMobile() {
+            // Funktion zum Aktualisieren des aria-expanded-Attributs basierend auf dem Status des Menüs
+            function updateAriaExpanded() {
                 const navbar = document.querySelector('.navbar');
                 const menuToggle = document.querySelector('.menu-toggle');
                 
-                if (window.innerWidth <= 768) {
-                    navbar.classList.add('active');
-                    menuToggle.setAttribute('aria-expanded', 'true');
-                } else {
-                    navbar.classList.remove('active');
-                    menuToggle.setAttribute('aria-expanded', 'false');
-                }
+                const ariaExpanded = navbar.classList.contains('active') ? 'true' : 'false';
+                menuToggle.setAttribute('aria-expanded', ariaExpanded);
             }
         
-            // Aufruf der Funktion beim Laden der Seite und bei Änderung der Bildschirmgröße
-            window.addEventListener('load', setMenuActiveOnMobile);
-            window.addEventListener('resize', setMenuActiveOnMobile);
+            // Aufruf der Funktion beim Laden der Seite
+            window.addEventListener('load', updateAriaExpanded);
         </script>
 
         <script>
