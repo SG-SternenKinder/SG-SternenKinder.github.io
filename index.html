@@ -147,16 +147,19 @@
             </ul>
         </nav>
 
-
-
         <script>
             function toggleMenu() {
+                const navbar = document.querySelector('.navbar');
+                navbar.classList.toggle('active');
+            }
+        </script>
+
+        <script>
             $(document).ready(function() {
                 $('.menu-toggle').click(function() {
                     $('.navbar').toggleClass('active');
                 });
             });
-        };
         </script>
 
         <script>
