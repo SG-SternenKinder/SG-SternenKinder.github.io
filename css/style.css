@@ -543,20 +543,20 @@ input:checked+.slider:before {
     background-color: #0c7cd5;
 }
 
-
-/* Stile für das Ankündigungsbanner */
+/*
+Stile für das Ankündigungsbanner
 #announcement-banner {
     position: fixed;
-    top: 0px; /* Erhöhe die Höhe des Banners */
+    top: 0px; /* Erhöhe die Höhe des Banners
     left: 50%;
     transform: translateX(-50%);
-    width: 70%; /* Verringere die Breite des Banners */
-    max-width: 600px; /* Maximale Breite des Banners */
-    background-color: rgba(255, 204, 204, 0.9); /* Hintergrundfarbe mit leichter Transparenz */
+    width: 70%; /* Verringere die Breite des Banners
+    max-width: 600px; /* Maximale Breite des Banners
+    background-color: rgba(255, 204, 204, 0.9); /* Hintergrundfarbe mit leichter Transparenz
     color: white;
-    padding: 15px; /* Erhöhe den Innenabstand des Banners */
+    padding: 15px; /* Erhöhe den Innenabstand des Banners
     text-align: center;
-    border-radius: 15px; /* Stärker abgerundete Ecken */
+    border-radius: 15px; /* Stärker abgerundete Ecken
     z-index: 1000;
 }
 
@@ -569,7 +569,7 @@ input:checked+.slider:before {
     background-color: #ff6666;
     color: white;
     border: 1px solid #ff6666;
-    padding: 8px; /* Erhöhe den Innenabstand des Schließen-Buttons */
+    padding: 8px; /* Erhöhe den Innenabstand des Schließen-Buttons
     cursor: pointer;
     border-radius: 5px;
     font-family: 'Comic Sans MS';
@@ -581,10 +581,12 @@ input:checked+.slider:before {
     color: #ff6666;
 }
 
-/* Falls du einen Schatten hinzufügen möchtest */
+/* Falls du einen Schatten hinzufügen möchtest
 #announcement-banner {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
+*/
+
 
 /* Stile für die Nachricht bei deaktiviertem JavaScript */
 .noscript-message {

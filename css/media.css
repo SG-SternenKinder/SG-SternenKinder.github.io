@@ -2,7 +2,7 @@
 
 /* Media Query für kleinere Bildschirme */
 @media (max-width: 600px) {
-    .navbar {
+    .nav ul li {
         position: fixed;
         top: 0;
         left: 0;
@@ -49,7 +49,7 @@
 
 /* Media Query für kleinere Bildschirme und mobile Geräte */
 @media (max-width: 767px) {
-    .navbar {
+    .nav ul li {
         position: fixed;
         top: 0;
         left: 0;
@@ -96,7 +96,7 @@
 
 /* Media Query für Tablets und kleinere Desktops */
 @media (min-width: 768px) and (max-width: 1023px) {
-    .navbar {
+    .nav ul li {
         position: fixed;
         top: 0;
         left: 0;
@@ -144,7 +144,7 @@
 
 /* Media Query für größere Desktops */
 @media (min-width: 1024px) {
-    .navbar {
+    .nav ul li {
         position: fixed;
         top: 0;
         left: 0;
@@ -191,7 +191,7 @@
 
 /* Media Query für sehr kleine Bildschirme */
 @media (max-width: 400px) {
-    .navbar {
+    .nav ul li {
         position: fixed;
         top: 0;
         left: 0;
@@ -238,7 +238,7 @@
 
 /* Media Query für kleine Tablets und größere Handys */
 @media (min-width: 401px) and (max-width: 767px) {
-    .navbar {
+    .nav ul li {
         position: fixed;
         top: 0;
         left: 0;
@@ -285,7 +285,7 @@
 
 /* Media Query für größere Tablets und kleine Laptops */
 @media (min-width: 768px) and (max-width: 1023px) {
-    .navbar {
+    .nav ul li {
         position: fixed;
         top: 0;
         left: 0;
@@ -332,7 +332,7 @@
 
 /* Media Query für größere Laptops und Desktops */
 @media (min-width: 1024px) and (max-width: 1279px) {
-    .navbar {
+    .nav ul li {
         position: fixed;
         top: 0;
         left: 0;
@@ -379,7 +379,7 @@
 
 /* Media Query für größere Desktops und Breitbildschirme */
 @media (min-width: 1280px) {
-    .navbar {
+    .nav ul li {
         position: fixed;
         top: 0;
         left: 0;
