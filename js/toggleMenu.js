@@ -10,7 +10,11 @@ function toggleMenu() {
     menuToggle.setAttribute('aria-expanded', ariaExpanded);
 
     // Konsolenausgabe
-    logToConsole('Menü wurde geklickt');
+    if (navbar.classList.contains('active')) {
+        logToConsole('Menü wurde geöffnet');
+    } else {
+        logToConsole('Menü wurde geschlossen');
+    }
 }
 
 // Event-Listener für das Klicken auf das Menü-Symbol
@@ -27,11 +31,14 @@ window.addEventListener('resize', function() {
     if (window.innerWidth > 768) {
         navbar.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
+
+        // Konsolenausgabe
+        logToConsole('Bildschirmgröße wurde geändert (resize)');
     }
 });
 
 /**
- * Log-Nachrichten in die Konsole, wenn consoleManager aktiviert ist
+ * Loggt Nachrichten in die Konsole, wenn consoleManager aktiviert ist
  * @param {string} message - Die Nachricht zum Loggen
  */
 function logToConsole(message) {
