@@ -9,7 +9,9 @@ function toggleMenu() {
 }
 
 // Event-Listener für das Klicken auf das Menü-Symbol
-document.querySelector('.menu-toggle').addEventListener('click', toggleMenu);
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.menu-toggle').addEventListener('click', toggleMenu);
+});
 
 // Event-Listener für die Änderung der Bildschirmgröße
 window.addEventListener('resize', function() {
