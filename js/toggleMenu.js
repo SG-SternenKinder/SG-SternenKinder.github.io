@@ -31,9 +31,6 @@ window.addEventListener('resize', function() {
     if (window.innerWidth > 768) {
         navbar.classList.remove('active');
         menuToggle.setAttribute('aria-expanded', 'false');
-
-        // Konsolenausgabe
-        logToConsole('Bildschirmgröße wurde geändert (resize)');
     }
 });
 
