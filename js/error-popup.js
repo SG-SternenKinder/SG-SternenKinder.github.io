@@ -10,7 +10,7 @@ function showErrorPopup(message) {
     const $errorPopup = $(`
         <div class="error-popup">
             <span class="error-close-btn">&times;</span>
-            ${message}
+            ${message.trim()}
             <div class="error-timer"></div>
         </div>
     `);
