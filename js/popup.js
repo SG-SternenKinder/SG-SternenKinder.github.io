@@ -10,7 +10,7 @@ $(document).ready(function () {
     }
 
     function loadPopupTexts(callback) {
-        $.getJSON('json/popup.json', function(data) { // Pfad anpassen
+        $.getJSON('../json/popup.json', function(data) {
             callback(data);
         });
     }
