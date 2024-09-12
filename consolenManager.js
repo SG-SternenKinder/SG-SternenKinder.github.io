@@ -45,12 +45,12 @@ $.consoleManager = {
      * @param {string} message - Die Nachricht, die geloggt werden soll.
      */
     logToConsoleOnce: (function() {
-        let lastMessage = ''; // Variable zum Speichern der letzten geloggten Nachricht
+        let lastLoggedMessages = {}; // Objekt zum Speichern der letzten geloggten Nachrichten pro Key
 
-        return function(message) {
-            if (this.consoleSettings.enableConsoleOutput && message !== lastMessage) {
+        return function(message, key = 'default') {
+            if (this.consoleSettings.enableConsoleOutput && lastLoggedMessages[key] !== message) {
                 console.log(message);
-                lastMessage = message;  // Speichert die aktuelle Nachricht
+                lastLoggedMessages[key] = message;  // Speichert die aktuelle Nachricht nach Key
             }
         };
     })()
