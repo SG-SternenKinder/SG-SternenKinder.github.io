@@ -10,7 +10,7 @@ function showErrorPopup(message) {
     const $errorpopup = $(` 
         <div class="error-popup"> 
             <span class="close-btn">&times;</span> 
-            ${message} 
+            <div class="message">${message}</div>
             <div class="timer"></div> 
         </div>
     `);
@@ -62,6 +62,6 @@ function showErrorPopup(message) {
 
     // Schiebe alle bestehenden Popups nach oben
     $errorpopupContainer.children('.error-popup').each(function(index) {
-        $(this).css('bottom', `${20 + (index * 80)}px`); // Setze den Abstand zwischen den Popups
+        $(this).css('bottom', `${20 + (index * 75)}px`); // Setze den Abstand zwischen den Popups
     });
 }
