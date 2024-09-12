@@ -21,18 +21,23 @@
     font-family: var(--fa-font-solid);
 }
 
-/* Stile für den Body */
-body {
-    color: var(--text-color);
-	text-size-adjust: 100%;
-}
-
 ::-webkit-scrollbar {
     width: 10px; /* Passt die Breite des Scrollbalkens an */
 }
 
-html {
-    overflow-y: scroll;
+/* Grundlegende Stile für die Seite, um Flexbox zu aktivieren */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll; /* Falls immer eine Scroll-Leiste gewünscht ist */
+}
+
+/* Stile für den Body */
+body {
+    color: var(--text-color);
+    text-size-adjust: 100%; /* Optional, falls du spezifische Anpassungen benötigst */
 }
 
 /*
@@ -329,13 +334,6 @@ section {
     pointer-events: none;
 }
 
-/* Grundlegende Stile für die Seite, um Flexbox zu aktivieren */
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
 
 /* Stile für den Hauptinhalt, um Flexbox zu unterstützen */
 #main-content {
