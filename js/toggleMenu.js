@@ -1,4 +1,4 @@
-//toggleMenu.js
+// toggleMenu.js
 
 // Funktion zum Umschalten des Menüs
 function toggleMenu() {
@@ -9,11 +9,11 @@ function toggleMenu() {
     const ariaExpanded = navbar.classList.contains('active') ? 'true' : 'false';
     menuToggle.setAttribute('aria-expanded', ariaExpanded);
 
-    // Konsolenausgabe
+    // Konsolenausgabe über consoleManager
     if (navbar.classList.contains('active')) {
-        logToConsole('Menü wurde geöffnet');
+        $.consoleManager.logToConsoleOnce('Menü wurde geöffnet', 'menu-toggle');
     } else {
-        logToConsole('Menü wurde geschlossen');
+        $.consoleManager.logToConsoleOnce('Menü wurde geschlossen', 'menu-toggle');
     }
 }
 
@@ -33,13 +33,3 @@ window.addEventListener('resize', function() {
         menuToggle.setAttribute('aria-expanded', 'false');
     }
 });
-
-/**
- * Loggt Nachrichten in die Konsole, wenn consoleManager aktiviert ist
- * @param {string} message - Die Nachricht zum Loggen
- */
-function logToConsole(message) {
-    if (typeof $.consoleManager !== 'undefined' && $.consoleManager.getConsoleOutput()) {
-        console.log(message);
-    }
-}

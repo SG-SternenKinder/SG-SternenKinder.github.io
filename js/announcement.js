@@ -1,41 +1,31 @@
 // banner.js
 $(document).ready(function () {
     const bannerName = 'Aktion';
-    const bannerVersion = 'v0.0.0.3.4';
+    const bannerVersion = 'v0.0.0.3.5';
 
     const announcementBanner = $('#announcement-banner');
     const closeButton = $('#close-announcement');
 
     const bannerClosed = localStorage.getItem(`${bannerName}-${bannerVersion}-Closed`);
-    logToConsole(`Banner geschlossen Status: ${bannerClosed}`);
+    $.consoleManager.logToConsoleOnce(`Banner geschlossen Status: ${bannerClosed}`, 'banner-status');
 
     if (!bannerClosed) {
         showBanner();
 
         closeButton.on('click', function () {
             localStorage.setItem(`${bannerName}-${bannerVersion}-Closed`, 'true');
-            announcementBanner.hide();
-            logToConsole('Banner wurde geschlossen.');
+            announcementBanner.fadeOut(500);  // Banner mit sanftem Ausblendeffekt schließen
+            $.consoleManager.logToConsoleOnce('Banner wurde geschlossen.', 'banner-closed');
         });
     } else {
-        logToConsole('Banner wird nicht angezeigt, da es geschlossen wurde.');
+        $.consoleManager.logToConsoleOnce('Banner wird nicht angezeigt, da es geschlossen wurde.', 'banner-not-shown');
     }
 
     /**
      * Zeigt das Ankündigungsbanner an.
      */
     function showBanner() {
-        announcementBanner.show();
-        logToConsole('Banner wird angezeigt.');
-    }
-
-    /**
-     * Loggt Nachrichten in die Konsole, falls der consoleManager aktiviert ist.
-     * @param {string} message - Die zu loggende Nachricht.
-     */
-    function logToConsole(message) {
-        if (typeof $.consoleManager !== 'undefined' && $.consoleManager.getConsoleOutput()) {
-            console.log(message);
-        }
+        announcementBanner.fadeIn(500);  // Sanfter Einblendeffekt für das Banner
+        $.consoleManager.logToConsoleOnce('Banner wird angezeigt.', 'banner-shown');
     }
 });
