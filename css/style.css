@@ -634,10 +634,10 @@ Stile für das Ankündigungsbanner
 
 
 /* Stil für den Popup-Container */
-.error-popup-container {
+.popup-container {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 0;
+    right: 0;
     z-index: 9999; /* Über anderen Inhalten */
     pointer-events: none; /* Verhindert, dass der Container selbst Interaktionen empfängt */
 }
@@ -648,39 +648,34 @@ Stile für das Ankündigungsbanner
     right: 0;
     background-color: #f44336;
     color: white;
-    padding: 15px 20px; /* Angemessene Polsterung */
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Schatten für bessere Sichtbarkeit */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     display: none;
     font-family: Arial, sans-serif;
-    max-width: 400px; /* Maximale Breite des Popups */
-    min-height: 60px; /* Flachere Mindesthöhe */
-    box-sizing: border-box; /* Berücksichtigt Padding und Border in der Gesamtbreite */
-    overflow: hidden; /* Verhindert Überlauf des Inhalts */
-    display: flex; /* Flexbox für besseres Layout */
-    flex-direction: column; /* Inhalt vertikal anordnen */
-    justify-content: space-between; /* Gleichmäßiger Abstand zwischen Inhalt und Timer */
+    max-width: 300px;
+    pointer-events: auto; /* Ermöglicht Interaktionen mit dem Popup */
+    transition: bottom 0.5s; /* Sanfter Übergang beim Verschieben */
 }
 
 /* Stil für das Schließen-X */
 .error-popup .close-btn {
-    align-self: flex-end; /* Positioniert das X am rechten Ende */
+    position: absolute;
+    top: 5px;
+    right: 10px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 18px; /* Größere Schriftgröße für das Schließen-X */
+    font-size: 16px;
     padding: 0 5px;
-    margin-bottom: 10px; /* Abstand zum unteren Rand */
-    line-height: 1; /* Verhindert zusätzliche Höhe */
 }
 
 /* Stil für die verbleibende Zeit */
 .error-popup .timer {
-    font-size: 14px; /* Schriftgröße für den Timer */
-    align-self: flex-end; /* Positioniert den Timer am unteren Rand */
-    margin-top: 10px; /* Abstand zum oberen Inhalt */
-    line-height: 1; /* Verhindert zusätzliche Höhe */
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 12px;
 }
-
 
 
 
