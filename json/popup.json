@@ -7,11 +7,11 @@
         ],
         "links": [
             {
-                "href": "imprint/index.html",
+                "href": "../imprint/index.html",
                 "text": "Datenschutzrichtlinien"
             },
             {
-                "href": "cookies/cookies.html",
+                "href": "../cookies/cookies.html",
                 "text": "Cookie-Richtlinien"
             }
         ],
