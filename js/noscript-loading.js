@@ -1,42 +1,46 @@
 // noscript-loading.js
-$(document).ready(function () {
-    const noscriptContainer = $('.noscript-message');
+document.addEventListener('DOMContentLoaded', function () {
+    const noscriptContainer = document.querySelector('.noscript-message');
 
     // Überprüfen, ob das noscriptContainer vorhanden ist
-    if (noscriptContainer.length) {
+    if (noscriptContainer) {
         createLoadingAnimation(noscriptContainer);
-        $.consoleManager.logToConsoleOnce('JavaScript is enabled. NoScript message has been created successfully.', 'noscript-loading');
+        console.log('JavaScript is enabled. NoScript message has been created successfully.');
     } else {
-        $.consoleManager.error('NoScript container not found.');
+        console.error('NoScript container not found.');
     }
 
     // Überprüfen, ob das Body-Element vorhanden ist
-    if ($('body').length === 0) {
-        $.consoleManager.error('Body tag is missing. This might cause issues.');
+    if (!document.body) {
+        console.error('Body tag is missing. This might cause issues.');
     }
 
     /**
      * Erstellt und fügt eine Ladeanimation und Nachricht in das angegebene Container-Element ein.
-     * @param {jQuery} container - Das Container-Element, in das die Ladeanimation eingefügt werden soll.
+     * @param {HTMLElement} container - Das Container-Element, in das die Ladeanimation eingefügt werden soll.
      */
     function createLoadingAnimation(container) {
         // Spinner-Element erstellen
-        const spinnerElement = $('<div>').addClass('loading-spinner');
-        spinnerElement.css({
-            'borderColor': getRandomColor(),
-            'borderTopColor': 'transparent',  // Für den Dreheffekt
-            'animation': 'spin 2s linear infinite'  // Rotationseffekt
-        });
+        const spinnerElement = document.createElement('div');
+        spinnerElement.className = 'loading-spinner';
+        spinnerElement.style.borderColor = getRandomColor();
+        spinnerElement.style.borderTopColor = 'transparent';  // Für den Dreheffekt
+        spinnerElement.style.animation = 'spin 2s linear infinite';  // Rotationseffekt
 
         // Begrüßungsnachricht erstellen
-        const messageElement = $('<p>').addClass('message').text('Welcome! Please enable JavaScript to fully enjoy our website.');
+        const messageElement = document.createElement('p');
+        messageElement.className = 'message';
+        messageElement.textContent = 'Welcome! Please enable JavaScript to fully enjoy our website.';
 
         // Beide Elemente einfügen
-        container.append(spinnerElement);
-        container.append(messageElement);
+        container.appendChild(spinnerElement);
+        container.appendChild(messageElement);
 
         // Fade-In-Effekt anwenden
-        container.hide().fadeIn(1000);  // Sanfte Einblendung über 1 Sekunde
+        container.style.display = 'none';
+        container.style.transition = 'opacity 1s';
+        container.style.opacity = '1';
+        container.style.display = 'block';
     }
 
     /**
