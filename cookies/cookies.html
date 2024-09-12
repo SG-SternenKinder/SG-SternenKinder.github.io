@@ -60,25 +60,25 @@
                         }
                     });
                 })
-                .catch((error) => {
-                    //console.error('Fehler bei der Registrierung des Service Workers:', error);
-                });
         }
     </script>
 
-    <script src="../js/jquery-3.7.1.min.js"></script>
-    <script src="../consolenManager.js"></script>
     <script src="../js/noscript-loading.js"></script>
 
-    <!-- Cookie-Skript -->
-    <script src="../js/cookie.js"></script>
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="../consolenManager.js"></script>
 
-    <!-- Sprachumschalter-Skript -->
+    <script src="../js/cookie.js"></script>
     <script src="../js/language-switcher.js"></script>
 
     <script src="../js/popup.js"></script>
-    <!-- <script src="../js/background.js"></script> -->
     <script src="../js/error-popup.js"></script>
+
+    <!-- Ankündigungsbanner -->
+    <!-- <script src="../js/announcement.js"></script> -->
+
+    <!-- <script src="../js/toggleMenu.js"></script> -->
+    <!-- <script src="../js/background.js"></script> -->
 
 </head>
 
@@ -158,10 +158,10 @@
         
         <div class="follow-me">
             <a href="" class="no-click" draggable="false" rel="noopener">Follow us on</a>
-            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener" onclick="checkLink('TikTok')"><img src="../img/svg-icons/tiktok2.svg"></a>
-            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener" onclick="checkLink('Instagram')"><img src="../img/svg-icons/instagram.svg"></a>
-            <a href="https://discord.gg" onclick="checkLink2('Discord')" draggable="false" title="Discord" rel="noopener" target="_blank"><img src="../img/svg-icons/discord.svg"></a>
-            <a href="https://ostborntv.github.io" onclick="checkLink2('Github')" draggable="false" title="OstbornTV`s Website &rarr; https://ostborntv.github.io" rel="noopener" target="_blank"><img src="../img/svg-icons/globe.svg"></a>
+            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener" onclick="checkLink('TikTok')"><img draggable="false" src="../img/svg-icons/tiktok2.svg"></a>
+            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener" onclick="checkLink('Instagram')"><img draggable="false" src="../img/svg-icons/instagram.svg"></a>
+            <a href="https://discord.gg" onclick="checkLink2('Discord')" draggable="false" title="Discord" rel="noopener" target="_blank"><img draggable="false" src="../img/svg-icons/discord.svg"></a>
+            <a href="https://ostborntv.github.io" onclick="checkLink2('Github')" draggable="false" title="OstbornTV`s Website &rarr; https://ostborntv.github.io" rel="noopener" target="_blank"><img draggable="false" src="../img/svg-icons/globe.svg"></a>
         </div>
 
         <div id="language-switcher">
