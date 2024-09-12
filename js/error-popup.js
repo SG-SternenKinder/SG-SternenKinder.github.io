@@ -18,11 +18,14 @@ function showErrorPopup(message) {
     $('body').append($wrapper);
 
     // Variable zur Verfolgung der verbleibenden Zeit für den Timer
-    let remainingTime = 10;
+    let remainingTime = 10; // Zeit in Sekunden
+    const totalDuration = 10; // Gesamtdauer der Animation in Sekunden
 
     // Funktion zum Aktualisieren des Timers
     function updateTimer() {
-        $wrapper.find('.timer-circle').css('animation-duration', `${remainingTime}s`); // Aktualisiere die Dauer der Animation
+        const percentage = (remainingTime / totalDuration) * 100;
+        // Die Animation muss manuell angepasst werden, basierend auf der verbleibenden Zeit
+        $wrapper.find('.timer-circle').css('animation', `rotate ${totalDuration}s linear`);
         if (remainingTime <= 0) {
             clearInterval(timerInterval); // Stoppe den Timer, wenn die Zeit abgelaufen ist
             $wrapper.fadeOut(500, function() { $(this).remove(); }); // Blende das Popup aus und entferne es

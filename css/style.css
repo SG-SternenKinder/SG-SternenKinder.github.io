@@ -660,21 +660,21 @@ Stile für das Ankündigungsbanner
     left: 0;
     width: 100%;
     height: 100%;
-    border: 5px solid transparent; /* Hintergrundfarbe für den Kreis */
     border-radius: 50%;
-    border-top: 5px solid blue; /* Farbe des Kreises */
-    transform: rotate(-90deg); /* Startposition des Kreises */
+    border: 5px solid transparent; /* Hintergrundfarbe für den Kreis */
+    border-top: 5px solid blue; /* Farbe des Fortschrittskreises */
     z-index: 0; /* Kreis hinter dem Popup */
     box-sizing: border-box; /* Stellen Sie sicher, dass der Kreis den gesamten Raum einnimmt */
+    animation: rotate 10s linear infinite;
 }
 
 /* Keyframes für die Rotation */
 @keyframes rotate {
     0% {
-        transform: rotate(-90deg); /* Startposition */
+        transform: rotate(0deg); /* Startposition */
     }
     100% {
-        transform: rotate(270deg); /* Endposition */
+        transform: rotate(360deg); /* Endposition */
     }
 }
 
