@@ -634,7 +634,7 @@ Stile für das Ankündigungsbanner
 
 
 /* Stil für den Popup-Container */
-.popup-container {
+.error-popup-container {
     position: fixed;
     bottom: 0;
     right: 0;
