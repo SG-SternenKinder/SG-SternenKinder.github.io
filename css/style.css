@@ -681,11 +681,6 @@ Stile für das Ankündigungsbanner
     line-height: 1; /* Verhindert zusätzliche Höhe */
 }
 
-/* Stil für den Nachrichtentext */
-.error-popup .message {
-    margin-bottom: 30px; /* Abstand zum Timer */
-    line-height: 1.5; /* Zeilenhöhe für besseren Textfluss */
-}
 
 
 
