@@ -633,33 +633,40 @@ Stile für das Ankündigungsbanner
 
 
 
+/* Stil für den Popup-Container */
+.popup-container {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 9999; /* Über anderen Inhalten */
+    pointer-events: none; /* Verhindert, dass der Container selbst Interaktionen empfängt */
+}
 
 /* Stil für die Fehlermeldung */
 .error-popup {
-    position: fixed;
-    bottom: 20px; /* Standardposition für das erste Popup */
-    right: 20px; /* Positioniere die Fehlermeldung nach rechts */
-    background-color: #f44336; /* Rote Hintergrundfarbe für die Fehlermeldung */
+    position: absolute;
+    right: 0;
+    background-color: #f44336;
     color: white;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    display: none; /* Initial verborgen */
-    z-index: 9999; /* Über anderen Inhalten */
+    display: none;
     font-family: Arial, sans-serif;
-    max-width: 300px; /* Optional: Setze eine maximale Breite für das Popup */
-    transition: bottom 0.5s; /* Sanfte Übergänge beim Verschieben */
+    max-width: 300px;
+    pointer-events: auto; /* Ermöglicht Interaktionen mit dem Popup */
+    transition: bottom 0.5s; /* Sanfter Übergang beim Verschieben */
 }
 
 /* Stil für das Schließen-X */
 .error-popup .close-btn {
     position: absolute;
     top: 5px;
-    right: 10px; /* Mehr Abstand vom Rand */
+    right: 10px;
     cursor: pointer;
     font-weight: bold;
     font-size: 16px;
-    padding: 0 5px; /* Mehr Platz zwischen der Fehlermeldung und dem X */
+    padding: 0 5px;
 }
 
 /* Stil für die verbleibende Zeit */
@@ -669,7 +676,6 @@ Stile für das Ankündigungsbanner
     right: 10px;
     font-size: 12px;
 }
-
 
 
 

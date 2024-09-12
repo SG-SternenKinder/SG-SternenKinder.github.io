@@ -1,42 +1,45 @@
 // Variable für den Timer-Intervall
 let timerInterval;
 
+// Container für Fehlermeldungen
+const $popupContainer = $('<div class="popup-container"></div>').appendTo('body');
+
 // Funktion zum Anzeigen der Fehlermeldung
 function showErrorPopup(message) {
     // Erstelle das Popup-Element
-    const $popup = $(
-        `<div class="error-popup">
+    const $popup = $(`
+        <div class="error-popup">
             <span class="close-btn">&times;</span>
             ${message}
             <div class="timer"></div>
-        </div>`
-    );
+        </div>
+    `);
 
-    // Füge das Popup zum Body hinzu
-    $('body').append($popup);
+    // Füge das Popup zum Container hinzu
+    $popupContainer.append($popup);
 
     // Variable zur Verfolgung der verbleibenden Zeit für den Timer
     let remainingTime = 10;
 
     // Funktion zum Aktualisieren des Timers
     function updateTimer() {
-        $popup.find('.timer').text(`${remainingTime}s`); // Zeige die verbleibende Zeit an
+        $popup.find('.timer').text(`${remainingTime}s`);
         if (remainingTime <= 0) {
-            clearInterval(timerInterval); // Stoppe den Timer, wenn die Zeit abgelaufen ist
-            $popup.fadeOut(500, function() { $(this).remove(); }); // Blende das Popup aus und entferne es
+            clearInterval(timerInterval);
+            $popup.fadeOut(500, function() { $(this).remove(); });
         } else {
-            remainingTime--; // Verringere die verbleibende Zeit um eine Sekunde
+            remainingTime--;
         }
     }
 
     // Funktion zum Starten des Timers
     function startTimer() {
-        timerInterval = setInterval(updateTimer, 1000); // Aktualisiere den Timer jede Sekunde
+        timerInterval = setInterval(updateTimer, 1000);
     }
 
     // Funktion zum Stoppen des Timers
     function stopTimer() {
-        clearInterval(timerInterval); // Stoppe das Intervall
+        clearInterval(timerInterval);
     }
 
     // Timer starten
@@ -44,21 +47,21 @@ function showErrorPopup(message) {
 
     // Schließen beim Klicken auf das X
     $popup.find('.close-btn').on('click', function() {
-        stopTimer(); // Stoppe den Timer
-        $popup.fadeOut(500, function() { $(this).remove(); }); // Blende das Popup aus und entferne es
+        stopTimer();
+        $popup.fadeOut(500, function() { $(this).remove(); });
     });
 
     // Hover-Ereignisse
     $popup.hover(
-        function() { stopTimer(); }, // Wenn der Benutzer das Popup betritt, Timer anhalten
-        function() { startTimer(); } // Wenn der Benutzer das Popup verlässt, Timer fortsetzen
+        function() { stopTimer(); },
+        function() { startTimer(); }
     );
 
     // Zeige das Popup an
-    $popup.fadeIn(500); // Blende das Popup sanft ein
+    $popup.fadeIn(500);
 
     // Schiebe alle bestehenden Popups nach oben
-    $('.error-popup').each(function(index) {
-        $(this).css('bottom', `${20 + (index * 60)}px`); // Positioniere jede Nachricht etwas weiter oben
+    $popupContainer.children('.error-popup').each(function(index) {
+        $(this).css('bottom', `${20 + (index * 70)}px`); // Setze den Abstand zwischen den Popups
     });
 }
