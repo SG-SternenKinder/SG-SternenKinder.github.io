@@ -40,9 +40,22 @@ $(document).ready(function() {
             showErrorPopup('Das Hintergrundbild konnte nicht geladen werden. Fallback verwendet.');
         }
 
-        // Bild hinzufügen
-        $('#fsb_image').remove(); // Entferne vorheriges Bild, falls vorhanden
-        $('body').append(`<img src="${imageToUse}" id="fsb_image" alt=""/>`);
+        // Platzhalterbild zunächst anzeigen
+        $('#placeholder_image').show();
+
+        // Endgültiges Bild vorbereiten und verstecken, bis es geladen ist
+        const $fsbImage = $('<img>', {
+            id: 'fsb_image',
+            src: imageToUse,
+            alt: '',
+            css: { display: 'none' }
+        });
+
+        // Bild hinzufügen, aber noch nicht anzeigen
+        $fsbImage.on('load', function() {
+            $('#placeholder_image').hide(); // Verstecke das Platzhalterbild
+            $(this).show(); // Zeige das endgültige Bild
+        }).appendTo('body');
     }
 
     // Beim Laden der Seite zufälliges Hintergrundbild setzen

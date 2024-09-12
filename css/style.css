@@ -25,6 +25,10 @@
 body {
     color: var(--text-color);
 	text-size-adjust: 100%;
+    background-color: #f0f0f0; /* Wähle eine Farbe, die dem Hintergrundbild ähnlich ist */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /*
@@ -45,6 +49,10 @@ html {
     font: 14px/2.8 Georgia, Serif;
 }
 */
+
+#fsb_image {
+    display: none; /* Verstecke das endgültige Bild vorübergehend */
+}
 
 img#fsb_image {
 	/* Set rules to fill background */
