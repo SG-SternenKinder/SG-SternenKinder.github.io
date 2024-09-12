@@ -49,7 +49,6 @@ $.consoleManager = {
 
         return function(message) {
             if (this.consoleSettings.enableConsoleOutput && message !== lastMessage) {
-                console.clear();  // Löscht die Konsole vor der Ausgabe
                 console.log(message);
                 lastMessage = message;  // Speichert die aktuelle Nachricht
             }
