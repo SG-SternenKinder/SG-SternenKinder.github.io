@@ -639,20 +639,20 @@ Stile für das Ankündigungsbanner
     background-color: #f44336; /* Rote Hintergrundfarbe für die Fehlermeldung */
     color: white;
     padding: 20px;
-    border-radius: 50%; /* Macht das Popup rund */
+    border-radius: 10px; /* Macht das Popup abgerundet */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     display: none; /* Initial verborgen */
     z-index: 9999; /* Über anderen Inhalten */
     font-family: Arial, sans-serif;
-    max-width: 300px; /* Optional: Setze eine maximale Breite für das Popup */
-    max-height: 300px; /* Optional: Setze eine maximale Höhe für das Popup */
+    max-width: 300px; /* Maximale Breite für das Popup */
+    max-height: 300px; /* Maximale Höhe für das Popup */
     position: relative; /* Für die Positionierung des Kreises */
 }
 
 /* Stil für das Schließen-X */
 .error-popup .close-btn {
     position: absolute;
-    top: 10px;
+    top: 5px;
     right: 10px; /* Mehr Abstand vom Rand */
     cursor: pointer;
     font-weight: bold;
@@ -660,20 +660,19 @@ Stile für das Ankündigungsbanner
     padding: 0 5px; /* Mehr Platz zwischen der Fehlermeldung und dem X */
 }
 
-/* Stil für die Kreisanzeige der verbleibenden Zeit */
+/* Stil für den Timer-Kreis */
 .error-popup .timer-wrapper {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%; /* Durchmesser des Kreises */
+    width: 100%; /* Größe des Timers relativ zum Popup */
     height: 100%;
-    margin-top: -50%; /* Zentriert den Kreis vertikal */
-    margin-left: -50%; /* Zentriert den Kreis horizontal */
-    border-radius: 50%; /* Macht den Container rund */
-    border: 5px solid transparent; /* Initial transparent, wird später durch den Timer ersetzt */
-    border-top-color: #fff; /* Farbe des Kreises */
+    margin-top: -50%; /* Zentriert den Timer vertikal */
+    margin-left: -50%; /* Zentriert den Timer horizontal */
+    border-radius: 50%; /* Macht den Timer-Kreis rund */
+    border: 5px solid transparent; /* Initial transparent */
+    border-top-color: rgba(255, 255, 255, 0.8); /* Farbe des Kreises */
     transform: rotate(-90deg); /* Startwinkel für die Animation */
-    z-index: -1; /* Hinter dem Inhalt */
     box-sizing: border-box;
 }
 
@@ -686,7 +685,6 @@ Stile für das Ankündigungsbanner
         stroke-dasharray: 100, 0;
     }
 }
-
 
 
 
