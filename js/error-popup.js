@@ -7,11 +7,11 @@ const $errorpopupContainer = $('<div class="error-popup-container"></div>').appe
 // Funktion zum Anzeigen der Fehlermeldung
 function showErrorPopup(message) {
     // Erstelle das Popup-Element
-    const $errorpopup = $(`
-        <div class="error-popup">
-            <span class="close-btn">&times;</span>
-            ${message}
-            <div class="timer"></div>
+    const $errorpopup = $(` 
+        <div class="error-popup"> 
+            <span class="close-btn">&times;</span> 
+            ${message} 
+            <div class="timer"></div> 
         </div>
     `);
 
@@ -62,6 +62,6 @@ function showErrorPopup(message) {
 
     // Schiebe alle bestehenden Popups nach oben
     $errorpopupContainer.children('.error-popup').each(function(index) {
-        $(this).css('bottom', `${20 + (index * 70)}px`); // Setze den Abstand zwischen den Popups
+        $(this).css('bottom', `${20 + (index * 80)}px`); // Setze den Abstand zwischen den Popups
     });
 }

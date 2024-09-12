@@ -648,16 +648,17 @@ Stile für das Ankündigungsbanner
     right: 0;
     background-color: #f44336;
     color: white;
-    padding: 15px 20px; /* Polsterung für mehr Platz */
+    padding: 10px 20px; /* Weniger Polsterung oben und unten */
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Schatten für bessere Sichtbarkeit */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Schatten für bessere Sichtbarkeit */
     display: none;
     font-family: Arial, sans-serif;
     max-width: 450px; /* Breitere maximale Breite */
-    min-height: 50px; /* Flachere Mindesthöhe */
+    height: auto; /* Automatische Höhe */
+    min-height: 60px; /* Flachere Mindesthöhe */
     pointer-events: auto; /* Ermöglicht Interaktionen mit dem Popup */
     transition: bottom 0.5s; /* Sanfter Übergang beim Verschieben */
-    margin-bottom: 20px; /* Abstand zwischen den Popups */
+    margin-bottom: 15px; /* Abstand zwischen den Popups */
     box-sizing: border-box; /* Berücksichtigt Padding und Border in der Gesamtbreite */
 }
 
@@ -668,7 +669,7 @@ Stile für das Ankündigungsbanner
     right: 10px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 20px; /* Größere Schriftgröße für bessere Sichtbarkeit */
+    font-size: 18px; /* Schriftgröße für das Schließen-X */
     padding: 0 5px;
 }
 
@@ -684,7 +685,6 @@ Stile für das Ankündigungsbanner
 .error-popup:hover {
     background-color: #d32f2f; /* Etwas dunkler bei Hover */
 }
-
 
 
 
