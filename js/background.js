@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Setze das Hintergrundbild des Bodys
         document.body.style.backgroundImage = `url(${imageToUse})`;
+        document.body.classList.remove('hidden'); // Zeige den Inhalt des Bodys an
     }
 
     // Beim Laden der Seite zufälliges Hintergrundbild setzen
