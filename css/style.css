@@ -634,7 +634,7 @@ Stile für das Ankündigungsbanner
 
 
 /* Stil für den Popup-Container */
-.popup-container {
+.error-popup-container {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -659,7 +659,7 @@ Stile für das Ankündigungsbanner
 }
 
 /* Stil für das Schließen-X */
-.error-popup .close-btn {
+.error-popup .error-close-btn {
     position: absolute;
     top: 5px;
     right: 10px;
@@ -670,7 +670,7 @@ Stile für das Ankündigungsbanner
 }
 
 /* Stil für die verbleibende Zeit */
-.error-popup .timer {
+.error-popup .error-timer {
     position: absolute;
     bottom: 5px;
     right: 10px;
