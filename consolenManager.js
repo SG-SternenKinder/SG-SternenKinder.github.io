@@ -37,5 +37,22 @@ $.consoleManager = {
         if (this.consoleSettings.enableConsoleOutput) {
             console.error(message);
         }
-    }
+    },
+
+    /**
+     * Loggt eine Nachricht in die Konsole, aber nur einmal pro Statusänderung.
+     * Speichert den letzten geloggten Status, um unnötiges Logging zu vermeiden.
+     * @param {string} message - Die Nachricht, die geloggt werden soll.
+     */
+    logToConsoleOnce: (function() {
+        let lastMessage = ''; // Variable zum Speichern der letzten geloggten Nachricht
+
+        return function(message) {
+            if (this.consoleSettings.enableConsoleOutput && message !== lastMessage) {
+                console.clear();  // Löscht die Konsole vor der Ausgabe
+                console.log(message);
+                lastMessage = message;  // Speichert die aktuelle Nachricht
+            }
+        };
+    })()
 };
