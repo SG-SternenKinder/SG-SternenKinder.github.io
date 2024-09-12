@@ -82,7 +82,9 @@
     <!-- Sprachumschalter-Skript -->
     <script defer src="../js/language-switcher.js"></script>
 
-    <script src="../js/popup.js"></script>
+    <script src="../js/popup.js" defer></script>
+    <script src="../js/background.js"></script>
+    <script src="../js/error-popup.js" defer></script>
 
 </head>
 
@@ -97,43 +99,6 @@
             <p class="message">Welcome! Please enable JavaScript to fully enjoy our website.</p>
         </div>
     </noscript>
-
-    <img src="../img/background.png" id="fsb_image" alt="" />
-
-    <!-- Popup-Container -->
-    <div class="popup-container" id="popup">
-        <div class="popup-content">
-            <h2>Cookie-Hinweis</h2>
-            <p>Durch die Nutzung unserer Website akzeptieren Sie unsere</p>
-            <p>Wenn Sie fortfahren, stimmen Sie der Verwendung von Cookies zu.</p>
-            <br>
-            <div class="mitte-container">
-                <a href="../imprint/index.html" target="_self">Datenschutzrichtlinien</a>
-                <a href="" onclick="reloadPage()">Cookie-Richtlinien</a>
-            </div>
-            <button id="accept-cookies">Cookies akzeptieren</button>
-            <button id="close-cookies">Cookies ablehnen</button>
-        </div>
-    </div>
-
-    <!-- Akzeptiertes-Cookies-Popup -->
-    <div class="popup-container" id="accepted-popup">
-        <div class="popup-content">
-            <h2>Vielen Dank!</h2>
-            <p>das Sie Cookies akzeptieren.</p>
-            <button id="close-accepted-popup">Schließen</button>
-        </div>
-    </div>
-
-    <!-- Abgelehntes-Cookies-Popup -->
-    <div class="popup-container" id="rejected-popup">
-        <div class="popup-content">
-            <h2>Cookies abgelehnt</h2>
-            <p>Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung
-                speichern.</p>
-            <button id="close-rejected-popup">Schließen</button>
-        </div>
-    </div>
 
     <header>
 
