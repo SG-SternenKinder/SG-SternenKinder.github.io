@@ -5,7 +5,7 @@ $(document).ready(function() {
         const pathParts = window.location.pathname.split('/').filter(part => part);
         const depth = pathParts.length - 1;
 
-        // Baue den Basis-Pfad für den Zugriff auf das `images`-Verzeichnis zusammen
+        // Baue den Basis-Pfad für den Zugriff auf das `img`-Verzeichnis zusammen
         let basePath = '';
         for (let i = 0; i < depth; i++) {
             basePath += '../';
@@ -24,13 +24,35 @@ $(document).ready(function() {
         // Füge hier weitere Bild-URLs hinzu
     ];
 
+    // Der Fallback-Image-URL (immer vorhandenes Bild)
+    const fallbackImage = `${basePath}img/background.png`; // Ändere dies, falls nötig
+
+    // Funktion zum Überprüfen, ob das Bild existiert
+    function checkImage(url, callback) {
+        $('<img>').attr('src', url).on('load', function() {
+            callback(true);
+        }).on('error', function() {
+            callback(false);
+        });
+    }
+
     // Funktion zum Zufallsbild auswählen
     function setRandomBackgroundImage() {
         const randomIndex = Math.floor(Math.random() * images.length);
-        $('body').append(`<img src="${images[randomIndex]}" id="fsb_image" alt=""/>`);
+        const imageUrl = images[randomIndex];
+
+        // Überprüfen, ob das Bild existiert
+        checkImage(imageUrl, function(exists) {
+            if (exists) {
+                // Bild existiert, also hinzufügen
+                $('body').append(`<img src="${imageUrl}" id="fsb_image" alt=""/>`);
+            } else {
+                // Bild existiert nicht, auf das Fallback-Bild zurückgreifen
+                $('body').append(`<img src="${fallbackImage}" id="fsb_image" alt=""/>`);
+            }
+        });
     }
 
     // Beim Laden der Seite zufälliges Hintergrundbild setzen
     setRandomBackgroundImage();
-
 });
