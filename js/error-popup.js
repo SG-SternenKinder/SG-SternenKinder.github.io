@@ -7,7 +7,7 @@ const $errorpopupContainer = $('<div class="error-popup-container"></div>').appe
 // Funktion zum Anzeigen der Fehlermeldung
 function showErrorPopup(message) {
     // Erstelle das Popup-Element
-    const $popup = $(`
+    const $errorpopup = $(`
         <div class="error-popup">
             <span class="close-btn">&times;</span>
             ${message}
@@ -16,7 +16,7 @@ function showErrorPopup(message) {
     `);
 
     // Füge das Popup zum Container hinzu
-    $errorpopupContainer.append($popup);
+    $errorpopupContainer.append($errorpopup);
 
     // Variable zur Verfolgung der verbleibenden Zeit für den Timer
     let remainingTime = 10;
