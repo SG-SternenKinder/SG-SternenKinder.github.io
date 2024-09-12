@@ -632,37 +632,48 @@ Stile für das Ankündigungsbanner
 
 
 
-/* Stil für den blauen Kreis um das Popup */
+
+
+/* Wrapper für das Popup und den Timer-Kreis */
 .error-popup-wrapper {
     position: relative;
     display: inline-block;
+    margin: 20px; /* Abstand zum Rand, wenn nötig */
 }
 
-.error-popup-wrapper .error-popup {
+/* Stil für das Popup */
+.error-popup {
     position: relative;
+    background-color: #f44336; /* Rote Hintergrundfarbe für die Fehlermeldung */
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     z-index: 1; /* Popup vor dem Kreis platzieren */
 }
 
+/* Stil für den dynamischen Timer-Kreis */
 .error-popup-wrapper .timer-circle {
     position: absolute;
-    top: -10px;
-    left: -10px;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    border: 5px solid transparent;
+    border: 5px solid transparent; /* Hintergrundfarbe für den Kreis */
     border-radius: 50%;
-    border-top-color: blue; /* Farbe des Kreises */
-    animation: spin 10s linear infinite; /* Animation für den Kreis */
+    border-top: 5px solid blue; /* Farbe des Kreises */
+    transform: rotate(-90deg); /* Startposition des Kreises */
     z-index: 0; /* Kreis hinter dem Popup */
+    animation: rotate 10s linear infinite; /* Animation für den Kreis */
 }
 
-/* Animation für den Kreis */
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
+/* Keyframes für die Rotation */
+@keyframes rotate {
+    0% {
+        transform: rotate(-90deg); /* Startposition */
     }
-    to {
-        transform: rotate(360deg);
+    100% {
+        transform: rotate(270deg); /* Endposition */
     }
 }
 
