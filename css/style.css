@@ -27,7 +27,6 @@ body {
 	text-size-adjust: 100%;
 }
 
-
 /*
 html {
     background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../img/background.png) no-repeat center center fixed;
@@ -46,10 +45,6 @@ html {
     font: 14px/2.8 Georgia, Serif;
 }
 */
-
-#fsb_image {
-    display: none; /* Verstecke das endgültige Bild vorübergehend */
-}
 
 img#fsb_image {
 	/* Set rules to fill background */
