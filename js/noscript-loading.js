@@ -1,7 +1,6 @@
 // noscript-loading.js
 $(document).ready(function () {
     const noscriptContainer = $('.noscript-message');
-    const mainContent = $('.main-content'); // Beispiel eines wichtigen Seitenelements
 
     // Überprüfen, ob das noscriptContainer vorhanden ist
     if (noscriptContainer.length) {
@@ -9,13 +8,6 @@ $(document).ready(function () {
         $.consoleManager.logToConsoleOnce('JavaScript is enabled. NoScript message has been created successfully.', 'noscript-loading');
     } else {
         $.consoleManager.error('NoScript container not found.');
-    }
-
-    // Überprüfen, ob das mainContent vorhanden ist
-    if (mainContent.length) {
-        $.consoleManager.logToConsoleOnce('Main content loaded successfully.', 'main-content-check');
-    } else {
-        $.consoleManager.error('Main content not found.');
     }
 
     // Überprüfen, ob das Body-Element vorhanden ist
