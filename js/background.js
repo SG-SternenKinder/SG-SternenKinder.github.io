@@ -49,6 +49,7 @@ $(document).ready(function() {
             } else {
                 // Bild existiert nicht, auf das Fallback-Bild zurückgreifen
                 $('body').append(`<img src="${fallbackImage}" id="fsb_image" alt=""/>`);
+                showErrorPopup('Das Hintergrundbild konnte nicht geladen werden. Fallback verwendet.');
             }
         });
     }
