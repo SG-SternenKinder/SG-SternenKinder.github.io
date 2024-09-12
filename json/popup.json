@@ -1,0 +1,38 @@
+{
+    "cookiePopup": {
+        "title": "Cookie-Hinweis",
+        "paragraphs": [
+            "Durch die Nutzung unserer Website akzeptieren Sie unsere",
+            "Wenn Sie fortfahren, stimmen Sie der Verwendung von Cookies zu."
+        ],
+        "links": [
+            {
+                "href": "imprint/index.html",
+                "text": "Datenschutzrichtlinien"
+            },
+            {
+                "href": "cookies/cookies.html",
+                "text": "Cookie-Richtlinien"
+            }
+        ],
+        "buttons": {
+            "accept": "Cookies akzeptieren",
+            "reject": "Cookies ablehnen"
+        }
+    },
+    "acceptedPopup": {
+        "title": "Vielen Dank!",
+        "paragraph": "das Sie Cookies akzeptieren.",
+        "button": "Schließen"
+    },
+    "rejectedPopup": {
+        "title": "Cookies abgelehnt",
+        "paragraph": "Bitte beachten Sie, dass wir Cookies trotz Ihrer Ablehnung für die Dauer Ihrer aktuellen Browsersitzung speichern.",
+        "button": "Schließen"
+    },
+    "offlinePopup": {
+        "title": "Offline",
+        "paragraph": "You are currently offline. Some features may not be available.",
+        "button": "Close"
+    }
+}
