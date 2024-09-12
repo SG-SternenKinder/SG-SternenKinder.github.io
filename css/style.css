@@ -27,15 +27,14 @@ body {
 	text-size-adjust: 100%;
 }
 
-/*
-html {
-    background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../img/background.png) no-repeat center center fixed;
-    -webkit-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
-	-o-text-size-adjust: 100%;
+::-webkit-scrollbar {
+    width: 10px; /* Passt die Breite des Scrollbalkens an */
 }
 
+html {
+    overflow-y: scroll;
+}
+/*
 .box { 
     margin: 0 auto; 
     width: 400px;
