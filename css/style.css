@@ -650,6 +650,7 @@ Stile für das Ankündigungsbanner
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     z-index: 1; /* Popup vor dem Kreis platzieren */
+    overflow: hidden; /* Verhindert, dass der Kreis außerhalb des Popups sichtbar ist */
 }
 
 /* Stil für den dynamischen Timer-Kreis */
@@ -664,7 +665,7 @@ Stile für das Ankündigungsbanner
     border-top: 5px solid blue; /* Farbe des Kreises */
     transform: rotate(-90deg); /* Startposition des Kreises */
     z-index: 0; /* Kreis hinter dem Popup */
-    animation: rotate 10s linear infinite; /* Animation für den Kreis */
+    box-sizing: border-box; /* Stellen Sie sicher, dass der Kreis den gesamten Raum einnimmt */
 }
 
 /* Keyframes für die Rotation */
