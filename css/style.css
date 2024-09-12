@@ -631,60 +631,41 @@ Stile für das Ankündigungsbanner
 }
 
 
-/* Stil für die Fehlermeldung */
-.error-popup {
-    position: fixed;
-    bottom: 20px; /* Standardposition für das erste Popup */
-    right: 20px; /* Positioniere die Fehlermeldung nach rechts */
-    background-color: #f44336; /* Rote Hintergrundfarbe für die Fehlermeldung */
-    color: white;
-    padding: 20px;
-    border-radius: 10px; /* Macht das Popup abgerundet */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    display: none; /* Initial verborgen */
-    z-index: 9999; /* Über anderen Inhalten */
-    font-family: Arial, sans-serif;
-    max-width: 300px; /* Maximale Breite für das Popup */
-    max-height: 300px; /* Maximale Höhe für das Popup */
-    position: relative; /* Für die Positionierung des Kreises */
+
+/* Stil für den blauen Kreis um das Popup */
+.error-popup-wrapper {
+    position: relative;
+    display: inline-block;
 }
 
-/* Stil für das Schließen-X */
-.error-popup .close-btn {
-    position: absolute;
-    top: 5px;
-    right: 10px; /* Mehr Abstand vom Rand */
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 0 5px; /* Mehr Platz zwischen der Fehlermeldung und dem X */
+.error-popup-wrapper .error-popup {
+    position: relative;
+    z-index: 1; /* Popup vor dem Kreis platzieren */
 }
 
-/* Stil für den Timer-Kreis */
-.error-popup .timer-wrapper {
+.error-popup-wrapper .timer-circle {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%; /* Größe des Timers relativ zum Popup */
+    top: -10px;
+    left: -10px;
+    width: 100%;
     height: 100%;
-    margin-top: -50%; /* Zentriert den Timer vertikal */
-    margin-left: -50%; /* Zentriert den Timer horizontal */
-    border-radius: 50%; /* Macht den Timer-Kreis rund */
-    border: 5px solid transparent; /* Initial transparent */
-    border-top-color: rgba(255, 255, 255, 0.8); /* Farbe des Kreises */
-    transform: rotate(-90deg); /* Startwinkel für die Animation */
-    box-sizing: border-box;
+    border: 5px solid transparent;
+    border-radius: 50%;
+    border-top-color: blue; /* Farbe des Kreises */
+    animation: spin 10s linear infinite; /* Animation für den Kreis */
+    z-index: 0; /* Kreis hinter dem Popup */
 }
 
-/* Animation für den Timer-Kreis */
-@keyframes rotate {
-    0% {
-        stroke-dasharray: 0, 100;
+/* Animation für den Kreis */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
     }
-    100% {
-        stroke-dasharray: 100, 0;
+    to {
+        transform: rotate(360deg);
     }
 }
+
 
 
 
