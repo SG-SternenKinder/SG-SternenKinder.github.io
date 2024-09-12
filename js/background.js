@@ -2,7 +2,8 @@ $(document).ready(function() {
     // Funktion zur Ermittlung des Basis-Pfades
     function getBasePath() {
         const pathParts = window.location.pathname.split('/').filter(part => part);
-        return '../'.repeat(pathParts.length - 1);
+        const depth = Math.max(pathParts.length - 1, 0); // Sicherstellen, dass depth nicht negativ ist
+        return '../'.repeat(depth);
     }
 
     // Basis-Pfad ermitteln
