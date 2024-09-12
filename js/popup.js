@@ -50,15 +50,6 @@ $(document).ready(function () {
                     </div>
                 `;
                 break;
-            case 'offlinePopup':
-                content = `
-                    <div class="popup-content">
-                        <h2>${data.title}</h2>
-                        <p>${data.paragraph}</p>
-                        <button id="close-offline-popup">${data.button}</button>
-                    </div>
-                `;
-                break;
         }
         return content;
     }
