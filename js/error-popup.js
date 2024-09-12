@@ -1,32 +1,37 @@
-// Variable für den Timer-Intervall
-let timerInterval;
-
-// Container für Fehlermeldungen
-const $errorPopupContainer = $('<div class="error-popup-container"></div>').appendTo('body');
-
 // Funktion zum Anzeigen der Fehlermeldung
 function showErrorPopup(message) {
     // Erstelle das Popup-Element
-    const $errorPopup = $(`
-        <div class="error-popup">
-            <span class="error-close-btn">&times;</span>
-            ${message.trim()}
-            <div class="error-timer"></div>
-        </div>
-    `);
+    const errorPopup = document.createElement('div');
+    errorPopup.className = 'error-popup';
+    
+    const closeButton = document.createElement('span');
+    closeButton.className = 'error-close-btn';
+    closeButton.innerHTML = '&times;';
+    
+    const messageContent = document.createElement('div');
+    messageContent.innerText = message.trim();
+    
+    const timer = document.createElement('div');
+    timer.className = 'error-timer';
 
+    errorPopup.appendChild(closeButton);
+    errorPopup.appendChild(messageContent);
+    errorPopup.appendChild(timer);
+    
     // Füge das Popup zum Container hinzu
-    $errorPopupContainer.append($errorPopup);
+    const container = document.querySelector('.error-popup-container');
+    container.appendChild(errorPopup);
 
     // Variable zur Verfolgung der verbleibenden Zeit für den Timer
     let remainingTime = 10;
 
     // Funktion zum Aktualisieren des Timers
     function updateTimer() {
-        $errorPopup.find('.error-timer').text(`${remainingTime}s`);
+        timer.innerText = `${remainingTime}s`;
         if (remainingTime <= 0) {
             clearInterval(timerInterval);
-            $errorPopup.fadeOut(500, function() { $(this).remove(); });
+            errorPopup.style.display = 'none';
+            container.removeChild(errorPopup);
         } else {
             remainingTime--;
         }
@@ -46,22 +51,21 @@ function showErrorPopup(message) {
     startTimer();
 
     // Schließen beim Klicken auf das X
-    $errorPopup.find('.error-close-btn').on('click', function() {
+    closeButton.addEventListener('click', function() {
         stopTimer();
-        $errorPopup.fadeOut(500, function() { $(this).remove(); });
+        errorPopup.style.display = 'none';
+        container.removeChild(errorPopup);
     });
 
     // Hover-Ereignisse
-    $errorPopup.hover(
-        function() { stopTimer(); },
-        function() { startTimer(); }
-    );
+    errorPopup.addEventListener('mouseover', stopTimer);
+    errorPopup.addEventListener('mouseout', startTimer);
 
     // Zeige das Popup an
-    $errorPopup.fadeIn(500);
+    errorPopup.style.display = 'flex';
 
     // Schiebe alle bestehenden Popups nach oben
-    $errorPopupContainer.children('.error-popup').each(function(index) {
-        $(this).css('bottom', `${20 + (index * 70)}px`); // Setze den Abstand zwischen den Popups
+    Array.from(container.children).forEach((popup, index) => {
+        popup.style.bottom = `${20 + (index * 70)}px`; // Setze den Abstand zwischen den Popups
     });
 }

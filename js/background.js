@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     // Funktion zur Ermittlung des Basis-Pfades
     function getBasePath() {
         const pathParts = window.location.pathname.split('/').filter(part => part);
@@ -23,7 +23,10 @@ $(document).ready(function() {
     // Funktion zum Überprüfen, ob das Bild existiert
     function checkImage(url) {
         return new Promise((resolve) => {
-            $('<img>').attr('src', url).on('load', () => resolve(true)).on('error', () => resolve(false));
+            const img = new Image();
+            img.onload = () => resolve(true);
+            img.onerror = () => resolve(false);
+            img.src = url;
         });
     }
 
@@ -34,28 +37,15 @@ $(document).ready(function() {
 
         // Überprüfen, ob das Bild existiert
         const exists = await checkImage(imageUrl);
-        
+
         const imageToUse = exists ? imageUrl : fallbackImage;
         if (!exists) {
+            // Zeige Fehlermeldung oder mache etwas anderes
             showErrorPopup('Das Hintergrundbild konnte nicht geladen werden. Fallback verwendet.');
         }
 
-        // Platzhalterbild zunächst anzeigen
-        $('#placeholder_image').show();
-
-        // Endgültiges Bild vorbereiten und verstecken, bis es geladen ist
-        const $fsbImage = $('<img>', {
-            id: 'fsb_image',
-            src: imageToUse,
-            alt: '',
-            css: { display: 'none' }
-        });
-
-        // Bild hinzufügen, aber noch nicht anzeigen
-        $fsbImage.on('load', function() {
-            $('#placeholder_image').hide(); // Verstecke das Platzhalterbild
-            $(this).show(); // Zeige das endgültige Bild
-        }).appendTo('body');
+        // Setze das Hintergrundbild des Bodys
+        document.body.style.backgroundImage = `url(${imageToUse})`;
     }
 
     // Beim Laden der Seite zufälliges Hintergrundbild setzen
