@@ -636,8 +636,8 @@ Stile für das Ankündigungsbanner
 /* Stil für den Popup-Container */
 .error-popup-container {
     position: fixed;
-    bottom: 0;
-    right: 0;
+    bottom: 20px;
+    right: 20px;
     z-index: 9999; /* Über anderen Inhalten */
     pointer-events: none; /* Verhindert, dass der Container selbst Interaktionen empfängt */
 }
@@ -648,14 +648,15 @@ Stile für das Ankündigungsbanner
     right: 0;
     background-color: #f44336;
     color: white;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
     display: none;
     font-family: Arial, sans-serif;
     max-width: 300px;
     pointer-events: auto; /* Ermöglicht Interaktionen mit dem Popup */
     transition: bottom 0.5s; /* Sanfter Übergang beim Verschieben */
+    margin-bottom: 10px; /* Abstand zwischen den Popups */
 }
 
 /* Stil für das Schließen-X */
@@ -665,7 +666,7 @@ Stile für das Ankündigungsbanner
     right: 10px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
     padding: 0 5px;
 }
 
@@ -674,8 +675,14 @@ Stile für das Ankündigungsbanner
     position: absolute;
     bottom: 5px;
     right: 10px;
-    font-size: 12px;
+    font-size: 14px;
 }
+
+/* Stil für Hover-Effekte */
+.error-popup:hover {
+    background-color: #d32f2f; /* Etwas dunkler bei Hover */
+}
+
 
 
 
