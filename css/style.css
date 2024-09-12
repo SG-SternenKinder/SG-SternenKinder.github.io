@@ -640,7 +640,6 @@ Stile für das Ankündigungsbanner
     right: 20px;
     z-index: 9999; /* Über anderen Inhalten */
     pointer-events: none; /* Verhindert, dass der Container selbst Interaktionen empfängt */
-    width: auto;
 }
 
 /* Stil für die Fehlermeldung */
@@ -649,16 +648,16 @@ Stile für das Ankündigungsbanner
     right: 0;
     background-color: #f44336;
     color: white;
-    padding: 20px; /* Erhöhte Polsterung für mehr Platz */
+    padding: 15px 20px; /* Erhöhte Polsterung für mehr Platz */
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Größerer Schatten für bessere Sichtbarkeit */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Schatten angepasst */
     display: none;
     font-family: Arial, sans-serif;
-    max-width: 350px; /* Erhöhte maximale Breite */
-    min-height: 70px; /* Mindesthöhe für Konsistenz */
+    max-width: 400px; /* Erhöhte maximale Breite */
+    min-height: 60px; /* Flachere Mindesthöhe */
     pointer-events: auto; /* Ermöglicht Interaktionen mit dem Popup */
     transition: bottom 0.5s; /* Sanfter Übergang beim Verschieben */
-    margin-bottom: 15px; /* Erhöhter Abstand zwischen den Popups */
+    margin-bottom: 15px; /* Abstand zwischen den Popups */
 }
 
 /* Stil für das Schließen-X */
@@ -668,7 +667,7 @@ Stile für das Ankündigungsbanner
     right: 10px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 20px; /* Größere Schriftgröße für bessere Sichtbarkeit */
+    font-size: 18px; /* Schriftgröße für das Schließen-X */
     padding: 0 5px;
 }
 
@@ -677,15 +676,13 @@ Stile für das Ankündigungsbanner
     position: absolute;
     bottom: 10px; /* Abstand von unten */
     right: 10px;
-    font-size: 16px; /* Größere Schriftgröße für bessere Sichtbarkeit */
+    font-size: 14px; /* Schriftgröße für den Timer */
 }
 
 /* Stil für Hover-Effekte */
 .error-popup:hover {
     background-color: #d32f2f; /* Etwas dunkler bei Hover */
 }
-
-
 
 
 
