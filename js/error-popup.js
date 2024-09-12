@@ -56,4 +56,9 @@ function showErrorPopup(message) {
 
     // Zeige das Popup an
     $popup.fadeIn(500); // Blende das Popup sanft ein
+
+    // Schiebe alle bestehenden Popups nach oben
+    $('.error-popup').each(function(index) {
+        $(this).css('bottom', `${20 + (index * 60)}px`); // Positioniere jede Nachricht etwas weiter oben
+    });
 }
