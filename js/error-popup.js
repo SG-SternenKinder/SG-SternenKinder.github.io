@@ -8,7 +8,7 @@ function showErrorPopup(message) {
         `<div class="error-popup">
             <span class="close-btn">&times;</span>
             ${message}
-            <div class="timer"></div>
+            <div class="timer-wrapper"></div>
         </div>`
     );
 
@@ -17,10 +17,18 @@ function showErrorPopup(message) {
 
     // Variable zur Verfolgung der verbleibenden Zeit für den Timer
     let remainingTime = 10;
+    const totalDuration = 10; // Dauer des Timers in Sekunden
 
     // Funktion zum Aktualisieren des Timers
     function updateTimer() {
-        $popup.find('.timer').text(`${remainingTime}s`); // Zeige die verbleibende Zeit an
+        const percentage = (remainingTime / totalDuration) * 100; // Berechne den Fortschritt
+        const rotationDegree = 360 * (1 - (remainingTime / totalDuration)); // Berechne den Rotationsgrad
+
+        $popup.find('.timer-wrapper').css({
+            'transform': `rotate(${rotationDegree - 90}deg)`, // Rotiert den Rand entsprechend der verbleibenden Zeit
+            'border-top-color': `rgba(255, 255, 255, ${remainingTime / totalDuration})` // Ändert die Farbe des Randes
+        });
+
         if (remainingTime <= 0) {
             clearInterval(timerInterval); // Stoppe den Timer, wenn die Zeit abgelaufen ist
             $popup.fadeOut(500, function() { $(this).remove(); }); // Blende das Popup aus und entferne es

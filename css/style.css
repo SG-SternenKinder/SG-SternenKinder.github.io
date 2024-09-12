@@ -638,20 +638,21 @@ Stile für das Ankündigungsbanner
     right: 20px; /* Positioniere die Fehlermeldung nach rechts */
     background-color: #f44336; /* Rote Hintergrundfarbe für die Fehlermeldung */
     color: white;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 20px;
+    border-radius: 50%; /* Macht das Popup rund */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     display: none; /* Initial verborgen */
     z-index: 9999; /* Über anderen Inhalten */
     font-family: Arial, sans-serif;
     max-width: 300px; /* Optional: Setze eine maximale Breite für das Popup */
-    transition: bottom 0.5s; /* Sanfte Übergänge beim Verschieben */
+    max-height: 300px; /* Optional: Setze eine maximale Höhe für das Popup */
+    position: relative; /* Für die Positionierung des Kreises */
 }
 
 /* Stil für das Schließen-X */
 .error-popup .close-btn {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 10px; /* Mehr Abstand vom Rand */
     cursor: pointer;
     font-weight: bold;
@@ -659,13 +660,33 @@ Stile für das Ankündigungsbanner
     padding: 0 5px; /* Mehr Platz zwischen der Fehlermeldung und dem X */
 }
 
-/* Stil für die verbleibende Zeit */
-.error-popup .timer {
+/* Stil für die Kreisanzeige der verbleibenden Zeit */
+.error-popup .timer-wrapper {
     position: absolute;
-    bottom: 5px;
-    right: 10px;
-    font-size: 12px;
+    top: 50%;
+    left: 50%;
+    width: 100%; /* Durchmesser des Kreises */
+    height: 100%;
+    margin-top: -50%; /* Zentriert den Kreis vertikal */
+    margin-left: -50%; /* Zentriert den Kreis horizontal */
+    border-radius: 50%; /* Macht den Container rund */
+    border: 5px solid transparent; /* Initial transparent, wird später durch den Timer ersetzt */
+    border-top-color: #fff; /* Farbe des Kreises */
+    transform: rotate(-90deg); /* Startwinkel für die Animation */
+    z-index: -1; /* Hinter dem Inhalt */
+    box-sizing: border-box;
 }
+
+/* Animation für den Timer-Kreis */
+@keyframes rotate {
+    0% {
+        stroke-dasharray: 0, 100;
+    }
+    100% {
+        stroke-dasharray: 100, 0;
+    }
+}
+
 
 
 
