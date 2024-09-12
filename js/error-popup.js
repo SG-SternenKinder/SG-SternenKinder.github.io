@@ -1,37 +1,28 @@
+//Error-Popup.js
 // Funktion zum Anzeigen der Fehlermeldung
 function showErrorPopup(message) {
     // Erstelle das Popup-Element
-    const errorPopup = document.createElement('div');
-    errorPopup.className = 'error-popup';
-    
-    const closeButton = document.createElement('span');
-    closeButton.className = 'error-close-btn';
-    closeButton.innerHTML = '&times;';
-    
-    const messageContent = document.createElement('div');
-    messageContent.innerText = message.trim();
-    
-    const timer = document.createElement('div');
-    timer.className = 'error-timer';
+    const $errorPopup = $('<div>', { class: 'error-popup' });
+    const $closeButton = $('<span>', { class: 'error-close-btn', html: '&times;' });
+    const $messageContent = $('<div>', { text: message.trim() });
+    const $timer = $('<div>', { class: 'error-timer' });
 
-    errorPopup.appendChild(closeButton);
-    errorPopup.appendChild(messageContent);
-    errorPopup.appendChild(timer);
-    
+    $errorPopup.append($closeButton, $messageContent, $timer);
+
     // Füge das Popup zum Container hinzu
-    const container = document.querySelector('.error-popup-container');
-    container.appendChild(errorPopup);
+    const $container = $('.error-popup-container');
+    $container.append($errorPopup);
 
     // Variable zur Verfolgung der verbleibenden Zeit für den Timer
     let remainingTime = 10;
 
     // Funktion zum Aktualisieren des Timers
     function updateTimer() {
-        timer.innerText = `${remainingTime}s`;
+        $timer.text(`${remainingTime}s`);
         if (remainingTime <= 0) {
             clearInterval(timerInterval);
-            errorPopup.style.display = 'none';
-            container.removeChild(errorPopup);
+            $errorPopup.hide();
+            $errorPopup.remove();
         } else {
             remainingTime--;
         }
@@ -51,21 +42,22 @@ function showErrorPopup(message) {
     startTimer();
 
     // Schließen beim Klicken auf das X
-    closeButton.addEventListener('click', function() {
+    $closeButton.on('click', function() {
         stopTimer();
-        errorPopup.style.display = 'none';
-        container.removeChild(errorPopup);
+        $errorPopup.hide();
+        $errorPopup.remove();
     });
 
     // Hover-Ereignisse
-    errorPopup.addEventListener('mouseover', stopTimer);
-    errorPopup.addEventListener('mouseout', startTimer);
+    $errorPopup.on('mouseover', stopTimer);
+    $errorPopup.on('mouseout', startTimer);
 
     // Zeige das Popup an
-    errorPopup.style.display = 'flex';
+    $errorPopup.show();
 
     // Schiebe alle bestehenden Popups nach oben
-    Array.from(container.children).forEach((popup, index) => {
-        popup.style.bottom = `${20 + (index * 70)}px`; // Setze den Abstand zwischen den Popups
+    $container.children('.error-popup').each(function(index) {
+        $(this).css('bottom', `${20 + (index * 70)}px`); // Setze den Abstand zwischen den Popups
     });
 }
+

@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', function() {
+//Background.js
+$(document).ready(function() {
     // Funktion zur Ermittlung des Basis-Pfades
     function getBasePath() {
         const pathParts = window.location.pathname.split('/').filter(part => part);
@@ -22,31 +23,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Funktion zum Überprüfen, ob das Bild existiert
     function checkImage(url) {
-        return new Promise((resolve) => {
+        return $.Deferred(function(defer) {
             const img = new Image();
-            img.onload = () => resolve(true);
-            img.onerror = () => resolve(false);
+            img.onload = () => defer.resolve(true);
+            img.onerror = () => defer.resolve(false);
             img.src = url;
-        });
+        }).promise();
     }
 
     // Funktion zum Zufallsbild auswählen
-    async function setRandomBackgroundImage() {
+    function setRandomBackgroundImage() {
         const randomIndex = Math.floor(Math.random() * images.length);
         const imageUrl = images[randomIndex];
 
         // Überprüfen, ob das Bild existiert
-        const exists = await checkImage(imageUrl);
+        checkImage(imageUrl).done(function(exists) {
+            const imageToUse = exists ? imageUrl : fallbackImage;
+            if (!exists) {
+                // Zeige Fehlermeldung oder mache etwas anderes
+                showErrorPopup('Das Hintergrundbild konnte nicht geladen werden. Fallback verwendet.');
+            }
 
-        const imageToUse = exists ? imageUrl : fallbackImage;
-        if (!exists) {
-            // Zeige Fehlermeldung oder mache etwas anderes
-            showErrorPopup('Das Hintergrundbild konnte nicht geladen werden. Fallback verwendet.');
-        }
+            // Erstelle ein neues Bild-Element und setze es als Hintergrundbild
+            const $backgroundImage = $('<img>', { src: imageToUse, id: 'fsb_image', style: 'display: none;' }).on('load', function() {
+                $('body').css('background-image', `url(${imageToUse})`);
+                $(this).remove(); // Entferne das Bild nach dem Laden
+            });
 
-        // Setze das Hintergrundbild des Bodys
-        document.body.style.backgroundImage = `url(${imageToUse})`;
-        document.body.classList.remove('hidden'); // Zeige den Inhalt des Bodys an
+            $('body').append($backgroundImage);
+        });
     }
 
     // Beim Laden der Seite zufälliges Hintergrundbild setzen
