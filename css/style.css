@@ -182,7 +182,7 @@ span {
 /* Stile für die "Folge uns"-Leiste */
 .follow-me {
     display: flex;
-    align-items: center;
+/* align-items: center; */
     margin-right: 360px;
 }
 
@@ -197,13 +197,11 @@ span {
     font-size: 20px;
     color: var(--text-color);
     margin-right: 16px;
-    margin-left: 5px;
+    margin-left: 0 5px;
 }
 
 .follow-me a:hover {
     color: var(--main-color);
-    margin-right: 16px;
-    margin-left: 5px;
 }
 
 /* Stile für Abschnitte */
