@@ -20,7 +20,7 @@ $(document).ready(function () {
     }
 
     function scrollToTop() {
-        $('body,html').animate({ scrollTop: 0 }, 'slow', function () {
+        $('body').animate({ scrollTop: 0 }, 'slow', function () {
             $(document.body).removeClass('scroll-up');
             $.consoleManager.logToConsoleOnce('Benutzer hat zum oberen Bildschirmrand zurückgescrollt.', 'scroll-top');
         });

@@ -8,9 +8,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="OsbornTV">
-    <meta name="keywords" content="Webseite, SG SternenKinder, Webseite-Github">
     <meta name="description" content="Spielegemeinschaft (SG) SternenKinder">
+    <base href="/">
 
     <title>SG SternenKinder • Home</title>
 
@@ -19,18 +18,16 @@
     <meta property="og:title" content="SG SternenKinder">
     <meta property="og:url" content="https://sg-sternenkinder.github.io/index.html">
     <meta property="og:description" content="Spielegemeinschaft (SG) SternenKinder">
-    <meta property="og:site_name" content="SG SternenKinder">
-    <meta property="og:locale" content="de_DE">
     <meta property="og:image" content="https://sg-sternenkinder.github.io/img/favicon/favicon.ico">
 
     <!-- Hinzufügen von Twitter-Metadaten für soziale Medien -->
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SG SternenKinder">
     <meta name="twitter:description" content="Spielegemeinschaft (SG) SternenKinder">
     <meta name="twitter:image" content="https://sg-sternenkinder.github.io/img/favicon/favicon.ico">
 
     <!-- Hinzufügen eines favicon-Tags -->
-    <link rel="icon" href="img/favicon/favicon.ico">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico" sizes="any">
 
     <!-- Manifest -->
     <link rel="manifest" href="site.webmanifest">
@@ -40,35 +37,32 @@
 
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('js/service-worker.js')
-                .then((registration) => {
-                    navigator.serviceWorker.addEventListener('message', (event) => {
-                        if (event.data === 'showOfflinePopup') {
-                            // Erstelle das Popup-Element
-                            const offlinePopup = document.createElement('div');
-                            offlinePopup.classList.add('popup-container');
-                            offlinePopup.id = 'offline-popup';
+        navigator.serviceWorker.register('js/service-worker.js')
+            .then((registration) => {
+                navigator.serviceWorker.addEventListener('message', (event) => {
+                    if (event.data === 'showOfflinePopup') {
+                        // Erstelle das Popup-Element
+                        const offlinePopup = document.createElement('div');
+                        offlinePopup.classList.add('popup-container');
+                        offlinePopup.id = 'offline-popup';
 
-                            const popupContent = document.createElement('div');
-                            popupContent.classList.add('popup-content');
+                        const popupContent = document.createElement('div');
+                        popupContent.classList.add('popup-content');
 
-                            popupContent.innerHTML =
-                                `
-                                <h2>Offline</h2>
-                                <p>You are currently offline. Some features may not be available.</p>
-                                <button id="close-offline-popup">Close</button>
-                            `;
+                        popupContent.innerHTML =
+                            `
+                            <h2>Offline</h2>
+                            <p>You are currently offline. Some features may not be available.</p>
+                            <button id="close-offline-popup">Close</button>
+                        `;
 
-                            offlinePopup.appendChild(popupContent);
+                        offlinePopup.appendChild(popupContent);
 
-                            // Füge das Popup zur Seite hinzu
-                            document.body.appendChild(offlinePopup);
-                        }
-                    });
-                })
-                .catch((error) => {
-                    //console.error('Fehler bei der Registrierung des Service Workers:', error);
+                        // Füge das Popup zur Seite hinzu
+                        document.body.appendChild(offlinePopup);
+                    }
                 });
+            })
         }
     </script>
 
@@ -90,19 +84,15 @@
     <!-- <script src="js/toggleMenu.js"></script> -->
     <!-- <script src="js/background.js"></script> -->
 
-    <!-- Fontawesome -->
-    <script src="fontawesome/js/fontawesome.js"></script>
-    <script src="fontawesome/js/brands.js"></script>
-    <script src="fontawesome/js/solid.js"></script>
-    
-
 </head>
 
 <body>
 
-    <noscript class="noscript-message" id="loading-screen">
-        <div class="loading-spinner"></div>
-        <p class="message">Welcome! Please enable JavaScript to fully enjoy our website.</p>
+    <noscript class="noscript-message">
+        <div id="loading-screen">
+            <div class="loading-spinner"></div>
+            <p class="message">Welcome! Please enable JavaScript to fully enjoy our website.</p>
+        </div>
     </noscript>
 
     <img src="img/background.png" id="fsb_image" alt=""/>
@@ -114,12 +104,12 @@
        <!-- <div class="menu-toggle" aria-expanded="false">☰</div> -->
         <nav>
             <ul class="navbar">
-                <li><a href="" onclick="reloadPage()">Home</a></li>
-                <li><a href="about/index.html">About</a></li>
-                <li><a href="contact/index.html">Contact</a></li>
-                <li><a href="privacy/index.html">Privacy</a></li>
-                <li><a href="cookies/cookies.html">Cookies</a></li>
-                <li><a href="imprint/index.html">Imprint</a></li>
+                <li><a draggable="false" href="" onclick="reloadPage()">Home</a></li>
+                <li><a draggable="false" href="about/index.html">About</a></li>
+                <li><a draggable="false" href="contact/index.html">Contact</a></li>
+                <li><a draggable="false" href="privacy/index.html">Privacy</a></li>
+                <li><a draggable="false" href="cookies/cookies.html">Cookies</a></li>
+                <li><a draggable="false" href="imprint/index.html">Imprint</a></li>
 
             </ul>
         </nav>
@@ -172,10 +162,10 @@
 
         <div class="follow-me">
             <a href="" class="no-click" draggable="false" rel="noopener">Follow us on</a>
-            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener" onclick="checkLink('TikTok')"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener" onclick="checkLink('Instagram')"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://discord.gg" onclick="checkLink2('Discord')" draggable="false" title="Discord" rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
-            <a href="https://ostborntv.github.io" onclick="checkLink2('Github')" draggable="false" title="OstbornTV`s Website &rarr; https://ostborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
+            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener" onclick="checkLink('TikTok')"><img src="img/svg-icons/tiktok2.svg"></img></a>
+            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener" onclick="checkLink('Instagram')"><img src="img/svg-icons/instagram.svg"></img></a>
+            <a href="https://discord.gg" onclick="checkLink2('Discord')" draggable="false" title="Discord" rel="noopener" target="_blank"><img src="img/svg-icons/discord.svg"></img></a>
+            <a href="https://ostborntv.github.io" onclick="checkLink2('Github')" draggable="false" title="OstbornTV`s Website &rarr; https://ostborntv.github.io" rel="noopener" target="_blank"><img src="img/svg-icons/globe.svg"></img></a>
         </div>
 
         <div id="language-switcher">
@@ -205,7 +195,7 @@
     </main>
 
     <div id="scroll-to-top">
-        <div class="fas fa-arrow-up"></div>
+        <img src="../img/svg-icons/arrow-up.svg">
     </div>
 
     <div id="footer-container"></div>

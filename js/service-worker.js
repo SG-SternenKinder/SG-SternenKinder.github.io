@@ -1,7 +1,7 @@
 // service-worker.js
 
 // Cache Versionsname
-const FILE_VERSION = 'v0.0.1.3';
+const FILE_VERSION = 'v0.0.1.4';
 const CACHE_NAME = 'cache-' + FILE_VERSION;
 
 // Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.
@@ -20,8 +20,6 @@ self.addEventListener('fetch', async (event) => {
         // Hier prüfen, ob die Anfrage erfolgreich war
         if (!response || response.status !== 200 || response.type !== 'basic') {
             console.log('Fetching failed');
-            // Hier kannst du eine benutzerdefinierte Offline-Seite anzeigen oder die Anfrage ablehnen
-            // z.B.: return new Response('<h1>Offline</h1>', { headers: { 'Content-Type': 'text/html' } });
         }
 
         return response;
@@ -31,9 +29,6 @@ self.addEventListener('fetch', async (event) => {
         // Hier kann auch auf die Offline-Status-Nachricht reagiert werden
         const clients = await self.clients.matchAll();
         clients.forEach(client => client.postMessage('offline'));
-
-        // Dieser Teil kann nach deinen Anforderungen angepasst werden
-        // z.B.: return caches.match('/offline.html');
     }
 });
 

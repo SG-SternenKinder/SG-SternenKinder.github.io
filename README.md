@@ -16,7 +16,6 @@
 ### Nebenbei so
 - denke statt longstorge to sessionstorge Überarbeiten, würde den popup erstmal überflüssig machen, wieder mal
 - fenstermodus, das überarbeiten (skalierung) sowie für Handys optimieren
-- Andere Hintergründe
 
 ### Überarbeiten
 - Cookie Site weiter machen

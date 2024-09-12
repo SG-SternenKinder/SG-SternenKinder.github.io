@@ -46,13 +46,6 @@ html {
 }
 */
 
-.fa-brands, .fa-solid {
-    font-size: 24px; /* Größe der Icons */
-    line-height: 1; /* Zeilenhöhe, um Verschiebungen zu verhindern */
-    vertical-align: middle; /* Vertikale Ausrichtung */
-    margin: 0; /* Abstand entfernen, falls nötig */
-}
-
 img#fsb_image {
 	/* Set rules to fill background */
 	min-height: 100%;

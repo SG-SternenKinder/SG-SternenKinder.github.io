@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="OsbornTV">
-    <meta name="keywords" content="Webseite, SG SternenKinder, Webseite-Github">
     <meta name="description" content="Spielegemeinschaft (SG) SternenKinder">
+    <base href="/">
 
     <title>SG SternenKinder • Cookies</title>
 
@@ -16,8 +15,6 @@
     <meta property="og:title" content="SG SternenKinder">
     <meta property="og:url" content="https://sg-sternenkinder.github.io/cookies/index.html">
     <meta property="og:description" content="Spielegemeinschaft (SG) SternenKinder">
-    <meta property="og:site_name" content="SG SternenKinder">
-    <meta property="og:locale" content="de_DE">
     <meta property="og:image" content="https://sg-sternenkinder.github.io/img/favicon/favicon.ico">
 
     <!-- Hinzufügen von TwitterX-Metadaten für soziale Medien -->
@@ -27,7 +24,7 @@
     <meta name="twitter:image" content="https://sg-sternenkinder.github.io/img/favicon/favicon.ico">
 
     <!-- Hinzufügen eines favicon-Tags -->
-    <link rel="icon" href="../img/favicon/favicon.ico">
+    <link rel="shortcut icon" href="../img/favicon/favicon.ico" sizes="any">
 
     <!-- Manifest -->
     <link rel="manifest" href="../site.webmanifest">
@@ -69,11 +66,6 @@
         }
     </script>
 
-    <!-- Fontawesome -->
-    <script src="../fontawesome/js/brands.js"></script>
-    <script src="../fontawesome/js/fontawesome.js"></script>
-    <script src="../fontawesome/js/solid.js"></script>
-
     <script src="../js/jquery-3.7.1.min.js"></script>
     <script src="../consolenManager.js"></script>
     <script src="../js/noscript-loading.js"></script>
@@ -93,11 +85,8 @@
 <body>
 
     <noscript class="noscript-message">
-        <!-- Hier wird der Inhalt des <noscript>-Elements platziert -->
         <div id="loading-screen">
-            <!-- Ladeanimation -->
             <div class="loading-spinner"></div>
-            <!-- Nachrichten -->
             <p class="message">Welcome! Please enable JavaScript to fully enjoy our website.</p>
         </div>
     </noscript>
@@ -110,12 +99,12 @@
 
         <!-- <div class="menu-toggle" onclick="toggleMenu()">☰</div> -->
         <ul class="navbar">
-            <li><a href="/">Home</a></li>
-            <li><a href="../about/index.html">About</a></li>
-            <li><a href="../contact/index.html">Contact</a></li>
-            <li><a href="../privacy/index.html">Privacy</a></li>
-            <li><a href="" onclick="reloadPage()">Cookies</a></li>
-            <li><a href="../imprint/index.html">Imprint</a></li>
+            <li><a draggable="false" href="/">Home</a></li>
+            <li><a draggable="false" href="../about/index.html">About</a></li>
+            <li><a draggable="false" href="../contact/index.html">Contact</a></li>
+            <li><a draggable="false" href="../privacy/index.html">Privacy</a></li>
+            <li><a draggable="false" href="" onclick="reloadPage()">Cookies</a></li>
+            <li><a draggable="false" href="../imprint/index.html">Imprint</a></li>
         </ul>
 
         <script>
@@ -169,10 +158,10 @@
         
         <div class="follow-me">
             <a href="" class="no-click" draggable="false" rel="noopener">Follow us on</a>
-            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener" onclick="checkLink('TikTok')"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener" onclick="checkLink('Instagram')"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://discord.gg" onclick="checkLink2('Discord')" draggable="false" title="Discord" rel="noopener" target="_blank"><i class="fa-brands fa-discord"></i></a>
-            <a href="https://ostborntv.github.io" onclick="checkLink2('Github')" draggable="false" title="OstbornTV`s Website &rarr; https://ostborntv.github.io" rel="noopener" target="_blank"><i class="fa-solid fa-globe"></i></a>
+            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener" onclick="checkLink('TikTok')"><img src="../img/svg-icons/tiktok2.svg"></img></a>
+            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener" onclick="checkLink('Instagram')"><img src="../img/svg-icons/instagram.svg"></img></a>
+            <a href="https://discord.gg" onclick="checkLink2('Discord')" draggable="false" title="Discord" rel="noopener" target="_blank"><img src="../img/svg-icons/discord.svg"></img></a>
+            <a href="https://ostborntv.github.io" onclick="checkLink2('Github')" draggable="false" title="OstbornTV`s Website &rarr; https://ostborntv.github.io" rel="noopener" target="_blank"><img src="../img/svg-icons/globe.svg"></img></a>
         </div>
 
         <div id="language-switcher">
@@ -208,7 +197,7 @@
     </section>
 
     <div id="scroll-to-top">
-        <div class="fas fa-arrow-up"></div>
+        <img src="../img/svg-icons/arrow-up.svg">
     </div>
 
     <div id="footer-container"></div>
