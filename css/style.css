@@ -72,7 +72,7 @@ img#fsb_image {
 
 /* Stile für den Header */
 header {
-    position: sticky;
+    position: fixed; /* Statt sticky */
     top: 0;
     left: 0;
     width: 100%;
@@ -82,6 +82,7 @@ header {
     justify-content: space-between;
     align-items: center;
     backdrop-filter: blur(1px);
+    z-index: 1000; /* Wichtig: Höher als alles andere */
 }
 
 iframe {
@@ -341,7 +342,9 @@ section {
 /* Stile für den Hauptinhalt, um Flexbox zu unterstützen */
 #main-content {
     flex: 1;
+    padding-top: 80px;
 }
+
 
 /* Stile für den Footer */
 footer {
