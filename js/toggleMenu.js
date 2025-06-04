@@ -1,61 +1,35 @@
-/**
- * Toggle-Funktion für das responsive Menü
- * @namespace toggleMenu
- */
-(function() {
-    'use strict';
+// toggleMenu.js
 
-    // DOM-Elemente
-    const DOM = {
-        navbar: document.querySelector('.navbar'),
-        menuToggle: document.querySelector('.menu-toggle'),
-        breakpoint: 768
-    };
+// Funktion zum Umschalten des Menüs
+function toggleMenu() {
+    const navbar = document.querySelector('.navbar');
+    const menuToggle = document.querySelector('.menu-toggle');
+    
+    navbar.classList.toggle('active');
+    const ariaExpanded = navbar.classList.contains('active') ? 'true' : 'false';
+    menuToggle.setAttribute('aria-expanded', ariaExpanded);
 
-    // Zustandsmanagement
-    const state = {
-        isMenuOpen: false
-    };
-
-    /**
-     * Aktualisiert den Menü-Zustand und ARIA-Attribute
-     * @param {boolean} isOpen - Ob das Menü geöffnet ist
-     */
-    function updateMenuState(isOpen) {
-        DOM.navbar.classList.toggle('active', isOpen);
-        DOM.menuToggle.setAttribute('aria-expanded', String(isOpen));
-        state.isMenuOpen = isOpen;
-
-        // Konsolenausgabe
-        const message = isOpen ? 'Menü wurde geöffnet' : 'Menü wurde geschlossen';
-        $.consoleManager.logOnce(message, 'menu-toggle');
+    // Konsolenausgabe über consoleManager
+    if (navbar.classList.contains('active')) {
+        $.consoleManager.logToConsoleOnce('Menü wurde geöffnet', 'menu-toggle');
+    } else {
+        $.consoleManager.logToConsoleOnce('Menü wurde geschlossen', 'menu-toggle');
     }
+}
 
-    /**
-     * Schaltet den Menü-Zustand um
-     */
-    function toggleMenu() {
-        updateMenuState(!state.isMenuOpen);
+// Event-Listener für das Klicken auf das Menü-Symbol
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('.menu-toggle').addEventListener('click', toggleMenu);
+});
+
+// Event-Listener für die Änderung der Bildschirmgröße
+window.addEventListener('resize', function() {
+    const navbar = document.querySelector('.navbar');
+    const menuToggle = document.querySelector('.menu-toggle');
+
+    // Menü ausblenden, wenn die Bildschirmgröße groß genug ist
+    if (window.innerWidth > 768) {
+        navbar.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
     }
-
-    /**
-     * Schließt das Menü bei ausreichender Bildschirmgröße
-     */
-    function handleResize() {
-        if (window.innerWidth > DOM.breakpoint && state.isMenuOpen) {
-            updateMenuState(false);
-        }
-    }
-
-    // Event-Handler
-    function init() {
-        DOM.menuToggle.addEventListener('click', toggleMenu);
-        window.addEventListener('resize', handleResize);
-        
-        // Initialen Zustand setzen
-        updateMenuState(false);
-    }
-
-    // Initialisierung nach DOM ready
-    document.addEventListener('DOMContentLoaded', init);
-})();
+});

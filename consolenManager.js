@@ -1,81 +1,57 @@
+// consolenManager.js
+
 /**
- * Console Manager für zentrale Steuerung der Konsolenausgaben
- * @namespace consoleManager
+ * Das Objekt consoleManager
  */
 $.consoleManager = {
     /**
-     * Konsolen-Einstellungen
-     * @type {Object}
-     * @property {boolean} enableConsoleOutput
+     * Einstellungen für die Konsolenausgabe
+     * @property {Object} consoleSettings - Die Konsoleneinstellungen
+     * @property {boolean} consoleSettings.enableConsoleOutput - Status der Konsolenausgabe
      */
     consoleSettings: {
-        enableConsoleOutput: true
+        enableConsoleOutput: true // Initial ist die Konsolenausgabe aktiviert
     },
 
     /**
-     * Setzt den Konsolenausgabe-Status
-     * @param {boolean} enabled - true für aktiviert, false für deaktiviert
+     * Setzt die Konsolenausgabe (aktivieren oder deaktivieren)
+     * @param {boolean} value - Der neue Status der Konsolenausgabe
      */
-    setConsoleOutput: function(enabled) {
-        this.consoleSettings.enableConsoleOutput = Boolean(enabled);
+    setConsoleOutput: function (value) {
+        this.consoleSettings.enableConsoleOutput = value;
     },
 
     /**
-     * Gibt den aktuellen Konsolenausgabe-Status zurück
-     * @return {boolean} Aktueller Status
+     * Ruft den aktuellen Status der Konsolenausgabe ab
+     * @returns {boolean} - Der aktuelle Status der Konsolenausgabe
      */
-    getConsoleOutput: function() {
+    getConsoleOutput: function () {
         return this.consoleSettings.enableConsoleOutput;
     },
 
     /**
-     * Gibt eine Fehlermeldung in der Konsole aus (wenn aktiviert)
-     * @param {string} message - Fehlermeldung
-     * @param {Error} [error] - Optionales Error-Objekt
+     * Gibt eine Fehlermeldung in der Konsole aus, wenn die Konsolenausgabe aktiviert ist
+     * @param {string} message - Die Fehlermeldung, die ausgegeben werden soll
      */
-    error: function(message, error) {
+    error: function (message) {
         if (this.consoleSettings.enableConsoleOutput) {
-            console.error('[ERROR]', message, error || '');
+            console.error(message);
         }
     },
 
     /**
-     * Gibt eine Warnung in der Konsole aus (wenn aktiviert)
-     * @param {string} message - Warnmeldung
+     * Loggt eine Nachricht in die Konsole, aber nur einmal pro Statusänderung.
+     * Speichert den letzten geloggten Status, um unnötiges Logging zu vermeiden.
+     * @param {string} message - Die Nachricht, die geloggt werden soll.
      */
-    warn: function(message) {
-        if (this.consoleSettings.enableConsoleOutput) {
-            console.warn('[WARN]', message);
-        }
-    },
-
-    /**
-     * Gibt eine Info in der Konsole aus (wenn aktiviert)
-     * @param {string} message - Infomeldung
-     */
-    info: function(message) {
-        if (this.consoleSettings.enableConsoleOutput) {
-            console.info('[INFO]', message);
-        }
-    },
-
-    /**
-     * Einmaliges Logging mit Nachrichten-Deduplizierung
-     * @type {function}
-     */
-    logOnce: (() => {
-        const messageCache = new Map();
+    logToConsoleOnce: (function() {
+        let lastLoggedMessages = {}; // Objekt zum Speichern der letzten geloggten Nachrichten pro Key
 
         return function(message, key = 'default') {
-            if (!this.consoleSettings.enableConsoleOutput) return;
-            
-            if (!messageCache.has(key) || messageCache.get(key) !== message) {
+            if (this.consoleSettings.enableConsoleOutput && lastLoggedMessages[key] !== message) {
                 console.log(message);
-                messageCache.set(key, message);
+                lastLoggedMessages[key] = message;  // Speichert die aktuelle Nachricht nach Key
             }
         };
     })()
 };
-
-// Alias für backward compatibility
-$.consoleManager.logToConsoleOnce = $.consoleManager.logOnce;
