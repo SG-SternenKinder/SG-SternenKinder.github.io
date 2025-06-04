@@ -10,7 +10,6 @@
 ### Website aussehen
 - style.css über und erarbeiten
 - Texte schreiben
-- Mehre seiten, vielleicht sogar mit Bilder Karusell
 - Dropdown Menü! 
 
 ### Nebenbei so
