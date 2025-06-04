@@ -1,29 +1,74 @@
-// footer.js
-$(document).ready(function () {
-    const footerContainer = $('#footer-container');
+/**
+ * Footer-Komponente
+ * @namespace footer
+ */
+(function($) {
+    'use strict';
 
-    if (!footerContainer.length) {
-        if (typeof consoleManager !== 'undefined') {
-            consoleManager.error('Das HTML-Element für den Footer wurde nicht gefunden.');
-        } else {
-            console.error('Das HTML-Element für den Footer wurde nicht gefunden.');
+    // Konfiguration
+    const config = {
+        containerSelector: '#footer-container',
+        copyrightText: 'Spiele-Gemeinschaft (SG) SternenKinder',
+        logPrefix: '[Footer]'
+    };
+
+    /**
+     * Initialisiert die Footer-Komponente
+     */
+    function init() {
+        const $footerContainer = $(config.containerSelector);
+
+        if (!$footerContainer.length) {
+            logError('Footer-Container wurde nicht gefunden');
+            return;
         }
-        return;
+
+        renderFooter($footerContainer);
+        log('Footer erfolgreich erstellt');
     }
 
-    const currentYear = new Date().getFullYear();
+    /**
+     * Erstellt und rendert den Footer
+     * @param {jQuery} $container - Container-Element
+     */
+    function renderFooter($container) {
+        const currentYear = new Date().getFullYear();
+        const startYear = 2016;
+        
+        const footerHtml = `
+            <footer>
+                <div class="footer-bottom">
+                    &copy; ${startYear} - ${currentYear} | ${config.copyrightText} | Alle Rechte vorbehalten
+                </div>
+            </footer>
+        `;
 
-    const footerHtml = `
-        <footer>
-            <div class="footer-bottom">
-                &copy; 2016 - ${currentYear} | Spiele-Gemeinschaft (SG) SternenKinder | Alle Rechte vorbehalten
-            </div>
-        </footer>
-    `;
-
-    footerContainer.html(footerHtml);
-
-    if (typeof $.consoleManager !== 'undefined' && $.consoleManager.getConsoleOutput()) {
-        console.log('Der Footer wurde erfolgreich erstellt und angezeigt.');
+        $container.html(footerHtml);
     }
-});
+
+    /**
+     * Loggt eine Nachricht in die Konsole
+     * @param {string} message - Nachricht
+     */
+    function log(message) {
+        if (typeof $.consoleManager !== 'undefined' && $.consoleManager.getConsoleOutput()) {
+            console.log(`${config.logPrefix} ${message}`);
+        }
+    }
+
+    /**
+     * Loggt einen Fehler in die Konsole
+     * @param {string} error - Fehlermeldung
+     */
+    function logError(error) {
+        if (typeof $.consoleManager !== 'undefined') {
+            $.consoleManager.error(`${config.logPrefix} ${error}`);
+        } else {
+            console.error(`${config.logPrefix} ${error}`);
+        }
+    }
+
+    // Initialisierung nach DOM ready
+    $(document).ready(init);
+
+})(jQuery);

@@ -1,47 +1,115 @@
-// service-worker.js
+/**
+ * Service Worker mit erweitertem Caching und Offline-Funktionalität
+ * @version v0.0.1.5
+ */
+'use strict';
 
-// Cache Versionsname
-const FILE_VERSION = 'v0.0.1.4';
-const CACHE_NAME = 'cache-' + FILE_VERSION;
+const FILE_VERSION = 'v0.0.1.5';
+const CACHE_NAME = `cache-${FILE_VERSION}`;
+const OFFLINE_PAGE = '/offline.html'; // Pfad zur Offline-Fallback-Seite
 
-// Installationsereignis: Wird ausgelöst, wenn der Service Worker installiert wird.
+// Zu cachende Ressourcen
+const PRECACHE_RESOURCES = [
+    '/',
+    '/styles/main.css',
+    '/scripts/main.js',
+    '/images/logo.png',
+    OFFLINE_PAGE
+];
+
+// Installationsereignis - Precaching wichtiger Ressourcen
 self.addEventListener('install', (event) => {
-    console.log('Service Worker installed');
+    event.waitUntil(
+        caches.open(CACHE_NAME)
+            .then(cache => {
+                console.log('[SW] Precaching resources');
+                return cache.addAll(PRECACHE_RESOURCES);
+            })
+            .then(() => self.skipWaiting())
+    );
 });
 
-self.addEventListener('fetch', async (event) => {
-    console.log('Fetching:', event.request.url);
+// Aktivierungsereignis - Alte Caches bereinigen
+self.addEventListener('activate', (event) => {
+    event.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(
+                cacheNames.map(cache => {
+                    if (cache !== CACHE_NAME) {
+                        console.log('[SW] Removing old cache:', cache);
+                        return caches.delete(cache);
+                    }
+                })
+            );
+        })
+        .then(() => self.clients.claim())
+    );
+});
 
-    try {
-        const response = await fetch(event.request);
+// Fetch-Strategie: Network First, Fallback to Cache
+self.addEventListener('fetch', (event) => {
+    // Skip non-GET requests and chrome-extension requests
+    if (event.request.method !== 'GET' || event.request.url.startsWith('chrome-extension')) {
+        return;
+    }
 
-        console.log('Fetch successful:', response);
+    event.respondWith(
+        fetch(event.request)
+            .then(response => {
+                // Nur erfolgreiche Responses cachen
+                if (response && response.status === 200 && response.type === 'basic') {
+                    const responseToCache = response.clone();
+                    caches.open(CACHE_NAME)
+                        .then(cache => cache.put(event.request, responseToCache));
+                }
+                return response;
+            })
+            .catch(async () => {
+                // Fallback zu Cache oder Offline-Seite
+                const cachedResponse = await caches.match(event.request);
+                return cachedResponse || caches.match(OFFLINE_PAGE);
+            })
+    );
+});
 
-        // Hier prüfen, ob die Anfrage erfolgreich war
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-            console.log('Fetching failed');
-        }
+// Nachrichtenhandler für Offline-Kommunikation
+self.addEventListener('message', (event) => {
+    if (!event.data) return;
 
-        return response;
-    } catch (error) {
-        console.error('Fetch error:', error);
-
-        // Hier kann auch auf die Offline-Status-Nachricht reagiert werden
-        const clients = await self.clients.matchAll();
-        clients.forEach(client => client.postMessage('offline'));
+    switch (event.data.type) {
+        case 'offline':
+            notifyClients('showOfflinePopup', event.data.data);
+            break;
+        case 'checkConnection':
+            checkConnection().then(isOnline => {
+                notifyClients('connectionStatus', { isOnline });
+            });
+            break;
+        default:
+            console.log('[SW] Unknown message type:', event.data.type);
     }
 });
 
-// Hinzufügen dieses Event-Listeners für die Offline-Erkennung mit jQuery
-self.addEventListener('message', (event) => {
-    console.log('Message event:', event.data);
-    if (event.data.type === 'offline') {
-        console.log('Offline message received');
-        // Wenn offline, sende eine Nachricht an die Clients, um das Offline-Popup anzuzeigen
-        $.when(self.clients.matchAll()).done(function (clients) {
-            $.each(clients, function (_, client) {
-                client.postMessage({ type: 'showOfflinePopup', data: event.data.data });
+/**
+ * Benachrichtigt alle Clients
+ * @param {string} type - Nachrichtentyp
+ * @param {object} data - Zu sendende Daten
+ */
+function notifyClients(type, data = {}) {
+    self.clients.matchAll()
+        .then(clients => {
+            clients.forEach(client => {
+                client.postMessage({ type, data });
             });
         });
-    }
-});
+}
+
+/**
+ * Überprüft die Verbindung
+ * @returns {Promise<boolean>} - true wenn online
+ */
+function checkConnection() {
+    return fetch('/health-check', { method: 'HEAD' })
+        .then(() => true)
+        .catch(() => false);
+}

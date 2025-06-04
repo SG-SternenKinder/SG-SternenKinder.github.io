@@ -1,31 +1,102 @@
 {
-    "name": "SG-SternenKinder",
-    "short_name": "SG-SternenKinder",
-    "start_url": "https://sg-sternenkinder.github.io",
-    "version": "0.0.3.1",
+    "name": "SG SternenKinder",
+    "short_name": "SternenKinder",
+    "start_url": "/?source=pwa",
+    "scope": "/",
+    "id": "/",
+    "display": "standalone",
+    "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+    "orientation": "portrait-primary",
+    "lang": "de-DE",
+    "description": "Die Spiele-Gemeinschaft SternenKinder - Gemeinschaft und Spaß beim Spielen",
+    "dir": "ltr",
+    "theme_color": "#2b5797",
+    "background_color": "#ffffff",
+    "categories": ["games", "entertainment", "social"],
+    "version": "1.0.0",
     "icons": [
         {
-            "src": "img/favicon/android-chrome-192x192.png",
+            "src": "img/icons/icon-72x72.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "img/icons/icon-96x96.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "img/icons/icon-128x128.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "img/icons/icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "img/icons/icon-152x152.png",
+            "sizes": "152x152",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "img/icons/icon-192x192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
-            "src": "img/favicon/android-chrome-512x512.png",
+            "src": "img/icons/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "img/icons/icon-512x512.png",
             "sizes": "512x512",
-            "type": "image/png"
-        },
-        {
-            "src": "img/favicon/apple-touch-icon.png",
-            "sizes": "180x180",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         }
     ],
-    "display": "standalone",
-    "splash_pages": null,
-    "scope": "/",
-    "orientation": "any",
-    "serviceworker": {
-        "src": "js/service-worker.js",
-        "scope": "/"
-    }
+    "shortcuts": [
+        {
+            "name": "Aktuelle Spiele",
+            "short_name": "Spiele",
+            "description": "Siehe unsere aktuellen Spiele",
+            "url": "/spiele?source=pwa",
+            "icons": [
+                {
+                    "src": "img/icons/game-96x96.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Veranstaltungen",
+            "short_name": "Events",
+            "description": "Kommende Veranstaltungen",
+            "url": "/events?source=pwa",
+            "icons": [
+                {
+                    "src": "img/icons/event-96x96.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                }
+            ]
+        }
+    ],
+    "prefer_related_applications": false,
+    "protocol_handlers": [
+        {
+            "protocol": "web+sternenkinder",
+            "url": "/?protocol=%s"
+        }
+    ]
 }

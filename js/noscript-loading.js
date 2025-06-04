@@ -1,58 +1,144 @@
-// noscript-loading.js
-document.addEventListener('DOMContentLoaded', function () {
-    const noscriptContainer = document.querySelector('.noscript-message');
+/**
+ * NoScript Loading Manager - Handhabung der NoScript-Nachricht und Ladeanimation
+ * @namespace noScriptManager
+ */
+(function() {
+    'use strict';
 
-    // Überprüfen, ob das noscriptContainer vorhanden ist
-    if (noscriptContainer) {
-        createLoadingAnimation(noscriptContainer);
-        console.log('JavaScript is enabled. NoScript message has been created successfully.');
-    } else {
-        console.error('NoScript container not found.');
-    }
+    // Konfiguration
+    const config = {
+        selectors: {
+            noScriptContainer: '.noscript-message',
+            body: 'body'
+        },
+        messages: {
+            welcome: 'Willkommen! Bitte aktivieren Sie JavaScript für das beste Erlebnis.',
+            success: 'JavaScript ist aktiviert. NoScript-Nachricht wurde erfolgreich erstellt.',
+            errors: {
+                noContainer: 'NoScript-Container nicht gefunden.',
+                noBody: 'Body-Tag fehlt. Dies könnte Probleme verursachen.'
+            }
+        },
+        styles: {
+            spinner: {
+                borderColor: getRandomColor(),
+                borderTopColor: 'transparent',
+                animation: 'spin 2s linear infinite'
+            },
+            container: {
+                transition: 'opacity 1s',
+                opacity: '1'
+            }
+        }
+    };
 
-    // Überprüfen, ob das Body-Element vorhanden ist
-    if (!document.body) {
-        console.error('Body tag is missing. This might cause issues.');
+    // DOM-Elemente
+    const domElements = {
+        body: document.querySelector(config.selectors.body),
+        noScriptContainer: document.querySelector(config.selectors.noScriptContainer)
+    };
+
+    /**
+     * Initialisiert den NoScript-Manager
+     */
+    function init() {
+        validateDOM();
+        
+        if (domElements.noScriptContainer) {
+            createLoadingAnimation();
+            log(config.messages.success);
+        }
     }
 
     /**
-     * Erstellt und fügt eine Ladeanimation und Nachricht in das angegebene Container-Element ein.
-     * @param {HTMLElement} container - Das Container-Element, in das die Ladeanimation eingefügt werden soll.
+     * Validiert notwendige DOM-Elemente
      */
-    function createLoadingAnimation(container) {
-        // Spinner-Element erstellen
-        const spinnerElement = document.createElement('div');
-        spinnerElement.className = 'loading-spinner';
-        spinnerElement.style.borderColor = getRandomColor();
-        spinnerElement.style.borderTopColor = 'transparent';  // Für den Dreheffekt
-        spinnerElement.style.animation = 'spin 2s linear infinite';  // Rotationseffekt
+    function validateDOM() {
+        if (!domElements.body) {
+            console.error(config.messages.errors.noBody);
+        }
+        if (!domElements.noScriptContainer) {
+            console.error(config.messages.errors.noContainer);
+        }
+    }
 
-        // Begrüßungsnachricht erstellen
-        const messageElement = document.createElement('p');
-        messageElement.className = 'message';
-        messageElement.textContent = 'Welcome! Please enable JavaScript to fully enjoy our website.';
+    /**
+     * Erstellt die Ladeanimation und Nachricht
+     */
+    function createLoadingAnimation() {
+        const spinner = createSpinner();
+        const message = createMessage();
+        
+        appendElements(spinner, message);
+        applyFadeInEffect();
+    }
 
-        // Beide Elemente einfügen
-        container.appendChild(spinnerElement);
-        container.appendChild(messageElement);
+    /**
+     * Erstellt den Spinner
+     * @returns {HTMLElement} Spinner-Element
+     */
+    function createSpinner() {
+        const spinner = document.createElement('div');
+        spinner.className = 'loading-spinner';
+        
+        // Stile anwenden
+        Object.assign(spinner.style, config.styles.spinner);
+        
+        return spinner;
+    }
 
-        // Fade-In-Effekt anwenden
+    /**
+     * Erstellt die Willkommensnachricht
+     * @returns {HTMLElement} Nachrichten-Element
+     */
+    function createMessage() {
+        const message = document.createElement('p');
+        message.className = 'message';
+        message.textContent = config.messages.welcome;
+        return message;
+    }
+
+    /**
+     * Fügt Elemente dem Container hinzu
+     * @param {HTMLElement} spinner 
+     * @param {HTMLElement} message 
+     */
+    function appendElements(spinner, message) {
+        domElements.noScriptContainer.appendChild(spinner);
+        domElements.noScriptContainer.appendChild(message);
+    }
+
+    /**
+     * Wendet Fade-In-Effekt an
+     */
+    function applyFadeInEffect() {
+        const container = domElements.noScriptContainer;
         container.style.display = 'none';
-        container.style.transition = 'opacity 1s';
-        container.style.opacity = '1';
+        Object.assign(container.style, config.styles.container);
         container.style.display = 'block';
     }
 
     /**
-     * Gibt eine zufällige Hex-Farbe zurück.
-     * @returns {string} - Eine zufällige Hex-Farbe.
+     * Generiert eine zufällige Farbe
+     * @returns {string} Hex-Farbcode
      */
     function getRandomColor() {
-        const letters = '0123456789ABCDEF';
-        let color = '#';
-        for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
+        return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     }
-});
+
+    /**
+     * Loggt Nachrichten in die Konsole
+     * @param {string} message 
+     */
+    function log(message) {
+        console.log('[NoScriptManager] ' + message);
+    }
+
+    // Initialisierung wenn DOM bereit ist
+    if (document.readyState !== 'loading') {
+        init();
+    } else {
+        document.addEventListener('DOMContentLoaded', init);
+    }
+
+})();
