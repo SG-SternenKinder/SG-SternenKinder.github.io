@@ -39,21 +39,19 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/style.css">
 
-    <!-- Noscript Fallback 
-    <noscript>
-        <style>
-            .js-only { display: none !important; }
-            .noscript-message { display: flex !important; }
-        </style>
-    </noscript>-->
+    <script src="js/noscript-loading.js" defer></script>
+    <script src="consolenManager.js"></script>
+
 </head>
 
 <body>
     <!-- Noscript Content -->
-    <div class="noscript-message">
-        <div class="loading-spinner"></div>
-        <p class="message">Bitte aktivieren Sie JavaScript für die beste Nutzererfahrung</p>
-    </div>
+    <noscript class="noscript-message">
+        <div id="loading-screen">
+            <div class="loading-spinner"></div>
+            <p class="message">Bitte aktivieren Sie JavaScript für die beste Nutzererfahrung</p>
+        </div>
+    </noscript>
 
     <!-- Background Image -->
     <img src="/img/background.png" id="fsb_image" alt="Hintergrundbild" loading="lazy">
@@ -131,12 +129,10 @@
 
     <!-- Scripts -->
     <script src="/js/jquery-3.7.1.min.js" defer></script>
-    <script src="consolenManager.js" defer></script>
     <script src="/js/cookie.js" defer></script>
     <script src="/js/language-switcher.js" defer></script>
     <script src="/js/background.js" defer></script>
     <script src="/js/footer.js" defer></script>
-    <script src="/js/noscript-loading.js" defer></script>
     <script src="/js/popup.js" defer></script>
     <script src="/js/scrollback.js" defer></script>
     <script src="/js/toggleMenu.js" defer></script>
