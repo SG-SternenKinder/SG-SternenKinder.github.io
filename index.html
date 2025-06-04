@@ -35,17 +35,13 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/style.css">
 
-    <!-- scripts -->
-    <script src="js/noscript-loading.js"></script>
-
-    <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="consolenManager.js"></script>
-
-    <script src="js/cookie.js"></script>
-    <script src="js/language-switcher.js"></script>
-
-    <script src="js/popup.js"></script>
-    <script src="js/error-popup.js"></script>
+    <!-- Noscript Fallback -->
+    <noscript>
+        <style>
+            .js-only { display: none !important; }
+            .noscript-message { display: flex !important; }
+        </style>
+    </noscript>
 
 </head>
 
@@ -62,19 +58,24 @@
     <img src="/img/background.png" id="fsb_image" alt="Hintergrundbild" loading="lazy">
 
     <!-- Header -->
-    <header>
-        <div class="logo no-click"><span>SG</span>SternenKinder</div>
+    <header class="js-only">
+        <a href="/" class="logo" aria-label="Startseite">
+            <span aria-hidden="true">SG</span>SternenKinder
+        </a>
 
         <!-- Navigation -->
-        <nav>
+        <nav aria-label="Hauptnavigation">
+            <button class="menu-toggle" aria-expanded="false" aria-label="Menü öffnen">
+                <span class="hamburger"></span>
+            </button>
+            
             <ul class="navbar">
-                <li><a draggable="false" href="" onclick="reloadPage()">Home</a></li>
-                <li><a draggable="false" href="about/index.html">About</a></li>
-                <li><a draggable="false" href="contact/index.html">Contact</a></li>
-                <li><a draggable="false" href="privacy/index.html">Privacy</a></li>
-                <li><a draggable="false" href="cookies/cookies.html">Cookies</a></li>
-                <li><a draggable="false" href="imprint/index.html">Imprint</a></li>
-
+                <li><a href="/" data-nav-link>Home</a></li>
+                <li><a href="/about/" data-nav-link>About</a></li>
+                <li><a href="/contact/" data-nav-link>Contact</a></li>
+                <li><a href="/privacy/" data-nav-link aria-current="page">Privacy</a></li>
+                <li><a href="/cookies/" data-nav-link>Cookies</a></li>
+                <li><a href="/imprint/" data-nav-link>Imprint</a></li>
             </ul>
         </nav>
 
@@ -133,10 +134,17 @@
     <footer id="footer-container"></footer>
 
     <!-- Scripts -->
+    <script src="/js/jquery-3.7.1.min.js" defer></script>
+    <script src="/consolenManager.js" defer></script>
+    <script src="/js/cookie.js" defer></script>
+    <script src="/js/language-switcher.js" defer></script>
     <script src="/js/background.js" defer></script>
     <script src="/js/footer.js" defer></script>
+    <script src="/js/noscript-loading.js" defer></script>
+    <script src="/js/popup.js" defer></script>
     <script src="/js/scrollback.js" defer></script>
-    <!--<script src="/js/toggleMenu.js" defer></script>-->
+    <script src="/js/toggleMenu.js" defer></script>
+    <script src="/js/error-popup.js"defer></script>
     
     <!-- Service Worker Registration -->
     <script>
