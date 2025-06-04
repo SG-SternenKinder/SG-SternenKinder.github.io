@@ -1,116 +1,137 @@
-// language-switcher.js
-$(document).ready(async function () {
-    const languageSlider = $('#language-slider');
-    let currentLanguage = $.CookieUtil.getCookie('language') || 'de';
+/**
+ * Sprachumschalter-Komponente
+ * @namespace languageSwitcher
+ */
+(function($) {
+    'use strict';
+
+    // Konfiguration
+    const config = {
+        cookieName: 'language',
+        cookieDuration: 4, // Tage
+        cookieOptions: { secure: true },
+        defaultLanguage: 'de',
+        textFilesPath: '/language/language-',
+        logPrefix: '[Sprachumschalter]'
+    };
+
+    // DOM-Elemente
+    const $elements = {
+        slider: $('#language-slider'),
+        languageDisplay: $('#language'),
+        flagsDisplay: $('#flags')
+    };
+
+    // Zustand
+    let currentLanguage = $.CookieUtil.getCookie(config.cookieName) || config.defaultLanguage;
 
     /**
-     * Setzt den Zustand des Sliders basierend auf der aktuellen Sprache.
-     * @param {string} language - Die aktuelle Sprache.
+     * Initialisiert den Sprachumschalter
      */
-    function setSliderState(language) {
-        languageSlider.prop('checked', language === 'en');
-        logToConsole(`Slider state set to ${language}`);
+    async function init() {
+        setSliderState();
+        await loadTexts(currentLanguage);
+        setupEventListeners();
     }
 
-    // Wenn es ein gespeichertes Sprach-Cookie gibt, stelle den Schieberegler entsprechend ein
-    setSliderState(currentLanguage);
+    /**
+     * Setzt den Slider-Zustand basierend auf der aktuellen Sprache
+     */
+    function setSliderState() {
+        $elements.slider.prop('checked', currentLanguage === 'en');
+        log(`Slider auf ${currentLanguage} gesetzt`);
+    }
 
     /**
-     * Lädt die Texte aus der Datei basierend auf der ausgewählten Sprache.
-     * @param {string} language - Die ausgewählte Sprache.
+     * Lädt die Texte für die ausgewählte Sprache
+     * @param {string} language - Sprachcode (z.B. 'de', 'en')
      */
     async function loadTexts(language) {
-        try {
-            // Überprüfe, ob eine Internetverbindung besteht
-            const isOnline = navigator.onLine;
-
-            if (!isOnline) {
-                // Keine Internetverbindung, zeige den Sprachcode anstelle der Flaggen
-                const offlineText = language.toUpperCase(); // Zeige den Sprachcode (EN oder DE)
-
-                const languageElement = $('#language');
-                if (languageElement.length) {
-                    languageElement.html(offlineText);
-                }
-
-                const flagsElement = $('#flags');
-                if (flagsElement.length) {
-                    flagsElement.hide();
-                }
-
-                logToConsole(`No internet connection. Displaying language code: ${offlineText}`);
-                return; // Beende die Funktion, wenn keine Internetverbindung besteht
-            }
-
-            logToConsole(`Loading texts for language: ${language}`);
-
-            const response = await fetchTexts(language);
-            const texts = await response.text();
-
-            // Verwende jQuery, um Elemente zu selektieren und den Text zu setzen
-            $.each(texts.split('\n'), function (index, text) {
-                const [key, value] = text.split('=');
-                if (key && value) {
-                    const element = $('#' + key);
-                    if (element.length) {
-                        element.html(value);
-                    }
-                }
-            });
-
-            logToConsole(`Texts loaded successfully for language: ${language}`);
-        } catch (error) {
-            console.error('Fehler beim Laden der Texte:', error);
+        if (!navigator.onLine) {
+            handleOfflineState(language);
+            return;
         }
-    }
 
-    /**
-     * Ruft die Texte für eine bestimmte Sprache ab.
-     * @param {string} language - Die Sprache, für die die Texte abgerufen werden sollen.
-     * @returns {Promise<Response>} - Die Fetch-Response.
-     */
-    async function fetchTexts(language) {
         try {
-            logToConsole(`Fetching texts for language: ${language}`);
-            const response = await fetch(`/language/language-${language}.txt`);
-
+            const response = await fetch(`${config.textFilesPath}${language}.txt`);
+            
             if (!response.ok) {
-                throw new Error(`Failed to fetch language file for ${language}`);
+                throw new Error(`Sprachdatei konnte nicht geladen werden (Status: ${response.status})`);
             }
 
-            return response;
+            const textData = await response.text();
+            applyTexts(textData);
+            log(`Texte für ${language} erfolgreich geladen`);
         } catch (error) {
-            throw new Error(`Error fetching language file: ${error.message}`);
+            console.error(`${config.logPrefix} Fehler:`, error);
         }
     }
 
     /**
-     * Aktualisiert das Sprach-Cookie.
-     * @param {string} language - Die Sprache, die gespeichert werden soll.
+     * Behandelt den Offline-Zustand
+     * @param {string} language - Aktuelle Sprache
+     */
+    function handleOfflineState(language) {
+        if ($elements.languageDisplay.length) {
+            $elements.languageDisplay.text(language.toUpperCase());
+        }
+        
+        if ($elements.flagsDisplay.length) {
+            $elements.flagsDisplay.hide();
+        }
+        
+        log(`Offline - Sprachcode angezeigt: ${language}`);
+    }
+
+    /**
+     * Wendet die geladenen Texte auf die Seite an
+     * @param {string} textData - Rohdaten der Sprachdatei
+     */
+    function applyTexts(textData) {
+        textData.split('\n').forEach(line => {
+            const [key, value] = line.split('=');
+            if (key && value) {
+                $(`#${key}`).html(value);
+            }
+        });
+    }
+
+    /**
+     * Aktualisiert das Sprach-Cookie
+     * @param {string} language - Neue Sprache
      */
     function updateLanguageCookie(language) {
-        $.CookieUtil.setCookie('language', language, 4, { secure: true }); // Speichere die Sprache für 4 Tage
-        logToConsole(`Language cookie updated: ${language}`);
+        $.CookieUtil.setCookie(
+            config.cookieName, 
+            language, 
+            config.cookieDuration, 
+            config.cookieOptions
+        );
+        log(`Sprach-Cookie aktualisiert: ${language}`);
     }
 
     /**
-     * Loggt Nachrichten in die Konsole, falls der consoleManager aktiviert ist.
-     * @param {string} message - Die zu loggende Nachricht.
+     * Richtet Event-Listener ein
      */
-    function logToConsole(message) {
+    function setupEventListeners() {
+        $elements.slider.on('change', async function() {
+            currentLanguage = $(this).prop('checked') ? 'en' : 'de';
+            await loadTexts(currentLanguage);
+            updateLanguageCookie(currentLanguage);
+        });
+    }
+
+    /**
+     * Loggt Nachrichten in die Konsole
+     * @param {string} message - Nachricht
+     */
+    function log(message) {
         if (typeof $.consoleManager !== 'undefined' && $.consoleManager.getConsoleOutput()) {
-            console.log(message);
+            console.log(`${config.logPrefix} ${message}`);
         }
     }
 
-    // Überwache Änderungen am Schieberegler und speichere die Sprache als Cookie
-    languageSlider.on('change', function () {
-        currentLanguage = languageSlider.prop('checked') ? 'en' : 'de';
+    // Initialisierung
+    $(document).ready(init);
 
-        // Aktualisiere den Text der Elemente basierend auf der ausgewählten Sprache
-        loadTexts(currentLanguage);
-
-        // Speichere die ausgewählte Sprache im Cookie
-        updateLanguageCookie(currentLanguage);
-    });
-});
+})(jQuery);

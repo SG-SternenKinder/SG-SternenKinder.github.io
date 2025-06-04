@@ -1,89 +1,120 @@
-// Cookie.js
-
-// Überprüfe, ob jQuery vorhanden ist
-if (typeof jQuery !== 'undefined') {
-    (function ($) {
-        /**
-         * Escape-Sicherheit für Cookie-Namen
-         * @param {string} name - Der Name des Cookies
-         * @returns {string} - Der escapeierte Cookie-Name
-         */
-        function escapeCookieName(name) {
-            return encodeURIComponent(name);
-        }
-
-        /**
-         * Setzen eines Cookies mit angegebenem Namen, Wert und Gültigkeitsdauer in Tagen
-         * @param {string} name - Der Name des Cookies
-         * @param {string} value - Der Wert des Cookies
-         * @param {number} days - Die Gültigkeitsdauer in Tagen
-         * @param {object} options - Zusätzliche Cookie-Optionen (optional)
-         */
-        function setCookie(name, value, days, options = {}) {
-            name = escapeCookieName(name);
-
-            if (typeof days !== 'number' || days <= 0) {
-                console.error('Ungültiger Gültigkeitsdauer-Wert für das Cookie.');
-                return;
-            }
-            if (!name || !value) {
-                console.error('Ungültiger Name oder Wert für das Cookie.');
-                return;
-            }
-
-            const expires = new Date();
-            expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
-
-            let cookieString = `${name}=${encodeURIComponent(value)};expires=${expires.toUTCString()};path=/`;
-
-            // Füge optionale Cookie-Optionen hinzu
-            for (const option in options) {
-                if (options.hasOwnProperty(option)) {
-                    cookieString += `;${option}${options[option] === true ? '' : `=${options[option]}`}`;
-                }
-            }
-
-            document.cookie = cookieString;
-            logToConsole(`Cookie "${name}" wurde erfolgreich gesetzt.`);
-        }
-
-        /**
-         * Abrufen eines Cookies anhand des Namens
-         * @param {string} name - Der Name des Cookies
-         * @returns {string|null} - Der Wert des Cookies oder null, wenn das Cookie nicht gefunden wurde
-         */
-        function getCookie(name) {
-            const cookieName = escapeCookieName(name) + '=';
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                let cookie = cookies[i].trim();
-                if (cookie.indexOf(cookieName) === 0) {
-                    const cookieValue = decodeURIComponent(cookie.substring(cookieName.length, cookie.length));
-                    logToConsole(`Cookie "${name}" wurde erfolgreich abgerufen.`);
-                    return cookieValue;
-                }
-            }
-            logToConsole(`Cookie "${name}" wurde nicht gefunden.`, 'warn');
-            return null;
-        }
-
-        /**
-         * Log-Nachrichten in die Konsole, wenn consoleManager aktiviert ist
-         * @param {string} message - Die Nachricht zum Loggen
-         * @param {string} [type='log'] - Der Log-Typ ('log', 'warn', 'error')
-         */
-        function logToConsole(message, type = 'log') {
-            if ($.consoleManager && $.consoleManager.getConsoleOutput()) {
-                console[type](message);
-            }
-        }
-
-        // Füge CookieUtil zu jQuery hinzu
-        $.CookieUtil = {
-            setCookie,
-            getCookie
-        };
-    })(jQuery);
-} else {
-    console.error('jQuery is not available. Make sure it is properly loaded.');
+/**
+ * Cookie Utility - Sichere Cookie-Handling-Funktionen
+ * @namespace CookieUtil
+ * @requires jQuery
+ */
+if (typeof jQuery === 'undefined') {
+    throw new Error('jQuery ist nicht verfügbar. CookieUtil benötigt jQuery.');
 }
+
+(function($) {
+    'use strict';
+
+    // Standard-Cookie-Optionen
+    const DEFAULT_OPTIONS = {
+        path: '/',
+        secure: true,
+        sameSite: 'Strict'
+    };
+
+    /**
+     * Kodiert Cookie-Namen und Werte sicher
+     * @param {string} value - Zu kodierender Wert
+     * @returns {string} Kodierter Wert
+     */
+    function encodeCookieValue(value) {
+        return encodeURIComponent(value).replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent);
+    }
+
+    /**
+     * Setzt ein Cookie mit erweiterten Sicherheitsoptionen
+     * @param {string} name - Cookie-Name
+     * @param {string} value - Cookie-Wert
+     * @param {number} days - Gültigkeit in Tagen
+     * @param {object} [options={}] - Zusätzliche Optionen
+     */
+    function setCookie(name, value, days, options = {}) {
+        if (!name || !/^[a-zA-Z0-9_-]+$/.test(name)) {
+            console.error('Ungültiger Cookie-Name:', name);
+            return;
+        }
+
+        if (typeof days !== 'number' || days <= 0) {
+            console.error('Ungültige Gültigkeitsdauer:', days);
+            return;
+        }
+
+        const expires = new Date();
+        expires.setTime(expires.getTime() + days * 864e5);
+
+        const cookieOptions = {
+            ...DEFAULT_OPTIONS,
+            ...options,
+            expires: expires.toUTCString()
+        };
+
+        let cookieString = `${encodeCookieValue(name)}=${encodeCookieValue(value)}`;
+
+        for (const [key, val] of Object.entries(cookieOptions)) {
+            if (val === true) {
+                cookieString += `;${key}`;
+            } else if (val) {
+                cookieString += `;${key}=${val}`;
+            }
+        }
+
+        document.cookie = cookieString;
+        log(`Cookie "${name}" gesetzt`, 'log');
+    }
+
+    /**
+     * Liest ein Cookie
+     * @param {string} name - Cookie-Name
+     * @returns {string|null} Cookie-Wert oder null
+     */
+    function getCookie(name) {
+        const nameEncoded = encodeCookieValue(name);
+        const cookies = document.cookie.split(';');
+
+        for (const cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.trim().split('=');
+            if (cookieName === nameEncoded) {
+                const value = decodeURIComponent(cookieValue || '');
+                log(`Cookie "${name}" gelesen`, 'log');
+                return value;
+            }
+        }
+
+        log(`Cookie "${name}" nicht gefunden`, 'warn');
+        return null;
+    }
+
+    /**
+     * Entfernt ein Cookie
+     * @param {string} name - Cookie-Name
+     */
+    function deleteCookie(name) {
+        setCookie(name, '', -1);
+        log(`Cookie "${name}" gelöscht`, 'log');
+    }
+
+    /**
+     * Konsolenausgabe mit consoleManager
+     * @param {string} message - Nachricht
+     * @param {string} type - Log-Typ ('log', 'warn', 'error')
+     */
+    function log(message, type = 'log') {
+        if ($.consoleManager && $.consoleManager.getConsoleOutput()) {
+            console[type](`[CookieUtil] ${message}`);
+        }
+    }
+
+    // jQuery-Plugin erstellen
+    $.CookieUtil = {
+        setCookie,
+        getCookie,
+        deleteCookie,
+        encodeCookieValue
+    };
+
+})(jQuery);

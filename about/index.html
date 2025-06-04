@@ -1,205 +1,192 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" dir="ltr">
 
 <head>
+    <!-- Primary Meta Tags -->
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Spielegemeinschaft (SG) SternenKinder">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Über die SG SternenKinder - Unsere Gemeinschaft und Werte">
     <base href="/">
 
-    <title>SG SternenKinder • AboutUs</title>
+    <title>SG SternenKinder • Über Uns</title>
 
-    <!-- Hinzufügen von Open Graph-Metadaten für soziale Medien -->
+    <!-- Open Graph / Social Media Meta -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="SG SternenKinder">
-    <meta property="og:url" content="https://sg-sternenkinder.github.io/about/index.html">
-    <meta property="og:description" content="Spielegemeinschaft (SG) SternenKinder">
-    <meta property="og:image" content="https://sg-sternenkinder.github.io/img/favicon/favicon.ico">
+    <meta property="og:title" content="SG SternenKinder • Über Uns">
+    <meta property="og:url" content="https://sg-sternenkinder.github.io/about/">
+    <meta property="og:description" content="Lernen Sie unsere Spiele-Gemeinschaft kennen">
+    <meta property="og:image" content="https://sg-sternenkinder.github.io/img/about-social-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
-    <!-- Hinzufügen von TwitterX-Metadaten für soziale Medien -->
+    <!-- Twitter Card Meta -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SG SternenKinder">
-    <meta name="twitter:description" content="Spielegemeinschaft (SG) SternenKinder">
-    <meta name="twitter:image" content="https://sg-sternenkinder.github.io/img/favicon/favicon.ico">
+    <meta name="twitter:title" content="SG SternenKinder • Über Uns">
+    <meta name="twitter:description" content="Lernen Sie unsere Spiele-Gemeinschaft kennen">
+    <meta name="twitter:image" content="https://sg-sternenkinder.github.io/img/about-social-preview.jpg">
 
-    <!-- Hinzufügen eines favicon-Tags -->
-    <link rel="shortcut icon" href="../img/favicon/favicon.ico" sizes="any">
+    <!-- Favicons & Manifest -->
+    <link rel="icon" href="/img/favicon/favicon.ico" sizes="any">
+    <link rel="icon" href="/img/favicon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
 
-    <!-- Manifest -->
-    <link rel="manifest" href="../site.webmanifest">
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/css/style.css" as="style">
+    <link rel="preload" href="/js/main.js" as="script">
 
-    <!-- Weitere Stile und Skripte in externe Dateien auslagern -->
-    <link rel="stylesheet" href="../css/style.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
 
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('../js/service-worker.js')
-                .then((registration) => {
-                    navigator.serviceWorker.addEventListener('message', (event) => {
-                        if (event.data === 'showOfflinePopup') {
-                            // Erstelle das Popup-Element
-                            const offlinePopup = document.createElement('div');
-                            offlinePopup.classList.add('popup-container');
-                            offlinePopup.id = 'offline-popup';
-
-                            const popupContent = document.createElement('div');
-                            popupContent.classList.add('popup-content');
-
-                            popupContent.innerHTML =
-                                `
-                                <h2>Offline</h2>
-                                <p>You are currently offline. Some features may not be available.</p>
-                                <button id="close-offline-popup">Close</button>
-                            `;
-
-                            offlinePopup.appendChild(popupContent);
-
-                            // Füge das Popup zur Seite hinzu
-                            document.body.appendChild(offlinePopup);
-                        }
-                    });
-                })
-        }
-    </script>
-
-    <script src="../js/noscript-loading.js"></script>
-
-    <script src="../js/jquery-3.7.1.min.js"></script>
-    <script src="../consolenManager.js"></script>
-
-    <script src="../js/cookie.js"></script>
-
-    <script src="../js/language-switcher.js"></script>
-
-    <script src="../js/popup.js"></script>
-    <script src="../js/error-popup.js"></script>
-
-    <!-- Ankündigungsbanner -->
-    <!-- <script src="../js/announcement.js"></script> -->
-
-    <!-- <script src="../js/toggleMenu.js"></script> -->
-    <!-- <script src="../js/background.js"></script> -->
-
+    <!-- Noscript Fallback -->
+    <noscript>
+        <style>
+            .js-only { display: none !important; }
+            .noscript-message { display: flex !important; }
+        </style>
+    </noscript>
 </head>
 
 <body>
-
-    <noscript class="noscript-message">
-        <div id="loading-screen">
-            <div class="loading-spinner"></div>
-            <p class="message">Welcome! Please enable JavaScript to fully enjoy our website.</p>
-        </div>
-    </noscript>
-
-    <img src="../img/background.png" id="fsb_image" alt=""/>
-
-    <header>
-
-        <a href="" class="logo no-click"><span>SG</span>SternenKinder</a>
-
-        <!-- <div class="menu-toggle" onclick="toggleMenu()">☰</div> -->
-        <ul class="navbar">
-            <li><a draggable="false" href="/">Home</a></li>
-            <li><a draggable="false" href="" onclick="reloadPage()">About</a></li>
-            <li><a draggable="false" href="../contact/index.html">Contact</a></li>
-            <li><a draggable="false" href="../privacy/index.html">Privacy</a></li>
-            <li><a draggable="false" href="../cookies/cookies.html">Cookies</a></li>
-            <li><a draggable="false" href="../imprint/index.html">Imprint</a></li>
-        </ul>
-
-        <script>
-            function reloadPage() {
-                location.reload();
-            }
-        </script>
-
-        <script>
-            function toggleMenu() {
-                const navbar = document.querySelector('.navbar');
-                navbar.classList.toggle('active');
-            }
-        </script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Aktives Element basierend auf der aktuellen URL ermitteln
-                const currentUrl = window.location.href;
-                const navbarLinks = document.querySelectorAll('.navbar a');
-
-                for (const link of navbarLinks) {
-                    if (link.href === currentUrl) {
-                        link.classList.add('active');
-                    }
-                }
-            });
-        </script>
-
-
-
-        <script>
-            function checkLink(platform) {
-                switch (platform) {
-                    case 'TikTok':
-                    case 'Instagram':
-                        alert('The page does not exist yet.');
-                        break;
-                }
-            }
-
-            function checkLink2(platform2) {
-                switch (platform2) {
-                    case 'Discord':
-                    case 'Github':
-                        alert('Attention! You will be redirected.');
-                        break;
-                }
-            }
-        </script>
-
-        <div class="follow-me">
-            <a href="" class="no-click" draggable="false" rel="noopener">Follow us on</a>
-            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener" onclick="checkLink('TikTok')"><img draggable="false" src="../img/svg-icons/tiktok2.svg"></a>
-            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener" onclick="checkLink('Instagram')"><img draggable="false" src="../img/svg-icons/instagram.svg"></a>
-            <a href="https://discord.gg" onclick="checkLink2('Discord')" draggable="false" title="Discord" rel="noopener" target="_blank"><img draggable="false" src="../img/svg-icons/discord.svg"></a>
-            <a href="https://ostborntv.github.io" onclick="checkLink2('Github')" draggable="false" title="OstbornTV`s Website &rarr; https://ostborntv.github.io" rel="noopener" target="_blank"><img draggable="false" src="../img/svg-icons/globe.svg"></a>
-        </div>
-
-        <div id="language-switcher">
-            <div id="language-title" class="language-label">Language</div>
-
-            <button class="language-button" onclick="changeLanguage('en')"></button>
-
-            <label class="switch">
-                <input type="checkbox" id="language-slider">
-                <span class="slider"></span>
-            </label>
-
-            <button class="language-button" onclick="changeLanguage('de')"></button>
-        </div>
-
-    </header>
-
-    <main id="main-content" class="container">
-        <section class="home">
-            <div class="home-text">
-                <h5>i forgot</h5>
-                <h1 id="home-title">English<br>Title</h1>
-                <p id="home-text">This is an English text.</p>
-                <div class="btn">No idea what's supposed to be there</div>
-            </div>
-        </section>
-    </main>
-
-    <div id="scroll-to-top">
-        <div><img src="../img/svg-icons/arrow-up.svg"></div>
+    <!-- Noscript Content -->
+    <div class="noscript-message">
+        <div class="loading-spinner"></div>
+        <p class="message">Bitte aktivieren Sie JavaScript für die beste Nutzererfahrung</p>
     </div>
 
-    <div id="footer-container"></div>
+    <!-- Background Image -->
+    <img src="/img/background.png" id="fsb_image" alt="Hintergrundbild" loading="lazy">
 
-    <script src="../js/scrollback.js"></script>
-    <script src="../js/footer.js"></script>
+    <!-- Header -->
+    <header class="js-only">
+        <a href="/" class="logo" aria-label="Startseite">
+            <span aria-hidden="true">SG</span>SternenKinder
+        </a>
 
+        <!-- Navigation -->
+        <nav aria-label="Hauptnavigation">
+            <button class="menu-toggle" aria-expanded="false" aria-label="Menü öffnen">
+                <span class="hamburger"></span>
+            </button>
+            
+            <ul class="navbar">
+                <li><a href="/" data-nav-link>Home</a></li>
+                <li><a href="/about/" data-nav-link aria-current="page">Über Uns</a></li>
+                <li><a href="/contact/" data-nav-link>Kontakt</a></li>
+                <li><a href="/privacy/" data-nav-link>Datenschutz</a></li>
+                <li><a href="/cookies/" data-nav-link>Cookies</a></li>
+                <li><a href="/imprint/" data-nav-link>Impressum</a></li>
+            </ul>
+        </nav>
+
+        <!-- Social Links -->
+        <div class="follow-me">
+            <span class="follow-text">Folge uns auf</span>
+            <div class="social-links">
+                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <img src="/img/svg-icons/tiktok2.svg" alt="" loading="lazy">
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="/img/svg-icons/instagram.svg" alt="" loading="lazy">
+                </a>
+                <a href="https://discord.gg" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+                    <img src="/img/svg-icons/discord.svg" alt="" loading="lazy">
+                </a>
+                <a href="https://ostborntv.github.io" target="_blank" rel="noopener noreferrer" aria-label="OstbornTV Website">
+                    <img src="/img/svg-icons/globe.svg" alt="" loading="lazy">
+                </a>
+            </div>
+        </div>
+
+        <!-- Language Switcher -->
+        <div id="language-switcher" aria-label="Sprachauswahl">
+            <span id="language-title">Sprache</span>
+            <label class="switch">
+                <input type="checkbox" id="language-slider" aria-checked="false">
+                <span class="slider" aria-hidden="true"></span>
+            </label>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="container js-only">
+        <article class="about-us">
+            <h1>Über Uns</h1>
+            
+            <section class="about-section">
+                <div class="about-content">
+                    <h2>Unsere Gemeinschaft</h2>
+                    <p>Die SG SternenKinder ist eine Gemeinschaft von Spiele-Enthusiasten, die sich dem gemeinsamen Spielerlebnis verschrieben hat. Seit unserer Gründung verbinden wir Menschen durch die Freude am Spiel.</p>
+                </div>
+                <div class="about-image">
+                    <img src="/img/about-community.jpg" alt="Unsere Gemeinschaft beim Spielen" loading="lazy">
+                </div>
+            </section>
+
+            <section class="about-section reverse">
+                <div class="about-content">
+                    <h2>Unsere Werte</h2>
+                    <ul>
+                        <li><strong>Gemeinschaft:</strong> Wir schaffen einen inklusiven Raum für alle Spieler</li>
+                        <li><strong>Fairplay:</strong> Respekt und Sportlichkeit stehen an erster Stelle</li>
+                        <li><strong>Innovation:</strong> Wir entdecken ständig neue Spiele und Spielweisen</li>
+                        <li><strong>Spaß:</strong> Der gemeinsame Spaß steht immer im Mittelpunkt</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="/img/about-values.jpg" alt="Unsere gemeinsamen Werte" loading="lazy">
+                </div>
+            </section>
+
+            <section class="team-section">
+                <h2>Unser Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="/img/team/member1.jpg" alt="Max Mustermann - Gründer" loading="lazy">
+                        <h3>Max Mustermann</h3>
+                        <p>Gründer & Vorsitzender</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="/img/team/member2.jpg" alt="Erika Musterfrau - Veranstaltungsleitung" loading="lazy">
+                        <h3>Erika Musterfrau</h3>
+                        <p>Veranstaltungsleitung</p>
+                    </div>
+                    <!-- Weitere Teammitglieder -->
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="js-only" aria-label="Nach oben scrollen">
+        <img src="/img/svg-icons/arrow-up.svg" alt="" aria-hidden="true">
+    </button>
+
+    <!-- Footer -->
+    <footer id="footer-container" class="js-only">
+        <div class="footer-bottom">
+            &copy; <span id="current-year"></span> | SG SternenKinder | Alle Rechte vorbehalten
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/jquery-3.7.1.min.js" defer></script>
+    <script src="/js/main.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/js/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
 </body>
 
 </html>

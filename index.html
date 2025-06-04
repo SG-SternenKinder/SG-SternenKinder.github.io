@@ -1,207 +1,158 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-theme="dark">
 
 <head>
-    <!-- Google verification script -->
-    <meta name="google-site-verification" content="0XJ0WmUL5nfKsLT8HpK_9JXrY_0TL8VjhjnjgfOvut0" />
-
+    <!-- Primary Meta Tags -->
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Spielegemeinschaft (SG) SternenKinder">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Spielegemeinschaft (SG) SternenKinder - Gemeinschaft und Spaß beim Spielen">
+    <title>SG SternenKinder • Home</title>
     <base href="/">
 
-    <title>SG SternenKinder • Home</title>
+    <!-- Google Verification -->
+    <meta name="google-site-verification" content="0XJ0WmUL5nfKsLT8HpK_9JXrY_0TL8VjhjnjgfOvut0">
 
-    <!-- Hinzufügen von Open Graph-Metadaten für soziale Medien -->
+    <!-- Social Media Meta Tags -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="SG SternenKinder">
-    <meta property="og:url" content="https://sg-sternenkinder.github.io/index.html">
+    <meta property="og:url" content="https://sg-sternenkinder.github.io/">
     <meta property="og:description" content="Spielegemeinschaft (SG) SternenKinder">
-    <meta property="og:image" content="https://sg-sternenkinder.github.io/img/favicon/favicon.ico">
+    <meta property="og:image" content="https://sg-sternenkinder.github.io/img/social-preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
-    <!-- Hinzufügen von Twitter-Metadaten für soziale Medien -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SG SternenKinder">
     <meta name="twitter:description" content="Spielegemeinschaft (SG) SternenKinder">
-    <meta name="twitter:image" content="https://sg-sternenkinder.github.io/img/favicon/favicon.ico">
+    <meta name="twitter:image" content="https://sg-sternenkinder.github.io/img/social-preview.jpg">
 
-    <!-- Hinzufügen eines favicon-Tags -->
-    <link rel="shortcut icon" href="img/favicon/favicon.ico" sizes="any">
+    <!-- Favicons -->
+    <link rel="icon" href="/img/favicon/favicon.ico" sizes="any">
+    <link rel="icon" href="/img/favicon/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
 
-    <!-- Manifest -->
-    <link rel="manifest" href="site.webmanifest">
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/css/style.css" as="style">
+    <link rel="preload" href="/js/jquery-3.7.1.min.js" as="script">
 
-    <!-- Weitere Stile und Skripte in externe Dateien auslagern -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/style.css">
 
-    <script>
-        if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('js/service-worker.js')
-            .then((registration) => {
-                navigator.serviceWorker.addEventListener('message', (event) => {
-                    if (event.data === 'showOfflinePopup') {
-                        // Erstelle das Popup-Element
-                        const offlinePopup = document.createElement('div');
-                        offlinePopup.classList.add('popup-container');
-                        offlinePopup.id = 'offline-popup';
-
-                        const popupContent = document.createElement('div');
-                        popupContent.classList.add('popup-content');
-
-                        popupContent.innerHTML =
-                            `
-                            <h2>Offline</h2>
-                            <p>You are currently offline. Some features may not be available.</p>
-                            <button id="close-offline-popup">Close</button>
-                        `;
-
-                        offlinePopup.appendChild(popupContent);
-
-                        // Füge das Popup zur Seite hinzu
-                        document.body.appendChild(offlinePopup);
-                    }
-                });
-            })
-        }
-    </script>
-
-    <script src="js/noscript-loading.js"></script>
-
-    <script src="js/jquery-3.7.1.min.js"></script>
-    <script src="consolenManager.js"></script>
-
-    <script src="js/cookie.js"></script>
-    <script src="js/language-switcher.js"></script>
-
-    <script src="js/popup.js"></script>
-    <script src="js/error-popup.js"></script>
-    
-    <!-- Ankündigungsbanner -->
-    <!-- <script src="js/announcement.js"></script> -->
-
-    <!-- <script src="js/toggleMenu.js"></script> -->
-    <!-- <script src="js/background.js"></script> -->
-
+    <!-- Noscript Fallback -->
+    <noscript>
+        <style>
+            .js-only { display: none !important; }
+            .noscript-message { display: flex !important; }
+        </style>
+    </noscript>
 </head>
 
 <body>
+    <!-- Noscript Content -->
+    <div class="noscript-message">
+        <div class="loading-spinner"></div>
+        <p class="message">Bitte aktivieren Sie JavaScript für die beste Nutzererfahrung</p>
+    </div>
 
-    <noscript class="noscript-message">
-        <div id="loading-screen">
-            <div class="loading-spinner"></div>
-            <p class="message">Welcome! Please enable JavaScript to fully enjoy our website.</p>
+    <!-- Background Image -->
+    <img src="/img/background.png" id="fsb_image" alt="Hintergrundbild" loading="lazy">
+
+    <!-- Header -->
+    <header class="js-only">
+        <div class="logo no-click">
+            <span aria-hidden="true">SG</span>SternenKinder
         </div>
-    </noscript>
 
-    <img src="img/background.png" id="fsb_image" alt=""/>
-
-    <header>
-
-        <div class="logo no-click"><span>SG</span>SternenKinder</div>
-
-       <!-- <div class="menu-toggle" aria-expanded="false">☰</div> -->
-        <nav>
+        <!-- Navigation -->
+        <nav aria-label="Hauptnavigation">
+            <button class="menu-toggle" aria-expanded="false" aria-label="Menü öffnen">
+                <span class="hamburger"></span>
+            </button>
+            
             <ul class="navbar">
-                <li><a draggable="false" href="" onclick="reloadPage()">Home</a></li>
-                <li><a draggable="false" href="about/index.html">About</a></li>
-                <li><a draggable="false" href="contact/index.html">Contact</a></li>
-                <li><a draggable="false" href="privacy/index.html">Privacy</a></li>
-                <li><a draggable="false" href="cookies/cookies.html">Cookies</a></li>
-                <li><a draggable="false" href="imprint/index.html">Imprint</a></li>
-
+                <li><a href="/" data-nav-link>Home</a></li>
+                <li><a href="/about/" data-nav-link>About</a></li>
+                <li><a href="/contact/" data-nav-link>Contact</a></li>
+                <li><a href="/privacy/" data-nav-link>Privacy</a></li>
+                <li><a href="/cookies/" data-nav-link>Cookies</a></li>
+                <li><a href="/imprint/" data-nav-link>Imprint</a></li>
             </ul>
         </nav>
 
-        <script>
-            function reloadPage() {
-                location.reload();
-            }
-        </script>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                // Aktives Element basierend auf der aktuellen URL ermitteln
-                const currentUrl = window.location.href;
-                const navbarLinks = document.querySelectorAll('.navbar a');
-
-                for (const link of navbarLinks) {
-                    if (link.href === currentUrl) {
-                        link.classList.add('active');
-                    }
-                }
-            });
-        </script>
-
-        <!-- Ankündigungsbanner 
-        <div id="announcement-banner">
-            <p>kleine aber feine Aktion gestartet</p>
-            <button id="close-announcement">Schließen</button>
-        </div> -->
-
-        <script>
-            function checkLink(platform) {
-                switch (platform) {
-                    case 'TikTok':
-                    case 'Instagram':
-                        alert('The page does not exist yet.');
-                        break;
-                }
-            }
-
-            function checkLink2(platform2) {
-                switch (platform2) {
-                    case 'Discord':
-                    case 'Github':
-                        alert('Attention! You will be redirected.');
-                        break;
-                }
-            }
-        </script>
-
+        <!-- Social Links -->
         <div class="follow-me">
-            <a href="" class="no-click" draggable="false" rel="noopener">Follow us on</a>
-            <a href="javascript:void(0)" draggable="false" title="TikTok" rel="noopener" onclick="checkLink('TikTok')"><img draggable="false" src="img/svg-icons/tiktok2.svg"></a>
-            <a href="javascript:void(0)" draggable="false" title="Instagram" rel="noopener" onclick="checkLink('Instagram')"><img draggable="false" src="img/svg-icons/instagram.svg"></a>
-            <a href="https://discord.gg" onclick="checkLink2('Discord')" draggable="false" title="Discord" rel="noopener" target="_blank"><img draggable="false" src="img/svg-icons/discord.svg"></a>
-            <a href="https://ostborntv.github.io" onclick="checkLink2('Github')" draggable="false" title="OstbornTV`s Website &rarr; https://ostborntv.github.io" rel="noopener" target="_blank"><img draggable="false" src="img/svg-icons/globe.svg"></a>
+            <span class="follow-text">Folge uns auf</span>
+            <div class="social-links">
+                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <img src="/img/svg-icons/tiktok2.svg" alt="" loading="lazy">
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <img src="/img/svg-icons/instagram.svg" alt="" loading="lazy">
+                </a>
+                <a href="https://discord.gg" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+                    <img src="/img/svg-icons/discord.svg" alt="" loading="lazy">
+                </a>
+                <a href="https://ostborntv.github.io" target="_blank" rel="noopener noreferrer" aria-label="OstbornTV Website">
+                    <img src="/img/svg-icons/globe.svg" alt="" loading="lazy">
+                </a>
+            </div>
         </div>
 
-        <div id="language-switcher">
-            <div id="language-title" class="language-label">Language</div>
-
-            <button class="language-button" onclick="changeLanguage('en')"></button>
-
+        <!-- Language Switcher -->
+        <div id="language-switcher" aria-label="Sprachauswahl">
+            <span id="language-title">Sprache</span>
             <label class="switch">
-                <input type="checkbox" id="language-slider">
-                <span class="slider"></span>
+                <input type="checkbox" id="language-slider" aria-checked="false">
+                <span class="slider" aria-hidden="true"></span>
             </label>
-
-            <button class="language-button" onclick="changeLanguage('de')"></button>
         </div>
-
     </header>
 
-    <main id="main-content" class="container">
+    <!-- Main Content -->
+    <main id="main-content" class="container js-only">
         <section class="home">
             <div class="home-text">
-                <h5>i forgot</h5>
-                <h1 id="home-title">English<br>Title</h1>
-                <p id="home-text">This is an English text.</p>
-                <div class="btn">No idea what's supposed to be there</div>
+                <h5>Willkommen bei</h5>
+                <h1 id="home-title">SG<br>SternenKinder</h1>
+                <p id="home-text">Gemeinschaft und Spaß beim Spielen</p>
+                <button class="btn" aria-label="Mehr erfahren">Mehr erfahren</button>
             </div>
         </section>
     </main>
 
-    <div id="scroll-to-top">
-        <div><img src="img/svg-icons/arrow-up.svg"></div>
-    </div>
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" class="js-only" aria-label="Nach oben scrollen">
+        <img src="/img/svg-icons/arrow-up.svg" alt="" aria-hidden="true">
+    </button>
 
-    <div id="footer-container"></div>
+    <!-- Footer -->
+    <footer id="footer-container" class="js-only"></footer>
 
-    <script src="js/scrollback.js"></script>
-    <script src="js/footer.js"></script>
-
+    <!-- Scripts -->
+    <script src="/js/jquery-3.7.1.min.js" defer></script>
+    <script src="/js/modernizr.js" defer></script>
+    <script src="/js/consolenManager.js" defer></script>
+    <script src="/js/cookie.js" defer></script>
+    <script src="/js/language-switcher.js" defer></script>
+    <script src="/js/navigation.js" defer></script>
+    <script src="/js/scrollback.js" defer></script>
+    <script src="/js/footer.js" defer></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/js/service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
 </body>
 
 </html>

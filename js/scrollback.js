@@ -1,31 +1,90 @@
-// scrollback.js
+/**
+ * Scrollback-Komponente für "Nach oben"-Button
+ * @namespace scrollback
+ */
+(function($) {
+    'use strict';
 
-$(document).ready(function () {
-    const scrollToTopButton = $('#scroll-to-top');
-    const scrollThreshold = 20;
-    let lastScrollTop = 0;
+    // Konfiguration
+    const config = {
+        scrollThreshold: 20,
+        animationDuration: 600,
+        buttonSelector: '#scroll-to-top',
+        scrollClass: 'scroll-up',
+        logPrefix: '[Scrollback]'
+    };
 
-    function toggleScrollToTopButton() {
-        const scrollTop = $(document).scrollTop();
+    // Zustand
+    let state = {
+        lastScrollTop: 0,
+        isScrolling: false
+    };
 
-        if (scrollTop > scrollThreshold && lastScrollTop <= scrollThreshold) {
-            $(document.body).addClass('scroll-up');
-            $.consoleManager.logToConsoleOnce('Zurückscroll-Pfeil wird angezeigt.', 'scroll-up');
-        } else if (scrollTop <= scrollThreshold && lastScrollTop > scrollThreshold) {
-            $(document.body).removeClass('scroll-up');
-            $.consoleManager.logToConsoleOnce('Zurückscroll-Pfeil wird verborgen.', 'scroll-up');
+    // DOM-Elemente
+    const $elements = {
+        body: $('body'),
+        window: $(window),
+        htmlAndBody: $('html, body'),
+        button: $(config.buttonSelector)
+    };
+
+    /**
+     * Zeigt oder versteckt den Scroll-Button basierend auf der Scroll-Position
+     */
+    function handleScroll() {
+        const scrollTop = $elements.window.scrollTop();
+        const shouldShow = scrollTop > config.scrollThreshold;
+        const wasShown = state.lastScrollTop > config.scrollThreshold;
+
+        // Nur Änderungen behandeln
+        if (shouldShow !== wasShown) {
+            $elements.body.toggleClass(config.scrollClass, shouldShow);
+            
+            const message = shouldShow 
+                ? 'Zurückscroll-Pfeil wird angezeigt.' 
+                : 'Zurückscroll-Pfeil wird verborgen.';
+            $.consoleManager.logOnce(config.logPrefix + ' ' + message, 'scroll-visibility');
         }
 
-        lastScrollTop = scrollTop;
+        state.lastScrollTop = scrollTop;
     }
 
+    /**
+     * Scrollt sanft zum Seitenanfang
+     */
     function scrollToTop() {
-        $('body,html').animate({ scrollTop: 0 }, 'slow', function () {
-            $(document.body).removeClass('scroll-up');
-            $.consoleManager.logToConsoleOnce('Benutzer hat zum oberen Bildschirmrand zurückgescrollt.', 'scroll-top');
-        });
+        if (state.isScrolling) return;
+        
+        state.isScrolling = true;
+        
+        $elements.htmlAndBody.stop().animate(
+            { scrollTop: 0 }, 
+            config.animationDuration,
+            'swing',
+            function() {
+                $elements.body.removeClass(config.scrollClass);
+                state.isScrolling = false;
+                $.consoleManager.logOnce(
+                    config.logPrefix + ' Benutzer hat zum oberen Bildschirmrand zurückgescrollt.', 
+                    'scroll-action'
+                );
+            }
+        );
     }
 
-    $(window).scroll(toggleScrollToTopButton);
-    scrollToTopButton.on('click', scrollToTop);
-});
+    /**
+     * Initialisiert die Scrollback-Komponente
+     */
+    function init() {
+        // Event-Handler
+        $elements.window.on('scroll', handleScroll);
+        $elements.button.on('click', scrollToTop);
+        
+        // Initialen Zustand prüfen
+        handleScroll();
+    }
+
+    // Initialisierung nach DOM ready
+    $(document).ready(init);
+
+})(jQuery);

@@ -1,35 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'
-        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-        xsi:schemaLocation='http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd'>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    
+    <!-- Hauptseiten -->
     <url>
         <loc>https://sg-sternenkinder.github.io/</loc>
-        <lastmod>2024-01-11T19:45:46+00:00</lastmod>
-        <priority>1.00</priority>
+        <lastmod>2024-01-11</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
     </url>
+    
+    <!-- Inhaltsseiten -->
     <url>
-        <loc>https://sg-sternenkinder.github.io/about/index.html</loc>
-        <lastmod>2024-01-11T19:45:46+00:00</lastmod>
-        <priority>0.80</priority>
+        <loc>https://sg-sternenkinder.github.io/about/</loc>
+        <lastmod>2024-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
+    
     <url>
-        <loc>https://sg-sternenkinder.github.io/contact/index.html</loc>
-        <lastmod>2024-01-11T19:45:46+00:00</lastmod>
-        <priority>0.80</priority>
+        <loc>https://sg-sternenkinder.github.io/contact/</loc>
+        <lastmod>2024-01-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
     </url>
+    
+    <!-- Rechtliche Seiten -->
     <url>
-        <loc>https://sg-sternenkinder.github.io/privacy/index.html</loc>
-        <lastmod>2024-01-11T19:45:46+00:00</lastmod>
-        <priority>0.80</priority>
+        <loc>https://sg-sternenkinder.github.io/privacy/</loc>
+        <lastmod>2024-01-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
+    
     <url>
-        <loc>https://sg-sternenkinder.github.io/imprint/index.html</loc>
-        <lastmod>2024-01-11T19:45:46+00:00</lastmod>
-        <priority>0.80</priority>
+        <loc>https://sg-sternenkinder.github.io/imprint/</loc>
+        <lastmod>2024-01-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
+    
     <url>
-        <loc>https://sg-sternenkinder.github.io/cookies/cookies.html</loc>
-        <lastmod>2024-01-11T19:45:46+00:00</lastmod>
-        <priority>0.80</priority>
+        <loc>https://sg-sternenkinder.github.io/cookies/</loc>
+        <lastmod>2024-01-11</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
     </url>
 </urlset>
