@@ -39,7 +39,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/style.css">
 
-   <script src="js/noscript-loading.js"></script>
+    <script src="js/noscript-loading.js"></script>
 
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="consolenManager.js"></script>
@@ -65,14 +65,12 @@
     <img src="/img/background.png" id="fsb_image" alt="Hintergrundbild" loading="lazy">
 
     <!-- Header -->
-    <header class="js-only">
-        <div class="logo no-click">
-            <span aria-hidden="true">SG</span>SternenKinder
-        </div>
+    <header>
+        <div class="logo no-click"><span>SG</span>SternenKinder</div>
 
         <!-- Navigation -->
-        <nav aria-label="Hauptnavigation">
-            <button class="menu-toggle" aria-expanded="false" aria-label="Menü öffnen">
+        <nav>
+            <button class="menu-toggle">
                 <span class="hamburger"></span>
             </button>
             
@@ -90,27 +88,27 @@
         <div class="follow-me">
             <span class="follow-text">Folge uns auf</span>
             <div class="social-links">
-                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" title="TikTok">
                     <img src="/img/svg-icons/tiktok2.svg" alt="" loading="lazy">
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">
                     <img src="/img/svg-icons/instagram.svg" alt="" loading="lazy">
                 </a>
-                <a href="https://discord.gg" target="_blank" rel="noopener noreferrer" aria-label="Discord">
+                <a href="https://discord.gg" target="_blank" rel="noopener noreferrer" title="Discord">
                     <img src="/img/svg-icons/discord.svg" alt="" loading="lazy">
                 </a>
-                <a href="https://ostborntv.github.io" target="_blank" rel="noopener noreferrer" aria-label="OstbornTV Website">
+                <a href="https://ostborntv.github.io" target="_blank" rel="noopener noreferrer" title="OstbornTV Website">
                     <img src="/img/svg-icons/globe.svg" alt="" loading="lazy">
                 </a>
             </div>
         </div>
 
         <!-- Language Switcher -->
-        <div id="language-switcher" aria-label="Sprachauswahl">
+        <div id="language-switcher" title="Sprachauswahl">
             <span id="language-title">Sprache</span>
             <label class="switch">
-                <input type="checkbox" id="language-slider" aria-checked="false">
-                <span class="slider" aria-hidden="true"></span>
+                <input type="checkbox" id="language-slider">
+                <span class="slider"></span>
             </label>
         </div>
     </header>
@@ -122,18 +120,18 @@
                 <h5>Willkommen bei</h5>
                 <h1 id="home-title">SG<br>SternenKinder</h1>
                 <p id="home-text">Gemeinschaft und Spaß beim Spielen</p>
-                <button class="btn" aria-label="Mehr erfahren">Mehr erfahren</button>
+                <button class="btn" title="Mehr erfahren">Mehr erfahren</button>
             </div>
         </section>
     </main>
 
     <!-- Scroll to Top Button -->
-    <button id="scroll-to-top" class="js-only" aria-label="Nach oben scrollen">
-        <img src="/img/svg-icons/arrow-up.svg" alt="" aria-hidden="true">
+    <button id="scroll-to-top" title="Nach oben scrollen">
+        <img src="/img/svg-icons/arrow-up.svg" alt="">
     </button>
 
     <!-- Footer -->
-    <footer id="footer-container" class="js-only"></footer>
+    <footer id="footer-container"></footer>
 
     <!-- Scripts -->
     <script src="/js/background.js" defer></script>
