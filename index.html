@@ -98,12 +98,17 @@
         </div>
 
         <!-- Language Switcher -->
-        <div id="language-switcher" title="Sprachauswahl">
-            <span id="language-title">Sprache</span>
+        <div id="language-switcher">
+            <div id="language-title" class="language-label">Language</div>
+
+            <button class="language-button" onclick="changeLanguage('en')"></button>
+
             <label class="switch">
                 <input type="checkbox" id="language-slider">
                 <span class="slider"></span>
             </label>
+
+            <button class="language-button" onclick="changeLanguage('de')"></button>
         </div>
     </header>
 

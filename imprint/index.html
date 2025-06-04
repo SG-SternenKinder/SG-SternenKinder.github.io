@@ -94,12 +94,17 @@
         </div>
 
         <!-- Language Switcher -->
-        <div id="language-switcher" aria-label="Sprachauswahl">
-            <span id="language-title">Sprache</span>
+        <div id="language-switcher">
+            <div id="language-title" class="language-label">Language</div>
+
+            <button class="language-button" onclick="changeLanguage('en')"></button>
+
             <label class="switch">
-                <input type="checkbox" id="language-slider" aria-checked="false">
-                <span class="slider" aria-hidden="true"></span>
+                <input type="checkbox" id="language-slider">
+                <span class="slider"></span>
             </label>
+
+            <button class="language-button" onclick="changeLanguage('de')"></button>
         </div>
     </header>
 
