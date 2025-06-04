@@ -32,10 +32,6 @@
     <link rel="apple-touch-icon" href="/img/favicon/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="/css/style.css" as="style">
-    <link rel="preload" href="/js/jquery-3.7.1.min.js" as="script">
-
     <!-- CSS -->
     <link rel="stylesheet" href="/css/style.css">
 
@@ -70,17 +66,14 @@
 
         <!-- Navigation -->
         <nav>
-            <button class="menu-toggle">
-                <span class="hamburger"></span>
-            </button>
-            
             <ul class="navbar">
-                <li><a href="/" data-nav-link>Home</a></li>
-                <li><a href="/about/" data-nav-link>About</a></li>
-                <li><a href="/contact/" data-nav-link>Contact</a></li>
-                <li><a href="/privacy/" data-nav-link>Privacy</a></li>
-                <li><a href="/cookies/" data-nav-link>Cookies</a></li>
-                <li><a href="/imprint/" data-nav-link>Imprint</a></li>
+                <li><a draggable="false" href="" onclick="reloadPage()">Home</a></li>
+                <li><a draggable="false" href="about/index.html">About</a></li>
+                <li><a draggable="false" href="contact/index.html">Contact</a></li>
+                <li><a draggable="false" href="privacy/index.html">Privacy</a></li>
+                <li><a draggable="false" href="cookies/cookies.html">Cookies</a></li>
+                <li><a draggable="false" href="imprint/index.html">Imprint</a></li>
+
             </ul>
         </nav>
 
