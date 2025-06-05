@@ -4,16 +4,26 @@
  */
 'use strict';
 
-const FILE_VERSION = 'v0.0.1.5';
+const FILE_VERSION = 'v0.0.1.6';
 const CACHE_NAME = `cache-${FILE_VERSION}`;
 const OFFLINE_PAGE = '/offline.html'; // Pfad zur Offline-Fallback-Seite
 
 // Zu cachende Ressourcen
 const PRECACHE_RESOURCES = [
     '/',
-    '/styles/main.css',
-    '/scripts/main.js',
-    '/images/logo.png',
+    '/css/main.css',
+    '/js/jquery-3.7.1.min.js',
+    '/js/cookie.js',
+    '/js/popup.js',
+    '/img/favicon/favicon.ico',
+    'consolenManager.js',
+    '/js/language-switcher.js',
+    '/js/background.js',
+    '/js/footer.js',
+    '/js/noscript-loading.js',
+    '/js/scrollback.js',
+    '/js/toggleMenu.js',
+    '/js/error-popup.js',
     OFFLINE_PAGE
 ];
 
