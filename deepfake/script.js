@@ -96,22 +96,22 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Easter Egg (Konami-Code)
     const konamiCode = [
-        'ArrowUp', 'ArrowUp', 
-        'ArrowDown', 'ArrowDown', 
-        'ArrowLeft', 'ArrowRight', 
-        'ArrowLeft', 'ArrowRight', 
+        'ArrowUp', 'ArrowUp',
+        'ArrowDown', 'ArrowDown',
+        'ArrowLeft', 'ArrowRight',
+        'ArrowLeft', 'ArrowRight',
         'b', 'a'
     ];
     let konamiInput = [];
 
     document.addEventListener('keydown', (e) => {
         konamiInput.push(e.key);
-        
+
         // Keep array at correct length
         if (konamiInput.length > konamiCode.length) {
             konamiInput.shift();
         }
-        
+
         // Check match
         if (konamiInput.join('') === konamiCode.join('')) {
             document.body.classList.add('konami');
@@ -140,11 +140,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         const langSwitcher = document.querySelector('.language-switcher');
         const langDropdown = document.querySelector('.language-dropdown');
         const savedLang = localStorage.getItem('preferredLanguage') || 'de';
-        
+
         applyTranslations(savedLang);
 
         // Dropdown-Toggle
-        langSwitcher?.addEventListener('click', function(e) {
+        langSwitcher?.addEventListener('click', function (e) {
             e.stopPropagation();
             const isExpanded = this.getAttribute('aria-expanded') !== 'true';
             this.setAttribute('aria-expanded', isExpanded);
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         // Sprachauswahl
         langDropdown?.querySelectorAll('button').forEach(btn => {
-            btn.addEventListener('click', function(e) {
+            btn.addEventListener('click', function (e) {
                 e.stopPropagation();
                 const lang = this.dataset.lang;
                 applyTranslations(lang);
@@ -172,46 +172,74 @@ document.addEventListener('DOMContentLoaded', async function () {
             }
         });
 
-    function applyTranslations(lang) {
-        const t = translations[lang];
-        if (!t) return;
-        
-        // Hero Section
-        document.querySelector('.hero-content h1').innerHTML = t.hero_title;
-        document.querySelector('.hero-content p').textContent = t.hero_text;
-        document.querySelector('.download-btn').innerHTML = `<i class="fas fa-download"></i> ${t.download_btn}`;
-        document.querySelector('.open-in-browser-btn').innerHTML = `<i class="fas fa-globe"></i> ${t.browser_btn}`;
+        function applyTranslations(lang) {
+            const t = translations[lang];
+            if (!t) return;
 
-        // Features - mit sicherer Überprüfung
-        const features = document.querySelectorAll('.feature-card');
-        if (features.length > 0) {
-            const feature1Title = features[0].querySelector('h3');
-            const feature1Text = features[0].querySelector('p');
-            if (feature1Title) feature1Title.textContent = t.feature1_title;
-            if (feature1Text) feature1Text.textContent = t.feature1_text;
-        }
-        if (features.length > 1) {
-            const feature2Title = features[1].querySelector('h3');
-            const feature2Text = features[1].querySelector('p');
-            if (feature2Title) feature2Title.textContent = t.feature2_title;
-            if (feature2Text) feature2Text.textContent = t.feature2_text;
-        }
-        if (features.length > 2) {
-            const feature3Title = features[2].querySelector('h3');
-            const feature3Text = features[2].querySelector('p');
-            if (feature3Title) feature3Title.textContent = t.feature3_title;
-            if (feature3Text) feature3Text.textContent = t.feature3_text;
-        }
+            // Hero Section
+            document.querySelector('.hero-content h1').innerHTML = t.hero_title;
+            document.querySelector('.hero-content p').textContent = t.hero_text;
+            document.querySelector('.download-btn').innerHTML = `<i class="fas fa-download"></i> ${t.download_btn}`;
+            document.querySelector('.open-in-browser-btn').innerHTML = `<i class="fas fa-globe"></i> ${t.browser_btn}`;
 
-        // UI aktualisieren
-        const currentLangElement = document.querySelector('.current-language');
-        if (currentLangElement) {
-            currentLangElement.textContent = LANG_NAMES[lang] || lang;
+            // Features
+            const features = document.querySelectorAll('.feature-card');
+            features.forEach((feature, index) => {
+                const title = feature.querySelector('h3');
+                const text = feature.querySelector('p');
+                if (title) title.textContent = t[`feature${index + 1}_title`];
+                if (text) text.textContent = t[`feature${index + 1}_text`];
+            });
+
+            // Navbar & Mobile Menu
+            const navItems = [
+                { icon: 'download', key: 'nav_download' },
+                { icon: 'bolt', key: 'nav_nitro' },
+                { icon: 'compass', key: 'nav_discover' },
+                { icon: 'shield-alt', key: 'nav_safety' },
+                { icon: 'question-circle', key: 'nav_support' },
+                { icon: 'blog', key: 'nav_blog' },
+                { icon: 'briefcase', key: 'nav_careers' }
+            ];
+
+            navItems.forEach((item, i) => {
+                // Desktop Nav
+                const desktopLink = document.querySelectorAll('.nav-links a')[i];
+                if (desktopLink) {
+                    desktopLink.innerHTML = `<i class="fas fa-${item.icon}"></i> ${t[item.key]}`;
+                }
+
+                // Mobile Nav
+                const mobileLink = document.querySelectorAll('.mobile-menu .nav-links a')[i];
+                if (mobileLink) {
+                    mobileLink.innerHTML = `<i class="fas fa-${item.icon}"></i> ${t[item.key]}`;
+                }
+            });
+
+            // Footer
+            const footerItems = [
+                { icon: 'box-open', key: 'footer_product' },
+                { icon: 'building', key: 'footer_company' },
+                { icon: 'book', key: 'footer_resources' },
+                { icon: 'balance-scale', key: 'footer_legal' }
+            ];
+
+            footerItems.forEach((item, i) => {
+                const footerTitle = document.querySelectorAll('.footer-column h3')[i];
+                if (footerTitle) {
+                    footerTitle.innerHTML = `<i class="fas fa-${item.icon}"></i> ${t[item.key]}`;
+                }
+            });
+
+            // Sprache in UI aktualisieren
+            const currentLangElement = document.querySelector('.current-language');
+            if (currentLangElement) {
+                currentLangElement.textContent = LANG_NAMES[lang] || lang;
+            }
+
+            document.documentElement.lang = lang;
+            localStorage.setItem('preferredLanguage', lang);
         }
-        
-        document.documentElement.lang = lang;
-        localStorage.setItem('preferredLanguage', lang);
-    }
     }
 
     // Theme-Wechsler

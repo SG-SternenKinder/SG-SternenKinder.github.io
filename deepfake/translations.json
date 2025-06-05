@@ -9,7 +9,18 @@
         "feature2_title": "Echtzeit-Chat",
         "feature2_text": "Plaudere mit Text, Sprach- oder Videochat mit deinen Freunden.",
         "feature3_title": "Bots & Integrationen",
-        "feature3_text": "Erweitere deinen Server mit nützlichen Bots und Tools."
+        "feature3_text": "Erweitere deinen Server mit nützlichen Bots und Tools.",
+        "nav_download": "Download",
+        "nav_nitro": "Nitro",
+        "nav_discover": "Entdecken",
+        "nav_safety": "Sicherheit",
+        "nav_support": "Support",
+        "nav_blog": "Blog",
+        "nav_careers": "Karriere",
+        "footer_product": "Produkt",
+        "footer_company": "Unternehmen",
+        "footer_resources": "Ressourcen",
+        "footer_legal": "Rechtliches"
     },
     "en": {
         "hero_title": "<i class='fas fa-lightbulb'></i> IMAGINE A PLACE...",
@@ -21,7 +32,18 @@
         "feature2_title": "Real-time chat",
         "feature2_text": "Chat with your friends via text, voice, or video.",
         "feature3_title": "Bots & Integrations",
-        "feature3_text": "Enhance your server with useful bots and tools."
+        "feature3_text": "Enhance your server with useful bots and tools.",
+        "nav_download": "Download",
+        "nav_nitro": "Nitro",
+        "nav_discover": "Discover",
+        "nav_safety": "Safety",
+        "nav_support": "Support",
+        "nav_blog": "Blog",
+        "nav_careers": "Careers",
+        "footer_product": "Product",
+        "footer_company": "Company",
+        "footer_resources": "Resources",
+        "footer_legal": "Legal"
     },
     "fr": {
         "hero_title": "<i class='fas fa-lightbulb'></i> IMAGINE UN ENDROIT...",
@@ -33,6 +55,17 @@
         "feature2_title": "Chat en temps réel",
         "feature2_text": "Discutez avec vos amis par texte, voix ou vidéo.",
         "feature3_title": "Bots & Intégrations",
-        "feature3_text": "Améliorez votre serveur avec des bots et des outils utiles."
+        "feature3_text": "Améliorez votre serveur avec des bots et des outils utiles.",
+        "nav_download": "Télécharger",
+        "nav_nitro": "Nitro",
+        "nav_discover": "Découvrir",
+        "nav_safety": "Sécurité",
+        "nav_support": "Support",
+        "nav_blog": "Blog",
+        "nav_careers": "Carrières",
+        "footer_product": "Produit",
+        "footer_company": "Entreprise",
+        "footer_resources": "Ressources",
+        "footer_legal": "Juridique"
     }
 }
