@@ -126,12 +126,28 @@ button:active {
 .download-btn {
   background-color: #5865F2;
   color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 28px; /* Stärkere Rundung wie ursprünglich */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: pulse 2s infinite;
+  box-shadow: 0 4px 14px rgba(88, 101, 242, 0.4); /* Subtiler Schatten */
 }
 
 .download-btn:hover {
   background-color: #4752C4;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3);
+  transform: translateY(-2px); /* Leichter Hover-Effekt */
+  box-shadow: 0 6px 20px rgba(88, 101, 242, 0.5);
+}
+
+.download-btn:active {
+  transform: translateY(1px);
 }
 
 .download-btn::after {
@@ -141,18 +157,32 @@ button:active {
 }
 
 .download-btn:hover::after {
-  transform: translateX(5px);
+  transform: translateX(4px);
 }
 
 .open-in-browser-btn {
   background-color: #2f3136;
   color: white;
+  border: 2px solid rgba(255, 255, 255, 0.1); /* Dünner Border */
+  padding: 14px 30px; /* Etwas weniger horizontal padding */
+  border-radius: 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .open-in-browser-btn:hover {
-  background-color: #202225;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background-color: #36393f;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.open-in-browser-btn:active {
+  transform: translateY(1px);
 }
 
 
@@ -806,11 +836,13 @@ button:active {
 @media (max-width: 400px) {
   .hero-buttons {
     flex-direction: column;
+    gap: 12px;
   }
   .download-btn,
   .open-in-browser-btn {
     width: 100%;
     justify-content: center;
+    text-align: center;
   }
   .mobile-menu {
     width: 85%;
