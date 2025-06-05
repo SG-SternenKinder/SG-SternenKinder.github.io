@@ -6,44 +6,44 @@
     <!-- Hauptseiten -->
     <url>
         <loc>https://sg-sternenkinder.github.io/</loc>
-        <lastmod>2024-01-11</lastmod>
-        <changefreq>weekly</changefreq>
+        <lastmod>2025-06-04</lastmod>
+        <changefreq>yearly</changefreq>
         <priority>1.0</priority>
     </url>
     
     <!-- Inhaltsseiten -->
     <url>
         <loc>https://sg-sternenkinder.github.io/about/</loc>
-        <lastmod>2024-01-11</lastmod>
-        <changefreq>monthly</changefreq>
+        <lastmod>2025-06-04</lastmod>
+        <changefreq>yearly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
         <loc>https://sg-sternenkinder.github.io/contact/</loc>
-        <lastmod>2024-01-11</lastmod>
-        <changefreq>monthly</changefreq>
+        <lastmod>2025-06-04</lastmod>
+        <changefreq>yearly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <!-- Rechtliche Seiten -->
     <url>
         <loc>https://sg-sternenkinder.github.io/privacy/</loc>
-        <lastmod>2024-01-11</lastmod>
+        <lastmod>2025-06-04</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     
     <url>
         <loc>https://sg-sternenkinder.github.io/imprint/</loc>
-        <lastmod>2024-01-11</lastmod>
+        <lastmod>2025-06-04</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     
     <url>
         <loc>https://sg-sternenkinder.github.io/cookies/</loc>
-        <lastmod>2024-01-11</lastmod>
+        <lastmod>2025-06-04</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>

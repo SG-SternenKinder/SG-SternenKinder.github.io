@@ -9,7 +9,7 @@ $.consoleManager = {
      * @property {boolean} enableConsoleOutput
      */
     consoleSettings: {
-        enableConsoleOutput: true
+        enableConsoleOutput: false
     },
 
     /**
