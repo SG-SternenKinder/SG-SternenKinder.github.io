@@ -1,0 +1,38 @@
+{
+    "de": {
+        "hero_title": "<i class='fas fa-lightbulb'></i> IMAGINIERE EINEN ORT...",
+        "hero_text": "...wo du zu deiner Schul- oder Gaming-Gruppe, deinen Freunden oder deiner Familie gehören kannst. Ein Ort, an dem du einfach Zeit verbringen und chatten kannst. Discord macht es leicht, jeden Tag in Kontakt zu bleiben.",
+        "download_btn": "Download für Windows",
+        "browser_btn": "Discord in deinem Browser öffnen",
+        "feature1_title": "Gemeinschaften",
+        "feature1_text": "Erstelle oder trete Communities bei, die deine Interessen teilen.",
+        "feature2_title": "Echtzeit-Chat",
+        "feature2_text": "Plaudere mit Text, Sprach- oder Videochat mit deinen Freunden.",
+        "feature3_title": "Bots & Integrationen",
+        "feature3_text": "Erweitere deinen Server mit nützlichen Bots und Tools."
+    },
+    "en": {
+        "hero_title": "<i class='fas fa-lightbulb'></i> IMAGINE A PLACE...",
+        "hero_text": "...where you can belong to a school club, a gaming group, or a worldwide art community. Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.",
+        "download_btn": "Download for Windows",
+        "browser_btn": "Open Discord in your browser",
+        "feature1_title": "Communities",
+        "feature1_text": "Create or join communities that share your interests.",
+        "feature2_title": "Real-time chat",
+        "feature2_text": "Chat with your friends via text, voice, or video.",
+        "feature3_title": "Bots & Integrations",
+        "feature3_text": "Enhance your server with useful bots and tools."
+    },
+    "fr": {
+        "hero_title": "<i class='fas fa-lightbulb'></i> IMAGINE UN ENDROIT...",
+        "hero_text": "...où tu peux faire partie d'un club scolaire, d'un groupe de gamers ou d'une communauté artistique mondiale. Où toi et quelques amis pouvez passer du temps ensemble. Un endroit qui permet de discuter tous les jours et de traîner plus souvent.",
+        "download_btn": "Télécharger pour Windows",
+        "browser_btn": "Ouvrir Discord dans votre navigateur",
+        "feature1_title": "Communautés",
+        "feature1_text": "Créez ou rejoignez des communautés qui partagent vos intérêts.",
+        "feature2_title": "Chat en temps réel",
+        "feature2_text": "Discutez avec vos amis par texte, voix ou vidéo.",
+        "feature3_title": "Bots & Intégrations",
+        "feature3_text": "Améliorez votre serveur avec des bots et des outils utiles."
+    }
+}
