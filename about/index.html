@@ -64,7 +64,7 @@
             
             <ul class="navbar">
                 <li><a href="https://sg-sternenkinder.github.io/" data-nav-link>Home</a></li>
-                <li><a href="https://sg-sternenkinder.github.io/about/" data-nav-link aria-current="page">Über uns</a></li>
+                <li><a href="https://sg-sternenkinder.github.io/about/" data-nav-link>Über uns</a></li>
                 <li><a href="https://sg-sternenkinder.github.io/contact/" data-nav-link>Kontakt</a></li>
                 <li><a href="https://sg-sternenkinder.github.io/privacy/" data-nav-link>Datenschutz</a></li>
                 <li><a href="https://sg-sternenkinder.github.io/cookies/" data-nav-link>Cookies</a></li>
@@ -193,6 +193,19 @@
                     });
             });
         }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentUrl = window.location.href;
+            const navbarLinks = document.querySelectorAll('.navbar a');
+
+            for (const link of navbarLinks) {
+                if (link.href === currentUrl) {
+                    link.classList.add('active');
+                }
+            }
+        });
     </script>
 </body>
 

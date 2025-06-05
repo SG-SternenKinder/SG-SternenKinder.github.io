@@ -68,7 +68,7 @@
                 <li><a href="https://sg-sternenkinder.github.io/about/" data-nav-link>Über uns</a></li>
                 <li><a href="https://sg-sternenkinder.github.io/contact/" data-nav-link>Kontakt</a></li>
                 <li><a href="https://sg-sternenkinder.github.io/privacy/" data-nav-link>Datenschutz</a></li>
-                <li><a href="https://sg-sternenkinder.github.io/cookies/" data-nav-link aria-current="page">Cookies</a></li>
+                <li><a href="https://sg-sternenkinder.github.io/cookies/" data-nav-link>Cookies</a></li>
                 <li><a href="https://sg-sternenkinder.github.io/imprint/" data-nav-link>Impressum</a></li>
             </ul>
         </nav>
@@ -110,30 +110,28 @@
     <!-- Main Content -->
     <main id="main-content" class="container js-only">
         <article class="cookie-policy">
-            <h1>Cookie-Richtlinien</h1>
             <section class="cookie-section">
-                <div class="cookie-text">
-                    <h2 id="cookie-header">Usage of Cookies on Our Website</h2>
-                    <p id="cookie-paragraph-1">We use cookies on our website, as well as our web hoster [Github](Github-Link).
-                        On our website, we use cookies for the following purposes:</p>
-                    <p id="cookie-paragraph-2">Cookie Banner: To ensure that you are informed about our use of cookies, we use a
-                        cookie banner. This banner saves your consent to the use of cookies to provide you with the best
-                        possible website experience. This consent is also stored for 4 days.</p>
-                    <p id="cookie-paragraph-3">Cookies are small text files stored by your browser. They allow us to customize
-                        the website, perform analytics, and improve website performance.</p>
-                    <p id="cookie-paragraph-4">By using our website, you agree to the use of cookies as described in our privacy
-                        policy. You can disable or adjust the use of cookies in your browser settings.</p>
-                    <p id="cookie-paragraph-5">For more information on the use of cookies and your privacy rights, please refer
-                        to our privacy policy.</p>
-                </div>
-            </section>
-            <section>
-                <h2>Ihre Cookie-Einstellungen</h2>
-                <div class="cookie-controls">
-                    <button id="accept-all-cookies" class="btn">Alle akzeptieren</button>
-                    <button id="reject-all-cookies" class="btn btn-secondary">Alle ablehnen</button>
-                    <button id="save-cookie-settings" class="btn">Auswahl speichern</button>
-                </div>
+                <h1>Cookie-Richtlinien</h1>
+                    <div class="cookie-text">
+                        <h2 id="cookie-header">Usage of Cookies on Our Website</h2>
+                        <p id="cookie-paragraph-1">We use cookies on our website, as well as our web hoster [Github](Github-Link).
+                            On our website, we use cookies for the following purposes:</p>
+                        <p id="cookie-paragraph-2">Cookie Banner: To ensure that you are informed about our use of cookies, we use a
+                            cookie banner. This banner saves your consent to the use of cookies to provide you with the best
+                            possible website experience. This consent is also stored for 4 days.</p>
+                        <p id="cookie-paragraph-3">Cookies are small text files stored by your browser. They allow us to customize
+                            the website, perform analytics, and improve website performance.</p>
+                        <p id="cookie-paragraph-4">By using our website, you agree to the use of cookies as described in our privacy
+                            policy. You can disable or adjust the use of cookies in your browser settings.</p>
+                        <p id="cookie-paragraph-5">For more information on the use of cookies and your privacy rights, please refer
+                            to our privacy policy.</p>
+                    </div>
+                    <h2>Ihre Cookie-Einstellungen</h2>
+                    <div class="cookie-controls">
+                        <button id="accept-all-cookies" class="btn">Alle akzeptieren</button>
+                        <button id="reject-all-cookies" class="btn btn-secondary">Alle ablehnen</button>
+                        <button id="save-cookie-settings" class="btn">Auswahl speichern</button>
+                    </div>
             </section>
         </article>
     </main>
@@ -176,6 +174,19 @@
                     });
             });
         }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const currentUrl = window.location.href;
+            const navbarLinks = document.querySelectorAll('.navbar a');
+
+            for (const link of navbarLinks) {
+                if (link.href === currentUrl) {
+                    link.classList.add('active');
+                }
+            }
+        });
     </script>
 </body>
 
