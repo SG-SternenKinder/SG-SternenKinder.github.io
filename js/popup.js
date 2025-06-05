@@ -1,6 +1,8 @@
 /**
- * Popup Manager - Verwaltet alle Popup-Funktionen
+ * Popup Manager - Verwaltet Cookie- und Offline-Popups
  * @namespace popupManager
+ * @requires jQuery
+ * @requires CookieUtil
  */
 (function($) {
     'use strict';
@@ -18,8 +20,9 @@
             COOKIES_AKZEPTIERT: 'cookiesAccepted',
             COOKIES_ABGELEHNT: 'cookiesRejected'
         },
-        jsonPfad: '../json/popup.json',
-        logPrefix: '[Popup]'
+        jsonPfad: '/json/popup.json',
+        logPrefix: '[Popup]',
+        cookieLaufzeit: 2 // Tage
     };
 
     // DOM Elemente
@@ -27,203 +30,157 @@
     let popups = {};
 
     /**
-     * Erstellt ein Popup mit gegebener ID und Inhalt
+     * Initialisiert die Popup-Komponente
+     * @throws {Error} Wenn Abhängigkeiten fehlen
+     */
+    function initialisiereAbhaengigkeiten() {
+        if (typeof $ === 'undefined') {
+            throw new Error('jQuery nicht geladen');
+        }
+        if (typeof $.CookieUtil === 'undefined') {
+            throw new Error('CookieUtil nicht verfügbar');
+        }
+    }
+
+    /**
+     * Erstellt ein Popup mit Inhalt
      * @param {string} id - Popup ID
      * @param {string} content - HTML Inhalt
      * @returns {jQuery} Popup Element
      */
     function erstellePopup(id, content) {
-        const $popup = $('<div class="popup-container"></div>')
+        return $('<div class="popup-container"></div>')
             .attr('id', id)
             .html(content)
             .appendTo($body)
             .hide();
-        
-        popups[id] = $popup;
-        return $popup;
     }
 
     /**
-     * Entfernt ein Popup anhand der ID
-     * @param {string} id - Zu entfernende Popup ID
-     */
-    function entfernePopup(id) {
-        if (popups[id]) {
-            popups[id].remove();
-            delete popups[id];
-        }
-    }
-
-    /**
-     * Lädt Popup-Texte aus JSON Datei
-     * @returns {Promise} Promise mit Popup-Daten
+     * Lädt Popup-Texte mit Fehlerbehandlung
+     * @returns {Promise<Object>} Popup-Daten
      */
     function ladePopupTexte() {
-        return $.getJSON(config.jsonPfad)
-            .fail(() => log('Fehler beim Laden der Popup-Texte'));
+        return $.getJSON(config.jsonPfad).catch(() => ({
+            cookiePopup: {
+                title: "Cookie-Einstellungen",
+                paragraphs: ["Wir verwenden Cookies für wesentliche Funktionen."],
+                links: [],
+                buttons: { accept: "Akzeptieren", reject: "Ablehnen" }
+            }
+        }));
     }
 
     /**
-     * Erstellt HTML Inhalt für verschiedene Popup-Typen
-     * @param {string} typ - Popup Typ
-     * @param {Object} daten - Popup Inhaltsdaten
-     * @returns {string} HTML Inhalt
-     */
-    function erstellePopupInhalt(typ, daten) {
-        const vorlagen = {
-            [config.popupTypen.COOKIE]: `
-                <div class="popup-content">
-                    <h2>${daten.title}</h2>
-                    ${daten.paragraphs.map(p => `<p>${p}</p>`).join('')}
-                    <br>
-                    <div class="mitte-container">
-                        ${daten.links.map(link => 
-                            `<a href="${link.href}" target="_self">${link.text}</a>`
-                        ).join(' ')}
-                    </div>
-                    <button class="popup-btn accept-btn">${daten.buttons.accept}</button>
-                    <button class="popup-btn reject-btn">${daten.buttons.reject}</button>
-                </div>
-            `,
-            [config.popupTypen.AKZEPTIERT]: `
-                <div class="popup-content">
-                    <h2>${daten.title}</h2>
-                    <p>${daten.paragraph}</p>
-                    <button class="popup-btn close-btn">${daten.button}</button>
-                </div>
-            `,
-            [config.popupTypen.ABGELEHNT]: `
-                <div class="popup-content">
-                    <h2>${daten.title}</h2>
-                    <p>${daten.paragraph}</p>
-                    <button class="popup-btn close-btn">${daten.button}</button>
-                </div>
-            `,
-            [config.popupTypen.OFFLINE]: `
-                <div class="popup-content">
-                    <h2>${daten.title}</h2>
-                    <p>${daten.paragraph}</p>
-                    <button class="popup-btn close-btn">${daten.button}</button>
-                </div>
-            `
-        };
-
-        return vorlagen[typ] || '';
-    }
-
-    /**
-     * Richtet Event-Handler für ein Popup ein
-     * @param {jQuery} $popup - Popup Element
-     * @param {string} typ - Popup Typ
-     */
-    function richtePopupEventsEin($popup, typ) {
-        $popup.on('click', '.close-btn', () => {
-            $popup.remove();
-            log(`${typ} wurde geschlossen`);
-        });
-
-        if (typ === config.popupTypen.COOKIE) {
-            $popup.on('click', '.accept-btn', handleCookieAkzeptiert);
-            $popup.on('click', '.reject-btn', handleCookieAbgelehnt);
-        }
-    }
-
-    /**
-     * Verarbeitet die Cookie-Akzeptierung
+     * Cookie-Akzeptierung verarbeiten
      */
     function handleCookieAkzeptiert() {
-        $.CookieUtil.setCookie(config.speicherSchlüssel.COOKIES_AKZEPTIERT, 'true', 4);
-        entfernePopup('popup');
-        zeigePopup(config.popupTypen.AKZEPTIERT);
-        log('Cookies wurden akzeptiert');
+        $.CookieUtil.setCookie(
+            config.speicherSchlüssel.COOKIES_AKZEPTIERT, 
+            'true', 
+            config.cookieLaufzeit
+        );
+        popups.popup.remove();
+        popups['accepted-popup'].fadeIn(200);
+        log('Cookies akzeptiert');
     }
 
     /**
-     * Verarbeitet die Cookie-Ablehnung
+     * Cookie-Ablehnung verarbeiten
      */
     function handleCookieAbgelehnt() {
         sessionStorage.setItem(config.speicherSchlüssel.POPUP_GEZEIGT, 'true');
-        sessionStorage.setItem(config.speicherSchlüssel.COOKIES_ABGELEHNT, 'true');
-        entfernePopup('popup');
-        zeigePopup(config.popupTypen.ABGELEHNT);
-        log('Cookies wurden abgelehnt');
+        popups.popup.remove();
+        popups['rejected-popup'].fadeIn(200);
+        log('Cookies abgelehnt');
     }
 
     /**
-     * Zeigt ein Popup anhand des Typs
-     * @param {string} typ - Popup Typ
+     * Service Worker Nachrichten verarbeiten
      */
-    function zeigePopup(typ) {
-        const popupId = `${typ}-popup`.toLowerCase();
-        if (popups[popupId]) {
-            popups[popupId].css('display', 'flex');
+    function initOfflinePopup() {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.addEventListener('message', (event) => {
+                if (event.data === 'showOfflinePopup' && popups['offline-popup']) {
+                    popups['offline-popup'].fadeIn(200);
+                }
+            });
         }
     }
 
     /**
-     * Initialisiert das Offline-Popup vom Service Worker
-     */
-    function initOfflinePopup() {
-        navigator.serviceWorker.addEventListener('message', (event) => {
-            if (event.data === 'showOfflinePopup') {
-                zeigePopup(config.popupTypen.OFFLINE);
-                log('Offline-Popup wird angezeigt');
-            }
-        });
-    }
-
-    /**
-     * Loggt Nachrichten in die Konsole, wenn aktiviert
+     * Loggt Nachrichten über consoleManager
      * @param {string} nachricht - Zu loggende Nachricht
      */
     function log(nachricht) {
-        if (typeof $.consoleManager !== 'undefined' && $.consoleManager.getConsoleOutput()) {
+        if ($.consoleManager && $.consoleManager.getConsoleOutput()) {
             console.log(`${config.logPrefix} ${nachricht}`);
         }
     }
 
     /**
-     * Haupt-Initialisierungsfunktion
+     * Hauptinitialisierung
      */
     async function init() {
         try {
+            initialisiereAbhaengigkeiten();
             const daten = await ladePopupTexte();
-            
-            // Erstelle alle Popups (werden noch nicht angezeigt)
-            erstellePopup('popup', erstellePopupInhalt(config.popupTypen.COOKIE, daten.cookiePopup));
-            erstellePopup('accepted-popup', erstellePopupInhalt(config.popupTypen.AKZEPTIERT, daten.acceptedPopup));
-            erstellePopup('rejected-popup', erstellePopupInhalt(config.popupTypen.ABGELEHNT, daten.rejectedPopup));
-            erstellePopup('offline-popup', erstellePopupInhalt(config.popupTypen.OFFLINE, daten.offlinePopup));
 
-            // Richte Event-Handler ein
-            Object.keys(popups).forEach(id => {
-                const typ = id.replace('-popup', '');
-                richtePopupEventsEin(popups[id], typ);
-            });
+            // Popups erstellen
+            popups = {
+                'popup': erstellePopup('popup', `
+                    <div class="popup-content">
+                        <h2>${daten.cookiePopup.title}</h2>
+                        ${daten.cookiePopup.paragraphs.map(p => `<p>${p}</p>`).join('')}
+                        <div class="popup-buttons">
+                            <button class="popup-btn reject-btn">${daten.cookiePopup.buttons.reject}</button>
+                            <button class="popup-btn accept-btn">${daten.cookiePopup.buttons.accept}</button>
+                        </div>
+                    </div>
+                `),
+                'accepted-popup': erstellePopup('accepted-popup', `
+                    <div class="popup-content">
+                        <h2>${daten.acceptedPopup?.title || 'Danke'}</h2>
+                        <p>${daten.acceptedPopup?.paragraph || 'Ihre Einstellungen wurden gespeichert.'}</p>
+                        <button class="popup-btn close-btn">${daten.acceptedPopup?.button || 'Schließen'}</button>
+                    </div>
+                `),
+                'rejected-popup': erstellePopup('rejected-popup', `
+                    <div class="popup-content">
+                        <h2>${daten.rejectedPopup?.title || 'Hinweis'}</h2>
+                        <p>${daten.rejectedPopup?.paragraph || 'Es werden nur notwendige Cookies verwendet.'}</p>
+                        <button class="popup-btn close-btn">${daten.rejectedPopup?.button || 'Verstanden'}</button>
+                    </div>
+                `)
+            };
 
-            // Prüfe ob das Cookie-Popup angezeigt werden soll
-            const popupGezeigt = sessionStorage.getItem(config.speicherSchlüssel.POPUP_GEZEIGT);
-            const cookiesAkzeptiert = $.CookieUtil.getCookie(config.speicherSchlüssel.COOKIES_AKZEPTIERT);
-            const cookiesAbgelehnt = $.CookieUtil.getCookie(config.speicherSchlüssel.COOKIES_ABGELEHNT);
+            // Event-Handler
+            popups.popup
+                .on('click', '.accept-btn', handleCookieAkzeptiert)
+                .on('click', '.reject-btn', handleCookieAbgelehnt);
 
-            log(`Popup gezeigt: ${popupGezeigt}`);
-            log(`Cookies akzeptiert: ${cookiesAkzeptiert}`);
-            log(`Cookies abgelehnt: ${cookiesAbgelehnt}`);
+            popups['accepted-popup']
+                .on('click', '.close-btn', () => popups['accepted-popup'].fadeOut(200));
 
-            if (!popupGezeigt && !cookiesAkzeptiert && !cookiesAbgelehnt && navigator.onLine) {
-                log('Cookie-Popup wird angezeigt');
-                zeigePopup(config.popupTypen.COOKIE);
-            } else {
-                log('Cookie-Popup wird nicht angezeigt');
+            popups['rejected-popup']
+                .on('click', '.close-btn', () => popups['rejected-popup'].fadeOut(200));
+
+            // Initial anzeigen wenn nötig
+            if (!sessionStorage.getItem(config.speicherSchlüssel.POPUP_GEZEIGT)){
+                const cookiesAkzeptiert = $.CookieUtil.getCookie(config.speicherSchlüssel.COOKIES_AKZEPTIERT);
+                if (!cookiesAkzeptiert && navigator.onLine) {
+                    popups.popup.fadeIn(200);
+                }
             }
 
             initOfflinePopup();
+
         } catch (error) {
-            log(`Initialisierungsfehler: ${error}`);
+            console.error(`${config.logPrefix} Initialisierungsfehler:`, error);
         }
     }
 
-    // Initialisierung wenn DOM bereit ist
-    $(document).ready(init);
+    // Start
+    $(init);
 
 })(jQuery);
