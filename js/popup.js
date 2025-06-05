@@ -1,186 +1,128 @@
-/**
- * Popup Manager - Verwaltet Cookie- und Offline-Popups
- * @namespace popupManager
- * @requires jQuery
- * @requires CookieUtil
- */
-(function($) {
-    'use strict';
-
-    // Konfiguration
-    const config = {
-        popupTypen: {
-            COOKIE: 'cookiePopup',
-            AKZEPTIERT: 'acceptedPopup',
-            ABGELEHNT: 'rejectedPopup',
-            OFFLINE: 'offlinePopup'
-        },
-        speicherSchlüssel: {
-            POPUP_GEZEIGT: 'popupShown',
-            COOKIES_AKZEPTIERT: 'cookiesAccepted',
-            COOKIES_ABGELEHNT: 'cookiesRejected'
-        },
-        jsonPfad: '/json/popup.json',
-        logPrefix: '[Popup]',
-        cookieLaufzeit: 2 // Tage
-    };
-
-    // DOM Elemente
-    const $body = $('body');
-    let popups = {};
-
-    /**
-     * Initialisiert die Popup-Komponente
-     * @throws {Error} Wenn Abhängigkeiten fehlen
-     */
-    function initialisiereAbhaengigkeiten() {
-        if (typeof $ === 'undefined') {
-            throw new Error('jQuery nicht geladen');
-        }
-        if (typeof $.CookieUtil === 'undefined') {
-            throw new Error('CookieUtil nicht verfügbar');
-        }
+// popup.js
+$(document).ready(function () {
+    function createPopup(id, content) {
+        const popup = $('<div class="popup-container"></div>').attr('id', id).html(content).appendTo('body');
+        return popup;
     }
 
-    /**
-     * Erstellt ein Popup mit Inhalt
-     * @param {string} id - Popup ID
-     * @param {string} content - HTML Inhalt
-     * @returns {jQuery} Popup Element
-     */
-    function erstellePopup(id, content) {
-        return $('<div class="popup-container"></div>')
-            .attr('id', id)
-            .html(content)
-            .appendTo($body)
-            .hide();
+    function removePopup(id) {
+        $(`#${id}`).remove();
     }
 
-    /**
-     * Lädt Popup-Texte mit Fehlerbehandlung
-     * @returns {Promise<Object>} Popup-Daten
-     */
-    function ladePopupTexte() {
-        return $.getJSON(config.jsonPfad).catch(() => ({
-            cookiePopup: {
-                title: "Cookie-Einstellungen",
-                paragraphs: ["Wir verwenden Cookies für wesentliche Funktionen."],
-                links: [],
-                buttons: { accept: "Akzeptieren", reject: "Ablehnen" }
-            }
-        }));
+    function loadPopupTexts(callback) {
+        $.getJSON('../json/popup.json', function(data) {
+            callback(data);
+        });
     }
 
-    /**
-     * Cookie-Akzeptierung verarbeiten
-     */
-    function handleCookieAkzeptiert() {
-        $.CookieUtil.setCookie(
-            config.speicherSchlüssel.COOKIES_AKZEPTIERT, 
-            'true', 
-            config.cookieLaufzeit
-        );
-        popups.popup.remove();
-        popups['accepted-popup'].fadeIn(200);
-        log('Cookies akzeptiert');
-    }
-
-    /**
-     * Cookie-Ablehnung verarbeiten
-     */
-    function handleCookieAbgelehnt() {
-        sessionStorage.setItem(config.speicherSchlüssel.POPUP_GEZEIGT, 'true');
-        popups.popup.remove();
-        popups['rejected-popup'].fadeIn(200);
-        log('Cookies abgelehnt');
-    }
-
-    /**
-     * Service Worker Nachrichten verarbeiten
-     */
-    function initOfflinePopup() {
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.addEventListener('message', (event) => {
-                if (event.data === 'showOfflinePopup' && popups['offline-popup']) {
-                    popups['offline-popup'].fadeIn(200);
-                }
-            });
-        }
-    }
-
-    /**
-     * Loggt Nachrichten über consoleManager
-     * @param {string} nachricht - Zu loggende Nachricht
-     */
-    function log(nachricht) {
-        if ($.consoleManager && $.consoleManager.getConsoleOutput()) {
-            console.log(`${config.logPrefix} ${nachricht}`);
-        }
-    }
-
-    /**
-     * Hauptinitialisierung
-     */
-    async function init() {
-        try {
-            initialisiereAbhaengigkeiten();
-            const daten = await ladePopupTexte();
-
-            // Popups erstellen
-            popups = {
-                'popup': erstellePopup('popup', `
+    function createPopupContent(type, data) {
+        let content = '';
+        switch(type) {
+            case 'cookiePopup':
+                content = `
                     <div class="popup-content">
-                        <h2>${daten.cookiePopup.title}</h2>
-                        ${daten.cookiePopup.paragraphs.map(p => `<p>${p}</p>`).join('')}
-                        <div class="popup-buttons">
-                            <button class="popup-btn reject-btn">${daten.cookiePopup.buttons.reject}</button>
-                            <button class="popup-btn accept-btn">${daten.cookiePopup.buttons.accept}</button>
+                        <h2>${data.title}</h2>
+                        ${data.paragraphs.map(p => `<p>${p}</p>`).join('')}
+                        <br>
+                        <div class="mitte-container">
+                            ${data.links.map(link => `<a href="${link.href}" target="_self">${link.text}</a>`).join(' ')}
                         </div>
+                        <button id="accept-cookies">${data.buttons.accept}</button>
+                        <button id="close-cookies">${data.buttons.reject}</button>
                     </div>
-                `),
-                'accepted-popup': erstellePopup('accepted-popup', `
+                `;
+                break;
+            case 'acceptedPopup':
+                content = `
                     <div class="popup-content">
-                        <h2>${daten.acceptedPopup?.title || 'Danke'}</h2>
-                        <p>${daten.acceptedPopup?.paragraph || 'Ihre Einstellungen wurden gespeichert.'}</p>
-                        <button class="popup-btn close-btn">${daten.acceptedPopup?.button || 'Schließen'}</button>
+                        <h2>${data.title}</h2>
+                        <p>${data.paragraph}</p>
+                        <button id="close-accepted-popup">${data.button}</button>
                     </div>
-                `),
-                'rejected-popup': erstellePopup('rejected-popup', `
+                `;
+                break;
+            case 'rejectedPopup':
+                content = `
                     <div class="popup-content">
-                        <h2>${daten.rejectedPopup?.title || 'Hinweis'}</h2>
-                        <p>${daten.rejectedPopup?.paragraph || 'Es werden nur notwendige Cookies verwendet.'}</p>
-                        <button class="popup-btn close-btn">${daten.rejectedPopup?.button || 'Verstanden'}</button>
+                        <h2>${data.title}</h2>
+                        <p>${data.paragraph}</p>
+                        <button id="close-rejected-popup">${data.button}</button>
                     </div>
-                `)
-            };
-
-            // Event-Handler
-            popups.popup
-                .on('click', '.accept-btn', handleCookieAkzeptiert)
-                .on('click', '.reject-btn', handleCookieAbgelehnt);
-
-            popups['accepted-popup']
-                .on('click', '.close-btn', () => popups['accepted-popup'].fadeOut(200));
-
-            popups['rejected-popup']
-                .on('click', '.close-btn', () => popups['rejected-popup'].fadeOut(200));
-
-            // Initial anzeigen wenn nötig
-            if (!sessionStorage.getItem(config.speicherSchlüssel.POPUP_GEZEIGT)){
-                const cookiesAkzeptiert = $.CookieUtil.getCookie(config.speicherSchlüssel.COOKIES_AKZEPTIERT);
-                if (!cookiesAkzeptiert && navigator.onLine) {
-                    popups.popup.fadeIn(200);
-                }
-            }
-
-            initOfflinePopup();
-
-        } catch (error) {
-            console.error(`${config.logPrefix} Initialisierungsfehler:`, error);
+                `;
+                break;
         }
+        return content;
     }
 
-    // Start
-    $(init);
+    loadPopupTexts(function(data) {
+        const popupContent = createPopupContent('cookiePopup', data.cookiePopup);
+        const acceptedPopupContent = createPopupContent('acceptedPopup', data.acceptedPopup);
+        const rejectedPopupContent = createPopupContent('rejectedPopup', data.rejectedPopup);
+        const offlinePopupContent = createPopupContent('offlinePopup', data.offlinePopup);
 
-})(jQuery);
+        const p = createPopup('popup', popupContent);
+        const ap = createPopup('accepted-popup', acceptedPopupContent);
+        const rp = createPopup('rejected-popup', rejectedPopupContent);
+
+        // Popup-Initialisierung
+        const ps = sessionStorage.getItem('popupShown');
+        logToConsole('Popup wurde bereits angezeigt:', ps);
+
+        const ac = $.CookieUtil.getCookie('cookiesAccepted');
+        logToConsole('Cookies wurden akzeptiert:', ac);
+
+        const rc = $.CookieUtil.getCookie('cookiesRejected');
+        logToConsole('Cookies wurden abgelehnt:', rc);
+
+        if (!ps && !ac && !rc && navigator.onLine) {
+            logToConsole('Popup wird angezeigt.');
+            p.css('display', 'flex');
+
+            $('#accept-cookies').on('click', function () {
+                $.CookieUtil.setCookie('cookiesAccepted', 'true', 4);
+                p.remove();
+                ap.css('display', 'flex');
+                logToConsole('Cookies wurden akzeptiert.');
+            });
+
+            $('#close-cookies').on('click', function () {
+                sessionStorage.setItem('popupShown', 'true');
+                p.remove();
+                sessionStorage.setItem('cookiesRejected', 'true');
+                rp.css('display', 'flex');
+                logToConsole('Cookies wurden abgelehnt.');
+            });
+
+            $('#close-accepted-popup').on('click', function () {
+                ap.remove();
+                logToConsole('Akzeptieren-Popup wurde geschlossen.');
+            });
+
+            $('#close-rejected-popup').on('click', function () {
+                rp.remove();
+                logToConsole('Abgelehnt-Popup wurde geschlossen.');
+            });
+        } else {
+            logToConsole('Popup wird nicht angezeigt.');
+        }
+
+        navigator.serviceWorker.addEventListener('message', (event) => {
+            if (event.data === 'showOfflinePopup') {
+                const op = createPopup('offline-popup', offlinePopupContent);
+                op.css('display', 'flex');
+                logToConsole('Offline-Popup wird angezeigt.');
+
+                $('#close-offline-popup').on('click', function () {
+                    op.remove();
+                    logToConsole('Offline-Popup wurde geschlossen.');
+                });
+            }
+        });
+
+        function logToConsole(message) {
+            if (typeof $.consoleManager !== 'undefined' && $.consoleManager.getConsoleOutput()) {
+                console.log(message);
+            }
+        }
+    });
+});
