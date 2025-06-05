@@ -28,17 +28,12 @@ body {
   font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.6;
   position: relative;
+  min-width: 100vw;
+  width: 100%;
 }
 
 body::after {
-  content: '';
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--bg-primary);
-  z-index: -1;
+  display: none;
 }
 
 
@@ -67,11 +62,12 @@ body::after {
   --border-radius-lg: 12px;
 }
 
-[data-theme="light"] {
-  --bg-primary: #ffffff;
-  --bg-secondary: #f3f4f6;
-  --text-primary: #1a1a1a;
-  --text-secondary: #4b5563;
+[data-theme="dark"] {
+  /* Dark Theme Werte */
+  --bg-primary: #202225;
+  --bg-secondary: #2f3136;
+  --text-primary: #f8f9fa;
+  --text-secondary: #d1d5db;
 }
 
 
@@ -159,6 +155,12 @@ button:active {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
+
+
+/* ==========================================================================
+   THEME TOGGLE STYLES (ANGEPASST)
+   ========================================================================== */
+
 #theme-toggle {
   background: none;
   border: none;
@@ -177,8 +179,8 @@ button:active {
   background: rgba(0,0,0,0.1);
 }
 
-[data-theme="light"] #theme-toggle .fa-moon,
-[data-theme="dark"] #theme-toggle .fa-sun {
+[data-theme="dark"] #theme-toggle .fa-sun,
+[data-theme="light"] #theme-toggle .fa-moon {
   display: none;
 }
 
@@ -605,10 +607,10 @@ button:active {
 
 .particles {
   position: fixed;
-  top: 0;
+  width: 100vw;
+  height: 100vh;
   left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0;
   z-index: -1;
   background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
   overflow: hidden;
@@ -762,6 +764,10 @@ button:active {
 
 /* Mobile */
 @media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+    position: relative;
+  }
   .nav-links {
     display: none;
   }
@@ -780,10 +786,19 @@ button:active {
     min-width: 100%;
   }
   .container {
-    padding: 0 24px;
+    padding: 0 16px;
+  }
+  .navbar {
+    width: 100vw;
+    left: 0;
+    right: 0;
   }
   .hero {
     padding: 160px 0 80px;
+  }
+  .mobile-menu {
+    width: 100%;
+    max-width: 300px;
   }
 }
 
