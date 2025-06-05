@@ -45,9 +45,9 @@ body::after {
   /* Colors */
   --bg-primary: #202225;
   --bg-secondary: #2f3136;
-  --accent: #5865F2;
   --text-primary: #f8f9fa;
   --text-secondary: #d1d5db;
+  --accent: #5865F2;
   
   /* Spacing */
   --spacing-xs: 4px;
@@ -62,12 +62,11 @@ body::after {
   --border-radius-lg: 12px;
 }
 
-[data-theme="dark"] {
-  /* Dark Theme Werte */
-  --bg-primary: #202225;
-  --bg-secondary: #2f3136;
-  --text-primary: #f8f9fa;
-  --text-secondary: #d1d5db;
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4b5563;
 }
 
 
@@ -124,11 +123,11 @@ button:active {
 }
 
 .download-btn {
-  background-color: #5865F2;
+  background-color: var(--accent);
   color: white;
   border: none;
   padding: 16px 32px;
-  border-radius: 28px; /* Stärkere Rundung wie ursprünglich */
+  border-radius: 28px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -136,14 +135,12 @@ button:active {
   display: flex;
   align-items: center;
   gap: 10px;
-  animation: pulse 2s infinite;
-  box-shadow: 0 4px 14px rgba(88, 101, 242, 0.4); /* Subtiler Schatten */
 }
 
 .download-btn:hover {
   background-color: #4752C4;
-  transform: translateY(-2px); /* Leichter Hover-Effekt */
-  box-shadow: 0 6px 20px rgba(88, 101, 242, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(88, 101, 242, 0.4);
 }
 
 .download-btn:active {
@@ -161,10 +158,10 @@ button:active {
 }
 
 .open-in-browser-btn {
-  background-color: #2f3136;
-  color: white;
-  border: 2px solid rgba(255, 255, 255, 0.1); /* Dünner Border */
-  padding: 14px 30px; /* Etwas weniger horizontal padding */
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: none;
+  padding: 16px 32px;
   border-radius: 28px;
   font-size: 1rem;
   font-weight: 600;
@@ -176,9 +173,7 @@ button:active {
 }
 
 .open-in-browser-btn:hover {
-  background-color: #36393f;
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+  background-color: var(--bg-primary);
 }
 
 .open-in-browser-btn:active {
@@ -209,8 +204,8 @@ button:active {
   background: rgba(0,0,0,0.1);
 }
 
-[data-theme="dark"] #theme-toggle .fa-sun,
-[data-theme="light"] #theme-toggle .fa-moon {
+[data-theme="dark"] #theme-toggle .fa-moon,
+[data-theme="light"] #theme-toggle .fa-sun {
   display: none;
 }
 
