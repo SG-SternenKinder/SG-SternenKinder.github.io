@@ -34,7 +34,7 @@ const PRECACHE_RESOURCES = [
   'https://sg-sternenkinder.github.io/img/svg-icons/globe.svg',
   'https://sg-sternenkinder.github.io/img/svg-icons/arrow-up.svg',
 
-  OFFLINE_PAGE
+  '/offline.html'
 ];
 
 // Installationsereignis - Precaching wichtiger Ressourcen
