@@ -733,8 +733,9 @@ a:focus-visible {
 button:active {
   transform: scale(0.98);
 }
+
 a:hover {
-  text-decoration: underline wavy #5865F2;
+  text-decoration: underline #5865F2;
 }
 
 .language-switcher-container {

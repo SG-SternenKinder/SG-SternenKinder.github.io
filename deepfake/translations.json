@@ -20,7 +20,15 @@
         "footer_product": "Produkt",
         "footer_company": "Unternehmen",
         "footer_resources": "Ressourcen",
-        "footer_legal": "Rechtliches"
+        "footer_legal": "Rechtliches",
+        "footer_hochschule": "Hochschule",
+        "footer_datenschutz": "Datenschutz",
+        "footer_nutzungsbedingungen": "Nutzungsbedingungen",
+        "footer_sicherheit": "Sicherheit",
+        "footer_cookie_einstellungen": "Cookie-Einstellungen",
+        "footer_uber_uns": "Über uns",
+        "footer_jobs": "Jobs",
+        "footer_marke": "Marke"
     },
     "en": {
         "hero_title": "<i class='fas fa-lightbulb'></i> IMAGINE A PLACE...",
@@ -43,7 +51,15 @@
         "footer_product": "Product",
         "footer_company": "Company",
         "footer_resources": "Resources",
-        "footer_legal": "Legal"
+        "footer_legal": "Legal",
+        "footer_hochschule": "University",
+        "footer_datenschutz": "Privacy",
+        "footer_nutzungsbedingungen": "Terms of Service",
+        "footer_sicherheit": "Security",
+        "footer_cookie_einstellungen": "Cookie Settings",
+        "footer_uber_uns": "About Us",
+        "footer_jobs": "Jobs",
+        "footer_marke": "Brand"
     },
     "fr": {
         "hero_title": "<i class='fas fa-lightbulb'></i> IMAGINE UN ENDROIT...",
@@ -66,6 +82,14 @@
         "footer_product": "Produit",
         "footer_company": "Entreprise",
         "footer_resources": "Ressources",
-        "footer_legal": "Juridique"
+        "footer_legal": "Juridique",
+        "footer_hochschule": "Université",
+        "footer_datenschutz": "Protection des données",
+        "footer_nutzungsbedingungen": "Conditions d'utilisation",
+        "footer_sicherheit": "Sécurité",
+        "footer_cookie_einstellungen": "Paramètres des cookies",
+        "footer_uber_uns": "À propos",
+        "footer_jobs": "Emplois",
+        "footer_marke": "Marque"
     }
 }
