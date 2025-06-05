@@ -217,17 +217,57 @@ document.addEventListener('DOMContentLoaded', async function () {
             });
 
             // Footer
-            const footerItems = [
-                { icon: 'box-open', key: 'footer_product' },
-                { icon: 'building', key: 'footer_company' },
-                { icon: 'book', key: 'footer_resources' },
-                { icon: 'balance-scale', key: 'footer_legal' }
+            const footerColumns = [
+                {
+                    titleKey: 'footer_product_title',
+                    links: [
+                        { icon: 'download', key: 'footer_download' },
+                        { icon: 'bolt', key: 'footer_nitro' },
+                        { icon: 'server', key: 'footer_status' }
+                    ]
+                },
+                {
+                    titleKey: 'footer_company_title',
+                    links: [
+                        { icon: 'info-circle', key: 'footer_uber_uns_link' },
+                        { icon: 'briefcase', key: 'footer_jobs_link' },
+                        { icon: 'trademark', key: 'footer_marke_link' }
+                    ]
+                },
+                {
+                    titleKey: 'footer_resources_title',
+                    links: [
+                        { icon: 'graduation-cap', key: 'footer_hochschule_link' },
+                        { icon: 'question-circle', key: 'footer_support_link' },
+                        { icon: 'shield-alt', key: 'footer_sicherheit_link' }
+                    ]
+                },
+                {
+                    titleKey: 'footer_legal_title',
+                    links: [
+                        { icon: 'user-shield', key: 'footer_datenschutz_link' },
+                        { icon: 'file-contract', key: 'footer_nutzungsbedingungen_link' },
+                        { icon: 'cookie-bite', key: 'footer_cookie_einstellungen_link' }
+                    ]
+                }
             ];
 
-            footerItems.forEach((item, i) => {
-                const footerTitle = document.querySelectorAll('.footer-column h3')[i];
-                if (footerTitle) {
-                    footerTitle.innerHTML = `<i class="fas fa-${item.icon}"></i> ${t[item.key]}`;
+            footerColumns.forEach((column, i) => {
+                const footerColumn = document.querySelectorAll('.footer-column')[i];
+                if (footerColumn) {
+                    // Update title
+                    const title = footerColumn.querySelector('h3');
+                    if (title) {
+                        title.innerHTML = t[column.titleKey];
+                    }
+                    
+                    // Update links
+                    const links = footerColumn.querySelectorAll('a');
+                    column.links.forEach((link, j) => {
+                        if (links[j]) {
+                            links[j].innerHTML = t[link.key];
+                        }
+                    });
                 }
             });
 
