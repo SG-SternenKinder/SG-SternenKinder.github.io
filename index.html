@@ -160,6 +160,27 @@
             });
         }
     </script>
+
+    <script>
+        function toggleMenu() {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('active');
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Aktives Element basierend auf der aktuellen URL ermitteln
+            const currentUrl = window.location.href;
+            const navbarLinks = document.querySelectorAll('.navbar a');
+
+            for (const link of navbarLinks) {
+                if (link.href === currentUrl) {
+                    link.classList.add('active');
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
