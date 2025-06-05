@@ -1,41 +1,38 @@
 /**
  * Service Worker mit erweitertem Caching und Offline-Funktionalität
- * @version v0.0.1.6
  */
 'use strict';
 
-const FILE_VERSION = 'v0.0.1.7';
-const CACHE_NAME = `cache-${FILE_VERSION}`;
-const OFFLINE_PAGE = '/offline.html';
+const FILE_VERSION = 'v0.0.1.7.1';
+const CACHE_NAME = `sg-sternenkinder-cache-${FILE_VERSION}`;
+const OFFLINE_PAGE = 'https://sg-sternenkinder.github.io/offline.html';
 
 // Zu cachende Ressourcen
 const PRECACHE_RESOURCES = [
-  '/',
-  '/site.webmanifest',
-  '/css/style.css',
+  'https://sg-sternenkinder.github.io/',
+  'https://sg-sternenkinder.github.io/site.webmanifest',
+  'https://sg-sternenkinder.github.io/css/style.css',
 
-  '/js/jquery-3.7.1.min.js',
-  '/js/cookie.js',
-  '/js/popup.js',
-  '/consolenManager.js',
-  '/js/language-switcher.js',
-  '/js/background.js',
-  '/js/footer.js',
-  '/js/noscript-loading.js',
-  '/js/scrollback.js',
-  '/js/toggleMenu.js',
-  '/js/error-popup.js',
+  'https://sg-sternenkinder.github.io/js/jquery-3.7.1.min.js',
+  'https://sg-sternenkinder.github.io/js/cookie.js',
+  'https://sg-sternenkinder.github.io/js/popup.js',
+  'https://sg-sternenkinder.github.io/consolenManager.js',
+  'https://sg-sternenkinder.github.io/js/language-switcher.js',
+  'https://sg-sternenkinder.github.io/js/footer.js',
+  'https://sg-sternenkinder.github.io/js/noscript-loading.js',
+  'https://sg-sternenkinder.github.io/js/scrollback.js',
+  'https://sg-sternenkinder.github.io/js/toggleMenu.js',
+  'https://sg-sternenkinder.github.io/js/error-popup.js',
 
-  '/img/favicon/favicon.ico',
-  '/img/favicon/icon.svg',
-  '/img/favicon/apple-touch-icon.png',
-  '/img/background.png',
+  'https://sg-sternenkinder.github.io/img/favicon/favicon.ico',
+  'https://sg-sternenkinder.github.io/img/favicon/apple-touch-icon.png',
+  'https://sg-sternenkinder.github.io/img/background.png',
 
-  '/img/svg-icons/tiktok2.svg',
-  '/img/svg-icons/instagram.svg',
-  '/img/svg-icons/discord.svg',
-  '/img/svg-icons/globe.svg',
-  '/img/svg-icons/arrow-up.svg',
+  'https://sg-sternenkinder.github.io/img/svg-icons/tiktok2.svg',
+  'https://sg-sternenkinder.github.io/img/svg-icons/instagram.svg',
+  'https://sg-sternenkinder.github.io/img/svg-icons/discord.svg',
+  'https://sg-sternenkinder.github.io/img/svg-icons/globe.svg',
+  'https://sg-sternenkinder.github.io/img/svg-icons/arrow-up.svg',
 
   OFFLINE_PAGE
 ];
