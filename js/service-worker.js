@@ -1,16 +1,17 @@
 /**
  * Service Worker mit erweitertem Caching und Offline-Funktionalität
- * @version v0.0.1.5
+ * @version v0.0.1.6
  */
 'use strict';
 
 const FILE_VERSION = 'v0.0.1.6';
 const CACHE_NAME = `cache-${FILE_VERSION}`;
-const OFFLINE_PAGE = '/offline.html'; // Pfad zur Offline-Fallback-Seite
+const OFFLINE_PAGE = '/offline.html';
 
 // Zu cachende Ressourcen
 const PRECACHE_RESOURCES = [
     '/',
+    'site.webmanifest',
     '/css/main.css',
     '/js/jquery-3.7.1.min.js',
     '/js/cookie.js',
