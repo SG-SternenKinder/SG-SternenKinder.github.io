@@ -181,8 +181,7 @@ html {
 
 /* Hero Section */
 .hero {
-  padding: 180px 0;
-  /* Gleichmäßigerer Abstand */
+  padding: 200px 0;
   position: relative;
   overflow: hidden;
 }
