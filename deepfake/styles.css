@@ -346,6 +346,11 @@ button:active {
   will-change: transform;
 }
 
+.hero-logo i {
+  color: #5865F2;
+  font-size: 2.2rem;
+}
+
 
 /* ==========================================================================
    COMPONENTS: FEATURE CARDS
@@ -494,12 +499,12 @@ button:active {
 
 .social-links {
   display: flex;
-  gap: 15px;
+  gap: 32px;
 }
 
 .social-links a {
   color: white;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   transition: color 0.2s;
 }
 
