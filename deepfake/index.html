@@ -147,16 +147,25 @@
                         <a href="#"><i class="fas fa-cookie-bite"></i> Cookie-Einstellungen</a>
                     </div>
                 </div>
-                <div class="footer-bottom">
-                    <div class="footer-logo">
-                        <i class="fab fa-discord"></i>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <div class="footer-bottom">
+                        <div class="footer-bottom-content">
+                            <div class="footer-social-links">
+                                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                            </div>
+                            
+                            <div class="footer-brand">
+                                <i class="fab fa-discord footer-logo"></i>
+                                <div class="footer-copyright">
+                                    &copy; <span id="current-year"></span> Discord, Inc.
+                                </div>
+                            </div>
+                            
+                            <div class="footer-social-links">
+                                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
                     </div>
                     <div class="language-switcher-container">
                         <button class="language-switcher" aria-haspopup="true" aria-expanded="false">
@@ -175,7 +184,9 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
+    <script src="footer_year.js"></script>
 </body>
 
 </html>

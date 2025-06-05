@@ -512,6 +512,83 @@ button:active {
   color: #5865F2;
 }
 
+/* ==========================================================================
+   FOOTER BOTTOM STYLES
+   ========================================================================== */
+
+.footer-bottom {
+    background: var(--bg-secondary);
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    order: 2;
+}
+
+.footer-logo {
+    color: var(--accent);
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.footer-copyright {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 15px;
+    order: 1;
+}
+
+.footer-social-links:last-child {
+    order: 3;
+}
+
+.footer-social-links a {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.footer-social-links a:hover {
+    color: var(--accent);
+}
+
+/* Responsive Anpassungen */
+@media (max-width: 768px) {
+    .footer-bottom-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .footer-brand {
+        order: 1;
+        width: 100%;
+    }
+    
+    .footer-social-links {
+        order: 2;
+    }
+}
 
 /* ==========================================================================
    COMPONENTS: MOBILE MENU
