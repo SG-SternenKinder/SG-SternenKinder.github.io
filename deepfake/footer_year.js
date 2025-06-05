@@ -1,47 +1,65 @@
 document.addEventListener('DOMContentLoaded', function() {
     'use strict';
 
+    // Konfiguration
     const config = {
-        containerSelector: '#footer-container',
+        copyrightElementId: 'current-year',
+        companyName: 'Discord, Inc.',
+        startYear: 2016,
         logPrefix: '[Footer]'
     };
 
+    /**
+     * Hauptinitialisierungsfunktion
+     */
     function init() {
-        const $container = $(config.containerSelector);
-        if (!$container.length) return;
-        
-        renderFooter($container);
-        setCurrentYear();
+        try {
+            setCopyrightYear();
+            log('Copyright-Jahr erfolgreich gesetzt');
+        } catch (error) {
+            logError(error.message);
+        }
     }
 
-    function renderFooter($container) {
+    /**
+     * Setzt das Copyright-Jahr
+     */
+    function setCopyrightYear() {
+        const yearElement = document.getElementById(config.copyrightElementId);
         const currentYear = new Date().getFullYear();
-        const startYear = 2016;
         
-        $container.html(`
-            <div class="footer-bottom" 
-                 data-start-year="${startYear}" 
-                 data-current-year="${currentYear}">
-            </div>
-        `);
-        
-        if (typeof console !== 'undefined') {
-            console.log(`${config.logPrefix} Footer mit Jahresangabe ${startYear}-${currentYear} gerendert`);
-        }
-    }
-
-    function setCurrentYear() {
-        const yearElement = document.getElementById('current-year');
         if (yearElement) {
-            yearElement.textContent = new Date().getFullYear();
+            // Format: "2023" oder "2016-2023" wenn startYear < currentYear
+            yearElement.textContent = config.startYear < currentYear 
+                ? `${config.startYear}-${currentYear}`
+                : `${currentYear}`;
+            
+            // Setze zusätzliche Datenattribute
+            yearElement.setAttribute('data-start-year', config.startYear);
+            yearElement.setAttribute('data-current-year', currentYear);
+        } else {
+            throw new Error('Copyright-Element nicht gefunden');
         }
     }
 
-    // Initialisierung nur wenn jQuery verfügbar ist
-    if (typeof jQuery !== 'undefined') {
-        jQuery(document).ready(init);
-    } else {
-        // Fallback für wenn jQuery nicht geladen ist
-        document.addEventListener('DOMContentLoaded', init);
+    /**
+     * Loggt Nachrichten in die Konsole
+     */
+    function log(message) {
+        if (typeof console !== 'undefined') {
+            console.log(`${config.logPrefix} ${message}`);
+        }
     }
+
+    /**
+     * Loggt Fehler in die Konsole
+     */
+    function logError(error) {
+        if (typeof console !== 'undefined') {
+            console.error(`${config.logPrefix} ${error}`);
+        }
+    }
+
+    // Initialisierung starten
+    init();
 });
