@@ -4,28 +4,40 @@
  */
 'use strict';
 
-const FILE_VERSION = 'v0.0.1.6';
+const FILE_VERSION = 'v0.0.1.7';
 const CACHE_NAME = `cache-${FILE_VERSION}`;
 const OFFLINE_PAGE = '/offline.html';
 
 // Zu cachende Ressourcen
 const PRECACHE_RESOURCES = [
-    '/',
-    'site.webmanifest',
-    '/css/main.css',
-    '/js/jquery-3.7.1.min.js',
-    '/js/cookie.js',
-    '/js/popup.js',
-    '/img/favicon/favicon.ico',
-    'consolenManager.js',
-    '/js/language-switcher.js',
-    '/js/background.js',
-    '/js/footer.js',
-    '/js/noscript-loading.js',
-    '/js/scrollback.js',
-    '/js/toggleMenu.js',
-    '/js/error-popup.js',
-    OFFLINE_PAGE
+  '/',
+  '/site.webmanifest',
+  '/css/style.css',
+
+  '/js/jquery-3.7.1.min.js',
+  '/js/cookie.js',
+  '/js/popup.js',
+  '/consolenManager.js',
+  '/js/language-switcher.js',
+  '/js/background.js',
+  '/js/footer.js',
+  '/js/noscript-loading.js',
+  '/js/scrollback.js',
+  '/js/toggleMenu.js',
+  '/js/error-popup.js',
+
+  '/img/favicon/favicon.ico',
+  '/img/favicon/icon.svg',
+  '/img/favicon/apple-touch-icon.png',
+  '/img/background.png',
+
+  '/img/svg-icons/tiktok2.svg',
+  '/img/svg-icons/instagram.svg',
+  '/img/svg-icons/discord.svg',
+  '/img/svg-icons/globe.svg',
+  '/img/svg-icons/arrow-up.svg',
+
+  OFFLINE_PAGE
 ];
 
 // Installationsereignis - Precaching wichtiger Ressourcen
@@ -40,11 +52,11 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// Aktivierungsereignis - Alte Caches bereinigen
 self.addEventListener('activate', (event) => {
     event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
+        (async () => {
+            const cacheNames = await caches.keys();
+            await Promise.all(
                 cacheNames.map(cache => {
                     if (cache !== CACHE_NAME) {
                         console.log('[SW] Removing old cache:', cache);
@@ -52,8 +64,16 @@ self.addEventListener('activate', (event) => {
                     }
                 })
             );
-        })
-        .then(() => self.clients.claim())
+
+            await self.clients.claim();
+
+            const clients = await self.clients.matchAll();
+            clients.forEach(client => {
+                if (client.type === 'window' && 'navigate' in client) {
+                    client.navigate(client.url);
+                }
+            });
+        })()
     );
 });
 

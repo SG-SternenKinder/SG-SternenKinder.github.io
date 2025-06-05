@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Offline - SG SternenKinder</title>
+    <style>
+        /* Hintergrundbild mit Überlagerung */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #eaeaea;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            background: 
+                linear-gradient(rgba(26, 26, 46, 0.75), rgba(26, 26, 46, 0.75)),
+                url('https://sg-sternenkinder.github.io/img/background.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 400px;
+            line-height: 1.4;
+        }
+        button {
+            background-color: #4ecca3;
+            color: #1a1a2e;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #3ca67d;
+        }
+        footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Du bist offline</h1>
+    <p>Die Seite kann gerade nicht geladen werden, weil keine Internetverbindung besteht.<br>
+       Bitte überprüfe deine Verbindung und versuche es erneut.</p>
+    <button onclick="location.reload()">Neu laden</button>
+
+    <footer id="footer-container"></footer>
+
+    <script src="https://sg-sternenkinder.github.io/js/footer.js" defer></script>
+</body>
+</html>
