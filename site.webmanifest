@@ -3,6 +3,7 @@
     "short_name": "SternenKinder",
     "start_url": "/?source=pwa",
     "scope": "/",
+    "id": "/?source=pwa",
     "display": "standalone",
     "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
     "orientation": "portrait-primary",
