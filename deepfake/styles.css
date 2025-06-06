@@ -95,18 +95,66 @@ h1, h2, h3 {
   padding: 0 20px;
 }
 
+/* Konami-Effekt Basis */
 body.konami {
-    background: linear-gradient(45deg, #ff00cc, #3333ff);
-    animation: rainbow 5s infinite;
+  position: relative;
+  overflow: hidden; /* Verhindert Scrollbalken durch Confetti */
 }
 
-body.konami .navbar {
-    transform: rotate(180deg);
+/* Notification-Stil (kann angepasst werden) */
+.konami-notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  background: #5865F2;
+  color: white;
+  border-radius: 50px;
+  font-weight: bold;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: fadeInUp 0.5s ease-out;
 }
 
-@keyframes rainbow {
-    0% { filter: hue-rotate(0deg); }
-    100% { filter: hue-rotate(360deg); }
+/* Confetti-Basis (wird per JS dynamisch erzeugt) */
+.konami-confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  z-index: 9998;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Animationen */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Beispiel: Hintergrund-Effekt */
+body.konami {
+  background: linear-gradient(135deg, #ff00cc, #3333ff);
+  transition: background 1s ease;
+}
+
+/* Beispiel: Rotierende Logo-Animation */
+body.konami .logo i {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .konami-notification {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 }
 
 

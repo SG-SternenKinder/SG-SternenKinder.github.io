@@ -107,18 +107,92 @@ document.addEventListener('DOMContentLoaded', async function () {
         'b', 'a'
     ];
     let konamiInput = [];
+    let konamiTimeout = null;
+
+    // Confetti-Funktion
+    function fireConfetti() {
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'];
+        
+        // Confetti von links
+        for (let i = 0; i < 50; i++) {
+            createConfetti('left', colors);
+        }
+        
+        // Confetti von rechts
+        for (let i = 0; i < 50; i++) {
+            createConfetti('right', colors);
+        }
+    }
+
+    function createConfetti(origin, colors) {
+        const confetti = document.createElement('div');
+        confetti.style.position = 'fixed';
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.borderRadius = '50%';
+        confetti.style.zIndex = '9998';
+        
+        // Startposition (links/rechts unten)
+        confetti.style.left = origin === 'left' 
+            ? '0px' 
+            : `${window.innerWidth}px`;
+        confetti.style.bottom = '0px';
+        
+        document.body.appendChild(confetti);
+        
+        // Animation
+        const animation = confetti.animate([
+            { 
+                transform: `translateX(${origin === 'left' ? '0' : '-100vw'}) translateY(0)`,
+                opacity: 1
+            },
+            { 
+                transform: `translateX(${Math.random() * 200 - 100}px) translateY(-100vh)`,
+                opacity: 0
+            }
+        ], {
+            duration: 2000 + Math.random() * 3000,
+            easing: 'cubic-bezier(0.1,0.8,0.3,1)'
+        });
+        
+        animation.onfinish = () => confetti.remove();
+    }
 
     document.addEventListener('keydown', (e) => {
         konamiInput.push(e.key);
-
-        // Keep array at correct length
         if (konamiInput.length > konamiCode.length) {
             konamiInput.shift();
         }
 
-        // Check match
         if (konamiInput.join('') === konamiCode.join('')) {
+            // Effekte aktivieren
             document.body.classList.add('konami');
+            fireConfetti();
+            
+            // Feedback anzeigen
+            const feedback = document.createElement('div');
+            feedback.textContent = '🎉 Konami-Code aktiviert!';
+            feedback.style.position = 'fixed';
+            feedback.style.bottom = '20px';
+            feedback.style.left = '50%';
+            feedback.style.transform = 'translateX(-50%)';
+            feedback.style.padding = '12px 24px';
+            feedback.style.background = '#5865F2';
+            feedback.style.color = 'white';
+            feedback.style.borderRadius = '50px';
+            feedback.style.zIndex = '9999';
+            feedback.style.fontWeight = 'bold';
+            feedback.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+            document.body.appendChild(feedback);
+            
+            // Zurücksetzen nach 10 Sekunden
+            if (konamiTimeout) clearTimeout(konamiTimeout);
+            konamiTimeout = setTimeout(() => {
+                document.body.classList.remove('konami');
+                feedback.remove();
+            }, 10000);
+            
             konamiInput = [];
         }
     });
