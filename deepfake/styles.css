@@ -633,8 +633,8 @@ button:active {
 
 .language-dropdown button {
   width: 100%;
-  text-align: left;
-  padding: 8px 16px;
+  text-align: center;
+  padding: 14px 30px;
   background: none;
   border: none;
   color: white;
