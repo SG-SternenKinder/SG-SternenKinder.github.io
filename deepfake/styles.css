@@ -95,65 +95,94 @@ h1, h2, h3 {
   padding: 0 20px;
 }
 
-/* Konami-Effekt Basis */
-body.konami {
+
+/* ===== KONAMI PARTY MODE ===== */
+body.konami-party {
   position: relative;
-  overflow: hidden; /* Verhindert Scrollbalken durch Confetti */
+  overflow: hidden;
+  background: linear-gradient(135deg, #ff00cc, #3333ff);
+  transition: background 0.3s ease;
+  animation: party-pulse 1s infinite alternate;
 }
 
-/* Notification-Stil (kann angepasst werden) */
-.konami-notification {
+/* SUPER-CONFETTI (300 Partikel) */
+.konfetti-particle {
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 12px 24px;
-  background: #5865F2;
-  color: white;
-  border-radius: 50px;
-  font-weight: bold;
-  z-index: 9999;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  animation: fadeInUp 0.5s ease-out;
-}
-
-/* Confetti-Basis (wird per JS dynamisch erzeugt) */
-.konami-confetti {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
   z-index: 9998;
   pointer-events: none;
   will-change: transform, opacity;
+  /* Dynamische Formen */
+  border-radius: calc(50% * var(--is-round, 0));
+  clip-path: polygon(
+    0% calc(100% * var(--is-triangle, 0)),
+    50% calc(0% * var(--is-triangle, 0)),
+    100% calc(100% * var(--is-triangle, 0))
+  );
+  transform: rotate(calc(var(--rotation, 0) * 1deg));
 }
 
-/* Animationen */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+/* STROBO-EFFEKT (Highspeed) */
+.strobo-light {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 9997;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+  opacity: 0;
 }
 
-/* Beispiel: Hintergrund-Effekt */
-body.konami {
-  background: linear-gradient(135deg, #ff00cc, #3333ff);
-  transition: background 1s ease;
+/* PARTY NOTIFICATION */
+.konami-notification {
+  position: fixed;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  background: linear-gradient(90deg, #ff00cc, #3333ff);
+  color: white;
+  font-weight: 900;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  border-radius: 999px;
+  z-index: 9999;
+  box-shadow: 
+    0 5px 15px rgba(0,0,0,0.3),
+    0 0 0 4px rgba(255,255,255,0.8);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  animation: 
+    party-bounce 0.8s infinite alternate,
+    rainbow-bg 2s linear infinite;
+  backdrop-filter: blur(2px);
+  border: 2px solid white;
+  text-align: center;
 }
 
-/* Beispiel: Rotierende Logo-Animation */
-body.konami .logo i {
-  animation: spin 2s linear infinite;
+/* ANIMATIONEN */
+@keyframes party-pulse {
+  0% { filter: brightness(1) hue-rotate(0deg); }
+  100% { filter: brightness(1.2) hue-rotate(180deg); }
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes party-bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-15px); }
 }
 
-@media (max-width: 768px) {
-  .konami-notification {
-    font-size: 14px;
-    padding: 8px 16px;
+@keyframes rainbow-bg {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion) {
+  .konami-party * {
+    animation: none !important;
+  }
+  .strobo-light, .konfetti-particle {
+    display: none !important;
   }
 }
 

@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         entries.forEach((entry) => {                                   //(entry, index)
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');                 //entry.target.style.animation =
-                                                                       //`fadeInUp 0.5s ease-out ${index * 0.1}s forwards`;
+                //`fadeInUp 0.5s ease-out ${index * 0.1}s forwards`;
                 observer.unobserve(entry.target);
             }
         });
@@ -99,66 +99,87 @@ document.addEventListener('DOMContentLoaded', async function () {
     lazyImages.forEach(img => imgObserver.observe(img));
 
     // Easter Egg (Konami-Code)
-    const konamiCode = [
-        'ArrowUp', 'ArrowUp',
-        'ArrowDown', 'ArrowDown',
-        'ArrowLeft', 'ArrowRight',
-        'ArrowLeft', 'ArrowRight',
-        'b', 'a'
-    ];
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+        'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+        'b', 'a'];
     let konamiInput = [];
     let konamiTimeout = null;
+    let strobeAnimation = null;
 
-    // Confetti-Funktion
-    function fireConfetti() {
-        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'];
-        
-        // Confetti von links
-        for (let i = 0; i < 50; i++) {
-            createConfetti('left', colors);
-        }
-        
-        // Confetti von rechts
-        for (let i = 0; i < 50; i++) {
-            createConfetti('right', colors);
+    // Mega-Confetti-Funktion (300 Partikel)
+    function fireMegaConfetti() {
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00',
+            '#ff00ff', '#00ffff', '#ff9900'];
+
+        // Confetti von beiden Seiten
+        for (let i = 0; i < 150; i++) {
+            setTimeout(() => createConfetti('left', colors), i * 20);
+            setTimeout(() => createConfetti('right', colors), i * 20);
         }
     }
 
     function createConfetti(origin, colors) {
         const confetti = document.createElement('div');
-        confetti.style.position = 'fixed';
-        confetti.style.width = '10px';
-        confetti.style.height = '10px';
+        confetti.className = 'konfetti-particle';
+
+        // Dynamische Formen
+        confetti.style.setProperty('--is-round', Math.random() > 0.5 ? 1 : 0);
+        confetti.style.setProperty('--is-triangle', Math.random() > 0.8 ? 1 : 0);
+        confetti.style.setProperty('--rotation', Math.random() * 360);
+
+        // Visuelle Eigenschaften
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.borderRadius = '50%';
-        confetti.style.zIndex = '9998';
-        
-        // Startposition (links/rechts unten)
-        confetti.style.left = origin === 'left' 
-            ? '0px' 
-            : `${window.innerWidth}px`;
-        confetti.style.bottom = '0px';
-        
+        confetti.style.width = `${Math.random() * 10 + 5}px`;
+        confetti.style.height = confetti.style.width;
+        confetti.style.left = origin === 'left' ? '-10px' : `${window.innerWidth + 10}px`;
+        confetti.style.bottom = '-10px';
+
         document.body.appendChild(confetti);
-        
+
         // Animation
         const animation = confetti.animate([
-            { 
-                transform: `translateX(${origin === 'left' ? '0' : '-100vw'}) translateY(0)`,
+            {
+                transform: `translateX(${origin === 'left' ? '0' : '-100vw'}) 
+                  translateY(0) 
+                  rotate(0deg)`,
                 opacity: 1
             },
-            { 
-                transform: `translateX(${Math.random() * 200 - 100}px) translateY(-100vh)`,
+            {
+                transform: `translateX(${origin === 'left'
+                    ? Math.random() * window.innerWidth
+                    : -(Math.random() * window.innerWidth)}px) 
+                  translateY(-${window.innerHeight + 100}px) 
+                  rotate(${Math.random() * 360}deg)`,
                 opacity: 0
             }
         ], {
             duration: 2000 + Math.random() * 3000,
             easing: 'cubic-bezier(0.1,0.8,0.3,1)'
         });
-        
+
         animation.onfinish = () => confetti.remove();
     }
 
+    // Stroboskop-Effekt
+    function startStrobe() {
+        const strobo = document.createElement('div');
+        strobo.className = 'strobo-light';
+        document.body.appendChild(strobo);
+
+        return strobo.animate(
+            [
+                { opacity: 0 },
+                { opacity: 0.7 },
+                { opacity: 0 }
+            ],
+            {
+                duration: 100,
+                iterations: 100
+            }
+        );
+    }
+
+    // Event Listener für Konami-Code
     document.addEventListener('keydown', (e) => {
         konamiInput.push(e.key);
         if (konamiInput.length > konamiCode.length) {
@@ -167,32 +188,25 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         if (konamiInput.join('') === konamiCode.join('')) {
             // Effekte aktivieren
-            document.body.classList.add('konami');
-            fireConfetti();
-            
-            // Feedback anzeigen
+            document.body.classList.add('konami-party');
+            fireMegaConfetti();
+            strobeAnimation = startStrobe();
+
+            // Notification erstellen
             const feedback = document.createElement('div');
-            feedback.textContent = '🎉 Konami-Code aktiviert!';
-            feedback.style.position = 'fixed';
-            feedback.style.bottom = '20px';
-            feedback.style.left = '50%';
-            feedback.style.transform = 'translateX(-50%)';
-            feedback.style.padding = '12px 24px';
-            feedback.style.background = '#5865F2';
-            feedback.style.color = 'white';
-            feedback.style.borderRadius = '50px';
-            feedback.style.zIndex = '9999';
-            feedback.style.fontWeight = 'bold';
-            feedback.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+            feedback.className = 'konami-notification';
+            feedback.innerHTML = '🎉 PARTY MODUS AKTIVIERT! 🎊';
             document.body.appendChild(feedback);
-            
+
             // Zurücksetzen nach 10 Sekunden
-            if (konamiTimeout) clearTimeout(konamiTimeout);
+            clearTimeout(konamiTimeout);
             konamiTimeout = setTimeout(() => {
-                document.body.classList.remove('konami');
+                document.body.classList.remove('konami-party');
+                if (strobeAnimation) strobeAnimation.cancel();
+                document.body.style.backgroundColor = '';
                 feedback.remove();
-            }, 10000);
-            
+            }, 12000);
+
             konamiInput = [];
         }
     });
