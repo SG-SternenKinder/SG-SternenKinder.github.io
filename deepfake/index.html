@@ -6,20 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discord | Dein Platz zum Chatten</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://sg-sternenkinder.github.io/deepfake/styles.css">
     <meta name="color-scheme" content="dark light">
 
     <!-- Preload Critical Resources -->
-    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="https://sg-sternenkinder.github.io/deepfake/styles.css" as="style">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
 
     <!-- Non-critical CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://sg-sternenkinder.github.io/deepfake/styles.css" media="print" onload="this.media='all'">
+
+    <script src="https://sg-sternenkinder.github.io/js/jquery-3.7.1.min.js"></script>
+    <script src="https://sg-sternenkinder.github.io/js/cookie.js" defer></script>
+    <script src="https://sg-sternenkinder.github.io/js/popup.js" defer></script>
+
 </head>
 
 <body>
+    <!-- Noscript Content -->
+    <noscript class="noscript-message">
+        <div id="loading-screen">
+            <div class="loading-spinner"></div>
+            <p class="message">Bitte aktivieren Sie JavaScript für die beste Nutzererfahrung</p>
+        </div>
+    </noscript>
+
     <!-- Partikel-Hintergrund -->
     <div class="particles"></div>
 
@@ -192,8 +204,12 @@
         </div>
     </footer>
 
-    <script src="footer_year.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="https://sg-sternenkinder.github.io/deepfake/footer_year.js" defer></script>
+    <script src="https://sg-sternenkinder.github.io/deepfake/script.js" defer></script>
+
+    <script src="https://sg-sternenkinder.github.io/consolenManager.js" defer></script>
+    <script src="https://sg-sternenkinder.github.io/js/noscript-loading.js" defer></script>
+    <script src="https://sg-sternenkinder.github.io/js/error-popup.js"defer></script>
 </body>
 
 </html>
