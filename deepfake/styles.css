@@ -617,7 +617,7 @@ button:active {
 .language-dropdown {
   position: absolute;
   right: 0;
-  bottom: 100%;
+  bottom: 0;
   margin-bottom: 5px;
   background: #36393f;
   border-radius: 4px;
