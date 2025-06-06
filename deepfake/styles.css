@@ -434,7 +434,7 @@ button:active {
 
 /* ==========================================================================
    COMPONENTS: FOOTER
-   ==========================================================================
+   ========================================================================== */
 
 .footer {
   background-color: #202225;
@@ -511,95 +511,7 @@ button:active {
 .social-links a:hover {
   color: #5865F2;
 }
-*/
-/* ==========================================================================
-   FOOTER BOTTOM STYLES
-   ========================================================================== */
 
-.footer-bottom {
-    background: var(--bg-secondary);
-    padding: 20px 0;
-    border-top: 1px solid var(--border-color);
-    text-align: center;
-}
-
-.footer-logo-container {
-    margin-bottom: 15px;
-}
-
-.footer-logo {
-    font-size: 2.5rem;
-    color: var(--accent);
-}
-
-.footer-bottom-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-}
-
-.footer-copyright {
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    flex-grow: 1;
-}
-
-.copyright-symbol {
-    font-weight: 700;
-}
-
-.footer-social-links {
-    display: flex;
-    gap: 15px;
-}
-
-.footer-social-links.left {
-    margin-right: auto;
-}
-
-.footer-social-links.right {
-    margin-left: auto;
-}
-
-.language-switcher-container {
-    position: absolute;
-    right: 20px;
-    bottom: 100%;
-    margin-bottom: 10px;
-}
-
-/* Responsive Anpassungen */
-@media (max-width: 768px) {
-    .footer-bottom-content {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .footer-social-links.left,
-    .footer-social-links.right {
-        margin: 0;
-        order: 1;
-    }
-    
-    .footer-copyright {
-        order: 2;
-    }
-    
-    .language-switcher-container {
-        position: static;
-        order: 3;
-        margin-top: 15px;
-    }
-}
 
 /* ==========================================================================
    COMPONENTS: MOBILE MENU
