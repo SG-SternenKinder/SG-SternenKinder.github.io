@@ -95,6 +95,20 @@ h1, h2, h3 {
   padding: 0 20px;
 }
 
+body.konami {
+    background: linear-gradient(45deg, #ff00cc, #3333ff);
+    animation: rainbow 5s infinite;
+}
+
+body.konami .navbar {
+    transform: rotate(180deg);
+}
+
+@keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
 
 /* ==========================================================================
    COMPONENTS: BUTTONS
