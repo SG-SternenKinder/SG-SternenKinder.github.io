@@ -135,6 +135,8 @@ button:active {
   display: flex;
   align-items: center;
   gap: 10px;
+  animation: pulse 2s infinite;
+  box-shadow: 0 4px 14px rgba(88, 101, 242, 0.4);
 }
 
 .download-btn:hover {
