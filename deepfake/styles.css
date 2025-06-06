@@ -8,7 +8,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -48,14 +49,14 @@ body::after {
   --text-primary: #f8f9fa;
   --text-secondary: #d1d5db;
   --accent: #5865F2;
-  
+
   /* Spacing */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
-  
+
   /* Border Radius */
   --border-radius-sm: 4px;
   --border-radius-md: 8px;
@@ -74,7 +75,9 @@ body::after {
    TYPOGRAPHY
    ========================================================================== */
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -125,9 +128,9 @@ body.konami {
   font-size: 1.5rem;
   border-radius: 50px;
   z-index: 9999;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  animation: 
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  animation:
     pulse 0.5s infinite alternate,
     rainbow-bg 3s linear infinite;
 }
@@ -145,19 +148,36 @@ body.konami {
 
 /* Animationen */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 /* Keyframes */
 @keyframes pulse {
-  from { transform: translateX(-50%) scale(1); }
-  to { transform: translateX(-50%) scale(1.05); }
+  from {
+    transform: translateX(-50%) scale(1);
+  }
+
+  to {
+    transform: translateX(-50%) scale(1.05);
+  }
 }
 
 @keyframes rainbow-bg {
-  0% { filter: hue-rotate(0deg); }
-  100% { filter: hue-rotate(360deg); }
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  100% {
+    filter: hue-rotate(360deg);
+  }
 }
 
 /* Stroboskop-Überblendung */
@@ -167,6 +187,7 @@ body.konami-party {
 
 /* Schutz vor Flacker-Effekten */
 @media (prefers-reduced-motion) {
+
   .konami-notification,
   .konfetti-particle {
     display: none !important;
@@ -192,7 +213,7 @@ button:active {
   transform: scale(0.98);
 }
 
-.download-btn, 
+.download-btn,
 .open-in-browser-btn {
   border-radius: 12px;
   padding: 14px 28px;
@@ -281,7 +302,7 @@ button:active {
 }
 
 #theme-toggle:hover {
-  background: rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="dark"] #theme-toggle .fa-moon,
@@ -451,11 +472,13 @@ button:active {
 
 .feature-card {
   background-color: #36393f;
-  padding: 2.5rem; /*padding: 30px; */
+  padding: 2.5rem;
+  /*padding: 30px; */
   border-radius: 10px;
   text-align: center;
   flex: 1;
-  transition: transform 0.3s, box-shadow 0.3s, background 0.3s; /*ease, box-shadow 0.3s ease;*/
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+  /*ease, box-shadow 0.3s ease;*/
   animation: fadeInUp 1s ease-out;
   border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
@@ -476,7 +499,8 @@ button:active {
 }
 
 .feature-card:hover {
-  transform: translateY(-5px) scale(1.02); /*rotateY(10deg) scale(1.03);*/
+  transform: translateY(-5px) scale(1.02);
+  /*rotateY(10deg) scale(1.03);*/
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   background: rgba(88, 101, 242, 0.05);
 }
@@ -487,15 +511,18 @@ button:active {
 
 .feature-card i {
   color: var(--accent);
-  font-size: 2.5rem; /* Vergrößert von 1.5rem */
+  font-size: 2.5rem;
+  /* Vergrößert von 1.5rem */
   margin-bottom: 1rem;
   transition: all 0.3s ease;
   display: inline-block;
 }
 
 .feature-card:hover i {
-  transform: scale(1.1); /* Leichte Vegrößerung beim Hover */
-  text-shadow: 0 0 15px rgba(88, 101, 242, 0.3); /* Glow-Effekt */
+  transform: scale(1.1);
+  /* Leichte Vegrößerung beim Hover */
+  text-shadow: 0 0 15px rgba(88, 101, 242, 0.3);
+  /* Glow-Effekt */
 }
 
 .feature-card h3 {
@@ -565,11 +592,11 @@ button:active {
 }
 
 .footer-bottom {
-    display: flex;
-    align-items: center;
-    padding-top: 20px;
-    border-top: 1px solid #4f545c;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid #4f545c;
+  flex-direction: column;
 }
 
 .footer-logo i {
@@ -593,18 +620,18 @@ button:active {
 }
 
 .footer-copyright {
-    color: var(--text-secondary);
-    font-size: 0.875rem;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-    flex-grow: 1;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-grow: 1;
 }
 
 .copyright-symbol {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 
@@ -691,7 +718,7 @@ button:active {
 }
 
 .language-switcher:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .language-dropdown {
@@ -708,7 +735,7 @@ button:active {
   visibility: hidden;
 }
 
-.language-switcher[aria-expanded="true"] + .language-dropdown {
+.language-switcher[aria-expanded="true"]+.language-dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -789,44 +816,101 @@ button:active {
    ========================================================================== */
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
 }
 
 @keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes subtleScale {
-  0% { transform: scale(0.98); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.98);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes float-particle {
-  0% { transform: translateY(0) translateX(0); opacity: 0; }
-  50% { opacity: 0.8; }
-  100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 
@@ -839,6 +923,7 @@ button:active {
   .container {
     max-width: 1600px;
   }
+
   .hero-content h1 {
     font-size: 4.5rem;
   }
@@ -857,16 +942,20 @@ button:active {
     flex-direction: column;
     text-align: center;
   }
+
   .nav-links {
     gap: 28px;
   }
+
   .hero-content h1,
   .hero-buttons {
     justify-content: center;
   }
+
   .features .container {
     flex-wrap: wrap;
   }
+
   .feature-card {
     min-width: calc(50% - 15px);
   }
@@ -883,9 +972,11 @@ button:active {
   .hero-content h1 {
     font-size: 2.8rem;
   }
+
   .feature-card {
     padding: 20px;
   }
+
   .nav-links {
     gap: 20px;
   }
@@ -897,37 +988,47 @@ button:active {
     overflow-x: hidden;
     position: relative;
   }
+
   .nav-links {
     display: none;
   }
+
   .menu-toggle {
     display: block;
   }
+
   .hero-content h1 {
     font-size: 2.2rem;
     line-height: 1.3;
   }
+
   .hero-content p {
     font-size: 1.1rem;
     max-width: 100%;
   }
+
   .feature-card {
     min-width: 100%;
   }
+
   .feature-card i {
     font-size: 2rem;
   }
+
   .container {
     padding: 0 16px;
   }
+
   .navbar {
     width: 100vw;
     left: 0;
     right: 0;
   }
+
   .hero {
     padding: 160px 0 80px;
   }
+
   .mobile-menu {
     width: 100%;
     max-width: 300px;
@@ -940,12 +1041,14 @@ button:active {
     flex-direction: column;
     gap: 12px;
   }
+
   .download-btn,
   .open-in-browser-btn {
     width: 100%;
     justify-content: center;
     text-align: center;
   }
+
   .mobile-menu {
     width: 85%;
   }
@@ -968,4 +1071,88 @@ button:active {
     --bg-color: #202225;
     --text-color: #ffffff;
   }
+}
+
+
+/* ==========================================================================
+   Cookie PopUp
+   ========================================================================== */
+
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content {
+  background: #fff;
+  text-align: center;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  color: #000;
+  position: relative;
+  font-size: 18px;
+}
+
+.popup-content a {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.popup-content .mitte-container {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.popup-content .mitte-container a {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.popup-content .mitte-container a:last-child {
+  margin-bottom: 0;
+}
+
+.popup-content button {
+  padding: 15px 30px;
+  font-size: 16px;
+}
+
+.popup-content h2 {
+  margin-bottom: 10px;
+}
+
+.popup-content br {
+  margin-top: 10px;
+}
+
+/* Stile für  Popup */
+/* Stile für die neuen Schaltflächen und den Link im Popup */
+#accept-cookies,
+#close-cookies,
+#close-accepted-popup,
+#close-rejected-popup {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #2196F3;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#accept-cookies:hover,
+#close-cookies:hover,
+#close-accepted-popup:hover,
+#close-rejected-popup:hover {
+  background-color: #0c7cd5;
 }
