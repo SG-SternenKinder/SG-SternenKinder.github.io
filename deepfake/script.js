@@ -160,25 +160,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         animation.onfinish = () => confetti.remove();
     }
 
-    // Stroboskop-Effekt
-    function startStrobe() {
-        const strobo = document.createElement('div');
-        strobo.className = 'strobo-light';
-        document.body.appendChild(strobo);
-
-        return strobo.animate(
-            [
-                { opacity: 0 },
-                { opacity: 0.7 },
-                { opacity: 0 }
-            ],
-            {
-                duration: 100,
-                iterations: 100
-            }
-        );
-    }
-
     // Event Listener für Konami-Code
     document.addEventListener('keydown', (e) => {
         konamiInput.push(e.key);

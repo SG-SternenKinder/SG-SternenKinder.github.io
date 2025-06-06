@@ -121,20 +121,6 @@ body.konami-party {
   transform: rotate(calc(var(--rotation, 0) * 1deg));
 }
 
-/* STROBO-EFFEKT (Highspeed) */
-.strobo-light {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  z-index: 9997;
-  pointer-events: none;
-  mix-blend-mode: overlay;
-  opacity: 0;
-}
-
 /* PARTY NOTIFICATION */
 .konami-notification {
   position: fixed;
@@ -180,9 +166,6 @@ body.konami-party {
 @media (prefers-reduced-motion) {
   .konami-party * {
     animation: none !important;
-  }
-  .strobo-light, .konfetti-particle {
-    display: none !important;
   }
 }
 
