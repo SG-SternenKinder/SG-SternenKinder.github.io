@@ -96,76 +96,80 @@ h1, h2, h3 {
 }
 
 
-/* ===== KONAMI PARTY MODE ===== */
-body.konami-party {
+/* Konami-Effekt Basis */
+body.konami {
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #ff00cc, #3333ff);
-  transition: background 0.3s ease;
-  animation: party-pulse 1s infinite alternate;
+  transition: background 1s ease;
 }
 
-/* SUPER-CONFETTI (300 Partikel) */
+/* Konfetti-Partikel */
 .konfetti-particle {
   position: fixed;
   z-index: 9998;
   pointer-events: none;
   will-change: transform, opacity;
-  /* Dynamische Formen */
-  border-radius: calc(50% * var(--is-round, 0));
-  clip-path: polygon(
-    0% calc(100% * var(--is-triangle, 0)),
-    50% calc(0% * var(--is-triangle, 0)),
-    100% calc(100% * var(--is-triangle, 0))
-  );
-  transform: rotate(calc(var(--rotation, 0) * 1deg));
 }
 
-/* PARTY NOTIFICATION */
+/* Party-Notification */
 .konami-notification {
   position: fixed;
-  bottom: 5vh;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  padding: 1rem 2rem;
+  padding: 15px 30px;
   background: linear-gradient(90deg, #ff00cc, #3333ff);
   color: white;
-  font-weight: 900;
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
-  border-radius: 999px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  border-radius: 50px;
   z-index: 9999;
-  box-shadow: 
-    0 5px 15px rgba(0,0,0,0.3),
-    0 0 0 4px rgba(255,255,255,0.8);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   text-shadow: 0 2px 4px rgba(0,0,0,0.5);
   animation: 
-    party-bounce 0.8s infinite alternate,
-    rainbow-bg 2s linear infinite;
-  backdrop-filter: blur(2px);
-  border: 2px solid white;
-  text-align: center;
+    pulse 0.5s infinite alternate,
+    rainbow-bg 3s linear infinite;
 }
 
-/* ANIMATIONEN */
-@keyframes party-pulse {
-  0% { filter: brightness(1) hue-rotate(0deg); }
-  100% { filter: brightness(1.2) hue-rotate(180deg); }
+/* Confetti-Basis */
+.konami-confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  z-index: 9998;
+  pointer-events: none;
+  will-change: transform, opacity;
 }
 
-@keyframes party-bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50% { transform: translateX(-50%) translateY(-15px); }
+/* Animationen */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Keyframes */
+@keyframes pulse {
+  from { transform: translateX(-50%) scale(1); }
+  to { transform: translateX(-50%) scale(1.05); }
 }
 
 @keyframes rainbow-bg {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
 }
 
-/* REDUCED MOTION */
+/* Stroboskop-Überblendung */
+body.konami-party {
+  transition: background-color 0.05s linear;
+}
+
+/* Schutz vor Flacker-Effekten */
 @media (prefers-reduced-motion) {
-  .konami-party * {
-    animation: none !important;
+  .konami-notification,
+  .konfetti-particle {
+    display: none !important;
   }
 }
 
