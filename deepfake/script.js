@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             
             // Feedback anzeigen
             const feedback = document.createElement('div');
-            feedback.textContent = '🎉 Konami-Code aktiviert!';
+            feedback.textContent = '🎉 Konami-Code aktiviert! 🎉';
             feedback.style.position = 'fixed';
             feedback.style.bottom = '20px';
             feedback.style.left = '50%';
