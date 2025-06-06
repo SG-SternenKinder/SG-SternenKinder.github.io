@@ -512,6 +512,21 @@ button:active {
   color: #5865F2;
 }
 
+.footer-copyright {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    flex-grow: 1;
+}
+
+.copyright-symbol {
+    font-weight: 700;
+}
+
 
 /* ==========================================================================
    COMPONENTS: MOBILE MENU
