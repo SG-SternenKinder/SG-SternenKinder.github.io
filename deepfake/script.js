@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             // Footer
             const footerItems = [
-                { 
+                {
                     title: 'footer_product_title',
                     links: [
                         'footer_download',
@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                         'footer_status'
                     ]
                 },
-                { 
+                {
                     title: 'footer_company_title',
                     links: [
                         'footer_uber_uns',
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                         'footer_marke'
                     ]
                 },
-                { 
+                {
                     title: 'footer_resources_title',
                     links: [
                         'footer_hochschule',
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                         'footer_sicherheit'
                     ]
                 },
-                { 
+                {
                     title: 'footer_legal_title',
                     links: [
                         'footer_datenschutz',
@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     if (title) {
                         title.innerHTML = t[column.title];
                     }
-                    
+
                     // Links setzen
                     const links = footerColumn.querySelectorAll('a');
                     column.links.forEach((linkKey, j) => {

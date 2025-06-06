@@ -1,10 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     'use strict';
 
     // Konfiguration
     const config = {
         copyrightElementId: 'current-year',
-        companyName: 'Discord, Inc.',
         startYear: 2016,
         logPrefix: '[Footer]'
     };
@@ -27,13 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function setCopyrightYear() {
         const yearElement = document.getElementById(config.copyrightElementId);
         const currentYear = new Date().getFullYear();
-        
+
         if (yearElement) {
             // Format: "2023" oder "2016-2023" wenn startYear < currentYear
-            yearElement.textContent = config.startYear < currentYear 
+            yearElement.textContent = config.startYear < currentYear
                 ? `${config.startYear}-${currentYear}`
                 : `${currentYear}`;
-            
+
             // Setze zusätzliche Datenattribute
             yearElement.setAttribute('data-start-year', config.startYear);
             yearElement.setAttribute('data-current-year', currentYear);
