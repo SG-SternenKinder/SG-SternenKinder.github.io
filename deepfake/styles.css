@@ -616,22 +616,13 @@ button:active {
 
 .language-dropdown {
   position: absolute;
-  right: 0;
   bottom: auto;
-  margin-bottom: 5px;
   background: #36393f;
-  border-radius: 4px;
-  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
   padding: 8px 0;
-  min-width: 160px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(10px);
   transition: all 0.3s ease;
   z-index: 1001;
   list-style: none;
-  max-height: 50vh;
-  overflow-y: auto;
 }
 
 .language-switcher[aria-expanded="true"] + .language-dropdown {
