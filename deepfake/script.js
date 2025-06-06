@@ -104,7 +104,6 @@ document.addEventListener('DOMContentLoaded', async function () {
         'b', 'a'];
     let konamiInput = [];
     let konamiTimeout = null;
-    let strobeAnimation = null;
 
     // Mega-Confetti-Funktion (300 Partikel)
     function fireMegaConfetti() {
@@ -171,7 +170,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             // Effekte aktivieren
             document.body.classList.add('konami-party');
             fireMegaConfetti();
-            strobeAnimation = startStrobe();
 
             // Notification erstellen
             const feedback = document.createElement('div');
@@ -183,10 +181,9 @@ document.addEventListener('DOMContentLoaded', async function () {
             clearTimeout(konamiTimeout);
             konamiTimeout = setTimeout(() => {
                 document.body.classList.remove('konami-party');
-                if (strobeAnimation) strobeAnimation.cancel();
                 document.body.style.backgroundColor = '';
                 feedback.remove();
-            }, 12000);
+            }, 10000);
 
             konamiInput = [];
         }
