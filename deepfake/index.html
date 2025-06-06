@@ -5,23 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discord | Dein Platz zum Chatten</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="stylesheet" href="styles.css">
+    <meta name="color-scheme" content="dark light">
 
-    <style>
-        /* Above-the-fold CSS */
-        .navbar,
-        .hero {
-            opacity: 0;
-            animation: fadeIn 0.5s forwards;
-        }
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-    </style>
+    <!-- Non-critical CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
 </head>
 
 <body>
@@ -56,15 +51,28 @@
                 </div>
             </div>
             <div class="nav-actions">
-                <div class="nav-actions">
-                    <button id="theme-toggle" aria-label="Dark mode">
-                        <i class="fas fa-moon"></i>
-                        <i class="fas fa-sun"></i>
-                    </button>
-                    <button class="menu-toggle" aria-label="Menü öffnen">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                </div>
+                <button id="theme-toggle" aria-label="Dark mode">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                    <span class="visually-hidden">Menü öffnen</span>
+                </button>
+
+                <style>
+                    .visually-hidden {
+                        position: absolute;
+                        width: 1px;
+                        height: 1px;
+                        padding: 0;
+                        margin: -1px;
+                        overflow: hidden;
+                        clip: rect(0, 0, 0, 0);
+                        white-space: nowrap;
+                        border: 0;
+                    }
+                </style>
             </div>
         </div>
     </nav>
@@ -81,30 +89,29 @@
             <a href="#"><i class="fas fa-briefcase"></i> Karriere</a>
         </div>
     </div>
+
     <div class="menu-overlay"></div>
 
     <!-- HERO SECTION -->
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-heading">
         <div class="container">
-            <div class="hero-content">
-                <h1><i class="fas fa-lightbulb"></i> IMAGINIERE EINEN ORT...</h1>
-                <p>...wo du zu deiner Schul- oder Gaming-Gruppe,<br class="desktop-only">
-                    deinen Freunden oder deiner Familie gehören kannst.
-                    Ein Ort, an dem du einfach Zeit verbringen<br class="desktop-only">
-                    und chatten kannst. Discord macht es leicht,
-                    jeden Tag in Kontakt zu bleiben.</p>
-                <div class="hero-buttons">
-                    <button class="download-btn">
-                        <i class="fas fa-download"></i> Download für Windows
-                    </button>
-                    <button class="open-in-browser-btn">
-                        <i class="fas fa-globe"></i> Discord in deinem Browser öffnen
-                    </button>
-                </div>
+            <h1 id="hero-heading"><i class="fas fa-lightbulb" aria-hidden="true"></i> IMAGINIERE EINEN ORT...</h1>
+            <p>...wo du zu deiner Schul- oder Gaming-Gruppe,<br class="desktop-only">
+                deinen Freunden oder deiner Familie gehören kannst.
+                Ein Ort, an dem du einfach Zeit verbringen<br class="desktop-only">
+                und chatten kannst. Discord macht es leicht,
+                jeden Tag in Kontakt zu bleiben.</p>
+            <div class="hero-buttons">
+                <button class="download-btn">
+                    <i class="fas fa-download"></i> Download für Windows
+                </button>
+                <button class="open-in-browser-btn">
+                    <i class="fas fa-globe"></i> Discord in deinem Browser öffnen
+                </button>
             </div>
-            <div class="hero-logo">
-                <i class="fab fa-discord"></i>
-            </div>
+        </div>
+        <div class="hero-logo">
+            <i class="fab fa-discord"></i>
         </div>
     </section>
 
@@ -171,7 +178,7 @@
                         <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                         <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                     </div>
-                    <!-- Copyright Bereich -->
+
                     <div class="footer-copyright">
                         <span class="copyright-symbol">©</span>
                         <span class="copyright-text">
@@ -183,9 +190,8 @@
         </div>
     </footer>
 
-    <!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
-    <script src="footer_year.js"></script>
-    <script src="script.js"></script>
+    <script src="footer_year.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>

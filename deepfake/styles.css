@@ -676,8 +676,9 @@ button:active {
   border-radius: 50%;
   opacity: 0.6;
   animation: float-particle linear infinite;
-  will-change: transform;
   mix-blend-mode: screen;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 
@@ -836,7 +837,7 @@ button:active {
     min-width: 100%;
   }
   .feature-card i {
-    font-size: 2rem; /* Etwas kleiner auf Mobile */
+    font-size: 2rem;
   }
   .container {
     padding: 0 16px;
@@ -872,7 +873,6 @@ button:active {
   }
 }
 
-/* Height Adjustments */
 @media (max-height: 600px) {
   .hero {
     padding: 100px 0 60px;
@@ -885,7 +885,6 @@ button:active {
   }
 }
 
-/* Dark Mode Preference */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #202225;

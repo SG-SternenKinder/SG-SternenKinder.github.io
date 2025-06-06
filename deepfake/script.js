@@ -41,10 +41,10 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // 3. Scroll-Animationen
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {                                   //(entry, index)
             if (entry.isIntersecting) {
-                entry.target.style.animation =
-                    `fadeInUp 0.5s ease-out ${index * 0.1}s forwards`;
+                entry.target.classList.add('visible');                 //entry.target.style.animation =
+                                                                       //`fadeInUp 0.5s ease-out ${index * 0.1}s forwards`;
                 observer.unobserve(entry.target);
             }
         });
@@ -85,14 +85,18 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 
     // 6. Lazy Loading
-    document.querySelectorAll('img').forEach(img => {
-        img.loading = 'lazy';
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    const imgObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                imgObserver.unobserve(img);
+            }
+        });
     });
 
-    // Initialisierung des focus-visible Polyfills
-    if (typeof window.applyFocusVisiblePolyfill === 'function') {
-        window.applyFocusVisiblePolyfill();
-    }
+    lazyImages.forEach(img => imgObserver.observe(img));
 
     // Easter Egg (Konami-Code)
     const konamiCode = [
