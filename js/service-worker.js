@@ -3,7 +3,7 @@
  */
 'use strict';
 
-const FILE_VERSION = 'v0.0.1.7.1';
+const FILE_VERSION = 'v0.0.1.7.2';
 const CACHE_NAME = `sg-sternenkinder-cache-${FILE_VERSION}`;
 const OFFLINE_PAGE = 'https://sg-sternenkinder.github.io/offline.html';
 
@@ -25,7 +25,6 @@ const PRECACHE_RESOURCES = [
   'https://sg-sternenkinder.github.io/js/error-popup.js',
 
   'https://sg-sternenkinder.github.io/img/favicon/favicon.ico',
-  'https://sg-sternenkinder.github.io/img/favicon/apple-touch-icon.png',
   'https://sg-sternenkinder.github.io/img/background.png',
 
   'https://sg-sternenkinder.github.io/img/svg-icons/tiktok2.svg',
@@ -34,7 +33,7 @@ const PRECACHE_RESOURCES = [
   'https://sg-sternenkinder.github.io/img/svg-icons/globe.svg',
   'https://sg-sternenkinder.github.io/img/svg-icons/arrow-up.svg',
 
-  '/offline.html'
+  'https://sg-sternenkinder.github.io/offline.html'
 ];
 
 // Installationsereignis - Precaching wichtiger Ressourcen

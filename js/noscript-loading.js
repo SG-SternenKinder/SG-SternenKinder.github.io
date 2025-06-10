@@ -126,14 +126,6 @@
         return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
     }
 
-    /**
-     * Loggt Nachrichten in die Konsole
-     * @param {string} message 
-     */
-    function log(message) {
-        console.log('[NoScriptManager] ' + message);
-    }
-
     // Initialisierung wenn DOM bereit ist
     if (document.readyState !== 'loading') {
         init();
