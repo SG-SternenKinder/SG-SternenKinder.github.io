@@ -133,7 +133,7 @@
     </button>
 
     <!-- Footer -->
-    <footer id="footer-container"></footer>
+    <footer id="footer-container" class="js-only"></footer>
 
     <!-- Scripts -->
     <script src="https://sg-sternenkinder.github.io/consolenManager.js" defer></script>
@@ -149,15 +149,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('https://sg-sternenkinder.github.io/js/service-worker.js')
-                    <!--
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful');
-                    })
-                    .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
-                    -->
+                navigator.serviceWorker.register('https://sg-sternenkinder.github.io/js/service-worker.js')  
             });
         }
     </script>

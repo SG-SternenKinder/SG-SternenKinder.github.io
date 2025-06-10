@@ -167,11 +167,7 @@
     </button>
 
     <!-- Footer -->
-    <footer id="footer-container" class="js-only">
-        <div class="footer-bottom">
-            &copy; <span id="current-year"></span> | SG SternenKinder | Alle Rechte vorbehalten
-        </div>
-    </footer>
+    <footer id="footer-container" class="js-only"></footer>
 
     <!-- Scripts -->
     <script src="https://sg-sternenkinder.github.io/js/jquery-3.7.1.min.js" defer></script>
@@ -190,15 +186,7 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('https://sg-sternenkinder.github.io/js/service-worker.js')
-                    <!--
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful');
-                    })
-                    .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
-                    -->
+                navigator.serviceWorker.register('https://sg-sternenkinder.github.io/js/service-worker.js')  
             });
         }
     </script>

@@ -2,7 +2,7 @@
  * Footer-Komponente
  * @namespace footer
  */
-(function($) {
+(function ($) {
     'use strict';
 
     // Konfiguration
@@ -34,13 +34,11 @@
     function renderFooter($container) {
         const currentYear = new Date().getFullYear();
         const startYear = 2016;
-        
+
         const footerHtml = `
-            <footer>
-                <div class="footer-bottom">
-                    &copy; ${startYear} - ${currentYear} | ${config.copyrightText} | Alle Rechte vorbehalten
-                </div>
-            </footer>
+            <div class="footer-bottom">
+                &copy; ${startYear} - ${currentYear} | ${config.copyrightText} | Alle Rechte vorbehalten
+            </div>
         `;
 
         $container.html(footerHtml);

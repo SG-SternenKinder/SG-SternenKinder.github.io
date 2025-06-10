@@ -46,7 +46,6 @@
         
         if (domElements.noScriptContainer) {
             createLoadingAnimation();
-            log(config.messages.success);
         }
     }
 
